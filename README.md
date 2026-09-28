@@ -18,7 +18,7 @@ This is a **research preview**, with five linked reports from February–August 
 - Four-part interpretation layer for every event
 - “How worried should I actually be?” explanations
 - Nine-stage interactive concern ladder, with source-set-specific evidence labels
-- Inline jargon definitions and persistent Plain English preference
+- Inline jargon definitions and persistent Simplified vocabulary preference (off by default)
 - Methodology, source register, and observed/inferred/speculative evidence board
 - Responsive layouts, semantic controls, keyboard-accessible native dialogs, reduced-motion support, and a skip link
 
