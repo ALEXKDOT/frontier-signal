@@ -1,0 +1,19 @@
+{
+  "id": "short-unique-id",
+  "date": "YYYY-MM-DD",
+  "title": "A plain-language description",
+  "category": "Capabilities",
+  "pathways": ["autonomy"],
+  "direction": "mixed",
+  "evidence": "Primary report",
+  "evidenceNote": "What is known about the source and its limitations?",
+  "summary_beginner": "What happened, in ordinary language.",
+  "technical_summary": "The technical result and its conditions.",
+  "why_it_matters": "Interpretation, explicitly separated from observation.",
+  "what_it_doesnt_mean": "What this result does not establish.",
+  "what_would_raise_concern": "Specific future evidence that would matter.",
+  "less_concerning": "Counterevidence or a reassuring limitation.",
+  "conclusion": "A short, proportionate conclusion.",
+  "sources": [{"publisher": "Original publisher", "title": "Original title", "url": "https://example.com/original-report"}],
+  "review": {"status": "draft", "reviewedBy": null, "reviewedAt": null}
+}

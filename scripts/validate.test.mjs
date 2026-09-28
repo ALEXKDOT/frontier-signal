@@ -1,0 +1,10 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {validate} from './validate.mjs';
+const read=()=>JSON.parse(readFileSync(new URL('../dist/data/signals.json',import.meta.url),'utf8'));
+test('the launch dataset passes the editorial rules',()=>assert.deepEqual(validate(read()),[]));
+test('changing to reviewed mode cannot silently publish unreviewed analysis',()=>{const d=read();d.mode='reviewed';assert.ok(validate(d).some(e=>e.includes('human approval required')));});
+test('each event and the outlook need a reviewer and date',()=>{const d=read();d.mode='reviewed';for(const x of [...d.events,d.outlook])x.review={status:'approved',reviewedBy:'',reviewedAt:null};const errors=validate(d);assert.equal(errors.filter(e=>e.includes('reviewer required')).length,d.events.length+1);});
+test('unsafe source URLs are rejected',()=>{const d=read();d.events[0].sources[0].url='javascript:alert(1)';assert.ok(validate(d).some(e=>e.includes('invalid source')));});
+test('broken evidence references and duplicate IDs are rejected',()=>{const d=read();d.outlook.basis=['missing'];d.events[1].id=d.events[0].id;const errors=validate(d);assert.ok(errors.some(e=>e.includes('unique')));assert.ok(errors.some(e=>e.includes('references')));});

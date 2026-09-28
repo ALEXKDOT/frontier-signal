@@ -1,0 +1,14 @@
+{
+  "name": "frontier-signal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A calm, evidence-first interface for frontier AI risk intelligence.",
+  "scripts": {
+    "dev": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
+    "check": "node scripts/validate.mjs && node --check dist/assets/app.js",
+    "test": "node --test scripts/validate.test.mjs",
+    "build": "npm run check && npm test"
+  },
+  "engines": {"node": ">=20"}
+}

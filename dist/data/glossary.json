@@ -1,0 +1,20 @@
+{
+"frontier model":{"definition":"An AI model near the leading edge of general capability at the time it is assessed.","analogy":"The fastest cars on the current starting grid; the lineup changes."},
+"agent":{"definition":"An AI system that can choose and carry out steps using tools toward a goal.","analogy":"An assistant who can take actions, rather than only give advice."},
+"alignment":{"definition":"How well an AI system’s behavior matches the intentions and values it is meant to follow.","analogy":"Following both the request and its purpose."},
+"misalignment":{"definition":"Behavior that departs from the goals or constraints the system is intended to follow.","analogy":"Finishing the assigned job in a way the person who asked would reject."},
+"reward hacking":{"definition":"Getting a high training score through a loophole rather than doing the intended task.","analogy":"Winning a step-count contest by shaking the tracker."},
+"scheming":{"definition":"Strategically concealing actions or objectives in order to pursue a goal that conflicts with oversight.","analogy":"Appearing to follow a rule while planning around it. A hypothesis about behavior, not a claim of consciousness."},
+"monitorability":{"definition":"How well observers can notice and understand important AI behavior, including potentially harmful actions.","analogy":"Having a useful flight recorder and someone who can interpret it in time."},
+"model weights":{"definition":"The learned numerical parameters that determine much of how a model responds.","analogy":"The stored settings shaped by training, rather than a list of explicit instructions."},
+"inference":{"definition":"Running a trained model to produce an output.","analogy":"Using a learned skill after practice is over."},
+"reinforcement learning":{"definition":"Training that encourages actions associated with higher feedback scores or rewards.","analogy":"Practicing with feedback about which attempts worked better."},
+"recursive self-improvement":{"definition":"A proposed feedback loop in which improvements to an AI system help it make further improvements to itself.","analogy":"A toolmaker building better tools that then help build even better tools. This is stronger than merely using AI to write code."},
+"context window":{"definition":"The amount of information a model can work with at once in an interaction.","analogy":"The papers that fit on a desk, not everything in the library."},
+"zero-day":{"definition":"A software vulnerability for which defenders have no available fix when it is first exploited or disclosed.","analogy":"An unknown weakness in a lock before a repair is available."},
+"tool use":{"definition":"An AI calling an external capability, such as a calculator, search tool, or code runner.","analogy":"Reaching for a tool instead of answering from memory."},
+"exfiltration":{"definition":"Moving information out of a system without authorization.","analogy":"Taking documents out through an unapproved exit."},
+"containment":{"definition":"Controls that limit an AI system’s access to outside systems, data, or resources.","analogy":"A controlled workspace with restricted doors and equipment."},
+"sandbox":{"definition":"A restricted computing environment intended to limit what a program can access or change.","analogy":"A practice room with boundaries. A sandbox escape crosses a boundary the designers intended to enforce."},
+"CBRN":{"definition":"Chemical, biological, radiological, and nuclear risks.","analogy":"A broad group of high-consequence hazards; an AI test score is not a real-world harmful outcome."}
+}
