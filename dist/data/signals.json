@@ -3040,6 +3040,15 @@
     "The current Anthropic productivity article uses quarterly code output versus 2021–2025; the chat’s per-day/2024 comparison is not repeated.",
     "Retrospective discovery is evidence of incomplete visibility, not a measured increase in incident base rate. Anonymous aggregate counts overlap known cases and are not added to them.",
     "Future scenarios, illustrative dashboard examples, and subjective five-year probabilities are not counted as observed incidents. No successful shutdown resistance or fully autonomous recursive improvement is claimed.",
-    "This is a user-requested import, not an ongoing chat connection. Source checks do not constitute human editorial sign-off; unverified chat citations remain visibly labeled."
-  ]
+    "The initial conversation import was published September 28, 2026. Weekly automated source reviews were requested on September 29. Automated summaries do not claim human editorial sign-off; unverified historical chat citations remain labeled."
+  ],
+  "chatAsOf": "2026-09-27",
+  "updates": {
+    "enabled": false,
+    "scheduleLabel": "Mondays at 9:00 a.m. Eastern",
+    "timezone": "America/New_York",
+    "lastCheckedAt": null,
+    "lastPublishedAt": null,
+    "history": []
+  }
 }

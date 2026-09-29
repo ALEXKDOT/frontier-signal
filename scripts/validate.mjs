@@ -4,6 +4,7 @@ import {resolve,dirname} from 'node:path';
 export function validate(data) {
  const errors=[];
  const need=(test,message)=>{if(!test)errors.push(message);};
+ const isDate=value=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&!isNaN(Date.parse(value))&&new Date(value).toISOString().slice(0,10)===value;
  need(data.schemaVersion===1,'Unsupported schema version');
  need(['demo','watch','reviewed'].includes(data.mode),'Mode must be demo, watch, or reviewed');
  need(/^\d{4}-\d{2}-\d{2}$/.test(data.asOf||''),'A coverage date is required');
@@ -27,6 +28,13 @@ export function validate(data) {
    need(typeof e.occurred==='string'&&e.occurred.trim(),`${e.id}: occurrence date or uncertainty required`);
    need(typeof e.dateBasis==='string'&&e.dateBasis.trim(),`${e.id}: report date basis required`);
    need(Array.isArray(e.chatMessages),`${e.id}: conversation provenance required`);
+   if(e.review?.status==='automated'){
+    need(data.updates?.enabled===true,`${e.id}: weekly publication must be enabled`);
+    need(e.origin==='weekly'&&e.chatMessages?.length===0,`${e.id}: weekly origin required; do not invent chat provenance`);
+    need(['primary','research'].includes(e.verification),`${e.id}: automated publication requires checked original evidence`);
+    need(typeof e.selectionReason==='string'&&e.selectionReason.trim().length>15,`${e.id}: explain why this development is material`);
+    for(const source of e.sources||[])need(isDate(source.checkedAt)&&source.checkedAt<=e.review.checkedAt,`${e.id}: each automated source needs a valid check date`);
+   }
   }
  }
  need(ids.size>=1,'At least one event is required');
@@ -40,7 +48,23 @@ export function validate(data) {
   need(ids.has(data.latestEventId),'Latest record must exist');
   need(data.events.find(e=>e.id===data.latestEventId)?.date===data.events.map(e=>e.date).sort().at(-1),'Latest record must use the most recent report date');
   need(/^https:\/\/chatgpt.com\/share\//.test(data.chatSource||''),'Shared-chat provenance is required');
-  need(data.importedAt>=data.asOf,'Import date must not precede coverage');
+  need(isDate(data.chatAsOf)&&data.importedAt>=data.chatAsOf&&data.asOf>=data.chatAsOf,'Original chat coverage must remain separate from later weekly coverage');
+  if(data.updates){
+   const u=data.updates;
+   need(typeof u.enabled==='boolean','Weekly update enabled state is required');
+   need(u.timezone==='America/New_York'&&typeof u.scheduleLabel==='string','Weekly schedule and timezone are required');
+   need(u.lastCheckedAt===null||(isDate(u.lastCheckedAt)&&u.lastCheckedAt===data.asOf),'Last checked date must match completed coverage');
+   need(u.lastPublishedAt===null||(isDate(u.lastPublishedAt)&&u.lastCheckedAt&&u.lastPublishedAt>=u.lastCheckedAt),'Publication date needs a completed source check');
+   need(Array.isArray(u.history),'Weekly history must be an array');
+   const runDates=new Set();
+   for(const run of u.history||[]){
+    need(isDate(run.date)&&run.date<=u.lastCheckedAt&&!runDates.has(run.date),'Weekly run dates must be unique and within checked coverage');runDates.add(run.date);
+    need(typeof run.summary==='string'&&run.summary.trim(),'Weekly run summary required');
+    for(const field of ['addedIds','updatedIds'])need(Array.isArray(run[field])&&new Set(run[field]).size===run[field].length&&run[field].every(id=>ids.has(id)),`Weekly ${field} must reference unique existing records`);
+    need(!(run.addedIds||[]).some(id=>(run.updatedIds||[]).includes(id)),'A record cannot be both added and updated in the same weekly run');
+   }
+   need(u.lastCheckedAt===null||(u.history||[]).some(run=>run.date===u.lastCheckedAt),'Completed weekly checks need a history entry');
+  }
   const covered=new Set();
   for(const c of data.coverage||[]){
    need(!covered.has(c.messageIndex),'Duplicate conversation coverage row');covered.add(c.messageIndex);
@@ -55,7 +79,11 @@ export function validate(data) {
  }
  function validateReview(r,label){
   if(data.mode==='demo'){need(r?.status==='demo',`${label}: demo edition must label all assessments as demo`);}
-  else if(data.mode==='watch'){need(r?.status==='imported',`${label}: imported review label required`);need(r?.reviewedBy===null&&r?.reviewedAt===null,`${label}: imported records must not claim human approval`);}
+  else if(data.mode==='watch'){
+   need(['imported','automated'].includes(r?.status),`${label}: imported or automated review label required`);
+   need(r?.reviewedBy===null&&r?.reviewedAt===null,`${label}: non-human records must not claim human approval`);
+   if(r?.status==='automated')need(isDate(r.checkedAt)&&r.checkedAt<=data.asOf,`${label}: automated source check date required`);
+  }
   else{need(r?.status==='approved',`${label}: human approval required`);need(typeof r?.reviewedBy==='string'&&r.reviewedBy.trim().length>1,`${label}: reviewer required`);need(/^\d{4}-\d{2}-\d{2}$/.test(r?.reviewedAt||''),`${label}: review date required`);}
  }
  return errors;

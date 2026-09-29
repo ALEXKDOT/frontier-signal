@@ -16,7 +16,7 @@ test('occurrence dates remain separate from September disclosure dates',()=>{
  const d=read(); const medicare=d.events.find(e=>e.id==='medicare'), dns=d.events.find(e=>e.id==='dns-escape');
  assert.equal(medicare.date,'2026-09-24'); assert.match(medicare.occurred,/June 18, 2026/);
  assert.equal(dns.date,'2026-09-25'); assert.match(dns.occurred,/September 20, 2026/);
- assert.equal(d.latestEventId,'dns-escape');assert.equal(d.asOf,'2026-09-27');
+ assert.equal(d.chatAsOf,'2026-09-27');assert.ok(d.asOf>=d.chatAsOf);
 });
 test('the incident record does not conflate Medicare, AIHW, or failed crypto trades',()=>{
  const d=read();assert.match(d.events.find(e=>e.id==='transluce-aihw').what_it_doesnt_mean,/No nonpublic/);
@@ -30,3 +30,16 @@ test('imported reports cannot silently claim a reviewer or a risk score',()=>{
 test('removing a mapped incident fails coverage validation',()=>{
  const d=read();d.events=d.events.filter(e=>e.id!=='dns-escape');assert.ok(validate(d).some(e=>e.includes('broken coverage reference')));
 });
+function weeklyFixture(){
+ const d=read();d.updates.enabled=true;d.asOf='2026-10-05';
+ d.updates.lastCheckedAt='2026-10-05';d.updates.lastPublishedAt='2026-10-05';
+ const e=structuredClone(d.events.find(e=>e.id==='dns-escape'));
+ Object.assign(e,{id:'weekly-fixture',date:'2026-10-02',title:'Synthetic validation fixture',origin:'weekly',chatMessages:[],selectionReason:'Material evidence relevant to containment and monitoring.',review:{status:'automated',reviewedBy:null,reviewedAt:null,checkedAt:'2026-10-05'}});
+ e.sources.forEach(s=>s.checkedAt='2026-10-05');d.events.push(e);d.latestEventId=e.id;
+ d.updates.history=[{date:'2026-10-05',addedIds:[e.id],updatedIds:[],summary:'Validation fixture only.'}];return d;
+}
+test('future weekly publication can advance coverage without changing the original chat',()=>{const d=weeklyFixture();assert.deepEqual(validate(d),[]);assert.equal(d.chatAsOf,'2026-09-27');});
+test('weekly publication rejects unchecked sources and unverified chat claims',()=>{const d=weeklyFixture(),e=d.events.at(-1);delete e.sources[0].checkedAt;e.verification='reported';const errors=validate(d);assert.ok(errors.some(x=>x.includes('valid check date')));assert.ok(errors.some(x=>x.includes('checked original evidence')));});
+test('weekly completion cannot be claimed without a matching history entry',()=>{const d=weeklyFixture();d.updates.history=[];assert.ok(validate(d).some(x=>x.includes('history entry')));});
+test('weekly updates cannot invent a human reviewer or conversation provenance',()=>{const d=weeklyFixture(),e=d.events.at(-1);e.review.reviewedBy='Auto Editor';e.chatMessages=[76];const errors=validate(d);assert.ok(errors.some(x=>x.includes('must not claim human approval')));assert.ok(errors.some(x=>x.includes('weekly origin')));});
+test('no-change weekly checks can advance freshness without inventing incidents',()=>{const d=weeklyFixture();d.events.pop();d.latestEventId='dns-escape';d.updates.history[0].addedIds=[];d.updates.history[0].summary='No material source-supported developments.';assert.deepEqual(validate(d),[]);});
