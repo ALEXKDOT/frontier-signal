@@ -3044,7 +3044,7 @@
   ],
   "chatAsOf": "2026-09-27",
   "updates": {
-    "enabled": false,
+    "enabled": true,
     "scheduleLabel": "Mondays at 9:00 a.m. Eastern",
     "timezone": "America/New_York",
     "lastCheckedAt": null,

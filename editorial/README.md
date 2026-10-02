@@ -11,7 +11,7 @@ The current `watch` edition is the user's explicitly requested import of an exis
 - Map every concrete claim to its message index in `coverage`; reuse IDs for repeated mentions. New forensic detail is an `update`, not another incident.
 - Retain uncertain attribution, failed attempts, and counterevidence. Do not transform forecasts, illustrative mockups, or subjective probabilities into observed incidents.
 - `corrections` records departures from the original chat. The public coverage view renders this reconciliation directly from the data.
-- This exception covers the user-requested import. The later September 29 request adds the weekly workflow below, which is prepared but awaiting publisher activation approval.
+- This exception covers the user-requested import. The later September 29 request adds the weekly workflow below; the user explicitly approved automatic publication on October 2, 2026.
 
 ## New analysis and reviewed editions
 
@@ -25,6 +25,6 @@ Validation checks required fields and provenance consistency; it cannot determin
 
 ## Weekly automated publication
 
-See [WEEKLY_UPDATE.md](WEEKLY_UPDATE.md). The September 29 user request calls for automatic weekly updates. The implementation supports `review.status: "automated"` for new source-checked records without claiming a human reviewer. Explicit approval of recurring publication to the public website and GitHub is still needed before activation; the schedule creation was blocked by automatic approval review and no task was created.
+See [WEEKLY_UPDATE.md](WEEKLY_UPDATE.md). The September 29 user request calls for automatic weekly updates. The implementation supports `review.status: "automated"` for new source-checked records without claiming a human reviewer. On October 2, 2026, the user explicitly approved recurring unattended publication of source-checked, AI-written updates to the public website and GitHub. The weekly schedule is active for Mondays at 9 a.m. Eastern, beginning October 5.
 
 The automated path remains distinct from a human-reviewed edition. All sources for new automated records need actual check dates, and the record needs a materiality rationale. Failed checks must not advance freshness. The original conversation coverage remains fixed in `chatAsOf`; `asOf` can advance after a completed weekly review.

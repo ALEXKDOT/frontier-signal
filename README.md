@@ -10,7 +10,7 @@ Imported September 28, 2026 from the user-supplied [Frontier AI Risk Watch conve
 
 Every concrete development named in the watch updates is mapped in `signals.json` → `coverage` and the public Conversation coverage page. Repeated mentions link to the same records. Occurrence dates are separate from disclosure dates. The Medicare and AIHW cases remain separate; the September Hugging Face reconstruction is a follow-up to July's incident. Future scenarios and subjective forecasts are not counted as observed events.
 
-The edition is an **AI-assisted conversation import, pending human editorial review**. Of the 59 additions, 34 use checked primary reports, nine use external investigations with attribution limitations, and 16 preserve chat reports whose original citations were not fully rechecked. Source verification is not independent replication or human sign-off. There is no reviewed risk score. Weekly source review and publishing support is prepared, but its schedule is not active yet. The original chat remains a fixed historical import.
+The edition is an **AI-assisted conversation import, pending human editorial review**. Of the 59 additions, 34 use checked primary reports, nine use external investigations with attribution limitations, and 16 preserve chat reports whose original citations were not fully rechecked. Source verification is not independent replication or human sign-off. There is no reviewed risk score. Weekly source review and automatic publication are active, with the first scheduled review on October 5, 2026. The original chat remains a fixed historical import.
 
 ## Features
 
@@ -44,9 +44,9 @@ Open `http://127.0.0.1:4173`. `dist/` is the authored static website, not genera
 
 ## Updates and publication
 
-The weekly workflow is specified in [WEEKLY_UPDATE.md](editorial/WEEKLY_UPDATE.md). Proposed cadence: Mondays at 09:00 America/New_York. It selects material risk and safety developments from original sources, reconciles duplicates, validates the data, publishes to the existing Site, and synchronizes GitHub. New automated entries require source-check dates and a materiality rationale and cannot claim human review. The app separately tracks original chat coverage and completed weekly checks.
+The weekly workflow is specified in [WEEKLY_UPDATE.md](editorial/WEEKLY_UPDATE.md). Cadence: Mondays at 09:00 America/New_York. It selects material risk and safety developments from original sources, reconciles duplicates, validates the data, publishes to the existing Site, and synchronizes GitHub. New automated entries require source-check dates and a materiality rationale and cannot claim human review. The app separately tracks original chat coverage and completed weekly checks.
 
-**Activation status:** awaiting explicit approval for recurring unattended publication to the public website and GitHub; no scheduled task was created. The current enabled flag is false. When activated, this task runs through the desktop execution host, which must remain available with the app running and its connections usable.
+**Activation status:** active following the user's explicit approval on October 2, 2026 for recurring unattended publication to the public website and GitHub. The scheduled task is `update-frontier-signal-weekly`, with the first scheduled review on October 5. No weekly review has completed yet. This task runs through the desktop execution host, which must remain available with the app running and its connections usable.
 
 See [the editorial workflow](editorial/README.md). Imported editions cannot claim a reviewer or a reviewed risk rating. Reviewed editions require real approval metadata for every record and the outlook. Validation checks coverage references, source URLs, dates, and review labels; it cannot establish the truth of claims or prevent a dishonest sign-off.
 

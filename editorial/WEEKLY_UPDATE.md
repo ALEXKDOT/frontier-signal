@@ -2,9 +2,9 @@
 
 ## Authorization and scope
 
-On September 29, 2026 the user explicitly requested automatic weekly publication of the most relevant developments. The workflow is prepared, but automatic approval review blocked schedule creation pending explicit approval for recurring unattended publication to the public Site and GitHub. Do not activate or run this workflow until that approval is present in the task. Once approved, it supersedes the earlier restriction on unattended publication for this weekly workflow. Never invent human review: new automated records use `review.status: "automated"` with null reviewer fields and an actual `checkedAt` date.
+On September 29, 2026 the user requested automatic weekly updates with the most relevant developments. On October 2, 2026, the user explicitly approved automatically publishing source-checked, AI-written updates to the public app and GitHub each week without manual approval. This authorization supersedes the earlier restriction on unattended publication for this weekly workflow. Never invent human review: new automated records use `review.status: "automated"` with null reviewer fields and an actual `checkedAt` date.
 
-The proposed scheduled task will run in this existing Codex task, Mondays at 09:00 America/New_York. It requires the task's connected sources, Sites and GitHub access, and execution host. It is not a browser timer or a cloud Site schedule. A saved schedule is not evidence that a run has completed.
+The active scheduled task, `update-frontier-signal-weekly`, runs in this existing Codex task, Mondays at 09:00 America/New_York, beginning October 5, 2026. It requires the task's connected sources, Sites and GitHub access, and the computer to remain on with the desktop app running. It is not a browser timer or a cloud Site schedule. A saved schedule is not evidence that a run has completed.
 
 ## Find the existing project
 
