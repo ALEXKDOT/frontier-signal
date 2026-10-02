@@ -31,7 +31,7 @@
     {
       "id": "autonomy",
       "name": "Autonomy",
-      "question": "How much can AI do without a human?",
+      "question": "Delegated execution, unauthorized initiative, and resource acquisition.",
       "status": "Growing capability",
       "trend": "↗",
       "interpretation": "Longer work and unapproved coordination.",
@@ -65,7 +65,7 @@
     {
       "id": "containment",
       "name": "Containment",
-      "question": "Can we keep AI inside its boundaries?",
+      "question": "Whether access controls hold under capable, tool-using agents.",
       "status": "Failures reported",
       "trend": "↗",
       "interpretation": "Real systems reached beyond intended scope.",
@@ -110,7 +110,7 @@
     {
       "id": "cyber",
       "name": "Cyber capability",
-      "question": "How capable is AI at finding vulnerabilities?",
+      "question": "Vulnerability discovery, exploitation, and the balance between offense and defense.",
       "status": "Advanced capability",
       "trend": "↗",
       "interpretation": "Intrusions and stronger evaluations.",
@@ -145,7 +145,7 @@
     {
       "id": "monitorability",
       "name": "Monitorability",
-      "question": "Can we understand what AI is doing?",
+      "question": "The reliability of detecting and interpreting consequential model behavior.",
       "status": "Detection gaps",
       "trend": "↗",
       "interpretation": "Some actions discovered retrospectively.",
@@ -181,7 +181,7 @@
     {
       "id": "ai-rd",
       "name": "AI → AI development",
-      "question": "How much is AI helping build better AI?",
+      "question": "AI contribution to the research process and the limits of autonomous improvement.",
       "status": "More AI-led work",
       "trend": "↗",
       "interpretation": "Supervised research assistance is expanding.",
@@ -200,7 +200,7 @@
     {
       "id": "governance",
       "name": "Governance",
-      "question": "Are safeguards keeping pace?",
+      "question": "Whether oversight and operational controls keep pace with capability.",
       "status": "Mixed responses",
       "trend": "↔",
       "interpretation": "Pauses, oversight, and competitive pressure.",

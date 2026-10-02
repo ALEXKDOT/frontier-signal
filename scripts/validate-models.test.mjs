@@ -21,3 +21,24 @@ test('freshness cannot advance without evidence and expired models must be retir
  const data=copy();data.checkedAt='2026-10-03';data.companies[0].models[0].checkedAt='2027-01-01';data.companies[0].models[1].retirementAt='2026-09-01';
  const errors=validateModels(data,'2026-10-02');assert.ok(errors.some(e=>e.includes('completed source-check')));assert.ok(errors.some(e=>e.includes('invalid source-check')));assert.ok(errors.some(e=>e.includes('still offered')));assert.ok(errors.some(e=>e.includes('matching history')));
 });
+test('release dates require a real calendar date, supporting source, and availability context',()=>{
+ const data=copy();const model=data.companies[0].models[0];
+ model.releasedAt='2026-02-30';delete model.releaseSourceUrl;delete model.releaseKind;
+ const errors=validateModels(data);
+ assert.ok(errors.some(e=>e.includes('invalid release date')));
+ assert.ok(errors.some(e=>e.includes('own evidence URL')));
+ assert.ok(errors.some(e=>e.includes('availability context')));
+ model.releasedAt='2026-10-03';assert.ok(validateModels(data).some(e=>e.includes('invalid release date')));
+});
+test('unverified launch dates remain explicit and cannot inherit misleading metadata',()=>{
+ const data=copy();const model=data.companies[0].models[0];delete model.releasedAt;
+ const errors=validateModels(data);
+ assert.ok(errors.some(e=>e.includes('explicit explanation')));
+ assert.ok(errors.some(e=>e.includes('misleading release metadata')));
+ delete model.releaseSourceUrl;delete model.releaseKind;model.releaseNote='The primary source does not establish a launch date.';
+ assert.deepEqual(validateModels(data),[]);
+});
+test('announced-only models cannot appear as currently offered featured selections',()=>{
+ const data=copy();data.companies[0].models[0].status='announced';
+ assert.ok(validateModels(data).some(e=>e.includes('featured capable')));
+});

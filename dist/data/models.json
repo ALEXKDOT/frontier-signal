@@ -9,7 +9,7 @@
       "family": "GPT",
       "catalogUrl": "https://developers.openai.com/api/docs/models/all",
       "checkedAt": "2026-10-02",
-      "note": "Named models across the API and open-weight catalog, including still-available older versions. Retirement dates are shown; dated snapshots and equivalent routing aliases are grouped.",
+      "note": "API models and downloadable weights; earlier supported releases remain searchable. Routing aliases and dated snapshots are grouped.",
       "featured": {
         "capable": "gpt-6-astra",
         "everyday": "gpt-6-1-sol"
@@ -18,712 +18,931 @@
         {
           "id": "gpt-6-astra",
           "name": "GPT-6 Astra",
-          "purpose": "Complex reasoning and coding.",
-          "group": "General purpose",
+          "purpose": "OpenAI’s flagship for demanding analysis, research synthesis, and extended agent workflows. Integrates reasoning, software engineering, and computer use to carry complex tasks through to a finished result.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-03",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-6-1-sol",
           "name": "GPT-6.1 Sol",
-          "purpose": "Near-Astra capability, lower cost.",
-          "group": "General purpose",
+          "purpose": "Combines reasoning, computer use, and software engineering at a lower cost than Astra. Positioned for substantial professional workloads where throughput and cost matter alongside analytical quality.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-29",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-6-sol",
           "name": "GPT-6 Sol",
-          "purpose": "Earlier coding and agent model.",
-          "group": "General purpose",
+          "purpose": "Reasoning model for software engineering and multi-step agent workflows, with text and image input. Retained alongside Sol 6.1 for existing deployments and comparative evaluation.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-22",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-6-luna",
           "name": "GPT-6 Luna",
-          "purpose": "Efficient high-volume tasks.",
-          "group": "General purpose",
+          "purpose": "Cost-efficient reasoning for focused, high-volume workloads. Intended for repeatable tasks where low latency and operating cost are more important than maximum analytical depth.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-22",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-6-sol",
           "name": "GPT-5.6 Sol",
-          "purpose": "Earlier professional-work flagship.",
-          "group": "General purpose",
+          "purpose": "The GPT-5.6 family’s highest-capability option for professional analysis and agent workflows. Supports persistent reasoning and programmatic tool use across extended tasks.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-09",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-6-terra",
           "name": "GPT-5.6 Terra",
-          "purpose": "Balanced intelligence and cost.",
-          "group": "General purpose",
+          "purpose": "Intermediate GPT-5.6 model balancing inference cost with analytical capability. Supports the family’s tool-based workflows for applications that do not require Sol’s maximum performance.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-09",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-6-luna",
           "name": "GPT-5.6 Luna",
-          "purpose": "Budget-focused routine work.",
-          "group": "General purpose",
+          "purpose": "The GPT-5.6 family’s economical option for repeated, well-defined workloads. Trades peak capability for lower processing cost in large-scale deployments.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-09",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-5",
           "name": "GPT-5.5",
-          "purpose": "Coding and professional tasks.",
-          "group": "General purpose",
+          "purpose": "Professional reasoning model combining a million-token context with coding, image interpretation, and computer use. Supports document-intensive work and agent workflows involving multiple tools.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-24",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-5-pro",
           "name": "GPT-5.5 Pro",
-          "purpose": "More compute for difficult tasks.",
-          "group": "General purpose",
+          "purpose": "Higher-compute variant of GPT-5.5 for difficult analytical problems. Prioritizes response quality and precision over the turnaround time and cost of the standard model.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-24",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-4",
           "name": "GPT-5.4",
-          "purpose": "Lower-cost professional work.",
-          "group": "General purpose",
+          "purpose": "Professional reasoning and coding model with configurable reasoning effort. Remains a lower-cost option for deployments that do not require the latest GPT generations.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-05",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-4-pro",
           "name": "GPT-5.4 Pro",
-          "purpose": "Deeper GPT-5.4 reasoning.",
-          "group": "General purpose",
+          "purpose": "Higher-compute GPT-5.4 variant for problems that benefit from additional reasoning. Designed for deeper analysis, with a higher resource cost than the standard model.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-05",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-4-mini",
           "name": "GPT-5.4 Mini",
-          "purpose": "Compact coding and computer use.",
-          "group": "General purpose",
+          "purpose": "Compact model supporting coding, computer use, and delegated subtasks. Suited to high-throughput workflows that need tools without the cost of a full-size flagship.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-17",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-2",
           "name": "GPT-5.2",
-          "purpose": "Earlier reasoning flagship.",
-          "group": "General purpose",
+          "purpose": "Professional reasoning model with adjustable thinking effort. Supports analytical and coding workloads where an established model version is preferred over a newer deployment.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-12-11",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-2-pro",
           "name": "GPT-5.2 Pro",
-          "purpose": "Higher-compute GPT-5.2.",
-          "group": "General purpose",
+          "purpose": "Higher-compute GPT-5.2 variant intended to improve precision on difficult professional tasks. Uses more inference resources than the standard GPT-5.2 model.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-12-11",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5",
           "name": "GPT-5",
-          "purpose": "Earlier reasoning and coding.",
-          "group": "General purpose",
+          "purpose": "Reasoning model with configurable thinking effort for coding and agent tasks. Remains available during its announced retirement period for applications completing migration.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-12-11"
+          "retirementAt": "2026-12-11",
+          "releasedAt": "2025-08-07",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-mini",
           "name": "GPT-5 Mini",
-          "purpose": "Affordable frequent tasks.",
-          "group": "General purpose",
+          "purpose": "Smaller reasoning model for cost-sensitive, high-volume processing. Intended for well-specified tasks where latency and throughput take priority over maximum capability.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-12-11"
+          "retirementAt": "2026-12-11",
+          "releasedAt": "2025-08-07",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-nano",
           "name": "GPT-5 Nano",
-          "purpose": "Small, fast routine tasks.",
-          "group": "General purpose",
+          "purpose": "The smallest GPT-5 variant, optimized for inexpensive, rapid processing. Appropriate for narrowly scoped tasks such as classification and extraction within larger workflows.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-12-11"
+          "retirementAt": "2026-12-11",
+          "releasedAt": "2025-08-07",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-pro",
           "name": "GPT-5 Pro",
-          "purpose": "Higher-compute GPT-5.",
-          "group": "General purpose",
+          "purpose": "Higher-compute GPT-5 variant for difficult reasoning problems. Prioritizes consistency and analytical depth over speed, with retirement already scheduled.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-12-11"
+          "retirementAt": "2026-12-11",
+          "releasedAt": "2025-10-06",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "o3-pro",
           "name": "o3-pro",
-          "purpose": "Higher-compute reasoning.",
-          "group": "General purpose",
+          "purpose": "Extended-compute version of o3 for hard analytical problems. Designed to improve reasoning consistency when additional latency and computational cost are acceptable.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-12-11"
+          "retirementAt": "2026-12-11",
+          "releasedAt": "2025-06-10",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "o3",
           "name": "o3",
-          "purpose": "Earlier reasoning model.",
-          "group": "General purpose",
+          "purpose": "Reasoning model for mathematical, scientific, and coding tasks. Can combine visual interpretation with tool use; newer GPT models now occupy the flagship role.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-12-11"
+          "retirementAt": "2026-12-11",
+          "releasedAt": "2025-04-16",
+          "releaseSourceUrl": "https://openai.com/index/introducing-o3-and-o4-mini/",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4-1",
           "name": "GPT-4.1",
-          "purpose": "Direct text and code responses.",
-          "group": "General purpose",
+          "purpose": "Non-reasoning model emphasizing instruction following, coding, and long-context processing. Handles large document collections without a separate extended-thinking stage.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-04-14",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4-1-mini",
           "name": "GPT-4.1 Mini",
-          "purpose": "Smaller direct-response model.",
-          "group": "General purpose",
+          "purpose": "Smaller GPT-4.1 variant for responsive text and code workflows. Retains long-context support while reducing cost and latency relative to the full model.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-04-14",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4o",
           "name": "GPT-4o",
-          "purpose": "Earlier text-and-image assistant.",
-          "group": "General purpose",
+          "purpose": "Multimodal model accepting text and images for interactive analysis and content generation. Provides direct responses without the configurable reasoning stage of newer GPT models.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-05-13",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4o-mini",
           "name": "GPT-4o Mini",
-          "purpose": "Lightweight text-and-image tasks.",
-          "group": "General purpose",
+          "purpose": "Compact multimodal model for focused text and image tasks. Designed for low-cost, high-volume applications rather than extended analytical reasoning.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-07-18",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-image-2-5-sunburst",
           "name": "GPT-Image-2.5 Sunburst",
-          "purpose": "Detailed image creation.",
+          "purpose": "High-capability image generation and editing model. Intended for visually demanding work where composition, instruction fidelity, and detailed revisions matter more than generation speed.",
           "group": "Images",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-08",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-image-2-5-flare",
           "name": "GPT-Image-2.5 Flare",
-          "purpose": "Faster image creation.",
+          "purpose": "Faster image generation and editing within the GPT-Image-2.5 family. Balances visual quality with turnaround time for repeated creative production.",
           "group": "Images",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-08",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-image-2",
           "name": "GPT-Image-2",
-          "purpose": "Earlier image creation.",
+          "purpose": "Image generation and editing with flexible output sizes and high-fidelity reference inputs. Supports iterative visual revisions and batch production workflows.",
           "group": "Images",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-21",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-live-1",
           "name": "GPT-Live 1",
-          "purpose": "Natural voice conversations.",
+          "purpose": "Full-duplex conversational voice model with expressive speech and interruption handling. Can continue a spoken interaction while a separate reasoning model or agent completes background work.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-10",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-realtime-2-1",
           "name": "GPT-Realtime-2.1",
-          "purpose": "Voice reasoning with tools.",
+          "purpose": "Realtime voice model with reasoning and tool use. Improves recognition of alphanumeric speech, handling of silence and noise, and interruption behavior over Realtime 2.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-06",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-realtime-2-1-mini",
           "name": "GPT-Realtime-2.1 Mini",
-          "purpose": "Smaller voice reasoning model.",
+          "purpose": "Distilled realtime reasoning model for voice applications. Provides tool-enabled speech interaction at lower cost and latency than the full Realtime 2.1 model.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-06",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-realtime-2",
           "name": "GPT-Realtime-2",
-          "purpose": "Earlier voice reasoning.",
+          "purpose": "Speech-to-speech reasoning model for interactive voice agents. Supports configurable reasoning effort and external tools within a realtime conversation.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-05-07",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-realtime-translate",
           "name": "GPT-Realtime-Translate",
-          "purpose": "Live speech translation.",
+          "purpose": "Streaming speech-to-speech translation for live conversations. Converts spoken language continuously instead of requiring a completed recording before translation.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-05-07",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-live-transcribe",
           "name": "GPT-Live-Transcribe",
-          "purpose": "Low-latency transcription.",
+          "purpose": "Low-latency streaming transcription for live audio. Supports contextual hints, specialized vocabulary, and expected languages to improve recognition within a particular workflow.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-28",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-realtime-whisper",
           "name": "GPT-Realtime-Whisper",
-          "purpose": "Streaming transcription.",
+          "purpose": "Streaming speech recognition for realtime transcription. Produces text from incoming audio for applications that require incremental transcripts rather than voice generation.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-05-07",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-realtime-1-5",
           "name": "GPT-Realtime-1.5",
-          "purpose": "Earlier voice conversations.",
+          "purpose": "Conversational model with native audio input and output. Supports interactive voice applications while later Realtime generations add more advanced reasoning capabilities.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-02-23",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-audio-1-5",
           "name": "GPT-Audio-1.5",
-          "purpose": "Audio input and output.",
+          "purpose": "Audio input and output through the Chat Completions interface. Intended for audio-aware applications that do not require a continuous realtime session.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-02-23",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-transcribe",
           "name": "GPT-Transcribe",
-          "purpose": "Accurate speech transcription.",
+          "purpose": "Speech recognition for recorded files and finalized realtime turns. Supports contextual instructions and vocabulary hints for more accurate transcription of domain-specific material.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-28",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4o-transcribe",
           "name": "GPT-4o Transcribe",
-          "purpose": "Earlier speech transcription.",
+          "purpose": "GPT-4o-based speech recognition for recorded audio. Converts speech into text; it does not generate conversational responses or identify speakers as a separate output feature.",
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-02-26"
+          "retirementAt": "2027-02-26",
+          "releasedAt": "2025-03-20",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4o-mini-transcribe",
           "name": "GPT-4o Mini Transcribe",
-          "purpose": "Compact speech transcription.",
+          "purpose": "Compact speech-to-text model for cost-sensitive transcription. Uses fewer resources than the full GPT-4o transcription model while retaining contextual language recognition.",
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-02-26"
+          "retirementAt": "2027-02-26",
+          "releasedAt": "2025-03-20",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4o-transcribe-diarize",
           "name": "GPT-4o Transcribe Diarize",
-          "purpose": "Transcription with speaker labels.",
+          "purpose": "Speech transcription with speaker diarization and segment timing. Separates contributions in multi-speaker recordings and can use reference clips for known speakers.",
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-02-26"
+          "retirementAt": "2027-02-26",
+          "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
           "id": "whisper",
           "name": "Whisper",
-          "purpose": "Speech recognition.",
+          "purpose": "Multilingual speech recognition and translation model. Used for recorded-audio transcription, with a broad ecosystem of open-weight and hosted implementations.",
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-02-26"
+          "retirementAt": "2027-02-26",
+          "releasedAt": "2023-03-01",
+          "releaseSourceUrl": "https://openai.com/index/introducing-chatgpt-and-whisper-apis/",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4o-mini-tts",
           "name": "GPT-4o Mini TTS",
-          "purpose": "Text to spoken audio.",
+          "purpose": "Text-to-speech model with instructions for vocal delivery. Generates spoken audio from written content, independently of transcription or conversational reasoning.",
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-06"
+          "retirementAt": "2027-01-06",
+          "releasedAt": "2025-03-20",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-6-cyber",
           "name": "GPT-5.6 Cyber",
-          "purpose": "Authorized security research.",
+          "purpose": "Specialized model for approved vulnerability research and security testing. Available through separately provisioned Daybreak access for authorized defensive engagements.",
           "group": "Specialized",
           "status": "restricted",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-08-07",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-rosalind",
           "name": "GPT-Rosalind",
-          "purpose": "Life-sciences research.",
+          "purpose": "Specialized reasoning model for biology, drug discovery, and translational research. Integrates scientific tool use across chemistry, protein engineering, and genomics through a trusted-access program.",
           "group": "Specialized",
           "status": "restricted",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-16",
+          "releaseSourceUrl": "https://openai.com/index/introducing-gpt-rosalind/",
+          "releaseKind": "Research preview"
         },
         {
           "id": "text-embedding-3-large",
           "name": "text-embedding-3-large",
-          "purpose": "Find related text.",
+          "purpose": "High-dimensional text embeddings for semantic retrieval, clustering, and document matching. Produces vector representations for search systems rather than conversational answers.",
           "group": "Specialized",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-01-25",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "text-embedding-3-small",
           "name": "text-embedding-3-small",
-          "purpose": "Compact text similarity.",
+          "purpose": "Compact text embeddings for semantic search and similarity matching. Reduces storage and processing costs relative to larger embedding models.",
           "group": "Specialized",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-01-25",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "text-embedding-ada-002",
           "name": "text-embedding-ada-002",
-          "purpose": "Earlier text similarity.",
+          "purpose": "Earlier text embedding model used in established retrieval systems. Produces vectors for similarity search; changing the embedding model generally requires rebuilding the index.",
           "group": "Specialized",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2022-12-15",
+          "releaseSourceUrl": "https://openai.com/index/new-and-improved-embedding-model/",
+          "releaseKind": "API release"
         },
         {
           "id": "omni-moderation",
           "name": "omni-moderation",
-          "purpose": "Detect harmful content.",
+          "purpose": "Text-and-image classifier for potentially harmful content. Returns category assessments for application safeguards rather than generating or reasoning through a response.",
           "group": "Specialized",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-09-26",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-oss-120b",
           "name": "gpt-oss-120b",
-          "purpose": "Larger downloadable reasoning model.",
+          "purpose": "Open-weight reasoning model for customizable deployments. The larger release targets stronger reasoning performance where suitable inference hardware is available.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-08-05",
+          "releaseSourceUrl": "https://openai.com/index/introducing-gpt-oss/",
+          "releaseKind": "Open weights"
         },
         {
           "id": "gpt-oss-20b",
           "name": "gpt-oss-20b",
-          "purpose": "Smaller downloadable reasoning model.",
+          "purpose": "Smaller open-weight reasoning model for local or resource-constrained deployment. Enables customization and infrastructure control with lower hardware requirements than the 120B model.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-08-05",
+          "releaseSourceUrl": "https://openai.com/index/introducing-gpt-oss/",
+          "releaseKind": "Open weights"
         },
         {
           "id": "gpt-5-3-codex",
           "name": "GPT-5.3-Codex",
-          "purpose": "Earlier coding specialist.",
-          "group": "Earlier models retiring",
+          "purpose": "Coding-specialized reasoning model for extended software-development tasks. Designed for tool-based coding agents; retained during its announced API retirement period.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-04-01"
+          "retirementAt": "2027-04-01",
+          "releasedAt": "2026-02-24",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-4-nano",
           "name": "GPT-5.4 Nano",
-          "purpose": "Earlier lightweight task model.",
-          "group": "Earlier models retiring",
+          "purpose": "Lightweight GPT-5.4 model for simple, high-volume tasks. Supports context compaction, but omits the computer-use and tool-search capabilities of GPT-5.4 Mini.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-04-01"
+          "retirementAt": "2027-04-01",
+          "releasedAt": "2026-03-17",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-5-1",
           "name": "GPT-5.1",
-          "purpose": "Earlier reasoning and coding.",
-          "group": "Earlier models retiring",
+          "purpose": "Reasoning and coding model with configurable thinking effort. Supports existing agent workflows during migration to newer, actively developed GPT generations.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-04-01"
+          "retirementAt": "2027-04-01",
+          "releasedAt": "2025-11-13",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "tts-1",
           "name": "TTS-1",
-          "purpose": "Earlier speech synthesis.",
-          "group": "Earlier models retiring",
+          "purpose": "Low-latency text-to-speech model optimized for speed. Produces spoken audio from text, with fewer expressive controls than newer speech-generation models.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-06"
+          "retirementAt": "2027-01-06",
+          "releasedAt": "2023-11-06",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "tts-1-hd",
           "name": "TTS-1 HD",
-          "purpose": "Earlier high-quality speech synthesis.",
-          "group": "Earlier models retiring",
+          "purpose": "Text-to-speech variant prioritizing audio quality over minimum latency. Intended for generated narration and other speech output where fidelity is the principal concern.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-06"
+          "retirementAt": "2027-01-06",
+          "releasedAt": "2023-11-06",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-realtime",
           "name": "GPT-Realtime",
-          "purpose": "Earlier audio interaction model.",
-          "group": "Earlier models retiring",
+          "purpose": "Realtime text-and-audio model for conversational applications. Supports a continuous voice session; migration to newer Realtime models is scheduled.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-20"
+          "retirementAt": "2027-01-20",
+          "releasedAt": "2025-08-28",
+          "releaseSourceUrl": "https://openai.com/index/introducing-gpt-realtime/",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-audio",
           "name": "GPT-Audio",
-          "purpose": "Earlier audio interaction model.",
-          "group": "Earlier models retiring",
+          "purpose": "Audio input and output over Chat Completions. Provides request-based audio interaction rather than the continuous session interface of Realtime models.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-20"
+          "retirementAt": "2027-01-20",
+          "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
           "id": "gpt-4o-audio",
           "name": "GPT-4o Audio",
-          "purpose": "Earlier audio interaction model.",
-          "group": "Earlier models retiring",
+          "purpose": "GPT-4o audio preview for speech input and generated audio output. Supports audio-aware conversations through the Chat Completions interface.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-20"
+          "retirementAt": "2027-01-20",
+          "releasedAt": "2024-10-17",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gpt-4o-realtime",
           "name": "GPT-4o Realtime",
-          "purpose": "Earlier audio interaction model.",
-          "group": "Earlier models retiring",
+          "purpose": "GPT-4o realtime preview for low-latency speech interaction. Supports continuous audio exchange in existing voice applications during migration.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-20"
+          "retirementAt": "2027-01-20",
+          "releasedAt": "2024-10-01",
+          "releaseSourceUrl": "https://openai.com/index/introducing-the-realtime-api/",
+          "releaseKind": "API preview"
         },
         {
           "id": "gpt-realtime-mini",
           "name": "GPT-Realtime Mini",
-          "purpose": "Earlier audio interaction model.",
-          "group": "Earlier models retiring",
+          "purpose": "Smaller realtime model for cost-sensitive conversational voice applications. Reduces inference cost compared with the full Realtime model.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-20"
+          "retirementAt": "2027-01-20",
+          "releasedAt": "2025-10-06",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-audio-mini",
           "name": "GPT-Audio Mini",
-          "purpose": "Earlier audio interaction model.",
-          "group": "Earlier models retiring",
+          "purpose": "Compact audio model for request-based speech interaction. Provides audio input and output through Chat Completions at a lower cost than the full audio model.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-20"
+          "retirementAt": "2027-01-20",
+          "releasedAt": "2025-10-06",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4o-mini-realtime",
           "name": "GPT-4o Mini Realtime",
-          "purpose": "Earlier audio interaction model.",
-          "group": "Earlier models retiring",
+          "purpose": "Compact GPT-4o realtime preview for interactive voice applications. Intended for lower-cost deployments that use the earlier realtime interface.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-20"
+          "retirementAt": "2027-01-20",
+          "releasedAt": "2024-12-17",
+          "releaseSourceUrl": "https://openai.com/index/o1-and-new-tools-for-developers/",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4o-mini-audio",
           "name": "GPT-4o Mini Audio",
-          "purpose": "Earlier audio interaction model.",
-          "group": "Earlier models retiring",
+          "purpose": "Small GPT-4o audio preview for processing and generating speech. Serves request-based audio workflows with lower resource requirements than the full model.",
+          "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2027-01-20"
+          "retirementAt": "2027-01-20",
+          "releasedAt": "2024-12-17",
+          "releaseSourceUrl": "https://openai.com/index/o1-and-new-tools-for-developers/",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-image-1-mini",
           "name": "GPT-Image-1 Mini",
-          "purpose": "Earlier image-generation model.",
-          "group": "Earlier models retiring",
+          "purpose": "Economical image generation and editing in the GPT-Image-1 family. Prioritizes cost efficiency for repeated visual tasks over maximum image quality.",
+          "group": "Images",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-12-01"
+          "retirementAt": "2026-12-01",
+          "releasedAt": "2025-10-06",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-image-1-5",
           "name": "GPT-Image-1.5",
-          "purpose": "Earlier image-generation model.",
-          "group": "Earlier models retiring",
+          "purpose": "Image generation and editing model preceding GPT-Image-2. Retained for existing visual workflows during its announced retirement period.",
+          "group": "Images",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-12-01"
+          "retirementAt": "2026-12-01",
+          "releasedAt": "2025-12-16",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-3-5-turbo",
           "name": "GPT-3.5 Turbo",
-          "purpose": "Legacy text generation.",
-          "group": "Earlier models retiring",
+          "purpose": "Legacy conversational text model supporting established chat applications. Lacks the multimodal and extended-reasoning capabilities of newer model families.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2023-03-01",
+          "releaseSourceUrl": "https://openai.com/index/introducing-chatgpt-and-whisper-apis/",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4",
           "name": "GPT-4",
-          "purpose": "Legacy text reasoning.",
-          "group": "Earlier models retiring",
+          "purpose": "Legacy language model for text analysis and generation. Remains relevant to existing integrations, but is approaching its scheduled API retirement.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2023-03-14",
+          "releaseSourceUrl": "https://openai.com/index/gpt-4-research/",
+          "releaseKind": "API preview"
         },
         {
           "id": "gpt-4-turbo",
           "name": "GPT-4 Turbo",
-          "purpose": "Legacy text-and-image model.",
-          "group": "Earlier models retiring",
+          "purpose": "Earlier GPT-4 generation supporting text and image inputs. Designed for long-context analysis and generation in applications built before the GPT-4o series.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2024-04-09",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-4-1-nano",
           "name": "GPT-4.1 Nano",
-          "purpose": "Legacy compact text model.",
-          "group": "Earlier models retiring",
+          "purpose": "Smallest GPT-4.1 variant for rapid, inexpensive processing. Targets tightly specified text tasks rather than extended reasoning or complex tool orchestration.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2025-04-14",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gpt-image-1",
           "name": "GPT-Image-1",
-          "purpose": "Legacy image generation.",
-          "group": "Earlier models retiring",
+          "purpose": "First GPT-Image generation for image creation and editing. Maintained for existing integrations while later releases provide the current visual-generation capabilities.",
+          "group": "Images",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2025-04-23",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "o1",
           "name": "o1",
-          "purpose": "Legacy reasoning model.",
-          "group": "Earlier models retiring",
+          "purpose": "Earlier reasoning model designed to spend additional computation before responding. Supports difficult analytical tasks but is being retired in favor of later model generations.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2024-12-17",
+          "releaseSourceUrl": "https://openai.com/index/o1-and-new-tools-for-developers/",
+          "releaseKind": "API release"
         },
         {
           "id": "o1-pro",
           "name": "o1-pro",
-          "purpose": "Legacy high-compute reasoning.",
-          "group": "Earlier models retiring",
+          "purpose": "Higher-compute version of o1 for demanding reasoning tasks. Trades inference cost and turnaround time for improved analytical consistency.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2025-03-19",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "o3-mini",
           "name": "o3-mini",
-          "purpose": "Legacy compact reasoning.",
-          "group": "Earlier models retiring",
+          "purpose": "Compact reasoning model focused on mathematics, science, and coding. Offers a smaller inference footprint than full-size reasoning models.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2025-01-31",
+          "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "o4-mini",
           "name": "o4-mini",
-          "purpose": "Legacy compact reasoning.",
-          "group": "Earlier models retiring",
+          "purpose": "Efficient reasoning model for mathematical, scientific, and coding tasks. Supports tool-assisted analysis within a smaller model footprint.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-10-23"
+          "retirementAt": "2026-10-23",
+          "releasedAt": "2025-04-16",
+          "releaseSourceUrl": "https://openai.com/index/introducing-o3-and-o4-mini/",
+          "releaseKind": "API release"
         },
         {
           "id": "chat-latest",
           "name": "Chat Latest",
-          "purpose": "Current ChatGPT Instant routing model.",
-          "group": "General purpose",
+          "purpose": "A moving alias for the Instant model serving ChatGPT. Useful for evaluating the current conversational experience; the underlying model can change without a versioned release.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releaseNote": "Rolling alias for the current ChatGPT Instant model; there is no fixed underlying model release date."
         }
       ]
     },
@@ -733,7 +952,7 @@
       "family": "Claude",
       "catalogUrl": "https://platform.claude.com/docs/en/models/overview",
       "checkedAt": "2026-10-02",
-      "note": "Public Claude models plus restricted Mythos releases. Older models remain listed while supported; Sonnet 4.5 is scheduled to retire November 30, 2026. The featured flagship is the most capable generally available Claude; Mythos requires trusted access.",
+      "note": "Public Claude models and restricted research releases. Access restrictions and scheduled retirements are shown on each card.",
       "featured": {
         "capable": "claude-fable-5-1",
         "everyday": "claude-sonnet-5-5"
@@ -742,149 +961,195 @@
         {
           "id": "claude-fable-5-1",
           "name": "Claude Fable 5.1",
-          "purpose": "Demanding reasoning and long tasks.",
-          "group": "General purpose",
+          "purpose": "Anthropic’s highest-capability broadly available model for sustained research, coding, and knowledge work. Combines a million-token context with adaptive reasoning for extended, tool-based tasks.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
           "checkedAt": "2026-10-02",
-          "releasedAt": "2026-09-01"
+          "releasedAt": "2026-09-01",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-opus-5-5",
           "name": "Claude Opus 5.5",
-          "purpose": "Complex coding and knowledge work.",
-          "group": "General purpose",
+          "purpose": "Designed for complex judgment and long-running coding or knowledge work. Combines adaptive reasoning with a million-token context, at lower published token prices than Opus 5.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-22",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-sonnet-5-5",
           "name": "Claude Sonnet 5.5",
-          "purpose": "Everyday speed and intelligence.",
-          "group": "General purpose",
+          "purpose": "Faster, lower-cost complement to Opus 5.5 for well-scoped professional work. Emphasizes debugging, document production, and routine analysis with adjustable reasoning effort.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-28",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-haiku-4-5",
           "name": "Claude Haiku 4.5",
-          "purpose": "Fast, lightweight assistance.",
-          "group": "General purpose",
+          "purpose": "Low-latency model for interactive applications and high-volume processing. Provides reasoning and tool use when response speed and operating cost constrain the workflow.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-10-15",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-fable-5",
           "name": "Claude Fable 5",
-          "purpose": "Earlier long-task model.",
-          "group": "Earlier supported models",
+          "purpose": "The first broadly available Fable release for extended research and agent tasks. Supports a million-token context and always-on adaptive thinking.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-06-09",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-opus-5",
           "name": "Claude Opus 5",
-          "purpose": "Earlier coding flagship.",
-          "group": "Earlier supported models",
+          "purpose": "Reasoning model for complex coding and knowledge work, with a million-token context. Retained alongside Opus 5.5 for existing deployments and model comparisons.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-24",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-opus-4-8",
           "name": "Claude Opus 4.8",
-          "purpose": "Earlier Opus generation.",
-          "group": "Earlier supported models",
+          "purpose": "Opus generation with a million-token context and support for instructions that change during an ongoing task. Designed for extended agent workflows and software engineering.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-05-28",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-opus-4-7",
           "name": "Claude Opus 4.7",
-          "purpose": "Earlier Opus generation.",
-          "group": "Earlier supported models",
+          "purpose": "Reasoning model focused on complex analysis and agentic coding. Introduced task-budget controls and a revised tokenizer for more deliberate management of extended work.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-16",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-opus-4-6",
           "name": "Claude Opus 4.6",
-          "purpose": "Earlier Opus generation.",
-          "group": "Earlier supported models",
+          "purpose": "Reasoning model for long-horizon agent tasks. Introduced adaptive thinking to adjust reasoning depth to the task rather than requiring a fixed thinking budget.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-02-05",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-opus-4-5",
           "name": "Claude Opus 4.5",
-          "purpose": "Earlier Opus generation.",
-          "group": "Earlier supported models",
+          "purpose": "Model for specialized analysis, software engineering, and advanced agents. Introduced effort controls to trade response thoroughness against latency and token consumption.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-11-24",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-sonnet-5",
           "name": "Claude Sonnet 5",
-          "purpose": "Earlier everyday model.",
-          "group": "Earlier supported models",
+          "purpose": "Balanced model for professional analysis and tool-based tasks. Provides a million-token context with adaptive reasoning enabled by default.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-06-30",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-sonnet-4-6",
           "name": "Claude Sonnet 4.6",
-          "purpose": "Earlier everyday model.",
-          "group": "Earlier supported models",
+          "purpose": "Balanced reasoning model emphasizing agentic search and efficient token use. Supports extended thinking and large-context analysis in established workflows.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-02-17",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-sonnet-4-5",
           "name": "Claude Sonnet 4.5",
-          "purpose": "Earlier everyday model.",
-          "group": "Earlier supported models",
+          "purpose": "Coding and agent model retained during an announced retirement period. Supports extended thinking, tool use, and established software-development workflows.",
+          "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-11-30"
+          "retirementAt": "2026-11-30",
+          "releasedAt": "2025-09-29",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-mythos-5-1",
           "name": "Claude Mythos 5.1",
-          "purpose": "Advanced cyber and biology research.",
+          "purpose": "Restricted research model with advanced cybersecurity and biological capabilities. Access is limited to Project Glasswing participants; it is not a routine consumer offering.",
           "group": "Restricted research models",
           "status": "restricted",
           "sourceUrl": "https://www.anthropic.com/claude/mythos",
           "checkedAt": "2026-10-02",
-          "releasedAt": "2026-09-01"
+          "releasedAt": "2026-09-01",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-mythos-5",
           "name": "Claude Mythos 5",
-          "purpose": "Earlier restricted research model.",
+          "purpose": "Restricted Mythos generation for approved research participants. Combines a million-token context with adaptive reasoning, subject to stricter access controls than public Claude models.",
           "group": "Restricted research models",
           "status": "restricted",
           "sourceUrl": "https://www.anthropic.com/claude/mythos",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-06-09",
+          "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
+          "releaseKind": "API release"
         },
         {
           "id": "claude-mythos-preview",
           "name": "Claude Mythos Preview",
-          "purpose": "Earlier restricted preview.",
+          "purpose": "Restricted preview underlying the earlier Mythos research program. Deprecated in favor of Mythos 5, with its final retirement date still unannounced.",
           "group": "Restricted research models",
           "status": "retiring",
           "sourceUrl": "https://www.anthropic.com/claude/mythos",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-07",
+          "releaseSourceUrl": "https://www.anthropic.com/glasswing",
+          "releaseKind": "Research preview"
         }
       ]
     },
@@ -894,7 +1159,7 @@
       "family": "Gemini",
       "catalogUrl": "https://ai.google.dev/gemini-api/docs/models",
       "checkedAt": "2026-10-02",
-      "note": "Gemini API model catalog, including media, speech, and search models. Gemini 2.5 access is limited to existing users. Preview availability may change.",
+      "note": "Gemini API models and managed agents. Preview releases and existing-user restrictions are identified separately from release dates.",
       "featured": {
         "capable": "gemini-3-8-flash",
         "everyday": "gemini-3-5-flash-lite"
@@ -903,362 +1168,483 @@
         {
           "id": "gemini-3-8-flash",
           "name": "Gemini 3.8 Flash",
-          "purpose": "Advanced coding and multi-step work.",
-          "group": "General purpose",
+          "purpose": "Google’s leading Flash model for extended software engineering and agent workflows. Processes text, images, audio, video, and PDFs within a million-token context while retaining Flash-class cost efficiency.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-02",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-5-flash-lite",
           "name": "Gemini 3.5 Flash-Lite",
-          "purpose": "Fast, economical routine tasks.",
-          "group": "General purpose",
+          "purpose": "Cost-efficient multimodal model for high-volume work. Designed for responsive processing and routine analysis where throughput matters more than the deepest reasoning available in the Gemini range.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-21",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-7-flash",
           "name": "Gemini 3.7 Flash",
-          "purpose": "Earlier coding and agent model.",
-          "group": "General purpose",
+          "purpose": "Flash generation emphasizing software engineering, web development, and tool-based agent workflows. Retained alongside Gemini 3.8 for established applications.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-08-13",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-6-flash",
           "name": "Gemini 3.6 Flash",
-          "purpose": "Earlier general-purpose model.",
-          "group": "General purpose",
+          "purpose": "Multimodal Flash model for analytical and tool-based workflows. Supports agentic video understanding, in which the model selectively inspects relevant segments instead of processing every frame.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-21",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-5-flash",
           "name": "Gemini 3.5 Flash",
-          "purpose": "Earlier high-volume model.",
-          "group": "General purpose",
+          "purpose": "Earlier Flash release for high-throughput multimodal processing. Balances reasoning capability and operating cost across text, image, audio, and video inputs.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-05-19",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-1-flash-lite",
           "name": "Gemini 3.1 Flash-Lite",
-          "purpose": "Compact general-purpose model.",
-          "group": "General purpose",
+          "purpose": "Compact Gemini model for fast, economical multimodal tasks. Retained as a supported option for applications built around its established behavior and pricing.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-05-07",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-1-pro",
           "name": "Gemini 3.1 Pro",
-          "purpose": "Complex reasoning and coding.",
-          "group": "General purpose",
+          "purpose": "Pro-tier reasoning model in public preview for complex analytical and coding tasks. Supports multimodal inputs and external tools; preview availability differs from stable releases.",
+          "group": "Reasoning & productivity",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-02-19",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-3-flash",
           "name": "Gemini 3 Flash",
-          "purpose": "Fast general-purpose preview.",
-          "group": "General purpose",
+          "purpose": "Public-preview Flash model combining multimodal input with reasoning and tool use. Earlier release retained for existing applications alongside the stable Flash generations.",
+          "group": "Reasoning & productivity",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-12-17",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-3-8-live",
           "name": "Gemini 3.8 Live",
-          "purpose": "Low-latency voice conversations.",
+          "purpose": "Realtime audio model for low-latency dialogue and voice agents. Supports interleaved reasoning and asynchronous tool calls without requiring lengthy pauses in conversation.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-15",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-8-live-extended-thinking",
           "name": "Gemini 3.8 Live Extended Thinking",
-          "purpose": "Voice with deeper reasoning.",
+          "purpose": "Realtime voice model with additional background reasoning. Intended for conversations that require deeper analysis while maintaining an ongoing audio interaction.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-15",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-8-flash-tts",
           "name": "Gemini 3.8 Flash TTS",
-          "purpose": "Expressive speech generation.",
+          "purpose": "Speech-generation model emphasizing vocal fidelity, expressive delivery, and long-form consistency. Supports nuanced acting and regional dialects for controlled audio production.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-22",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-8-flash-lite-tts",
           "name": "Gemini 3.8 Flash-Lite TTS",
-          "purpose": "Efficient speech generation.",
+          "purpose": "Cost-efficient speech synthesis for high-throughput production and realtime voice pipelines. Trades the full TTS model’s maximum expressivity for faster, less expensive generation.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-22",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-5-transcribe",
           "name": "Gemini 3.5 Transcribe",
-          "purpose": "Transcription with speaker labels.",
+          "purpose": "Speech recognition with speaker diarization, word-level timestamps, and vocabulary biasing. Supports multilingual transcription of domain-specific recordings.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-08-26",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-3-5-live-translate",
           "name": "Gemini 3.5 Live Translate",
-          "purpose": "Live speech translation.",
+          "purpose": "Live speech translation through the Gemini audio interface. Designed for multilingual interactions that require continuous translation rather than post-processing a recording.",
           "group": "Voice and audio",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-06-09",
+          "releaseSourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-live-3-5-translate/",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-3-1-flash-live",
           "name": "Gemini 3.1 Flash Live",
-          "purpose": "Earlier live voice preview.",
+          "purpose": "Public-preview audio-to-audio model for voice-first applications. Supports realtime dialogue and tool-connected conversational workflows.",
           "group": "Voice and audio",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-26",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-3-1-flash-tts",
           "name": "Gemini 3.1 Flash TTS",
-          "purpose": "Earlier speech-generation preview.",
+          "purpose": "Preview speech-generation model for controlled vocal output. Precedes the Gemini 3.8 TTS series and remains available for existing synthesis workflows.",
           "group": "Voice and audio",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-15",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "nano-banana-2",
           "name": "Nano Banana 2",
-          "purpose": "Fast image creation and editing.",
+          "purpose": "Gemini image model for generation and conversational editing. Balances image quality with speed, supporting iterative visual production from text and reference images.",
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-05-28",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "nano-banana-2-lite",
           "name": "Nano Banana 2 Lite",
-          "purpose": "Economical image creation.",
+          "purpose": "Lower-cost image generation model for high-volume creative work. Provides the economical option in the Nano Banana 2 family.",
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-06-30",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "nano-banana-pro",
           "name": "Nano Banana Pro",
-          "purpose": "Detailed image creation.",
+          "purpose": "Image-generation model emphasizing detailed composition and high-fidelity visual output. Intended for demanding creation and editing tasks using text and image references.",
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-05-28",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-omni-flash",
           "name": "Gemini Omni Flash",
-          "purpose": "Video creation and editing.",
+          "purpose": "Conversational video generation and editing model. Supports video extension, transitions between reference images, and selectable output resolutions.",
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-08-27",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "veo-3-1",
           "name": "Veo 3.1",
-          "purpose": "Video with synchronized audio.",
+          "purpose": "Video-generation family with synchronized audio and image conditioning. Supports directed video creation from prompts and reference images through preview endpoints.",
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-10-15",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "veo-3-1-lite",
           "name": "Veo 3.1 Lite",
-          "purpose": "Lower-cost video generation.",
+          "purpose": "Lower-cost Veo 3.1 preview for video generation. Provides a more economical option for repeated production and iteration than the full Veo model.",
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-31",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "lyria-3-5",
           "name": "Lyria 3.5",
-          "purpose": "Full-song music generation.",
+          "purpose": "Music-generation model producing full songs with vocals and structural control. Accepts text and image prompts and emphasizes coherence over longer compositions.",
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-03",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "lyria-3-clip",
           "name": "Lyria 3 Clip",
-          "purpose": "Short music clips.",
+          "purpose": "Music-generation preview for short, approximately 30-second clips. Accepts text and image inputs to guide the musical style and content.",
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-25",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-2-5-pro",
           "name": "Gemini 2.5 Pro",
-          "purpose": "Earlier deep reasoning.",
-          "group": "Existing users only",
+          "purpose": "Earlier Pro model for extended reasoning and multimodal analysis. API access is limited to existing users while newer Gemini models serve new deployments.",
+          "group": "Reasoning & productivity",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-06-17",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-2-5-flash",
           "name": "Gemini 2.5 Flash",
-          "purpose": "Earlier everyday reasoning.",
-          "group": "Existing users only",
+          "purpose": "Earlier balanced multimodal reasoning model. Remains available to existing users for established workflows, with new deployments directed to later Flash releases.",
+          "group": "Reasoning & productivity",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-06-17",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-2-5-flash-lite",
           "name": "Gemini 2.5 Flash-Lite",
-          "purpose": "Earlier economical model.",
-          "group": "Existing users only",
+          "purpose": "Earlier low-cost Gemini model for high-volume processing. Retained for existing users rather than offered as the default for new applications.",
+          "group": "Reasoning & productivity",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-07-22",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "nano-banana",
           "name": "Nano Banana",
-          "purpose": "Earlier image generation.",
-          "group": "Existing users only",
-          "status": "existing-users",
-          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "purpose": "Original Gemini 2.5 Flash Image model for image generation and editing. Retired endpoint; the later Nano Banana models provide the active alternatives.",
+          "group": "Images, video and music",
+          "status": "retired",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-10-02",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release",
+          "retirementAt": "2026-10-02"
         },
         {
           "id": "gemini-2-5-flash-live",
           "name": "Gemini 2.5 Flash Live",
-          "purpose": "Earlier live voice model.",
-          "group": "Existing users only",
+          "purpose": "Earlier native-audio preview for realtime dialogue. Supports established voice applications, subject to the provider’s existing-user access restrictions.",
+          "group": "Voice and audio",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-12-12",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-2-5-flash-tts",
           "name": "Gemini 2.5 Flash TTS",
-          "purpose": "Earlier fast speech generation.",
-          "group": "Existing users only",
+          "purpose": "Earlier Flash speech-generation preview optimized for responsiveness. Produces controlled spoken output from text in existing audio workflows.",
+          "group": "Voice and audio",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-05-20",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-2-5-pro-tts",
           "name": "Gemini 2.5 Pro TTS",
-          "purpose": "Earlier high-fidelity speech.",
-          "group": "Existing users only",
+          "purpose": "Earlier Pro speech-generation preview prioritizing output quality. Supports expressive narration and controlled delivery in existing applications.",
+          "group": "Voice and audio",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-05-20",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-embedding-2",
           "name": "Gemini Embedding 2",
-          "purpose": "Find related text and media.",
+          "purpose": "Multimodal embeddings for retrieval across text and media. Maps content into a shared vector space for search, classification, and similarity analysis.",
           "group": "Search and retrieval",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-22",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "gemini-embedding",
           "name": "Gemini Embedding",
-          "purpose": "Find related text.",
+          "purpose": "Text embedding model for semantic retrieval and document matching. Produces vector representations for search infrastructure rather than natural-language responses.",
           "group": "Search and retrieval",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-07-14",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
         },
         {
           "id": "lyria-3-pro",
           "name": "Lyria 3 Pro",
-          "purpose": "Earlier full-song generation.",
+          "purpose": "Music-generation preview for full-length songs. Accepts text and image prompts, offering longer composition than the companion Lyria 3 Clip model.",
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-25",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "lyria-realtime",
           "name": "Lyria RealTime",
-          "purpose": "Interactive music generation.",
+          "purpose": "Streaming music model for interactive composition. Allows musical direction to change during generation rather than producing a single fixed track.",
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-05-20",
+          "releaseSourceUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/google-ai-developer-updates-io-2025/",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-deep-research",
           "name": "Gemini Deep Research",
-          "purpose": "Multi-step sourced research.",
+          "purpose": "Managed research agent that plans searches, reviews sources, and synthesizes a cited report. Provides a multi-step research workflow rather than a single model response.",
           "group": "Research and agents",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-12-11",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-deep-research-max",
           "name": "Gemini Deep Research Max",
-          "purpose": "More comprehensive sourced research.",
+          "purpose": "Research-agent variant intended for more comprehensive investigations. Allocates more extensive research effort to source gathering and synthesis than the standard offering.",
           "group": "Research and agents",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-21",
+          "releaseSourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/next-Generation-gemini-deep-research/",
+          "releaseKind": "API preview"
         },
         {
           "id": "antigravity-agent",
           "name": "Antigravity Agent",
-          "purpose": "Managed coding and browser agent.",
+          "purpose": "Managed development agent combining coding, file operations, search, and browser-based work. Runs multi-step software tasks within a configured execution environment.",
           "group": "Research and agents",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-17",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-robotics-er-2",
           "name": "Gemini Robotics ER 2",
-          "purpose": "Spatial reasoning for robots.",
+          "purpose": "Embodied-reasoning preview for spatial analysis, task planning, and multi-robot coordination. Combines multimodal perception with tools that connect reasoning to physical actions.",
           "group": "Robotics",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-30",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-robotics-er-1-6",
           "name": "Gemini Robotics ER 1.6",
-          "purpose": "Earlier robot task planning.",
+          "purpose": "Robotics reasoning preview for interpreting scenes and planning actions. Supports tool-based task execution in systems that connect the model to a robot controller.",
           "group": "Robotics",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-14",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API preview"
         }
       ]
     },
@@ -1266,9 +1652,9 @@
       "id": "meta",
       "name": "Meta",
       "family": "Muse · Llama",
-      "catalogUrl": "https://ai.meta.com/",
+      "catalogUrl": "https://ai.meta.com/llama/",
       "checkedAt": "2026-10-02",
-      "note": "Muse is delivered through Meta products. Llama weights are downloadable for developers under Meta licenses; model sizes and variants are grouped by release.",
+      "note": "Muse products and downloadable Llama families. Previews and self-hosted weights have different access requirements; announced-only models and quantization variants are excluded.",
       "featured": {
         "capable": "muse-spark-1-3",
         "everyday": "llama-4-scout"
@@ -1277,156 +1663,204 @@
         {
           "id": "muse-spark-1-3",
           "name": "Muse Spark 1.3",
-          "purpose": "Reasoning, coding and personal agents.",
+          "purpose": "Meta’s multimodal reasoning model for extended coding and agent workflows. Integrates visual interpretation with tool execution and powers the company’s Muse product ecosystem.",
           "group": "Muse models",
-          "status": "product-access",
-          "sourceUrl": "https://ai.meta.com/tools/muse/",
+          "status": "preview",
+          "sourceUrl": "https://ai.meta.com/llama/",
           "checkedAt": "2026-10-02",
-          "releasedAt": "2026-09-02"
+          "releasedAt": "2026-09-02",
+          "releaseSourceUrl": "https://ai.meta.com/events/",
+          "releaseKind": "Public preview"
         },
         {
           "id": "muse-image",
           "name": "Muse Image",
-          "purpose": "Image creation and editing.",
+          "purpose": "Image generation and editing with reference composition and iterative refinement. Integrates search and coding tools to support more controlled visual production in Meta products.",
           "group": "Muse models",
           "status": "product-access",
           "sourceUrl": "https://about.fb.com/news/2026/07/introducing-muse-image-meta-ai/",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-07",
+          "releaseSourceUrl": "https://about.fb.com/news/2026/07/introducing-muse-image-meta-ai/",
+          "releaseKind": "Product release"
         },
         {
           "id": "muse-video",
           "name": "Muse Video",
-          "purpose": "Video generation with audio.",
+          "purpose": "Previewed media model generating video with native audio. Shares the Muse media pretraining base; public availability should be distinguished from the research demonstration.",
           "group": "Muse models",
-          "status": "product-access",
-          "sourceUrl": "https://ai.meta.com/blog/",
-          "checkedAt": "2026-10-02"
+          "status": "announced",
+          "sourceUrl": "https://ai.meta.com/blog/introducing-muse-image-muse-video-msl",
+          "checkedAt": "2026-10-02",
+          "releaseNote": "Preview announced July 7, 2026; public availability is not established by the checked source."
         },
         {
           "id": "llama-4-maverick",
           "name": "Llama 4 Maverick",
-          "purpose": "Larger text-and-image model.",
+          "purpose": "Downloadable multimodal model with 17 billion active parameters and 128 experts. Offers self-hosted text and image processing where infrastructure control is a priority.",
           "group": "Open weights",
           "status": "open-weights",
-          "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "sourceUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-04-05",
+          "releaseSourceUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-4-scout",
           "name": "Llama 4 Scout",
-          "purpose": "Efficient text-and-image model.",
+          "purpose": "Downloadable text-and-image model with 17 billion active parameters and a 10-million-token context. Supports self-hosted document analysis with a smaller hardware footprint than Maverick.",
           "group": "Open weights",
           "status": "open-weights",
-          "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "sourceUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2025-04-05",
+          "releaseSourceUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-3-70b",
           "name": "Llama 3.3 70B",
-          "purpose": "Text assistance and reasoning.",
+          "purpose": "Downloadable 70-billion-parameter text model for multilingual dialogue and reasoning. Offers local deployment and customization without relying on a hosted proprietary model.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-12-06",
+          "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/LICENSE",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-2-90b-vision",
           "name": "Llama 3.2 90B Vision",
-          "purpose": "Larger image-understanding model.",
+          "purpose": "Larger Llama 3.2 vision-language model for image understanding and textual analysis. Intended for self-hosted multimodal applications with substantial inference capacity.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-09-25",
+          "releaseSourceUrl": "https://about.fb.com/br/news/2024/09/conheca-o-llama-3-2-da-nuvem-para-a-borda-e-agora-com-visao/",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-2-11b-vision",
           "name": "Llama 3.2 11B Vision",
-          "purpose": "Smaller image-understanding model.",
+          "purpose": "Smaller Llama 3.2 vision-language model for image understanding. Reduces hardware requirements relative to the 90B variant for local multimodal deployment.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-09-25",
+          "releaseSourceUrl": "https://about.fb.com/br/news/2024/09/conheca-o-llama-3-2-da-nuvem-para-a-borda-e-agora-com-visao/",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-2-3b",
           "name": "Llama 3.2 3B",
-          "purpose": "Compact on-device text tasks.",
+          "purpose": "Compact downloadable text model for on-device applications. Supports local summarization, instruction following, and tool-oriented workflows under constrained computing budgets.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-09-25",
+          "releaseSourceUrl": "https://about.fb.com/br/news/2024/09/conheca-o-llama-3-2-da-nuvem-para-a-borda-e-agora-com-visao/",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-2-1b",
           "name": "Llama 3.2 1B",
-          "purpose": "Small on-device text tasks.",
+          "purpose": "Smallest Llama 3.2 text model for on-device processing. Prioritizes a limited memory and compute footprint over the capability of larger language models.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-09-25",
+          "releaseSourceUrl": "https://about.fb.com/br/news/2024/09/conheca-o-llama-3-2-da-nuvem-para-a-borda-e-agora-com-visao/",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-1-405b",
           "name": "Llama 3.1 405B",
-          "purpose": "Large general-purpose model.",
+          "purpose": "Largest Llama 3.1 text model, intended for high-capability self-hosted deployments. Requires substantial infrastructure and can serve research, customization, and model-development workflows.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-07-23",
+          "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-1-70b",
           "name": "Llama 3.1 70B",
-          "purpose": "Mid-sized general-purpose model.",
+          "purpose": "Mid-sized Llama 3.1 text model balancing capability with deployment requirements. Supports multilingual analysis and dialogue on institution-controlled infrastructure.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-07-23",
+          "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-1-8b",
           "name": "Llama 3.1 8B",
-          "purpose": "Small general-purpose model.",
+          "purpose": "Compact Llama 3.1 text model for lower-cost local inference. Supports customization and multilingual applications where hardware resources are constrained.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-07-23",
+          "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-70b",
           "name": "Llama 3 70B",
-          "purpose": "Earlier text model.",
+          "purpose": "Earlier downloadable 70B text model for analysis and dialogue. Retained for reproducibility and applications built around the original Llama 3 generation.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-04-18",
+          "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3/LICENSE",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-3-8b",
           "name": "Llama 3 8B",
-          "purpose": "Earlier compact text model.",
+          "purpose": "Smaller original Llama 3 text model for local inference and adaptation. Supports established deployments with lower hardware requirements than the 70B variant.",
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2024-04-18",
+          "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3/LICENSE",
+          "releaseKind": "Open weights"
         },
         {
           "id": "llama-2",
           "name": "Llama 2",
-          "purpose": "Legacy text family: 7B, 13B, 70B.",
+          "purpose": "Downloadable text-model family spanning 7B, 13B, and 70B parameters. Preserved for established integrations, reproducibility, and research on earlier open-weight systems.",
           "group": "Open weights",
           "status": "open-weights",
-          "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "sourceUrl": "https://about.fb.com/news/2023/07/llama-2/",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2023-07-18",
+          "releaseSourceUrl": "https://about.fb.com/news/2023/07/llama-2/",
+          "releaseKind": "Family release"
         },
         {
           "id": "code-llama",
           "name": "Code Llama",
-          "purpose": "Code family: 7B, 13B, 34B, 70B.",
+          "purpose": "Coding-specialized Llama family spanning several parameter sizes. Supports code generation, completion, and instruction-based programming on self-managed infrastructure.",
           "group": "Open weights",
           "status": "open-weights",
-          "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-02"
+          "sourceUrl": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2023-08-24",
+          "releaseSourceUrl": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
+          "releaseKind": "Family release"
         }
       ]
     },
@@ -1436,7 +1870,7 @@
       "family": "Grok",
       "catalogUrl": "https://docs.x.ai/developers/models",
       "checkedAt": "2026-10-02",
-      "note": "Grok models across text, media and voice. Grok 4.7 Fast is a delivery mode in selected products, not a separate model. Retired model aliases are excluded.",
+      "note": "Grok API models across reasoning, media, and speech. Retired endpoints that redirect to newer models are excluded.",
       "featured": {
         "capable": "grok-4-7",
         "everyday": "grok-4-3"
@@ -1445,130 +1879,164 @@
         {
           "id": "grok-4-7",
           "name": "Grok 4.7",
-          "purpose": "Advanced coding and agent work.",
-          "group": "General purpose",
+          "purpose": "xAI’s flagship for coding, agent tasks, and knowledge work. Combines text and image input with a 500,000-token context and configurable reasoning effort for sustained analysis.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.7",
           "checkedAt": "2026-10-02",
-          "releasedAt": "2026-09-21"
+          "releasedAt": "2026-09-21",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-4-6",
           "name": "Grok 4.6",
-          "purpose": "Earlier coding and knowledge work.",
-          "group": "General purpose",
+          "purpose": "Reasoning model for software engineering and knowledge work with text and image input. Retains a 500,000-token context for extended tasks and large source collections.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.6",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-08-12",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-4-5",
           "name": "Grok 4.5",
-          "purpose": "Earlier coding and engineering.",
-          "group": "General purpose",
+          "purpose": "Reasoning model for coding and tool-based professional workflows. Offers adjustable analytical effort to balance response depth against latency and inference cost.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.5",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-08",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-4-3",
           "name": "Grok 4.3",
-          "purpose": "Faster, lower-cost everyday work.",
-          "group": "General purpose",
+          "purpose": "Cost-efficient model with a million-token context and strong tool-calling support. Adjustable reasoning makes it suitable for document-intensive work as well as faster, routine requests.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.3",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
           "id": "grok-4-20-reasoning",
           "name": "Grok 4.20 Reasoning",
-          "purpose": "Earlier reasoning and tool use.",
-          "group": "General purpose",
+          "purpose": "Reasoning-enabled Grok 4.20 model for analytical and tool-connected tasks. Provides the deliberative variant of the family for problems that benefit from additional computation.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-reasoning",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-10",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-4-20-non-reasoning",
           "name": "Grok 4.20 Non-Reasoning",
-          "purpose": "Earlier direct-response model.",
-          "group": "General purpose",
+          "purpose": "Direct-response Grok 4.20 variant without an extended reasoning stage. Prioritizes response speed for text generation and well-specified tool workflows.",
+          "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-beta-0309-non-reasoning",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-10",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-4-20-multi-agent",
           "name": "Grok 4.20 Multi-Agent",
-          "purpose": "Parallel research by multiple agents.",
-          "group": "General purpose",
+          "purpose": "Research configuration using several collaborating agents. Distributes source exploration and synthesis across parallel workstreams rather than relying on a single response trajectory.",
+          "group": "Reasoning & productivity",
           "status": "preview",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-0309",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-03-10",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-imagine-image-2-0",
           "name": "Grok Imagine Image 2.0",
-          "purpose": "Image creation and editing.",
+          "purpose": "Image generation and editing with configurable quality and multiple reference images. Supports visual iteration and composition within the Imagine API.",
           "group": "Images and video",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
           "id": "grok-imagine-image",
           "name": "Grok Imagine Image",
-          "purpose": "Earlier image generation.",
+          "purpose": "Earlier Imagine image model for generation and editing. Remains available independently of the retirement of the separate Image Quality variant.",
           "group": "Images and video",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-01-28",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-imagine-image-quality",
           "name": "Grok Imagine Image Quality",
-          "purpose": "Earlier higher-quality images.",
+          "purpose": "Higher-quality variant of the earlier Imagine image model. Scheduled for replacement by Imagine Image 2.0 through automatic request routing.",
           "group": "Images and video",
           "status": "retiring",
           "sourceUrl": "https://docs.x.ai/developers/release-notes",
           "checkedAt": "2026-10-02",
-          "retirementAt": "2026-11-02"
+          "retirementAt": "2026-11-02",
+          "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
           "id": "grok-imagine-video-1-5",
           "name": "Grok Imagine Video 1.5",
-          "purpose": "Video creation and editing.",
+          "purpose": "Video generation from text, images, or visual references. Supports native 1080p in text-to-video and image-to-video workflows, with optional preset voices.",
           "group": "Images and video",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
           "id": "grok-voice-think-fast-2-0",
           "name": "Grok Voice Think Fast 2.0",
-          "purpose": "Voice conversations with reasoning.",
+          "purpose": "Conversational voice model combining speech interaction with reasoning. Serves live voice-agent workflows through the Speech to Speech interface.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/release-notes",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-07-29",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-voice-transcribe-2-0",
           "name": "Grok Voice Transcribe 2.0",
-          "purpose": "Speech transcription.",
+          "purpose": "Current speech-recognition model for batch and streaming transcription. Replaces the 1.0 endpoint while retaining its published pricing.",
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/release-notes",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-17",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
         },
         {
           "id": "grok-voice-transcribe-1-0",
           "name": "Grok Voice Transcribe 1.0",
-          "purpose": "Earlier speech transcription.",
+          "purpose": "Original speech-recognition endpoint, now retired. Requests are automatically routed to Voice Transcribe 2.0 rather than served by the original model.",
           "group": "Voice and audio",
-          "status": "available",
+          "status": "retired",
           "sourceUrl": "https://docs.x.ai/developers/release-notes",
-          "checkedAt": "2026-10-02"
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-04-15",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release",
+          "retirementAt": "2026-10-02"
         }
       ]
     }
@@ -1576,7 +2044,7 @@
   "history": [
     {
       "date": "2026-10-02",
-      "summary": "Initial source-linked model catalog and AI Landscape dashboard.",
+      "summary": "Established the five-provider model catalog; reconciled release dates and lifecycle changes, and revised descriptions for a professional research audience.",
       "companyIds": [
         "openai",
         "anthropic",

@@ -23,13 +23,20 @@ export function validateModels(catalog, today=new Date().toISOString().slice(0,1
    const label=`${company.id}/${model.id}`;
    need(/^[a-z0-9-]+$/.test(model.id)&&!ids.has(model.id),`${label}: model IDs must be unique and safe`);ids.add(model.id);
    for(const key of ['name','purpose','group'])need(typeof model[key]==='string'&&model[key].trim(),`${label}: missing ${key}`);
-   need(['available','preview','restricted','open-weights','existing-users','product-access','retiring','retired'].includes(model.status),`${label}: unknown availability`);
+   need(['available','preview','restricted','open-weights','existing-users','product-access','retiring','retired','announced'].includes(model.status),`${label}: unknown availability`);
    need(isUrl(model.sourceUrl),`${label}: invalid source URL`);
    need(isDate(model.checkedAt)&&model.checkedAt<=company.checkedAt,`${label}: invalid source-check date`);
-   if(model.releasedAt)need(isDate(model.releasedAt)&&model.releasedAt<=model.checkedAt,`${label}: invalid release date`);
+   if(model.releasedAt){
+    need(isDate(model.releasedAt)&&model.releasedAt<=model.checkedAt,`${label}: invalid release date`);
+    need(isUrl(model.releaseSourceUrl),`${label}: release date needs its own evidence URL`);
+    need(typeof model.releaseKind==='string'&&model.releaseKind.trim(),`${label}: release date needs an availability context`);
+   }else{
+    need(typeof model.releaseNote==='string'&&model.releaseNote.trim(),`${label}: missing release date needs an explicit explanation`);
+    need(!model.releaseSourceUrl&&!model.releaseKind,`${label}: undated model has misleading release metadata`);
+   }
    if(model.retirementAt){need(isDate(model.retirementAt),`${label}: invalid retirement date`);need(model.retirementAt>catalog.checkedAt||model.status==='retired',`${label}: retired model still offered`);}
   }
-  for(const role of ['capable','everyday'])need(company.models?.some(model=>model.id===company.featured?.[role]&&model.status!=='retired'),`${company.id}: featured ${role} model must be offered`);
+  for(const role of ['capable','everyday'])need(company.models?.some(model=>model.id===company.featured?.[role]&&!['retired','announced'].includes(model.status)),`${company.id}: featured ${role} model must be offered`);
  }
  const dates=new Set();
  need(Array.isArray(catalog.history)&&catalog.history.length>0,'Model catalog needs update history');
