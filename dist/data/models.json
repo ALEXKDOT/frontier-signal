@@ -1,0 +1,1589 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02",
+  "scope": "Named generative models and closely related speech, retrieval and moderation models in official provider catalogs. Dated snapshots, quantizations and aliases are grouped. Provider access and regional availability vary.",
+  "companies": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "family": "GPT",
+      "catalogUrl": "https://developers.openai.com/api/docs/models/all",
+      "checkedAt": "2026-10-02",
+      "note": "Named models across the API and open-weight catalog, including still-available older versions. Retirement dates are shown; dated snapshots and equivalent routing aliases are grouped.",
+      "featured": {
+        "capable": "gpt-6-astra",
+        "everyday": "gpt-6-1-sol"
+      },
+      "models": [
+        {
+          "id": "gpt-6-astra",
+          "name": "GPT-6 Astra",
+          "purpose": "Complex reasoning and coding.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-6-1-sol",
+          "name": "GPT-6.1 Sol",
+          "purpose": "Near-Astra capability, lower cost.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-6-sol",
+          "name": "GPT-6 Sol",
+          "purpose": "Earlier coding and agent model.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-6-luna",
+          "name": "GPT-6 Luna",
+          "purpose": "Efficient high-volume tasks.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-6-sol",
+          "name": "GPT-5.6 Sol",
+          "purpose": "Earlier professional-work flagship.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-6-terra",
+          "name": "GPT-5.6 Terra",
+          "purpose": "Balanced intelligence and cost.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-6-luna",
+          "name": "GPT-5.6 Luna",
+          "purpose": "Budget-focused routine work.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-5",
+          "name": "GPT-5.5",
+          "purpose": "Coding and professional tasks.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-5-pro",
+          "name": "GPT-5.5 Pro",
+          "purpose": "More compute for difficult tasks.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-4",
+          "name": "GPT-5.4",
+          "purpose": "Lower-cost professional work.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-4-pro",
+          "name": "GPT-5.4 Pro",
+          "purpose": "Deeper GPT-5.4 reasoning.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-4-mini",
+          "name": "GPT-5.4 Mini",
+          "purpose": "Compact coding and computer use.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-2",
+          "name": "GPT-5.2",
+          "purpose": "Earlier reasoning flagship.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-2-pro",
+          "name": "GPT-5.2 Pro",
+          "purpose": "Higher-compute GPT-5.2.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5",
+          "name": "GPT-5",
+          "purpose": "Earlier reasoning and coding.",
+          "group": "General purpose",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-12-11"
+        },
+        {
+          "id": "gpt-5-mini",
+          "name": "GPT-5 Mini",
+          "purpose": "Affordable frequent tasks.",
+          "group": "General purpose",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-12-11"
+        },
+        {
+          "id": "gpt-5-nano",
+          "name": "GPT-5 Nano",
+          "purpose": "Small, fast routine tasks.",
+          "group": "General purpose",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-12-11"
+        },
+        {
+          "id": "gpt-5-pro",
+          "name": "GPT-5 Pro",
+          "purpose": "Higher-compute GPT-5.",
+          "group": "General purpose",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-12-11"
+        },
+        {
+          "id": "o3-pro",
+          "name": "o3-pro",
+          "purpose": "Higher-compute reasoning.",
+          "group": "General purpose",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-12-11"
+        },
+        {
+          "id": "o3",
+          "name": "o3",
+          "purpose": "Earlier reasoning model.",
+          "group": "General purpose",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-12-11"
+        },
+        {
+          "id": "gpt-4-1",
+          "name": "GPT-4.1",
+          "purpose": "Direct text and code responses.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-4-1-mini",
+          "name": "GPT-4.1 Mini",
+          "purpose": "Smaller direct-response model.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-4o",
+          "name": "GPT-4o",
+          "purpose": "Earlier text-and-image assistant.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-4o-mini",
+          "name": "GPT-4o Mini",
+          "purpose": "Lightweight text-and-image tasks.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-image-2-5-sunburst",
+          "name": "GPT-Image-2.5 Sunburst",
+          "purpose": "Detailed image creation.",
+          "group": "Images",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-image-2-5-flare",
+          "name": "GPT-Image-2.5 Flare",
+          "purpose": "Faster image creation.",
+          "group": "Images",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-image-2",
+          "name": "GPT-Image-2",
+          "purpose": "Earlier image creation.",
+          "group": "Images",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-live-1",
+          "name": "GPT-Live 1",
+          "purpose": "Natural voice conversations.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-realtime-2-1",
+          "name": "GPT-Realtime-2.1",
+          "purpose": "Voice reasoning with tools.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-realtime-2-1-mini",
+          "name": "GPT-Realtime-2.1 Mini",
+          "purpose": "Smaller voice reasoning model.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-realtime-2",
+          "name": "GPT-Realtime-2",
+          "purpose": "Earlier voice reasoning.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-realtime-translate",
+          "name": "GPT-Realtime-Translate",
+          "purpose": "Live speech translation.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-live-transcribe",
+          "name": "GPT-Live-Transcribe",
+          "purpose": "Low-latency transcription.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-realtime-whisper",
+          "name": "GPT-Realtime-Whisper",
+          "purpose": "Streaming transcription.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-realtime-1-5",
+          "name": "GPT-Realtime-1.5",
+          "purpose": "Earlier voice conversations.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-audio-1-5",
+          "name": "GPT-Audio-1.5",
+          "purpose": "Audio input and output.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-transcribe",
+          "name": "GPT-Transcribe",
+          "purpose": "Accurate speech transcription.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-4o-transcribe",
+          "name": "GPT-4o Transcribe",
+          "purpose": "Earlier speech transcription.",
+          "group": "Voice and audio",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-02-26"
+        },
+        {
+          "id": "gpt-4o-mini-transcribe",
+          "name": "GPT-4o Mini Transcribe",
+          "purpose": "Compact speech transcription.",
+          "group": "Voice and audio",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-02-26"
+        },
+        {
+          "id": "gpt-4o-transcribe-diarize",
+          "name": "GPT-4o Transcribe Diarize",
+          "purpose": "Transcription with speaker labels.",
+          "group": "Voice and audio",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-02-26"
+        },
+        {
+          "id": "whisper",
+          "name": "Whisper",
+          "purpose": "Speech recognition.",
+          "group": "Voice and audio",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-02-26"
+        },
+        {
+          "id": "gpt-4o-mini-tts",
+          "name": "GPT-4o Mini TTS",
+          "purpose": "Text to spoken audio.",
+          "group": "Voice and audio",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-06"
+        },
+        {
+          "id": "gpt-5-6-cyber",
+          "name": "GPT-5.6 Cyber",
+          "purpose": "Authorized security research.",
+          "group": "Specialized",
+          "status": "restricted",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-rosalind",
+          "name": "GPT-Rosalind",
+          "purpose": "Life-sciences research.",
+          "group": "Specialized",
+          "status": "restricted",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "text-embedding-3-large",
+          "name": "text-embedding-3-large",
+          "purpose": "Find related text.",
+          "group": "Specialized",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "text-embedding-3-small",
+          "name": "text-embedding-3-small",
+          "purpose": "Compact text similarity.",
+          "group": "Specialized",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "text-embedding-ada-002",
+          "name": "text-embedding-ada-002",
+          "purpose": "Earlier text similarity.",
+          "group": "Specialized",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "omni-moderation",
+          "name": "omni-moderation",
+          "purpose": "Detect harmful content.",
+          "group": "Specialized",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-oss-120b",
+          "name": "gpt-oss-120b",
+          "purpose": "Larger downloadable reasoning model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-oss-20b",
+          "name": "gpt-oss-20b",
+          "purpose": "Smaller downloadable reasoning model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gpt-5-3-codex",
+          "name": "GPT-5.3-Codex",
+          "purpose": "Earlier coding specialist.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-04-01"
+        },
+        {
+          "id": "gpt-5-4-nano",
+          "name": "GPT-5.4 Nano",
+          "purpose": "Earlier lightweight task model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-04-01"
+        },
+        {
+          "id": "gpt-5-1",
+          "name": "GPT-5.1",
+          "purpose": "Earlier reasoning and coding.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-04-01"
+        },
+        {
+          "id": "tts-1",
+          "name": "TTS-1",
+          "purpose": "Earlier speech synthesis.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-06"
+        },
+        {
+          "id": "tts-1-hd",
+          "name": "TTS-1 HD",
+          "purpose": "Earlier high-quality speech synthesis.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-06"
+        },
+        {
+          "id": "gpt-realtime",
+          "name": "GPT-Realtime",
+          "purpose": "Earlier audio interaction model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-20"
+        },
+        {
+          "id": "gpt-audio",
+          "name": "GPT-Audio",
+          "purpose": "Earlier audio interaction model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-20"
+        },
+        {
+          "id": "gpt-4o-audio",
+          "name": "GPT-4o Audio",
+          "purpose": "Earlier audio interaction model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-20"
+        },
+        {
+          "id": "gpt-4o-realtime",
+          "name": "GPT-4o Realtime",
+          "purpose": "Earlier audio interaction model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-20"
+        },
+        {
+          "id": "gpt-realtime-mini",
+          "name": "GPT-Realtime Mini",
+          "purpose": "Earlier audio interaction model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-20"
+        },
+        {
+          "id": "gpt-audio-mini",
+          "name": "GPT-Audio Mini",
+          "purpose": "Earlier audio interaction model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-20"
+        },
+        {
+          "id": "gpt-4o-mini-realtime",
+          "name": "GPT-4o Mini Realtime",
+          "purpose": "Earlier audio interaction model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-20"
+        },
+        {
+          "id": "gpt-4o-mini-audio",
+          "name": "GPT-4o Mini Audio",
+          "purpose": "Earlier audio interaction model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2027-01-20"
+        },
+        {
+          "id": "gpt-image-1-mini",
+          "name": "GPT-Image-1 Mini",
+          "purpose": "Earlier image-generation model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-12-01"
+        },
+        {
+          "id": "gpt-image-1-5",
+          "name": "GPT-Image-1.5",
+          "purpose": "Earlier image-generation model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-12-01"
+        },
+        {
+          "id": "gpt-3-5-turbo",
+          "name": "GPT-3.5 Turbo",
+          "purpose": "Legacy text generation.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "gpt-4",
+          "name": "GPT-4",
+          "purpose": "Legacy text reasoning.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "gpt-4-turbo",
+          "name": "GPT-4 Turbo",
+          "purpose": "Legacy text-and-image model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "gpt-4-1-nano",
+          "name": "GPT-4.1 Nano",
+          "purpose": "Legacy compact text model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "gpt-image-1",
+          "name": "GPT-Image-1",
+          "purpose": "Legacy image generation.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "o1",
+          "name": "o1",
+          "purpose": "Legacy reasoning model.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "o1-pro",
+          "name": "o1-pro",
+          "purpose": "Legacy high-compute reasoning.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "o3-mini",
+          "name": "o3-mini",
+          "purpose": "Legacy compact reasoning.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "o4-mini",
+          "name": "o4-mini",
+          "purpose": "Legacy compact reasoning.",
+          "group": "Earlier models retiring",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-10-23"
+        },
+        {
+          "id": "chat-latest",
+          "name": "Chat Latest",
+          "purpose": "Current ChatGPT Instant routing model.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
+          "checkedAt": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "family": "Claude",
+      "catalogUrl": "https://platform.claude.com/docs/en/models/overview",
+      "checkedAt": "2026-10-02",
+      "note": "Public Claude models plus restricted Mythos releases. Older models remain listed while supported; Sonnet 4.5 is scheduled to retire November 30, 2026. The featured flagship is the most capable generally available Claude; Mythos requires trusted access.",
+      "featured": {
+        "capable": "claude-fable-5-1",
+        "everyday": "claude-sonnet-5-5"
+      },
+      "models": [
+        {
+          "id": "claude-fable-5-1",
+          "name": "Claude Fable 5.1",
+          "purpose": "Demanding reasoning and long tasks.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-01"
+        },
+        {
+          "id": "claude-opus-5-5",
+          "name": "Claude Opus 5.5",
+          "purpose": "Complex coding and knowledge work.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-sonnet-5-5",
+          "name": "Claude Sonnet 5.5",
+          "purpose": "Everyday speed and intelligence.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-haiku-4-5",
+          "name": "Claude Haiku 4.5",
+          "purpose": "Fast, lightweight assistance.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-fable-5",
+          "name": "Claude Fable 5",
+          "purpose": "Earlier long-task model.",
+          "group": "Earlier supported models",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-opus-5",
+          "name": "Claude Opus 5",
+          "purpose": "Earlier coding flagship.",
+          "group": "Earlier supported models",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-opus-4-8",
+          "name": "Claude Opus 4.8",
+          "purpose": "Earlier Opus generation.",
+          "group": "Earlier supported models",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-opus-4-7",
+          "name": "Claude Opus 4.7",
+          "purpose": "Earlier Opus generation.",
+          "group": "Earlier supported models",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-opus-4-6",
+          "name": "Claude Opus 4.6",
+          "purpose": "Earlier Opus generation.",
+          "group": "Earlier supported models",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-opus-4-5",
+          "name": "Claude Opus 4.5",
+          "purpose": "Earlier Opus generation.",
+          "group": "Earlier supported models",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-sonnet-5",
+          "name": "Claude Sonnet 5",
+          "purpose": "Earlier everyday model.",
+          "group": "Earlier supported models",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-sonnet-4-6",
+          "name": "Claude Sonnet 4.6",
+          "purpose": "Earlier everyday model.",
+          "group": "Earlier supported models",
+          "status": "available",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-sonnet-4-5",
+          "name": "Claude Sonnet 4.5",
+          "purpose": "Earlier everyday model.",
+          "group": "Earlier supported models",
+          "status": "retiring",
+          "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-11-30"
+        },
+        {
+          "id": "claude-mythos-5-1",
+          "name": "Claude Mythos 5.1",
+          "purpose": "Advanced cyber and biology research.",
+          "group": "Restricted research models",
+          "status": "restricted",
+          "sourceUrl": "https://www.anthropic.com/claude/mythos",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-01"
+        },
+        {
+          "id": "claude-mythos-5",
+          "name": "Claude Mythos 5",
+          "purpose": "Earlier restricted research model.",
+          "group": "Restricted research models",
+          "status": "restricted",
+          "sourceUrl": "https://www.anthropic.com/claude/mythos",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "claude-mythos-preview",
+          "name": "Claude Mythos Preview",
+          "purpose": "Earlier restricted preview.",
+          "group": "Restricted research models",
+          "status": "retiring",
+          "sourceUrl": "https://www.anthropic.com/claude/mythos",
+          "checkedAt": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "family": "Gemini",
+      "catalogUrl": "https://ai.google.dev/gemini-api/docs/models",
+      "checkedAt": "2026-10-02",
+      "note": "Gemini API model catalog, including media, speech, and search models. Gemini 2.5 access is limited to existing users. Preview availability may change.",
+      "featured": {
+        "capable": "gemini-3-8-flash",
+        "everyday": "gemini-3-5-flash-lite"
+      },
+      "models": [
+        {
+          "id": "gemini-3-8-flash",
+          "name": "Gemini 3.8 Flash",
+          "purpose": "Advanced coding and multi-step work.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-5-flash-lite",
+          "name": "Gemini 3.5 Flash-Lite",
+          "purpose": "Fast, economical routine tasks.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-7-flash",
+          "name": "Gemini 3.7 Flash",
+          "purpose": "Earlier coding and agent model.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-6-flash",
+          "name": "Gemini 3.6 Flash",
+          "purpose": "Earlier general-purpose model.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-5-flash",
+          "name": "Gemini 3.5 Flash",
+          "purpose": "Earlier high-volume model.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-1-flash-lite",
+          "name": "Gemini 3.1 Flash-Lite",
+          "purpose": "Compact general-purpose model.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-1-pro",
+          "name": "Gemini 3.1 Pro",
+          "purpose": "Complex reasoning and coding.",
+          "group": "General purpose",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-flash",
+          "name": "Gemini 3 Flash",
+          "purpose": "Fast general-purpose preview.",
+          "group": "General purpose",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-8-live",
+          "name": "Gemini 3.8 Live",
+          "purpose": "Low-latency voice conversations.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-8-live-extended-thinking",
+          "name": "Gemini 3.8 Live Extended Thinking",
+          "purpose": "Voice with deeper reasoning.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-8-flash-tts",
+          "name": "Gemini 3.8 Flash TTS",
+          "purpose": "Expressive speech generation.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-8-flash-lite-tts",
+          "name": "Gemini 3.8 Flash-Lite TTS",
+          "purpose": "Efficient speech generation.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-5-transcribe",
+          "name": "Gemini 3.5 Transcribe",
+          "purpose": "Transcription with speaker labels.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-5-live-translate",
+          "name": "Gemini 3.5 Live Translate",
+          "purpose": "Live speech translation.",
+          "group": "Voice and audio",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-1-flash-live",
+          "name": "Gemini 3.1 Flash Live",
+          "purpose": "Earlier live voice preview.",
+          "group": "Voice and audio",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-3-1-flash-tts",
+          "name": "Gemini 3.1 Flash TTS",
+          "purpose": "Earlier speech-generation preview.",
+          "group": "Voice and audio",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "nano-banana-2",
+          "name": "Nano Banana 2",
+          "purpose": "Fast image creation and editing.",
+          "group": "Images, video and music",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "nano-banana-2-lite",
+          "name": "Nano Banana 2 Lite",
+          "purpose": "Economical image creation.",
+          "group": "Images, video and music",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "nano-banana-pro",
+          "name": "Nano Banana Pro",
+          "purpose": "Detailed image creation.",
+          "group": "Images, video and music",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-omni-flash",
+          "name": "Gemini Omni Flash",
+          "purpose": "Video creation and editing.",
+          "group": "Images, video and music",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "veo-3-1",
+          "name": "Veo 3.1",
+          "purpose": "Video with synchronized audio.",
+          "group": "Images, video and music",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "veo-3-1-lite",
+          "name": "Veo 3.1 Lite",
+          "purpose": "Lower-cost video generation.",
+          "group": "Images, video and music",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "lyria-3-5",
+          "name": "Lyria 3.5",
+          "purpose": "Full-song music generation.",
+          "group": "Images, video and music",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "lyria-3-clip",
+          "name": "Lyria 3 Clip",
+          "purpose": "Short music clips.",
+          "group": "Images, video and music",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-2-5-pro",
+          "name": "Gemini 2.5 Pro",
+          "purpose": "Earlier deep reasoning.",
+          "group": "Existing users only",
+          "status": "existing-users",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-2-5-flash",
+          "name": "Gemini 2.5 Flash",
+          "purpose": "Earlier everyday reasoning.",
+          "group": "Existing users only",
+          "status": "existing-users",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-2-5-flash-lite",
+          "name": "Gemini 2.5 Flash-Lite",
+          "purpose": "Earlier economical model.",
+          "group": "Existing users only",
+          "status": "existing-users",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "nano-banana",
+          "name": "Nano Banana",
+          "purpose": "Earlier image generation.",
+          "group": "Existing users only",
+          "status": "existing-users",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-2-5-flash-live",
+          "name": "Gemini 2.5 Flash Live",
+          "purpose": "Earlier live voice model.",
+          "group": "Existing users only",
+          "status": "existing-users",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-2-5-flash-tts",
+          "name": "Gemini 2.5 Flash TTS",
+          "purpose": "Earlier fast speech generation.",
+          "group": "Existing users only",
+          "status": "existing-users",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-2-5-pro-tts",
+          "name": "Gemini 2.5 Pro TTS",
+          "purpose": "Earlier high-fidelity speech.",
+          "group": "Existing users only",
+          "status": "existing-users",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-embedding-2",
+          "name": "Gemini Embedding 2",
+          "purpose": "Find related text and media.",
+          "group": "Search and retrieval",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-embedding",
+          "name": "Gemini Embedding",
+          "purpose": "Find related text.",
+          "group": "Search and retrieval",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "lyria-3-pro",
+          "name": "Lyria 3 Pro",
+          "purpose": "Earlier full-song generation.",
+          "group": "Images, video and music",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "lyria-realtime",
+          "name": "Lyria RealTime",
+          "purpose": "Interactive music generation.",
+          "group": "Images, video and music",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-deep-research",
+          "name": "Gemini Deep Research",
+          "purpose": "Multi-step sourced research.",
+          "group": "Research and agents",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-deep-research-max",
+          "name": "Gemini Deep Research Max",
+          "purpose": "More comprehensive sourced research.",
+          "group": "Research and agents",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "antigravity-agent",
+          "name": "Antigravity Agent",
+          "purpose": "Managed coding and browser agent.",
+          "group": "Research and agents",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-robotics-er-2",
+          "name": "Gemini Robotics ER 2",
+          "purpose": "Spatial reasoning for robots.",
+          "group": "Robotics",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "gemini-robotics-er-1-6",
+          "name": "Gemini Robotics ER 1.6",
+          "purpose": "Earlier robot task planning.",
+          "group": "Robotics",
+          "status": "preview",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
+          "checkedAt": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "meta",
+      "name": "Meta",
+      "family": "Muse · Llama",
+      "catalogUrl": "https://ai.meta.com/",
+      "checkedAt": "2026-10-02",
+      "note": "Muse is delivered through Meta products. Llama weights are downloadable for developers under Meta licenses; model sizes and variants are grouped by release.",
+      "featured": {
+        "capable": "muse-spark-1-3",
+        "everyday": "llama-4-scout"
+      },
+      "models": [
+        {
+          "id": "muse-spark-1-3",
+          "name": "Muse Spark 1.3",
+          "purpose": "Reasoning, coding and personal agents.",
+          "group": "Muse models",
+          "status": "product-access",
+          "sourceUrl": "https://ai.meta.com/tools/muse/",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-02"
+        },
+        {
+          "id": "muse-image",
+          "name": "Muse Image",
+          "purpose": "Image creation and editing.",
+          "group": "Muse models",
+          "status": "product-access",
+          "sourceUrl": "https://about.fb.com/news/2026/07/introducing-muse-image-meta-ai/",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "muse-video",
+          "name": "Muse Video",
+          "purpose": "Video generation with audio.",
+          "group": "Muse models",
+          "status": "product-access",
+          "sourceUrl": "https://ai.meta.com/blog/",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-4-maverick",
+          "name": "Llama 4 Maverick",
+          "purpose": "Larger text-and-image model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-4-scout",
+          "name": "Llama 4 Scout",
+          "purpose": "Efficient text-and-image model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-3-70b",
+          "name": "Llama 3.3 70B",
+          "purpose": "Text assistance and reasoning.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-2-90b-vision",
+          "name": "Llama 3.2 90B Vision",
+          "purpose": "Larger image-understanding model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-2-11b-vision",
+          "name": "Llama 3.2 11B Vision",
+          "purpose": "Smaller image-understanding model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-2-3b",
+          "name": "Llama 3.2 3B",
+          "purpose": "Compact on-device text tasks.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-2-1b",
+          "name": "Llama 3.2 1B",
+          "purpose": "Small on-device text tasks.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-1-405b",
+          "name": "Llama 3.1 405B",
+          "purpose": "Large general-purpose model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-1-70b",
+          "name": "Llama 3.1 70B",
+          "purpose": "Mid-sized general-purpose model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-1-8b",
+          "name": "Llama 3.1 8B",
+          "purpose": "Small general-purpose model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-70b",
+          "name": "Llama 3 70B",
+          "purpose": "Earlier text model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-3-8b",
+          "name": "Llama 3 8B",
+          "purpose": "Earlier compact text model.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "llama-2",
+          "name": "Llama 2",
+          "purpose": "Legacy text family: 7B, 13B, 70B.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "code-llama",
+          "name": "Code Llama",
+          "purpose": "Code family: 7B, 13B, 34B, 70B.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://github.com/meta-llama/llama-models",
+          "checkedAt": "2026-10-02"
+        }
+      ]
+    },
+    {
+      "id": "xai",
+      "name": "xAI",
+      "family": "Grok",
+      "catalogUrl": "https://docs.x.ai/developers/models",
+      "checkedAt": "2026-10-02",
+      "note": "Grok models across text, media and voice. Grok 4.7 Fast is a delivery mode in selected products, not a separate model. Retired model aliases are excluded.",
+      "featured": {
+        "capable": "grok-4-7",
+        "everyday": "grok-4-3"
+      },
+      "models": [
+        {
+          "id": "grok-4-7",
+          "name": "Grok 4.7",
+          "purpose": "Advanced coding and agent work.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models/grok-4.7",
+          "checkedAt": "2026-10-02",
+          "releasedAt": "2026-09-21"
+        },
+        {
+          "id": "grok-4-6",
+          "name": "Grok 4.6",
+          "purpose": "Earlier coding and knowledge work.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models/grok-4.6",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-4-5",
+          "name": "Grok 4.5",
+          "purpose": "Earlier coding and engineering.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models/grok-4.5",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-4-3",
+          "name": "Grok 4.3",
+          "purpose": "Faster, lower-cost everyday work.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models/grok-4.3",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-4-20-reasoning",
+          "name": "Grok 4.20 Reasoning",
+          "purpose": "Earlier reasoning and tool use.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-reasoning",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-4-20-non-reasoning",
+          "name": "Grok 4.20 Non-Reasoning",
+          "purpose": "Earlier direct-response model.",
+          "group": "General purpose",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-beta-0309-non-reasoning",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-4-20-multi-agent",
+          "name": "Grok 4.20 Multi-Agent",
+          "purpose": "Parallel research by multiple agents.",
+          "group": "General purpose",
+          "status": "preview",
+          "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-0309",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-imagine-image-2-0",
+          "name": "Grok Imagine Image 2.0",
+          "purpose": "Image creation and editing.",
+          "group": "Images and video",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-imagine-image",
+          "name": "Grok Imagine Image",
+          "purpose": "Earlier image generation.",
+          "group": "Images and video",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-imagine-image-quality",
+          "name": "Grok Imagine Image Quality",
+          "purpose": "Earlier higher-quality images.",
+          "group": "Images and video",
+          "status": "retiring",
+          "sourceUrl": "https://docs.x.ai/developers/release-notes",
+          "checkedAt": "2026-10-02",
+          "retirementAt": "2026-11-02"
+        },
+        {
+          "id": "grok-imagine-video-1-5",
+          "name": "Grok Imagine Video 1.5",
+          "purpose": "Video creation and editing.",
+          "group": "Images and video",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/models",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-voice-think-fast-2-0",
+          "name": "Grok Voice Think Fast 2.0",
+          "purpose": "Voice conversations with reasoning.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/release-notes",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-voice-transcribe-2-0",
+          "name": "Grok Voice Transcribe 2.0",
+          "purpose": "Speech transcription.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/release-notes",
+          "checkedAt": "2026-10-02"
+        },
+        {
+          "id": "grok-voice-transcribe-1-0",
+          "name": "Grok Voice Transcribe 1.0",
+          "purpose": "Earlier speech transcription.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/release-notes",
+          "checkedAt": "2026-10-02"
+        }
+      ]
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-02",
+      "summary": "Initial source-linked model catalog and AI Landscape dashboard.",
+      "companyIds": [
+        "openai",
+        "anthropic",
+        "google",
+        "meta",
+        "xai"
+      ]
+    }
+  ]
+}

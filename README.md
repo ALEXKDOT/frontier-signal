@@ -14,7 +14,9 @@ The edition is an **AI-assisted conversation import, pending human editorial rev
 
 ## Features
 
-- Separate Dashboard, Overview, Timeline, Concern ladder, and Methodology views; the blank Dashboard is the default
+- Separate Dashboard, Overview, Timeline, Concern ladder, and Methodology views; AI Landscape is the default Dashboard
+- Five company selectors, two featured models per company, and expandable source-linked model catalogs with availability and check dates
+- Major incidents with observed behavior, implications, and evidence limits
 
 - Searchable timeline with category, year, and signal-direction filters
 - Separate report dates, occurrence dates, source types, and limitations
@@ -38,6 +40,7 @@ Open `http://127.0.0.1:4173`. `dist/` is the authored static website, not genera
 
 - `dist/data/signals.json`: records, evidence summaries, provenance, corrections, and coverage mapping
 - `dist/data/glossary.json`: vocabulary definitions
+- `dist/data/models.json`: neutral model catalog, provider sources, availability, and update history
 - `dist/assets/`: native JavaScript and CSS
 - `editorial/`: review process and draft template; not publicly hosted
 - `scripts/`: data validation and regression checks
@@ -48,7 +51,7 @@ Open `http://127.0.0.1:4173`. `dist/` is the authored static website, not genera
 
 The weekly workflow is specified in [WEEKLY_UPDATE.md](editorial/WEEKLY_UPDATE.md). Cadence: Mondays at 09:00 America/New_York. It independently researches material frontier AI developments and safety improvements using original reports and credible investigations. Each update explains evidence quality, the affected risk pathways, what changes the five-year outlook, counterevidence, and what would change the assessment next. The original AI Watch conversation supplied the analytical approach and historical import; neither its shared link nor its recurring task is needed for future updates.
 
-The researcher reconciles duplicates, validates the data, and commits to this repository. GitHub Actions then validates and deploys `dist/` to GitHub Pages. New automated entries require source-check dates and a materiality rationale and cannot claim human review. The app separately tracks historical chat coverage and completed weekly checks.
+The researcher also refreshes the neutral model catalog every Monday from official releases and lifecycle notices, preserving still-offered earlier versions and marking retirements. Model check dates are independent from incident coverage. The researcher reconciles duplicates, validates the data, and commits to this repository. GitHub Actions then validates and deploys `dist/` to GitHub Pages. New automated risk entries require source-check dates and a materiality rationale and cannot claim human review. The app separately tracks historical chat coverage and completed weekly checks.
 
 **Activation status:** active following the user's explicit approval on October 2, 2026 for recurring unattended publication to the public website and GitHub. The scheduled task is `update-frontier-signal-weekly`, with the first scheduled review on October 5. No weekly review has completed yet. This task runs through the desktop execution host, which must remain available with the app running and its connections usable.
 
