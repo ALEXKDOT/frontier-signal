@@ -46,7 +46,7 @@ The original repeated task watched for significant developments in frontier AI s
 - Keep `mode: "watch"` and `outlook.level: "Unrated"`. Update the factual evidence summary, latest note, pathway links, and ladder if the evidence warrants it. Do not label automated interpretation as human-approved. Do not repeat hardcoded claims about absent persistence/shutdown resistance if a future source supplies credible contrary evidence; make such claims record-specific and qualified.
 - Preserve `chatAsOf` and `importedAt`. Set `asOf` to the date through which this completed review covers the evidence. Set `updates.lastCheckedAt` only after successful source review. Set `updates.lastPublishedAt` when preparing an actual release, never because the schedule exists.
 - Append one `updates.history` entry for the review date with `addedIds`, `updatedIds`, and a concise `summary`. A no-material-change week may have empty ID lists and update freshness only. Do not claim complete coverage when sources were inaccessible; leave the cursor unchanged if research was materially incomplete.
-- Keep Simplified vocabulary off by default and preserve the concise interface. This is a content-update task, not a recurring redesign.
+- Keep Simplified vocabulary off by default and preserve the separate navigation views. Dashboard is the first and default view and remains blank until the user requests content. This is a content-update task, not a recurring redesign.
 
 ## Validate and publish to GitHub Pages
 

@@ -14,6 +14,8 @@ The edition is an **AI-assisted conversation import, pending human editorial rev
 
 ## Features
 
+- Separate Dashboard, Overview, Timeline, Concern ladder, and Methodology views; the blank Dashboard is the default
+
 - Searchable timeline with category, year, and signal-direction filters
 - Separate report dates, occurrence dates, source types, and limitations
 - Six evidence-linked risk pathways and a nine-stage concern ladder

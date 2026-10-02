@@ -4,3 +4,10 @@
 
 /* Conversation import: searchable chronology and date provenance. */
 .timeline-search{display:flex;gap:16px;align-items:end;margin:24px 0 16px}.timeline-search label{display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--muted,#aab3ac)}.timeline-search label:first-child{flex:1}.timeline-search input,.timeline-search select{min-height:44px;border:1px solid #3b453d;border-radius:6px;background:#171f1a;color:#edf1e8;padding:10px 12px;font:inherit;font-size:14px}.timeline-search input{width:100%}.occurrence{font-size:12px!important;line-height:1.6!important;margin-top:9px!important}.event-dates{padding:12px 0;color:#aab3ac;font-size:13px;line-height:1.8}.event-dates strong{color:#d2d9cd}.coverage-group{border-bottom:1px solid #344036;padding:16px 0}.coverage-group summary{cursor:pointer;line-height:1.6}.method-body li{margin-bottom:12px;line-height:1.7;color:#b7c0b7}.demo-note .text-link{margin-left:auto;white-space:nowrap}.risk-title{flex-wrap:wrap}.risk-title h2{max-width:650px;font-size:clamp(28px,4vw,48px)}.event-meta{flex-wrap:wrap}.outlook-main .trend{font-size:12px}#coverage{scroll-margin-top:100px}a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #d5ed97;outline-offset:4px}@media(max-width:600px){.timeline-search{align-items:stretch;flex-direction:column}.demo-note{flex-wrap:wrap}.demo-note .text-link{margin-left:0}.timeline-search input,.timeline-search select{font-size:16px}.event-bottom{gap:12px;flex-wrap:wrap}}
+
+/* Each navigation destination owns the main view, including the empty dashboard. */
+body{min-height:100svh;display:flex;flex-direction:column}
+main{width:100%;flex:1}
+footer{width:100%}
+.view-heading{margin-top:0}
+@media(max-width:680px){.site-header nav{justify-content:flex-start;overflow-x:auto;gap:20px;max-width:100%}.site-header nav a{flex-shrink:0}}
