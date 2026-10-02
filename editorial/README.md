@@ -19,7 +19,7 @@ The current `watch` edition is the user's explicitly requested import of an exis
 2. A human checks original sources, dates, observation versus interpretation, limitations, and counterevidence.
 3. After actual approval, set each record's review status to `approved` with the real reviewer and date. Never invent a sign-off.
 4. Review the outlook independently; review all records before switching the whole edition to `reviewed`.
-5. Run `npm run build`, review the change, and publish the exact checked source through Sites. Automatic GitHub-to-Sites publishing is not configured.
+5. Run `npm run build`, review the change, and commit the exact checked source to GitHub. The Pages workflow validates and deploys `dist/`.
 
 Validation checks required fields and provenance consistency; it cannot determine whether a claim is true or a reviewer is genuine. Repository owners retain publishing authority.
 
@@ -29,4 +29,4 @@ See [WEEKLY_UPDATE.md](WEEKLY_UPDATE.md). The September 29 user request calls fo
 
 The automated path remains distinct from a human-reviewed edition. All sources for new automated records need actual check dates, and the record needs a materiality rationale. Failed checks must not advance freshness. The original conversation coverage remains fixed in `chatAsOf`; `asOf` can advance after a completed weekly review.
 
-Every weekly run must also check the [shared news chat](https://chatgpt.com/share/6abaacac-158c-83e8-ad6b-c957ed9fd3a3), verify relevant new leads against original sources, and reconcile them with existing records. Preserve the original import mapping while adding later developments as weekly entries. Log chat access and incorporated IDs separately as described in [WEEKLY_UPDATE.md](WEEKLY_UPDATE.md); an inaccessible or unchanged shared snapshot must not be described as a check of the user's latest private messages.
+Weekly research now runs independently using the original AI Watch task's analytical approach: identify material changes in evidence, assess source credibility and affected pathways, explain the qualitative five-year outlook, weigh counterevidence, and state observable thresholds that would change the assessment. The shared chat and its separate recurring task are no longer inputs. Keep historical provenance intact and use the automated weekly record format for new work. Publish through GitHub Pages as described in [WEEKLY_UPDATE.md](WEEKLY_UPDATE.md).

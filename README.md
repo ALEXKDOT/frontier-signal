@@ -2,7 +2,7 @@
 
 A public dashboard of frontier AI incidents, research, and governance developments.
 
-[Public website](https://frontier-signal.akc-928.chatgpt.site) · [GitHub](https://github.com/ALEXKDOT/frontier-signal)
+[Public website](https://alexkdot.github.io/frontier-signal/) · [GitHub](https://github.com/ALEXKDOT/frontier-signal)
 
 ## Current edition
 
@@ -40,17 +40,21 @@ Open `http://127.0.0.1:4173`. `dist/` is the authored static website, not genera
 - `editorial/`: review process and draft template; not publicly hosted
 - `scripts/`: data validation and regression checks
 - `.github/workflows/check.yml`: validation on pushes and pull requests
-- `.openai/hosting.json`: existing Sites identity and static directory
+- `.github/workflows/pages.yml`: validate and deploy `dist/` to GitHub Pages
 
 ## Updates and publication
 
-The weekly workflow is specified in [WEEKLY_UPDATE.md](editorial/WEEKLY_UPDATE.md). Cadence: Mondays at 09:00 America/New_York. Every run reopens the [Frontier AI Risk Watch chat](https://chatgpt.com/share/6abaacac-158c-83e8-ad6b-c957ed9fd3a3) for news leads and checks their original sources alongside broader research. It selects material risk and safety developments, reconciles duplicates, validates the data, publishes to the existing Site, and synchronizes GitHub. New automated entries require source-check dates and a materiality rationale and cannot claim human review. The app separately tracks original chat coverage and completed weekly checks. Personal-account shared links are snapshots; use Share → Update link in the source chat to expose later messages to the updater.
+The weekly workflow is specified in [WEEKLY_UPDATE.md](editorial/WEEKLY_UPDATE.md). Cadence: Mondays at 09:00 America/New_York. It independently researches material frontier AI developments and safety improvements using original reports and credible investigations. Each update explains evidence quality, the affected risk pathways, what changes the five-year outlook, counterevidence, and what would change the assessment next. The original AI Watch conversation supplied the analytical approach and historical import; neither its shared link nor its recurring task is needed for future updates.
+
+The researcher reconciles duplicates, validates the data, and commits to this repository. GitHub Actions then validates and deploys `dist/` to GitHub Pages. New automated entries require source-check dates and a materiality rationale and cannot claim human review. The app separately tracks historical chat coverage and completed weekly checks.
 
 **Activation status:** active following the user's explicit approval on October 2, 2026 for recurring unattended publication to the public website and GitHub. The scheduled task is `update-frontier-signal-weekly`, with the first scheduled review on October 5. No weekly review has completed yet. This task runs through the desktop execution host, which must remain available with the app running and its connections usable.
 
 See [the editorial workflow](editorial/README.md). Imported editions cannot claim a reviewer or a reviewed risk rating. Reviewed editions require real approval metadata for every record and the outlook. Validation checks coverage references, source URLs, dates, and review labels; it cannot establish the truth of claims or prevent a dishonest sign-off.
 
-The weekly task will orchestrate Sites publication and GitHub synchronization separately. There is no GitHub Actions deployment integration. Failed or incomplete runs must preserve the prior public version and report the actual blocker.
+GitHub Pages is the maintained public app. The `Publish Frontier Signal` workflow deploys on pushes to `main` and supports manual reruns. In repository Settings → Pages, the source is GitHub Actions. Only `dist/` is published; the website has no ChatGPT Sites runtime dependency. A failed build leaves the prior successful deployment available.
+
+The earlier ChatGPT Sites publication and its separate local checkout are preserved as migration copies; weekly updates now target GitHub Pages only. The site remains available when the desktop app is closed, but Monday research requires the computer and desktop app to be running.
 
 ## Privacy
 
