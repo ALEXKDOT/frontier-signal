@@ -30,6 +30,7 @@ footer{width:100%}
 .model-card .model-description{margin:10px 0 16px;font-size:14px;line-height:1.6;color:#bec7bf}
 .model-availability{font-size:11px;color:var(--mint);white-space:nowrap;border:1px solid #374a3f;border-radius:4px;padding:2px 6px;line-height:1.5}
 .model-availability.amber{color:var(--amber);border-color:#584a34}
+.model-availability.restricted{color:#ffb0b0;background:#492127;border-color:#9d4a55;font-weight:500}
 .model-card-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:end;gap:12px;border-top:1px solid var(--border);padding-top:11px;font-size:12px}
 .model-release{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 7px}
 .metadata-label{color:var(--muted);font-size:11px}
