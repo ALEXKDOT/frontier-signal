@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 import {validateModels} from './validate-models.mjs';
 const original=JSON.parse(readFileSync(new URL('../dist/data/models.json',import.meta.url),'utf8'));
 const copy=()=>structuredClone(original);
+const dayAfter=date=>new Date(Date.parse(date+'T00:00:00Z')+86400000).toISOString().slice(0,10);
 test('model catalog is source-linked and includes all requested GPT generations',()=>{
  assert.deepEqual(validateModels(original),[]);
  const names=original.companies.find(c=>c.id==='openai').models.map(m=>m.name);
@@ -18,8 +19,8 @@ test('retired or missing featured models cannot be published',()=>{
  assert.equal(validateModels(data).filter(e=>e.includes('featured')).length,2);
 });
 test('freshness cannot advance without evidence and expired models must be retired',()=>{
- const data=copy();data.checkedAt='2026-10-03';data.companies[0].models[0].checkedAt='2027-01-01';data.companies[0].models[1].retirementAt='2026-09-01';
- const errors=validateModels(data,'2026-10-02');assert.ok(errors.some(e=>e.includes('completed source-check')));assert.ok(errors.some(e=>e.includes('invalid source-check')));assert.ok(errors.some(e=>e.includes('still offered')));assert.ok(errors.some(e=>e.includes('matching history')));
+ const data=copy();data.checkedAt=dayAfter(original.checkedAt);data.companies[0].models[0].checkedAt=dayAfter(data.checkedAt);data.companies[0].models[1].retirementAt=original.checkedAt;
+ const errors=validateModels(data,original.checkedAt);assert.ok(errors.some(e=>e.includes('completed source-check')));assert.ok(errors.some(e=>e.includes('invalid source-check')));assert.ok(errors.some(e=>e.includes('still offered')));assert.ok(errors.some(e=>e.includes('matching history')));
 });
 test('release dates require a real calendar date, supporting source, and availability context',()=>{
  const data=copy();const model=data.companies[0].models[0];
@@ -28,7 +29,7 @@ test('release dates require a real calendar date, supporting source, and availab
  assert.ok(errors.some(e=>e.includes('invalid release date')));
  assert.ok(errors.some(e=>e.includes('own evidence URL')));
  assert.ok(errors.some(e=>e.includes('availability context')));
- model.releasedAt='2026-10-03';assert.ok(validateModels(data).some(e=>e.includes('invalid release date')));
+ model.releasedAt=dayAfter(model.checkedAt);assert.ok(validateModels(data).some(e=>e.includes('invalid release date')));
 });
 test('unverified launch dates remain explicit and cannot inherit misleading metadata',()=>{
  const data=copy();const model=data.companies[0].models[0];delete model.releasedAt;
