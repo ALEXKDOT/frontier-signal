@@ -1,0 +1,534 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T19:01:02.519553+00:00",
+  "title": "Design System: Frontier Signal",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.0080 98.88)",
+          "oklch(27% 0.0080 98.88)",
+          "oklch(39% 0.0080 98.88)",
+          "oklch(51% 0.0080 98.88)",
+          "oklch(63% 0.0080 98.88)",
+          "oklch(75% 0.0080 98.88)",
+          "oklch(87% 0.0080 98.88)",
+          "oklch(95% 0.0080 98.88)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0067 97.35)",
+          "oklch(27% 0.0067 97.35)",
+          "oklch(39% 0.0067 97.35)",
+          "oklch(51% 0.0067 97.35)",
+          "oklch(63% 0.0067 97.35)",
+          "oklch(75% 0.0067 97.35)",
+          "oklch(87% 0.0067 97.35)",
+          "oklch(95% 0.0067 97.35)"
+        ]
+      },
+      "sage-surface": {
+        "role": "neutral",
+        "displayName": "Sage Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0114 128.60)",
+          "oklch(27% 0.0114 128.60)",
+          "oklch(39% 0.0114 128.60)",
+          "oklch(51% 0.0114 128.60)",
+          "oklch(63% 0.0114 128.60)",
+          "oklch(75% 0.0114 128.60)",
+          "oklch(87% 0.0114 128.60)",
+          "oklch(95% 0.0114 128.60)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0344 171.76)",
+          "oklch(27% 0.0344 171.76)",
+          "oklch(39% 0.0344 171.76)",
+          "oklch(51% 0.0344 171.76)",
+          "oklch(63% 0.0344 171.76)",
+          "oklch(75% 0.0344 171.76)",
+          "oklch(87% 0.0344 171.76)",
+          "oklch(95% 0.0344 171.76)"
+        ]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0231 154.43)",
+          "oklch(27% 0.0231 154.43)",
+          "oklch(39% 0.0231 154.43)",
+          "oklch(51% 0.0231 154.43)",
+          "oklch(63% 0.0231 154.43)",
+          "oklch(75% 0.0231 154.43)",
+          "oklch(87% 0.0231 154.43)",
+          "oklch(95% 0.0231 154.43)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0163 130.44)",
+          "oklch(27% 0.0163 130.44)",
+          "oklch(39% 0.0163 130.44)",
+          "oklch(51% 0.0163 130.44)",
+          "oklch(63% 0.0163 130.44)",
+          "oklch(75% 0.0163 130.44)",
+          "oklch(87% 0.0163 130.44)",
+          "oklch(95% 0.0163 130.44)"
+        ]
+      },
+      "evergreen": {
+        "role": "primary",
+        "displayName": "Evergreen",
+        "tonalRamp": [
+          "oklch(15% 0.0442 176.81)",
+          "oklch(27% 0.0442 176.81)",
+          "oklch(39% 0.0442 176.81)",
+          "oklch(51% 0.0442 176.81)",
+          "oklch(63% 0.0442 176.81)",
+          "oklch(75% 0.0442 176.81)",
+          "oklch(87% 0.0442 176.81)",
+          "oklch(95% 0.0442 176.81)"
+        ]
+      },
+      "evergreen-ink": {
+        "role": "primary",
+        "displayName": "Evergreen Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0160 98.99)",
+          "oklch(27% 0.0160 98.99)",
+          "oklch(39% 0.0160 98.99)",
+          "oklch(51% 0.0160 98.99)",
+          "oklch(63% 0.0160 98.99)",
+          "oklch(75% 0.0160 98.99)",
+          "oklch(87% 0.0160 98.99)",
+          "oklch(95% 0.0160 98.99)"
+        ]
+      },
+      "action": {
+        "role": "primary",
+        "displayName": "Action",
+        "tonalRamp": [
+          "oklch(15% 0.0691 165.74)",
+          "oklch(27% 0.0691 165.74)",
+          "oklch(39% 0.0691 165.74)",
+          "oklch(51% 0.0691 165.74)",
+          "oklch(63% 0.0691 165.74)",
+          "oklch(75% 0.0691 165.74)",
+          "oklch(87% 0.0691 165.74)",
+          "oklch(95% 0.0691 165.74)"
+        ]
+      },
+      "concern": {
+        "role": "secondary",
+        "displayName": "Concern",
+        "tonalRamp": [
+          "oklch(15% 0.1076 51.24)",
+          "oklch(27% 0.1076 51.24)",
+          "oklch(39% 0.1076 51.24)",
+          "oklch(51% 0.1076 51.24)",
+          "oklch(63% 0.1076 51.24)",
+          "oklch(75% 0.1076 51.24)",
+          "oklch(87% 0.1076 51.24)",
+          "oklch(95% 0.1076 51.24)"
+        ]
+      },
+      "safeguard": {
+        "role": "secondary",
+        "displayName": "Safeguard",
+        "tonalRamp": [
+          "oklch(15% 0.0819 161.06)",
+          "oklch(27% 0.0819 161.06)",
+          "oklch(39% 0.0819 161.06)",
+          "oklch(51% 0.0819 161.06)",
+          "oklch(63% 0.0819 161.06)",
+          "oklch(75% 0.0819 161.06)",
+          "oklch(87% 0.0819 161.06)",
+          "oklch(95% 0.0819 161.06)"
+        ]
+      },
+      "on-dark-action": {
+        "role": "primary",
+        "displayName": "On Dark Action",
+        "tonalRamp": [
+          "oklch(15% 0.0729 117.07)",
+          "oklch(27% 0.0729 117.07)",
+          "oklch(39% 0.0729 117.07)",
+          "oklch(51% 0.0729 117.07)",
+          "oklch(63% 0.0729 117.07)",
+          "oklch(75% 0.0729 117.07)",
+          "oklch(87% 0.0729 117.07)",
+          "oklch(95% 0.0729 117.07)"
+        ]
+      },
+      "on-dark-muted": {
+        "role": "neutral",
+        "displayName": "On Dark Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0203 154.85)",
+          "oklch(27% 0.0203 154.85)",
+          "oklch(39% 0.0203 154.85)",
+          "oklch(51% 0.0203 154.85)",
+          "oklch(63% 0.0203 154.85)",
+          "oklch(75% 0.0203 154.85)",
+          "oklch(87% 0.0203 154.85)",
+          "oklch(95% 0.0203 154.85)"
+        ]
+      },
+      "on-dark-rule": {
+        "role": "neutral",
+        "displayName": "On Dark Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0389 170.21)",
+          "oklch(27% 0.0389 170.21)",
+          "oklch(39% 0.0389 170.21)",
+          "oklch(51% 0.0389 170.21)",
+          "oklch(63% 0.0389 170.21)",
+          "oklch(75% 0.0389 170.21)",
+          "oklch(87% 0.0389 170.21)",
+          "oklch(95% 0.0389 170.21)"
+        ]
+      },
+      "on-dark-safeguard": {
+        "role": "secondary",
+        "displayName": "On Dark Safeguard",
+        "tonalRamp": [
+          "oklch(15% 0.0601 146.52)",
+          "oklch(27% 0.0601 146.52)",
+          "oklch(39% 0.0601 146.52)",
+          "oklch(51% 0.0601 146.52)",
+          "oklch(63% 0.0601 146.52)",
+          "oklch(75% 0.0601 146.52)",
+          "oklch(87% 0.0601 146.52)",
+          "oklch(95% 0.0601 146.52)"
+        ]
+      },
+      "on-dark-concern": {
+        "role": "secondary",
+        "displayName": "On Dark Concern",
+        "tonalRamp": [
+          "oklch(15% 0.0741 67.22)",
+          "oklch(27% 0.0741 67.22)",
+          "oklch(39% 0.0741 67.22)",
+          "oklch(51% 0.0741 67.22)",
+          "oklch(63% 0.0741 67.22)",
+          "oklch(75% 0.0741 67.22)",
+          "oklch(87% 0.0741 67.22)",
+          "oklch(95% 0.0741 67.22)"
+        ]
+      },
+      "available-surface": {
+        "role": "secondary",
+        "displayName": "Available Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0152 136.08)",
+          "oklch(27% 0.0152 136.08)",
+          "oklch(39% 0.0152 136.08)",
+          "oklch(51% 0.0152 136.08)",
+          "oklch(63% 0.0152 136.08)",
+          "oklch(75% 0.0152 136.08)",
+          "oklch(87% 0.0152 136.08)",
+          "oklch(95% 0.0152 136.08)"
+        ]
+      },
+      "available-ink": {
+        "role": "secondary",
+        "displayName": "Available Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0546 154.81)",
+          "oklch(27% 0.0546 154.81)",
+          "oklch(39% 0.0546 154.81)",
+          "oklch(51% 0.0546 154.81)",
+          "oklch(63% 0.0546 154.81)",
+          "oklch(75% 0.0546 154.81)",
+          "oklch(87% 0.0546 154.81)",
+          "oklch(95% 0.0546 154.81)"
+        ]
+      },
+      "conditional-surface": {
+        "role": "secondary",
+        "displayName": "Conditional Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0250 75.27)",
+          "oklch(27% 0.0250 75.27)",
+          "oklch(39% 0.0250 75.27)",
+          "oklch(51% 0.0250 75.27)",
+          "oklch(63% 0.0250 75.27)",
+          "oklch(75% 0.0250 75.27)",
+          "oklch(87% 0.0250 75.27)",
+          "oklch(95% 0.0250 75.27)"
+        ]
+      },
+      "conditional-ink": {
+        "role": "secondary",
+        "displayName": "Conditional Ink",
+        "tonalRamp": [
+          "oklch(15% 0.1062 53.04)",
+          "oklch(27% 0.1062 53.04)",
+          "oklch(39% 0.1062 53.04)",
+          "oklch(51% 0.1062 53.04)",
+          "oklch(63% 0.1062 53.04)",
+          "oklch(75% 0.1062 53.04)",
+          "oklch(87% 0.1062 53.04)",
+          "oklch(95% 0.1062 53.04)"
+        ]
+      },
+      "restricted-surface": {
+        "role": "secondary",
+        "displayName": "Restricted Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0265 17.64)",
+          "oklch(27% 0.0265 17.64)",
+          "oklch(39% 0.0265 17.64)",
+          "oklch(51% 0.0265 17.64)",
+          "oklch(63% 0.0265 17.64)",
+          "oklch(75% 0.0265 17.64)",
+          "oklch(87% 0.0265 17.64)",
+          "oklch(95% 0.0265 17.64)"
+        ]
+      },
+      "restricted-ink": {
+        "role": "secondary",
+        "displayName": "Restricted Ink",
+        "tonalRamp": [
+          "oklch(15% 0.1626 19.67)",
+          "oklch(27% 0.1626 19.67)",
+          "oklch(39% 0.1626 19.67)",
+          "oklch(51% 0.1626 19.67)",
+          "oklch(63% 0.1626 19.67)",
+          "oklch(75% 0.1626 19.67)",
+          "oklch(87% 0.1626 19.67)",
+          "oklch(95% 0.1626 19.67)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Field Border",
+        "tonalRamp": [
+          "oklch(15% 0.0278 138.31)",
+          "oklch(27% 0.0278 138.31)",
+          "oklch(39% 0.0278 138.31)",
+          "oklch(51% 0.0278 138.31)",
+          "oklch(63% 0.0278 138.31)",
+          "oklch(75% 0.0278 138.31)",
+          "oklch(87% 0.0278 138.31)",
+          "oklch(95% 0.0278 138.31)"
+        ]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder",
+        "tonalRamp": [
+          "oklch(15% 0.0195 145.30)",
+          "oklch(27% 0.0195 145.30)",
+          "oklch(39% 0.0195 145.30)",
+          "oklch(51% 0.0195 145.30)",
+          "oklch(63% 0.0195 145.30)",
+          "oklch(75% 0.0195 145.30)",
+          "oklch(87% 0.0195 145.30)",
+          "oklch(95% 0.0195 145.30)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Page title",
+        "purpose": "The primary heading in each of the five views."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Serif section hierarchy."
+      },
+      "featured-title": {
+        "displayName": "Featured model title",
+        "purpose": "The two primary model names in the selected provider."
+      },
+      "title": {
+        "displayName": "Subsection title",
+        "purpose": "Compact sans-serif hierarchy."
+      },
+      "body": {
+        "displayName": "Interface body",
+        "purpose": "The base sans-serif reading rhythm."
+      },
+      "reading": {
+        "displayName": "Methodology reading",
+        "purpose": "Longer prose in the constrained reference column."
+      },
+      "label": {
+        "displayName": "Field label",
+        "purpose": "Visible short labels, not decorative eyebrows."
+      }
+    },
+    "shadows": [
+      {
+        "name": "record-reader",
+        "value": "0 24px 80px #10281d33",
+        "purpose": "Only the modal evidence reader is elevated; backdrop is #142c24b3."
+      }
+    ],
+    "motion": [
+      {
+        "name": "model-change",
+        "value": "transform: translateY(4px) to translateY(0); 200ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Selected provider’s featured cards settle into their reading position."
+      },
+      {
+        "name": "vocabulary-switch",
+        "value": "transform 180ms ease-out",
+        "purpose": "The switch knob moves between explicit off and on states."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none !important; transition: none !important; scroll-behavior: auto",
+        "purpose": "Applied when prefers-reduced-motion is reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-navigation-min",
+        "value": "1500px"
+      },
+      {
+        "name": "compact-desktop-max",
+        "value": "1100px"
+      },
+      {
+        "name": "tablet-max",
+        "value": "800px"
+      },
+      {
+        "name": "mobile-max",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Catalog disclosure",
+      "kind": "button",
+      "refersTo": "button-disclosure",
+      "description": "Full-width control reveals the selected provider’s searchable catalog; the app supplies disclosure state and content.",
+      "html": "<button class=\"ds-disclosure\" aria-expanded=\"false\"><span>Explore all models</span><span aria-hidden=\"true\">+</span></button>",
+      "css": ".ds-disclosure{font-family:var(--font,'Public Sans',sans-serif);width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:24px;color:var(--accent,#245c47);background:transparent;border:1px solid var(--border,#cbd1c6);border-radius:6px;font-size:13px;font-weight:600;cursor:pointer}.ds-disclosure>span:last-child{font-size:22px;font-weight:400;line-height:1}.ds-disclosure:hover{background:var(--surface2,#e9ede5)}.ds-disclosure:focus-visible{outline:2px solid var(--accent,#245c47);outline-offset:4px;}"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Quiet action for opening a record, source group, or deeper section.",
+      "html": "<button class=\"ds-text-action\">Read record &amp; sources <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-text-action{font-family:var(--font,'Public Sans',sans-serif);display:inline-flex;align-items:center;gap:10px;min-height:36px;padding:0;border:0;background:transparent;color:var(--accent,#245c47);font-size:13px;font-weight:600;text-align:left;cursor:pointer;text-underline-offset:4px}.ds-text-action:hover{text-decoration:underline}.ds-text-action:focus-visible{outline:2px solid var(--accent,#245c47);outline-offset:4px;}.ds-text-action svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}"
+    },
+    {
+      "name": "Labeled search",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Persistent labels and a 44px minimum control height; narrow layouts raise control text to 16px.",
+      "html": "<label class=\"ds-field\" for=\"ds-model-search\">Search models<input id=\"ds-model-search\" type=\"search\" placeholder=\"Model name or capability\"></label>",
+      "css": ".ds-field{font-family:var(--font,'Public Sans',sans-serif);display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:600;color:var(--text,#213a32)}.ds-field input{font-family:var(--font,'Public Sans',sans-serif);display:block;min-height:44px;padding:10px 12px;border:1px solid #aab7a6;background:var(--surface,#fffef9);color:var(--text,#213a32);border-radius:5px;font-size:14px;font-weight:400;line-height:1.4;caret-color:var(--accent,#245c47)}.ds-field input::placeholder{color:#697369;opacity:1}.ds-field input:focus-visible{outline:2px solid var(--accent,#245c47);outline-offset:4px;}@media(max-width:560px){.ds-field input{font-size:16px}}"
+    },
+    {
+      "name": "Five-view navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "All destinations remain visible, with a bottom rule and semantic current-page state.",
+      "html": "<nav class=\"ds-navigation\" aria-label=\"Main navigation\"><a href=\"#dashboard\" aria-current=\"page\">Dashboard</a><a href=\"#overview\">Overview</a><a href=\"#timeline\">Timeline</a><a href=\"#ladder\">Concern ladder</a><a href=\"#methodology\">Methodology</a></nav>",
+      "css": ".ds-navigation{font-family:var(--font,'Public Sans',sans-serif);display:flex;gap:28px;min-height:54px;background:var(--surface,#fffef9);border-bottom:1px solid var(--border,#cbd1c6)}.ds-navigation a{position:relative;display:flex;align-items:center;min-height:48px;white-space:nowrap;color:var(--muted,#5d6b61);font-size:13px;font-weight:500;text-decoration:none}.ds-navigation a[aria-current]{color:var(--text,#213a32);font-weight:700}.ds-navigation a[aria-current]:after{content:\"\";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--accent,#245c47)}.ds-navigation a:hover{color:var(--accent,#245c47)}.ds-navigation a:focus-visible{outline:2px solid var(--accent,#245c47);outline-offset:4px;}@media(max-width:560px){.ds-navigation{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;min-height:56px}.ds-navigation a{white-space:normal;text-align:center;justify-content:center;font-size:11px;line-height:1.4;padding:10px 0}}"
+    },
+    {
+      "name": "Provider selector",
+      "kind": "custom",
+      "refersTo": "provider-selected",
+      "description": "A five-button group switches the featured pair and provider catalog; selection uses pressed state.",
+      "html": "<div class=\"ds-providers\" role=\"group\" aria-label=\"Choose an AI company\"><button aria-pressed=\"true\"><strong>OpenAI</strong><span>GPT</span></button><button aria-pressed=\"false\"><strong>Anthropic</strong><span>Claude</span></button><button aria-pressed=\"false\"><strong>Google</strong><span>Gemini</span></button><button aria-pressed=\"false\"><strong>Meta</strong><span>Llama</span></button><button aria-pressed=\"false\"><strong>xAI</strong><span>Grok</span></button></div>",
+      "css": ".ds-providers{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-block:1px solid var(--border,#cbd1c6)}.ds-providers button{font-family:var(--font,'Public Sans',sans-serif);display:grid;gap:4px;min-width:0;padding:14px 20px;border:0;background:transparent;color:var(--text,#213a32);text-align:left;cursor:pointer}.ds-providers button+button{border-left:1px solid var(--border,#cbd1c6)}.ds-providers strong{font-size:15px;font-weight:600}.ds-providers span{font-size:12px;color:var(--muted,#5d6b61)}.ds-providers [aria-pressed=true]{background:var(--dark,#183c34);color:var(--dark-text,#f7f5e9)}.ds-providers [aria-pressed=true] span{color:#cedccd}.ds-providers button:hover:not([aria-pressed=true]){background:var(--surface2,#e9ede5)}.ds-providers button:focus-visible{outline:2px solid var(--accent,#245c47);outline-offset:4px;}@media(max-width:560px){.ds-providers button{display:flex;align-items:center;justify-content:center;min-height:60px;padding:12px 3px}.ds-providers strong{font-size:11px}.ds-providers span{display:none}}"
+    },
+    {
+      "name": "Availability labels",
+      "kind": "chip",
+      "refersTo": "availability-restricted",
+      "description": "Written labels carry availability; red remains specific to Restricted access. These are informational, with no hover interaction.",
+      "html": "<div class=\"ds-availability-set\"><span class=\"ds-availability\">Available</span><span class=\"ds-availability ds-conditional\">Preview</span><span class=\"ds-availability ds-restricted\">Restricted access</span></div>",
+      "css": ".ds-availability-set{display:flex;flex-wrap:wrap;gap:8px}.ds-availability{font-family:var(--font,'Public Sans',sans-serif);font-size:11px;line-height:1.5;padding:3px 8px;background:#e7eee4;color:#30523c;border-radius:4px;white-space:nowrap;font-weight:500}.ds-availability.ds-conditional{background:#f4e8d8;color:#82420f}.ds-availability.ds-restricted{background:#f8e0e0;color:#a12132;font-weight:600}@media(forced-colors:active){.ds-availability{border:1px solid CanvasText}}"
+    },
+    {
+      "name": "Featured model",
+      "kind": "card",
+      "refersTo": "featured-model",
+      "description": "A compact reference entry with role, access, purpose, and separate release/source links. Preview text is illustrative.",
+      "html": "<article class=\"ds-model\"><div class=\"ds-model-top\"><span>Most capable</span><span class=\"ds-model-availability\">Available</span></div><h3>Model name</h3><p>A precise purpose statement and practical tradeoff, supported by the provider’s documentation.</p><div class=\"ds-model-foot\"><span>Released <a href=\"#model-methodology\">Release reference</a></span><a href=\"#model-methodology\">Source <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></a></div></article>",
+      "css": ".ds-model{font-family:var(--font,'Public Sans',sans-serif);display:flex;flex-direction:column;min-width:0;padding:20px 24px;border:1px solid var(--border,#cbd1c6);border-radius:var(--radius,12px);background:var(--surface,#fffef9);color:var(--text,#213a32)}.ds-model-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;min-height:23px;color:var(--muted,#5d6b61);font-size:12px;font-weight:600}.ds-model-availability{font-size:11px;line-height:1.5;padding:3px 8px;background:#e7eee4;color:#30523c;border-radius:4px;font-weight:500}.ds-model h3{font:500 clamp(26px,2.7vw,36px)/1.15 var(--display,\"Source Serif\",Georgia,serif);letter-spacing:-.025em;margin:0}.ds-model p{font-size:14px;line-height:1.7;margin:14px 0 20px;color:var(--muted,#5d6b61);max-width:65ch}.ds-model-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--border,#cbd1c6);display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:12px}.ds-model-foot a{color:var(--accent,#245c47);text-underline-offset:4px}.ds-model-foot>a{display:inline-flex;align-items:center;gap:5px;min-height:28px;white-space:nowrap;font-weight:600;text-decoration:none}.ds-model-foot a:hover{text-decoration:underline}.ds-model-foot a:focus-visible{outline:2px solid var(--accent,#245c47);outline-offset:4px;}.ds-model svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}@media(max-width:560px){.ds-model{padding:20px}.ds-model h3{font-size:30px}.ds-model-foot{flex-wrap:wrap}}"
+    },
+    {
+      "name": "Category filters",
+      "kind": "button",
+      "refersTo": "filter-selected",
+      "description": "Compact selected and unselected filter states expose pressed state and keep labels visible.",
+      "html": "<div class=\"ds-filters\" role=\"group\" aria-label=\"Filter notes by category\"><button aria-pressed=\"true\">All</button><button aria-pressed=\"false\">Incidents</button><button aria-pressed=\"false\">Capabilities</button><button aria-pressed=\"false\">Governance</button></div>",
+      "css": ".ds-filters{display:flex;flex-wrap:wrap;gap:4px}.ds-filters button{font-family:var(--font,'Public Sans',sans-serif);min-height:36px;padding:7px 12px;border:0;border-radius:4px;background:transparent;color:var(--muted,#5d6b61);font-size:12px;cursor:pointer}.ds-filters button:hover{background:var(--surface2,#e9ede5)}.ds-filters button[aria-pressed=true]{background:var(--dark,#183c34);color:var(--dark-text,#f7f5e9)}.ds-filters button:focus-visible{outline:2px solid var(--accent,#245c47);outline-offset:4px;}@media(max-width:560px){.ds-filters button{min-height:40px;padding:8px 10px;font-size:11px}}"
+    },
+    {
+      "name": "Evidence reader",
+      "kind": "custom",
+      "refersTo": "record-reader",
+      "description": "Static preview of the only elevated reading surface. The application uses a native dialog with close, Escape, backdrop dismissal, and focus restoration.",
+      "html": "<section class=\"ds-reader\" aria-labelledby=\"ds-reader-title\"><h2 id=\"ds-reader-title\">Evidence behind the record</h2><p>Reported observations and their interpretation remain separate.</p><section class=\"ds-reader-limit\"><h3>Evidence limitations</h3><p>State the source’s limitations alongside the claim.</p></section><button class=\"ds-reader-close\" aria-label=\"Close details\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\"/></svg></button></section>",
+      "css": ".ds-reader{font-family:var(--font,'Public Sans',sans-serif);position:relative;padding:44px;background:var(--surface,#fffef9);color:var(--text,#213a32);border-radius:var(--radius,12px);box-shadow:0 24px 80px #10281d33}.ds-reader h2{font:500 34px/1.18 var(--display,\"Source Serif\",Georgia,serif);letter-spacing:-.02em;margin:12px 16px 24px 0}.ds-reader p{font-size:15px;line-height:1.85;color:var(--muted,#5d6b61);max-width:72ch}.ds-reader-limit{padding:20px;background:var(--surface2,#e9ede5);border-radius:8px;margin:12px 0}.ds-reader-limit h3{font-size:17px;margin:0 0 12px}.ds-reader-limit p{margin:0}.ds-reader-close{position:absolute;top:12px;right:12px;width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;background:var(--surface2,#e9ede5);color:var(--text,#213a32);cursor:pointer}.ds-reader-close:hover{color:var(--accent,#245c47)}.ds-reader-close:focus-visible{outline:2px solid var(--accent,#245c47);outline-offset:4px;}.ds-reader-close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5}@media(max-width:560px){.ds-reader{padding:32px 24px}.ds-reader h2{font-size:28px;margin-top:24px}.ds-reader p{font-size:14px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reference Handbook",
+    "overview": "Frontier Signal pairs a warm paper reading surface with an evergreen publication masthead. Serif headlines establish hierarchy; quiet sans-serif text keeps technical explanations, dates, and controls legible. Its audience includes physicians and MD/PhDs who need substantial explanations without assuming prior familiarity with AI.\n\nThe interface is compact at the point of orientation and spacious around evidence. Repeated facts use comparable fields, while longer interpretations use reading columns, horizontal rules, and explicit labels. The visual system is code-led: typography, CSS surfaces, and inline SVG provide its character without raster illustration or a separate image comp.",
+    "keyCharacteristics": [
+      "Warm paper, evergreen structure, and restrained semantic color.",
+      "Serif editorial hierarchy with Public Sans controls and evidence text.",
+      "Progressive disclosure with stable navigation and explicit source links.",
+      "Flat reading surfaces, thin rules, and one elevated evidence reader."
+    ],
+    "rules": [
+      {
+        "name": "The Labeled Status Rule",
+        "body": "Color always accompanies a written availability, evidence, or signal label. Restricted access is never reduced to a colored dot.",
+        "section": "colors"
+      },
+      {
+        "name": "The Separate Clocks Rule",
+        "body": "Show model source checks, completed incident reviews, and incident coverage as distinct dated facts. Their visual proximity must not imply continuous ingestion or identical freshness.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat Reading Rule",
+        "body": "Reserve shadow for the modal evidence reader. Featured models, incident columns, timeline records, and navigation obtain hierarchy from borders, spacing, and tone.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use the paper, evergreen, serif, and sans-serif roles consistently across the five views.",
+      "**Do** keep factual dates, availability, source links, and evidence limitations readable beside the claim they qualify.",
+      "**Do** preserve explicit Restricted access text and its red semantic treatment.",
+      "**Do** retain the provider-first, two-featured-model, expandable-catalog interaction.",
+      "**Do** keep model freshness and incident freshness separate, and simplified vocabulary opt-in.",
+      "**Do** retain keyboard focus, live result feedback, reduced-motion behavior, and visible state labels when extending components.",
+      "**Do** retain the bundled font licenses and relative asset paths used by GitHub Pages."
+    ],
+    "donts": [
+      "**Don't** replace written status or evidence levels with color alone.",
+      "**Don't** add shadows to ordinary reading records or promote every editorial section into a raised card.",
+      "**Don't** present featured models as independently benchmarked rankings or use source-check dates to imply human review.",
+      "**Don't** change findings, provenance, methodology, or source meaning as part of a visual refinement.",
+      "**Don't** introduce raster illustration or decorative movement without a new content need and an explicit design decision."
+    ]
+  }
+}
