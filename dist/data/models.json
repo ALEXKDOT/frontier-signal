@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-12",
+  "checkedAt": "2026-10-19",
   "scope": "Named generative models plus related speech, media, retrieval, perception and moderation offerings in official provider catalogs. Earlier available versions are retained; snapshots, aliases, quantizations and equivalent packaging are grouped. Older open-model size families may share a card and initial family release date. Access varies by provider and region.",
   "companies": [
     {
@@ -8,7 +8,7 @@
       "name": "OpenAI",
       "family": "GPT",
       "catalogUrl": "https://developers.openai.com/api/docs/models/all",
-      "checkedAt": "2026-10-12",
+      "checkedAt": "2026-10-19",
       "note": "API models, distinct ChatGPT variants and downloadable weights. Earlier supported versions remain listed; routing aliases and dated snapshots are grouped.",
       "featured": {
         "capable": "gpt-6-astra",
@@ -22,7 +22,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-03",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -34,7 +34,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-29",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -46,7 +46,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-22",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -58,7 +58,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-22",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -70,7 +70,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-09",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -82,7 +82,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-09",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -94,7 +94,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-09",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -106,7 +106,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-24",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -118,7 +118,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-24",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -130,7 +130,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-05",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -142,7 +142,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-05",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -154,7 +154,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-17",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -166,7 +166,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-12-11",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -178,7 +178,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-12-11",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -190,7 +190,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-12-11",
           "releasedAt": "2025-08-07",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -203,7 +203,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-12-11",
           "releasedAt": "2025-08-07",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -216,7 +216,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-12-11",
           "releasedAt": "2025-08-07",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -229,7 +229,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-12-11",
           "releasedAt": "2025-10-06",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -242,7 +242,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-12-11",
           "releasedAt": "2025-06-10",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -255,7 +255,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-12-11",
           "releasedAt": "2025-04-16",
           "releaseSourceUrl": "https://openai.com/index/introducing-o3-and-o4-mini/",
@@ -266,48 +266,52 @@
           "name": "GPT-4.1",
           "purpose": "Non-reasoning model emphasizing instruction following, coding, and long-context processing. Handles large document collections without a separate extended-thinking stage.",
           "group": "Reasoning & productivity",
-          "status": "available",
-          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-04-14",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
-          "releaseKind": "API release"
+          "releaseKind": "API release",
+          "retirementAt": "2027-01-14"
         },
         {
           "id": "gpt-4-1-mini",
           "name": "GPT-4.1 Mini",
           "purpose": "Smaller GPT-4.1 variant for responsive text and code workflows. Retains long-context support while reducing cost and latency relative to the full model.",
           "group": "Reasoning & productivity",
-          "status": "available",
-          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-04-14",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
-          "releaseKind": "API release"
+          "releaseKind": "API release",
+          "retirementAt": "2027-01-14"
         },
         {
           "id": "gpt-4o",
           "name": "GPT-4o",
           "purpose": "Multimodal model accepting text and images for interactive analysis and content generation. Provides direct responses without the configurable reasoning stage of newer GPT models.",
           "group": "Reasoning & productivity",
-          "status": "available",
-          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-05-13",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
-          "releaseKind": "API release"
+          "releaseKind": "API release",
+          "retirementAt": "2027-01-14"
         },
         {
           "id": "gpt-4o-mini",
           "name": "GPT-4o Mini",
           "purpose": "Compact multimodal model for focused text and image tasks. Designed for low-cost, high-volume applications rather than extended analytical reasoning.",
           "group": "Reasoning & productivity",
-          "status": "available",
-          "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "status": "retiring",
+          "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-07-18",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
-          "releaseKind": "API release"
+          "releaseKind": "API release",
+          "retirementAt": "2027-01-14"
         },
         {
           "id": "gpt-image-2-5-sunburst",
@@ -316,7 +320,7 @@
           "group": "Images",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-08",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -328,7 +332,7 @@
           "group": "Images",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-08",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -340,7 +344,7 @@
           "group": "Images",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-21",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -352,7 +356,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-10",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -364,7 +368,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-06",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -376,7 +380,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-06",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -388,7 +392,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-05-07",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -400,7 +404,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-05-07",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -412,7 +416,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-28",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -424,7 +428,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-05-07",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -436,7 +440,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-02-23",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -448,7 +452,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-02-23",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -460,7 +464,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-28",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -472,7 +476,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-02-26",
           "releasedAt": "2025-03-20",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -485,7 +489,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-02-26",
           "releasedAt": "2025-03-20",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -498,7 +502,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-02-26",
           "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
@@ -509,7 +513,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-02-26",
           "releasedAt": "2023-03-01",
           "releaseSourceUrl": "https://openai.com/index/introducing-chatgpt-and-whisper-apis/",
@@ -522,7 +526,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-06",
           "releasedAt": "2025-03-20",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -535,7 +539,7 @@
           "group": "Specialized",
           "status": "restricted",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-08-07",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -547,7 +551,7 @@
           "group": "Specialized",
           "status": "restricted",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-16",
           "releaseSourceUrl": "https://openai.com/index/introducing-gpt-rosalind/",
           "releaseKind": "Research preview"
@@ -559,7 +563,7 @@
           "group": "Specialized",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-01-25",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -571,7 +575,7 @@
           "group": "Specialized",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-01-25",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -583,7 +587,7 @@
           "group": "Specialized",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2022-12-15",
           "releaseSourceUrl": "https://openai.com/index/new-and-improved-embedding-model/",
           "releaseKind": "API release"
@@ -595,7 +599,7 @@
           "group": "Specialized",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-09-26",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
           "releaseKind": "API release"
@@ -607,7 +611,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-08-05",
           "releaseSourceUrl": "https://openai.com/index/introducing-gpt-oss/",
           "releaseKind": "Open weights"
@@ -619,7 +623,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-08-05",
           "releaseSourceUrl": "https://openai.com/index/introducing-gpt-oss/",
           "releaseKind": "Open weights"
@@ -631,7 +635,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-04-01",
           "releasedAt": "2026-02-24",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -644,7 +648,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-04-01",
           "releasedAt": "2026-03-17",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -657,7 +661,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-04-01",
           "releasedAt": "2025-11-13",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -670,7 +674,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-06",
           "releasedAt": "2023-11-06",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -683,7 +687,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-06",
           "releasedAt": "2023-11-06",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -696,7 +700,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-20",
           "releasedAt": "2025-08-28",
           "releaseSourceUrl": "https://openai.com/index/introducing-gpt-realtime/",
@@ -709,7 +713,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-20",
           "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
@@ -720,7 +724,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-20",
           "releasedAt": "2024-10-17",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -733,7 +737,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-20",
           "releasedAt": "2024-10-01",
           "releaseSourceUrl": "https://openai.com/index/introducing-the-realtime-api/",
@@ -746,7 +750,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-20",
           "releasedAt": "2025-10-06",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -759,7 +763,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-20",
           "releasedAt": "2025-10-06",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -772,7 +776,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-20",
           "releasedAt": "2024-12-17",
           "releaseSourceUrl": "https://openai.com/index/o1-and-new-tools-for-developers/",
@@ -785,7 +789,7 @@
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2027-01-20",
           "releasedAt": "2024-12-17",
           "releaseSourceUrl": "https://openai.com/index/o1-and-new-tools-for-developers/",
@@ -798,7 +802,7 @@
           "group": "Images",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-12-01",
           "releasedAt": "2025-10-06",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -811,7 +815,7 @@
           "group": "Images",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-12-01",
           "releasedAt": "2025-12-16",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -824,7 +828,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2023-03-01",
           "releaseSourceUrl": "https://openai.com/index/introducing-chatgpt-and-whisper-apis/",
@@ -837,7 +841,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2023-03-14",
           "releaseSourceUrl": "https://openai.com/index/gpt-4-research/",
@@ -850,7 +854,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2024-04-09",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -863,7 +867,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2025-04-14",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -876,7 +880,7 @@
           "group": "Images",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2025-04-23",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -889,7 +893,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2024-12-17",
           "releaseSourceUrl": "https://openai.com/index/o1-and-new-tools-for-developers/",
@@ -902,7 +906,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2025-03-19",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -915,7 +919,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2025-01-31",
           "releaseSourceUrl": "https://developers.openai.com/api/docs/changelog",
@@ -928,7 +932,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://developers.openai.com/api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-10-23",
           "releasedAt": "2025-04-16",
           "releaseSourceUrl": "https://openai.com/index/introducing-o3-and-o4-mini/",
@@ -941,7 +945,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://developers.openai.com/api/docs/models/all",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Rolling alias for the current ChatGPT Instant model; there is no fixed underlying model release date."
         },
         {
@@ -951,7 +955,7 @@
           "group": "Reasoning & productivity",
           "status": "product-access",
           "sourceUrl": "https://openai.com/index/gpt-6-for-everyone/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-10-07",
           "releaseSourceUrl": "https://openai.com/index/gpt-6-for-everyone/",
           "releaseKind": "ChatGPT rollout"
@@ -963,7 +967,7 @@
           "group": "Reasoning & productivity",
           "status": "product-access",
           "sourceUrl": "https://openai.com/index/gpt-6-for-everyone/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-10-08",
           "releaseSourceUrl": "https://openai.com/index/gpt-6-for-everyone/",
           "releaseKind": "ChatGPT rollout"
@@ -975,7 +979,7 @@
       "name": "Anthropic",
       "family": "Claude",
       "catalogUrl": "https://platform.claude.com/docs/en/models/overview",
-      "checkedAt": "2026-10-12",
+      "checkedAt": "2026-10-19",
       "note": "Public Claude models and restricted research releases. Access restrictions and scheduled retirements are shown on each card.",
       "featured": {
         "capable": "claude-fable-5-1",
@@ -989,7 +993,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-01",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1001,7 +1005,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-22",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1013,7 +1017,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-28",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1025,7 +1029,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/models/overview",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-10-15",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1037,7 +1041,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-06-09",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1049,7 +1053,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-24",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1061,7 +1065,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-05-28",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1073,7 +1077,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-16",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1085,7 +1089,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-02-05",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1097,7 +1101,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-11-24",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1109,7 +1113,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-06-30",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1121,7 +1125,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-02-17",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1133,7 +1137,7 @@
           "group": "Reasoning & productivity",
           "status": "retiring",
           "sourceUrl": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-11-30",
           "releasedAt": "2025-09-29",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
@@ -1146,7 +1150,7 @@
           "group": "Restricted research models",
           "status": "restricted",
           "sourceUrl": "https://www.anthropic.com/news/cyber-verification-program",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-01",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1158,7 +1162,7 @@
           "group": "Restricted research models",
           "status": "restricted",
           "sourceUrl": "https://www.anthropic.com/claude/mythos",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-06-09",
           "releaseSourceUrl": "https://platform.claude.com/docs/en/release-notes/overview",
           "releaseKind": "API release"
@@ -1170,7 +1174,7 @@
           "group": "Restricted research models",
           "status": "retiring",
           "sourceUrl": "https://www.anthropic.com/claude/mythos",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-07",
           "releaseSourceUrl": "https://www.anthropic.com/glasswing",
           "releaseKind": "Research preview"
@@ -1182,7 +1186,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://www.anthropic.com/claude-haiku-5-5",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-10-07",
           "releaseSourceUrl": "https://www.anthropic.com/claude-haiku-5-5",
           "releaseKind": "API release"
@@ -1194,13 +1198,25 @@
       "name": "Google",
       "family": "Gemini · Gemma",
       "catalogUrl": "https://ai.google.dev/gemini-api/docs/models",
-      "checkedAt": "2026-10-12",
+      "checkedAt": "2026-10-19",
       "note": "Gemini API models, managed agents and downloadable Gemma families. Earlier versions remain listed. Sizes within older families, tuning variants and quantizations are grouped; family dates mark the initial release, not every size.",
       "featured": {
-        "capable": "gemini-3-8-flash",
+        "capable": "gemini-4-argon",
         "everyday": "gemini-3-5-flash-lite"
       },
       "models": [
+        {
+          "id": "gemini-4-argon",
+          "name": "Gemini 4 Argon",
+          "purpose": "Google’s flagship for sustained software engineering, scientific analysis and multi-step agents. Accepts text, images, video and audio within a unified million-token context; produces text.",
+          "group": "Reasoning & productivity",
+          "status": "available",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon",
+          "checkedAt": "2026-10-19",
+          "releasedAt": "2026-10-13",
+          "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
+          "releaseKind": "API release"
+        },
         {
           "id": "gemini-3-8-flash",
           "name": "Gemini 3.8 Flash",
@@ -1208,7 +1224,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-02",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1220,7 +1236,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-21",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1232,7 +1248,7 @@
           "group": "Reasoning & productivity",
           "status": "retired",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-08-13",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release",
@@ -1245,7 +1261,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-21",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1257,7 +1273,7 @@
           "group": "Reasoning & productivity",
           "status": "retired",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-05-19",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release",
@@ -1270,7 +1286,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-05-07",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1282,7 +1298,7 @@
           "group": "Reasoning & productivity",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-02-19",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1294,7 +1310,7 @@
           "group": "Reasoning & productivity",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-12-17",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1306,7 +1322,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-15",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1318,7 +1334,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-15",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1330,7 +1346,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-22",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1342,7 +1358,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-22",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1354,7 +1370,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-08-26",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1366,7 +1382,7 @@
           "group": "Voice and audio",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-06-09",
           "releaseSourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-live-3-5-translate/",
           "releaseKind": "API preview"
@@ -1374,11 +1390,11 @@
         {
           "id": "gemini-3-1-flash-live",
           "name": "Gemini 3.1 Flash Live",
-          "purpose": "Public-preview audio-to-audio model for voice-first applications. Supports realtime dialogue and tool-connected conversational workflows.",
+          "purpose": "Public-preview audio-to-audio model for voice-first applications. Supports realtime dialogue and tool-connected conversational workflows. The lifecycle notice lists November 17, 2026 as the earliest shutdown date.",
           "group": "Voice and audio",
-          "status": "preview",
-          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "status": "retiring",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-26",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1386,15 +1402,14 @@
         {
           "id": "gemini-3-1-flash-tts",
           "name": "Gemini 3.1 Flash TTS",
-          "purpose": "Preview speech-generation model for controlled vocal output. Precedes the Gemini 3.8 TTS series and remains available for existing synthesis workflows.",
+          "purpose": "Preview speech-generation model for controlled vocal output. Precedes the Gemini 3.8 TTS series and remains available for existing synthesis workflows. The lifecycle notice lists November 17, 2026 as the earliest shutdown date.",
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-15",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
-          "releaseKind": "API preview",
-          "retirementAt": "2026-11-17"
+          "releaseKind": "API preview"
         },
         {
           "id": "nano-banana-2",
@@ -1403,7 +1418,7 @@
           "group": "Images, video and music",
           "status": "retiring",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-05-28",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1415,7 +1430,7 @@
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-06-30",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1427,7 +1442,7 @@
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-05-28",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1439,7 +1454,7 @@
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-08-27",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1451,7 +1466,7 @@
           "group": "Images, video and music",
           "status": "retiring",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-10-15",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview",
@@ -1464,7 +1479,7 @@
           "group": "Images, video and music",
           "status": "retiring",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-31",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview",
@@ -1477,7 +1492,7 @@
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-03",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1489,7 +1504,7 @@
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-25",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1501,7 +1516,7 @@
           "group": "Reasoning & productivity",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-06-17",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1513,7 +1528,7 @@
           "group": "Reasoning & productivity",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-06-17",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1525,7 +1540,7 @@
           "group": "Reasoning & productivity",
           "status": "existing-users",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-07-22",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1537,7 +1552,7 @@
           "group": "Images, video and music",
           "status": "retiring",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-10-02",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release",
@@ -1546,11 +1561,11 @@
         {
           "id": "gemini-2-5-flash-live",
           "name": "Gemini 2.5 Flash Live",
-          "purpose": "Earlier native-audio preview for realtime dialogue. Supports established voice applications, subject to the provider’s existing-user access restrictions.",
+          "purpose": "Earlier native-audio preview for realtime dialogue. Supports established voice applications, subject to the provider’s existing-user access restrictions. The lifecycle notice lists November 17, 2026 as the earliest shutdown date.",
           "group": "Voice and audio",
-          "status": "existing-users",
-          "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "status": "retiring",
+          "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-12-12",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1558,28 +1573,26 @@
         {
           "id": "gemini-2-5-flash-tts",
           "name": "Gemini 2.5 Flash TTS",
-          "purpose": "Earlier speech-generation preview, restricted to existing users; scheduled for retirement in November 2026.",
+          "purpose": "Earlier speech-generation preview, restricted to existing users; scheduled for retirement in November 2026. The lifecycle notice lists November 17, 2026 as the earliest shutdown date.",
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-05-20",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
-          "releaseKind": "API preview",
-          "retirementAt": "2026-11-17"
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-2-5-pro-tts",
           "name": "Gemini 2.5 Pro TTS",
-          "purpose": "Earlier speech-generation preview, restricted to existing users; scheduled for retirement in November 2026.",
+          "purpose": "Earlier speech-generation preview, restricted to existing users; scheduled for retirement in November 2026. The lifecycle notice lists November 17, 2026 as the earliest shutdown date.",
           "group": "Voice and audio",
           "status": "retiring",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-05-20",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
-          "releaseKind": "API preview",
-          "retirementAt": "2026-11-17"
+          "releaseKind": "API preview"
         },
         {
           "id": "gemini-embedding-2",
@@ -1588,7 +1601,7 @@
           "group": "Search and retrieval",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-22",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1600,7 +1613,7 @@
           "group": "Search and retrieval",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-07-14",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1612,7 +1625,7 @@
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-25",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1624,7 +1637,7 @@
           "group": "Images, video and music",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-05-20",
           "releaseSourceUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/google-ai-developer-updates-io-2025/",
           "releaseKind": "API preview"
@@ -1636,7 +1649,7 @@
           "group": "Research and agents",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-21",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "Agent preview"
@@ -1648,7 +1661,7 @@
           "group": "Research and agents",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-21",
           "releaseSourceUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/next-Generation-gemini-deep-research/",
           "releaseKind": "API preview"
@@ -1660,7 +1673,7 @@
           "group": "Research and agents",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-17",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1672,7 +1685,7 @@
           "group": "Robotics",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-30",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1684,7 +1697,7 @@
           "group": "Robotics",
           "status": "retired",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-14",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview",
@@ -1697,7 +1710,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/live-api/live-transcribe",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-08-26",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1709,7 +1722,7 @@
           "group": "Robotics",
           "status": "preview",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/robotics-streaming",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-30",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API preview"
@@ -1721,7 +1734,7 @@
           "group": "Images, video and music",
           "status": "available",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-10-06",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "API release"
@@ -1733,7 +1746,7 @@
           "group": "Research and agents",
           "status": "retiring",
           "sourceUrl": "https://ai.google.dev/gemini-api/docs/deprecations",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-12-11",
           "releaseSourceUrl": "https://ai.google.dev/gemini-api/docs/changelog",
           "releaseKind": "Agent preview",
@@ -1746,7 +1759,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-31",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Weights release"
@@ -1758,7 +1771,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-31",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Weights release"
@@ -1770,7 +1783,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-06-03",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Weights release"
@@ -1782,7 +1795,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-31",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Weights release"
@@ -1794,7 +1807,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-31",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Weights release"
@@ -1806,7 +1819,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core/model_card_3",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-03-10",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1818,7 +1831,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/get_started",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-06-26",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1830,7 +1843,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core/model_card_2",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-06-27",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1842,7 +1855,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core/model_card",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-04-05",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1854,7 +1867,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/core/model_card",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-02-21",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1866,7 +1879,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/codegemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-04-09",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1878,7 +1891,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/recurrentgemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-04-09",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1890,7 +1903,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/functiongemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-12-18",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1902,7 +1915,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/paligemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-05-14",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1914,7 +1927,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/paligemma/model-card-2",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-12-05",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1926,7 +1939,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/paligemma/model-card-2",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-02-19",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1938,7 +1951,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/shieldgemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-07-31",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1950,7 +1963,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/shieldgemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-03-10",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1962,7 +1975,7 @@
           "group": "Search and retrieval",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/embeddinggemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-09-04",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1974,7 +1987,7 @@
           "group": "Search and retrieval",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-10-06",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1986,7 +1999,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/translategemma/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-01-15",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -1998,7 +2011,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://developers.google.com/health-ai-developer-foundations/medgemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-01-13",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -2010,7 +2023,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://developers.google.com/health-ai-developer-foundations/medgemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-05-20",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -2022,7 +2035,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://developers.googleblog.com/en/t5gemma/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-07-09",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -2034,7 +2047,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/t5gemma-2/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-12-18",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -2046,7 +2059,7 @@
           "group": "Search and retrieval",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/datagemma",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-09-12",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -2058,7 +2071,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/gemma-aps",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-10-15",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -2070,7 +2083,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://huggingface.co/google/gemma-2-2b-jpn-it",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-10-03",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Family debut"
@@ -2082,7 +2095,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.google.dev/gemma/docs/diffusiongemma/model_card",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Open weights verified; the original release date is not established in the checked model card."
         },
         {
@@ -2095,7 +2108,7 @@
           "releasedAt": "2025-09-12",
           "releaseSourceUrl": "https://research.google/blog/vaultgemma-the-worlds-most-capable-differentially-private-llm/",
           "releaseKind": "Weights release",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-19"
         },
         {
           "id": "codegemma-1-1",
@@ -2107,7 +2120,7 @@
           "releasedAt": "2024-05-03",
           "releaseSourceUrl": "https://ai.google.dev/gemma/docs/releases",
           "releaseKind": "Weights release",
-          "checkedAt": "2026-10-12"
+          "checkedAt": "2026-10-19"
         }
       ]
     },
@@ -2116,13 +2129,25 @@
       "name": "Meta",
       "family": "Muse · Llama",
       "catalogUrl": "https://dev.meta.ai/products/meta-model-api",
-      "checkedAt": "2026-10-12",
+      "checkedAt": "2026-10-19",
       "note": "Muse API and product models, SAM vision tools, and downloadable Muse/Llama and moderation weights. Earlier versions remain listed; aliases and quantizations are grouped. Announced-only models are excluded.",
       "featured": {
-        "capable": "muse-spark-1-3",
+        "capable": "muse-wonder-full",
         "everyday": "muse-glimmer"
       },
       "models": [
+        {
+          "id": "muse-wonder-full",
+          "name": "Muse Wonder Full",
+          "purpose": "Meta’s highest-capability offering for sustained coding and complex agent workflows. Available through the Power Usage and Maximum Usage Muse Code subscriptions; no public API is listed.",
+          "group": "Muse models",
+          "status": "product-access",
+          "sourceUrl": "https://dev.meta.ai/resources/blog/build-with-muse-wonder",
+          "checkedAt": "2026-10-19",
+          "releasedAt": "2026-10-12",
+          "releaseSourceUrl": "https://dev.meta.ai/resources/blog/build-with-muse-wonder",
+          "releaseKind": "Product release"
+        },
         {
           "id": "muse-spark-1-3",
           "name": "Muse Spark 1.3",
@@ -2130,7 +2155,7 @@
           "group": "Muse models",
           "status": "preview",
           "sourceUrl": "https://dev.meta.ai/models/muse-spark",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-02",
           "releaseSourceUrl": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
           "releaseKind": "Public preview"
@@ -2142,7 +2167,7 @@
           "group": "Muse models",
           "status": "preview",
           "sourceUrl": "https://dev.meta.ai/models/muse-image",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-07",
           "releaseSourceUrl": "https://about.fb.com/news/2026/07/introducing-muse-image-meta-ai/",
           "releaseKind": "Product release"
@@ -2154,7 +2179,7 @@
           "group": "Muse models",
           "status": "announced",
           "sourceUrl": "https://ai.meta.com/blog/introducing-muse-image-muse-video-msl",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Preview announced July 7, 2026; public availability is not established by the checked source."
         },
         {
@@ -2164,7 +2189,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-04-05",
           "releaseSourceUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
           "releaseKind": "Open weights"
@@ -2176,7 +2201,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-04-05",
           "releaseSourceUrl": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
           "releaseKind": "Open weights"
@@ -2188,7 +2213,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-12-06",
           "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/LICENSE",
           "releaseKind": "Open weights"
@@ -2200,7 +2225,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-09-25",
           "releaseSourceUrl": "https://about.fb.com/br/news/2024/09/conheca-o-llama-3-2-da-nuvem-para-a-borda-e-agora-com-visao/",
           "releaseKind": "Open weights"
@@ -2212,7 +2237,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-09-25",
           "releaseSourceUrl": "https://about.fb.com/br/news/2024/09/conheca-o-llama-3-2-da-nuvem-para-a-borda-e-agora-com-visao/",
           "releaseKind": "Open weights"
@@ -2224,7 +2249,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-09-25",
           "releaseSourceUrl": "https://about.fb.com/br/news/2024/09/conheca-o-llama-3-2-da-nuvem-para-a-borda-e-agora-com-visao/",
           "releaseKind": "Open weights"
@@ -2236,7 +2261,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-09-25",
           "releaseSourceUrl": "https://about.fb.com/br/news/2024/09/conheca-o-llama-3-2-da-nuvem-para-a-borda-e-agora-com-visao/",
           "releaseKind": "Open weights"
@@ -2248,7 +2273,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-07-23",
           "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE",
           "releaseKind": "Open weights"
@@ -2260,7 +2285,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-07-23",
           "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE",
           "releaseKind": "Open weights"
@@ -2272,7 +2297,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-07-23",
           "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE",
           "releaseKind": "Open weights"
@@ -2284,7 +2309,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-04-18",
           "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3/LICENSE",
           "releaseKind": "Open weights"
@@ -2296,7 +2321,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/llama-models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2024-04-18",
           "releaseSourceUrl": "https://github.com/meta-llama/llama-models/blob/main/models/llama3/LICENSE",
           "releaseKind": "Open weights"
@@ -2308,7 +2333,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://about.fb.com/news/2023/07/llama-2/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2023-07-18",
           "releaseSourceUrl": "https://about.fb.com/news/2023/07/llama-2/",
           "releaseKind": "Family release"
@@ -2320,7 +2345,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2023-08-24",
           "releaseSourceUrl": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
           "releaseKind": "Family release"
@@ -2332,7 +2357,7 @@
           "group": "Muse models",
           "status": "preview",
           "sourceUrl": "https://dev.meta.ai/models/muse-spark-1-2",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-08-05",
           "releaseSourceUrl": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
           "releaseKind": "API preview"
@@ -2344,7 +2369,7 @@
           "group": "Muse models",
           "status": "preview",
           "sourceUrl": "https://dev.meta.ai/models/muse-spark-1-1",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-09",
           "releaseSourceUrl": "https://research.meta.ai/blog/introducing-muse-spark-meta-model-api",
           "releaseKind": "API preview"
@@ -2356,7 +2381,7 @@
           "group": "Open weights",
           "status": "open-weights",
           "sourceUrl": "https://dev.meta.ai/models/muse-glimmer",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-08-10",
           "releaseSourceUrl": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model",
           "releaseKind": "Open weights"
@@ -2368,7 +2393,7 @@
           "group": "Voice and audio",
           "status": "preview",
           "sourceUrl": "https://dev.meta.ai/models/muse-voice-transcribe",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-01",
           "releaseSourceUrl": "https://research.meta.ai/blog/introducing-muse-voice-transcribe",
           "releaseKind": "API and product release"
@@ -2380,7 +2405,7 @@
           "group": "Voice and audio",
           "status": "product-access",
           "sourceUrl": "https://research.meta.ai/blog/bringing-your-muse-to-life",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Documented in Muse on September 23, 2026; the checked sources do not specify its exact public rollout date."
         },
         {
@@ -2390,7 +2415,7 @@
           "group": "Images, video and music",
           "status": "product-access",
           "sourceUrl": "https://research.meta.ai/blog/bringing-your-muse-to-life",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Introduced September 23, 2026; the exact public rollout date and complete avatar availability are not specified."
         },
         {
@@ -2400,7 +2425,7 @@
           "group": "Vision and perception",
           "status": "preview",
           "sourceUrl": "https://dev.meta.ai/models/sam-3-1",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "API preview and weights verified; the original API launch date remains unverified."
         },
         {
@@ -2410,7 +2435,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/llama-guard-4",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-04-29",
           "releaseSourceUrl": "https://ai.meta.com/blog/ai-defenders-program-llama-protection-tools/",
           "releaseKind": "Weights release"
@@ -2422,7 +2447,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/PurpleLlama",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Weights remain listed in the official repository; exact original release date unverified in this check."
         },
         {
@@ -2432,7 +2457,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/PurpleLlama",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Weights remain listed in the official repository; exact original release date unverified in this check."
         },
         {
@@ -2442,7 +2467,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/PurpleLlama",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Weights remain listed in the official repository; exact original release date unverified in this check."
         },
         {
@@ -2452,7 +2477,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/PurpleLlama",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Weights remain listed in the official repository; exact original release date unverified in this check."
         },
         {
@@ -2462,7 +2487,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/PurpleLlama",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Weights remain listed in the official repository; exact original release date unverified in this check."
         },
         {
@@ -2472,7 +2497,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://github.com/meta-llama/PurpleLlama",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Weights remain listed in the official repository; exact original release date unverified in this check."
         },
         {
@@ -2482,7 +2507,7 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/prompt-guard",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-04-29",
           "releaseSourceUrl": "https://ai.meta.com/blog/ai-defenders-program-llama-protection-tools/",
           "releaseKind": "Weights release"
@@ -2494,10 +2519,34 @@
           "group": "Moderation",
           "status": "open-weights",
           "sourceUrl": "https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/prompt-guard",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2025-04-29",
           "releaseSourceUrl": "https://ai.meta.com/blog/ai-defenders-program-llama-protection-tools/",
           "releaseKind": "Weights release"
+        },
+        {
+          "id": "muse-wonder",
+          "name": "Muse Wonder",
+          "purpose": "Model for extended coding and computer-use workflows, available through Meta Model API and Muse Code. Supports a million-token context for multi-step tasks.",
+          "group": "Muse models",
+          "status": "preview",
+          "sourceUrl": "https://dev.meta.ai/products/meta-model-api",
+          "checkedAt": "2026-10-19",
+          "releasedAt": "2026-10-12",
+          "releaseSourceUrl": "https://dev.meta.ai/resources/blog/build-with-muse-wonder",
+          "releaseKind": "API and product release"
+        },
+        {
+          "id": "muse-spark-open",
+          "name": "Muse Spark Open",
+          "purpose": "Downloadable multimodal model for extended coding and tool-driven tasks. Its 816B-parameter architecture activates 42B per token; self-hosting requires substantial memory. Released under the Muse Model License.",
+          "group": "Open weights",
+          "status": "open-weights",
+          "sourceUrl": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+          "checkedAt": "2026-10-19",
+          "releasedAt": "2026-10-15",
+          "releaseSourceUrl": "https://dev.meta.ai/resources/blog/build-with-muse-spark-open",
+          "releaseKind": "Open weights"
         }
       ]
     },
@@ -2506,7 +2555,7 @@
       "name": "xAI",
       "family": "Grok",
       "catalogUrl": "https://docs.x.ai/developers/models",
-      "checkedAt": "2026-10-12",
+      "checkedAt": "2026-10-19",
       "note": "Grok API models across reasoning, media, and speech. Retired endpoints that redirect to newer models are excluded.",
       "featured": {
         "capable": "grok-4-7",
@@ -2520,7 +2569,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.7",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-21",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2532,7 +2581,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.6",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-08-12",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2544,7 +2593,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.5",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-08",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2556,7 +2605,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.3",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
@@ -2566,7 +2615,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-reasoning",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-10",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2578,7 +2627,7 @@
           "group": "Reasoning & productivity",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-beta-0309-non-reasoning",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-10",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2590,7 +2639,7 @@
           "group": "Reasoning & productivity",
           "status": "preview",
           "sourceUrl": "https://docs.x.ai/developers/models/grok-4.20-multi-agent-0309",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-03-10",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2602,7 +2651,7 @@
           "group": "Images and video",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
@@ -2612,7 +2661,7 @@
           "group": "Images and video",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-01-28",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2624,7 +2673,7 @@
           "group": "Images and video",
           "status": "retiring",
           "sourceUrl": "https://docs.x.ai/developers/release-notes",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "retirementAt": "2026-11-02",
           "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
@@ -2635,17 +2684,17 @@
           "group": "Images and video",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/models",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releaseNote": "Exact launch date not yet verified against a primary release reference."
         },
         {
           "id": "grok-voice-think-fast-2-0",
-          "name": "Grok Voice Think Fast 2.0",
-          "purpose": "Conversational voice model combining speech interaction with reasoning. Serves live voice-agent workflows through the Speech to Speech interface.",
+          "name": "Grok Voice 2.0",
+          "purpose": "Earlier conversational speech model, deprecated in favor of Voice 3.0. The provider recommends migration but has not specified a shutdown date in the checked notice.",
           "group": "Voice and audio",
-          "status": "available",
+          "status": "retiring",
           "sourceUrl": "https://docs.x.ai/developers/release-notes",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-07-29",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2657,7 +2706,7 @@
           "group": "Voice and audio",
           "status": "available",
           "sourceUrl": "https://docs.x.ai/developers/release-notes",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-09-17",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release"
@@ -2669,11 +2718,35 @@
           "group": "Voice and audio",
           "status": "retired",
           "sourceUrl": "https://docs.x.ai/developers/release-notes",
-          "checkedAt": "2026-10-12",
+          "checkedAt": "2026-10-19",
           "releasedAt": "2026-04-15",
           "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
           "releaseKind": "API release",
           "retirementAt": "2026-10-02"
+        },
+        {
+          "id": "grok-voice-3-0",
+          "name": "Grok Voice 3.0",
+          "purpose": "Current conversational speech model for real-time voice agents. Replaces Voice 2.0 as the default routing target, retaining its interface and published price.",
+          "group": "Voice and audio",
+          "status": "available",
+          "sourceUrl": "https://docs.x.ai/developers/model-capabilities/audio/speech-to-speech",
+          "checkedAt": "2026-10-19",
+          "releasedAt": "2026-10-14",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "API release"
+        },
+        {
+          "id": "grok-build-0-1",
+          "name": "Grok Build 0.1",
+          "purpose": "Early-access coding model for software engineering and tool-driven workflows. Supports text and image input, structured output and a 256,000-token context.",
+          "group": "Reasoning & productivity",
+          "status": "preview",
+          "sourceUrl": "https://docs.x.ai/developers/models/grok-build-0.1",
+          "checkedAt": "2026-10-19",
+          "releasedAt": "2026-05-19",
+          "releaseSourceUrl": "https://docs.x.ai/developers/release-notes",
+          "releaseKind": "Early access"
         }
       ]
     }
@@ -2711,6 +2784,17 @@
         "xai"
       ],
       "summary": "Rechecked five providers. Added October ChatGPT Sol/Luna variants, Haiku 5.5, Nano Banana 2.1 and EmbeddingGemma 2. Reconciled Google routing and retirement changes; corrected original Nano Banana and Deep Research metadata. Expanded missing Gemma, SAM and Meta moderation coverage; these older offerings are not new weekly launches. Featured choices remain supported; xAI has no material lineup change."
+    },
+    {
+      "date": "2026-10-19",
+      "companyIds": [
+        "openai",
+        "anthropic",
+        "google",
+        "meta",
+        "xai"
+      ],
+      "summary": "Rechecked all five providers. Added Gemini 4 Argon, Muse Wonder and Wonder Full, Muse Spark Open, and Grok Voice 3.0; updated Google and Meta featured selections. Added the earlier Grok Build 0.1 as a coverage correction. Recorded four GPT-4-family retirement dates, Voice 2.0 deprecation and two Google Live retirement notices. Earlier offered models remain listed."
     }
   ]
 }
