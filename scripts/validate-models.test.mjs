@@ -43,3 +43,11 @@ test('announced-only models cannot appear as currently offered featured selectio
  const data=copy();data.companies[0].models[0].status='announced';
  assert.ok(validateModels(data).some(e=>e.includes('featured capable')));
 });
+test('uncertain availability can be disclosed in the directory but cannot be featured',()=>{
+ const data=copy();const company=data.companies[0];
+ const model=company.models.find(m=>m.id!==company.featured.capable&&m.id!==company.featured.everyday);
+ model.status='unconfirmed';
+ assert.deepEqual(validateModels(data),[]);
+ company.featured.everyday=model.id;
+ assert.ok(validateModels(data).some(e=>e.includes('featured everyday')));
+});

@@ -23,7 +23,7 @@ export function validateModels(catalog, today=new Date().toISOString().slice(0,1
    const label=`${company.id}/${model.id}`;
    need(/^[a-z0-9-]+$/.test(model.id)&&!ids.has(model.id),`${label}: model IDs must be unique and safe`);ids.add(model.id);
    for(const key of ['name','purpose','group'])need(typeof model[key]==='string'&&model[key].trim(),`${label}: missing ${key}`);
-   need(['available','preview','restricted','open-weights','existing-users','product-access','retiring','retired','announced'].includes(model.status),`${label}: unknown availability`);
+   need(['available','preview','restricted','open-weights','existing-users','product-access','retiring','retired','announced','unconfirmed'].includes(model.status),`${label}: unknown availability`);
    need(isUrl(model.sourceUrl),`${label}: invalid source URL`);
    need(isDate(model.checkedAt)&&model.checkedAt<=company.checkedAt,`${label}: invalid source-check date`);
    if(model.releasedAt){
@@ -36,7 +36,7 @@ export function validateModels(catalog, today=new Date().toISOString().slice(0,1
    }
    if(model.retirementAt){need(isDate(model.retirementAt),`${label}: invalid retirement date`);need(model.retirementAt>catalog.checkedAt||model.status==='retired',`${label}: retired model still offered`);}
   }
-  for(const role of ['capable','everyday'])need(company.models?.some(model=>model.id===company.featured?.[role]&&!['retired','announced'].includes(model.status)),`${company.id}: featured ${role} model must be offered`);
+  for(const role of ['capable','everyday'])need(company.models?.some(model=>model.id===company.featured?.[role]&&!['retired','announced','unconfirmed'].includes(model.status)),`${company.id}: featured ${role} model must be offered`);
  }
  const dates=new Set();
  need(Array.isArray(catalog.history)&&catalog.history.length>0,'Model catalog needs update history');
