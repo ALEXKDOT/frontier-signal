@@ -8,15 +8,16 @@ Frontier Signal is a weekly briefing on frontier-AI incidents, evaluations, safe
 
 The Briefing view shows a selected set of recent records. Every preview includes its update type, report date, summary, interpretation, and evidence type. Open a record for original sources, technical detail, occurrence dates, provenance, and evidence limits.
 
-The five primary destinations are:
+The six primary destinations are:
 
 - **Briefing:** the weekly overview and its featured developments.
-- **Updates:** the complete searchable record timeline.
+- **Updates:** every collection record, grouped by report week and searchable by date, type, topic, or signal.
 - **Control cases:** major incidents and control failures, ordered by report date.
+- **Concern ladder:** nine capability levels and the evidence supporting each level.
 - **Model map:** provider and model-family context, with the complete catalog kept as an appendix.
 - **Methods & sources:** methodology, source register, update history, import provenance, and glossary.
 
-The Risk Outlook and Concern Ladder remain available as secondary explanatory views. Existing shared links using `dashboard`, `timeline`, `catalog`, `overview`, `ladder`, or `methodology` continue to resolve through route aliases.
+The Risk Outlook remains available as a secondary explanatory view. Existing shared links using `dashboard`, `timeline`, `catalog`, `overview`, `ladder`, or `methodology` continue to resolve.
 
 ## Evidence model
 

@@ -25,12 +25,13 @@ The briefing is the accessible front of an evidence database. The database remai
 ## Primary information architecture
 
 1. **Briefing** — the default weekly overview.
-2. **Updates** — the complete searchable timeline.
+2. **Updates** — the complete searchable collection, grouped by report week.
 3. **Control cases** — major incidents and control failures.
-4. **Model map** — consequential provider and model-family changes.
-5. **Methods & sources** — methods, source register, review history, import provenance, and glossary.
+4. **Concern ladder** — nine capability levels with their current evidence status.
+5. **Model map** — consequential provider and model-family changes.
+6. **Methods & sources** — methods, source register, review history, import provenance, and glossary.
 
-Risk Outlook and Concern Ladder are contextual secondary views. The complete model catalog is an appendix reached from Model map. Previous route names remain aliases so shared links continue to work.
+Risk Outlook is a contextual secondary view. The complete model catalog is an appendix reached from Model map. Previous route names remain aliases so shared links continue to work.
 
 ## Update taxonomy
 
@@ -54,6 +55,7 @@ Technical topics such as autonomy, containment, cyber, CBRN, model proliferation
 - Technical detail, occurrence dates, evidence limits, all sources, provenance, and review status are progressively disclosed.
 - Control cases are sorted by the displayed report or disclosure date. Any deliberately pinned case must be labeled without changing chronological order.
 - The records-over-time graphic describes records added by update type. It never claims to measure risk, prevalence, or incident frequency.
+- Updates renders every collection record exactly once, grouped into Monday-starting weeks by report or disclosure date.
 - The homepage Current model families section shows one concise row per provider. The exhaustive catalog stays in the appendix.
 
 ## Evidence integrity

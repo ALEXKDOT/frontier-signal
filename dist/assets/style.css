@@ -1376,6 +1376,45 @@ input::placeholder {
 }
 
 .updates-list {
+  border-bottom: 0;
+}
+
+.update-week {
+  padding-top: clamp(42px, 6vw, 72px);
+}
+
+.update-week__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0 18px;
+  border-top: 3px solid var(--forest);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.update-week__header p {
+  margin: 0 0 5px;
+  color: var(--forest);
+  font-size: .69rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.update-week__header h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+}
+
+.update-week__header > span {
+  padding-bottom: 4px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.update-week__events {
   border-bottom: 1px solid var(--line);
 }
 
@@ -1486,28 +1525,6 @@ input::placeholder {
 .tag:hover {
   border-color: var(--forest);
   color: var(--forest);
-}
-
-.load-more {
-  display: flex;
-  width: 100%;
-  min-height: 60px;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 28px;
-  padding: 12px 18px;
-  border: 1px solid var(--line-strong);
-  font-weight: 700;
-}
-
-.load-more span {
-  color: var(--muted);
-  font-size: .76rem;
-  font-weight: 500;
-}
-
-.timeline-end {
-  text-align: center;
 }
 
 /* Full control-case and model-map routes use the same modules without nested page gutters. */
@@ -2728,6 +2745,12 @@ dialog > div > h2 {
   .update-row__why {
     grid-template-columns: 1fr;
     gap: 6px;
+  }
+
+  .update-week__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .glossary-grid {

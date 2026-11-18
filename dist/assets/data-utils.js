@@ -96,6 +96,26 @@ export function getControlCases(input) {
  return sortByReportedAt(eventList(input).filter(event => Boolean(event.controlCase)));
 }
 
+export function groupEventsByReportWeek(input) {
+ const groups = new Map();
+ for (const event of sortByReportedAt(eventList(input))) {
+  const date = parseDay(reportedAt(event));
+  if (!date) throw new TypeError(`${event?.id || event?.title || 'event'} must have a valid report date`);
+  const day = date.getUTCDay() || 7;
+  const start = addDays(date, 1 - day);
+  const weekStart = isoDay(start);
+  if (!groups.has(weekStart)) {
+   groups.set(weekStart, {
+    weekStart,
+    weekEnd: isoDay(addDays(start, 6)),
+    events: []
+   });
+  }
+  groups.get(weekStart).events.push(event);
+ }
+ return [...groups.values()];
+}
+
 export function buildWeeklySeries(events, asOf, weeks = 12) {
  const endDate = parseDay(asOf);
  if (!endDate) throw new TypeError('asOf must be a valid YYYY-MM-DD date');

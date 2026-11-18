@@ -14,7 +14,7 @@ The page uses a shared 1280px desktop wrap, 80px outer margins at 1440px, 48px t
 
 ## Information hierarchy
 
-The fixed header contains the Frontier Signal mark, the five primary destinations, and Light/Dark controls. Tablets and phones use one accessible full-screen menu. Plain language is the default, so there is no vocabulary switch.
+The fixed header contains the Frontier Signal mark, the six primary destinations, and Light/Dark controls. Tablets and phones use one accessible full-screen menu. Plain language is the default, so there is no vocabulary switch.
 
 The Briefing view is organized as:
 
@@ -26,7 +26,7 @@ The Briefing view is organized as:
 6. a short methods and glossary invitation;
 7. a compact source-oriented footer.
 
-The homepage never renders the exhaustive model catalog. Updates retains the complete searchable timeline; Control cases gives evidence-heavy incidents their own focused view; Model map provides family-level context; Methods & sources preserves the research apparatus.
+The homepage never renders the exhaustive model catalog. Updates shows every record once, grouped by report week; Control cases gives evidence-heavy incidents their own focused view; Concern ladder organizes capability evidence; Model map provides family-level context; Methods & sources preserves the research apparatus.
 
 ## Update grammar
 

@@ -2,7 +2,7 @@
 
 import { spawn } from 'node:child_process';
 import { createReadStream } from 'node:fs';
-import { mkdtemp, rm, stat } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { createServer as createNetServer } from 'node:net';
 import { dirname, extname, join, resolve, sep } from 'node:path';
@@ -18,7 +18,7 @@ const VIEWPORTS = [
   { width: 390, height: 844 },
   { width: 320, height: 720 },
 ];
-const PRIMARY_VIEWS = ['briefing', 'updates', 'cases', 'models', 'methods'];
+const PRIMARY_VIEWS = ['briefing', 'updates', 'cases', 'ladder', 'models', 'methods'];
 const MIME = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
@@ -184,6 +184,8 @@ async function run() {
   const suppliedUrl = argument('--url');
   const local = suppliedUrl ? null : await staticServer();
   const baseUrl = new URL(suppliedUrl || local.baseUrl).href;
+ const signals = JSON.parse(await readFile(join(DIST, 'data', 'signals.json'), 'utf8'));
+ const expectedEventIds = signals.events.map(event => event.id);
   const browser = await launchChromium();
   const cdp = new Cdp(browser.page.webSocketDebuggerUrl);
   const failures = [];
@@ -316,6 +318,50 @@ async function run() {
 
     await setViewport(VIEWPORTS[0]);
     await navigate(new URL('?view=briefing&ui-smoke=desktop-interactions', baseUrl).href);
+    await route('updates');
+    const chronology = await evaluate(`(() => {
+      const groups = [...document.querySelectorAll('.update-week')];
+      const ids = groups.flatMap(group => [...group.querySelectorAll('.update-row')].map(row => row.dataset.eventId));
+      const weeks = groups.map(group => group.dataset.weekStart);
+      const assignedToCorrectWeek = groups.every(group => [...group.querySelectorAll('.update-row')].every(row => {
+        const date = row.dataset.reportedAt;
+        return date >= group.dataset.weekStart && date <= group.dataset.weekEnd;
+      }));
+      return {
+        groupCount: groups.length,
+        ids,
+        uniqueCount: new Set(ids).size,
+        newestFirst: weeks.every((week, index) => index === 0 || weeks[index - 1] > week),
+        assignedToCorrectWeek
+      };
+    })()`);
+    check(chronology.groupCount === 23, 'Updates groups the collection into all 23 report weeks', `${chronology.groupCount} groups`);
+    check(
+      chronology.ids.length === expectedEventIds.length && chronology.uniqueCount === expectedEventIds.length,
+      'Updates renders every recorded event exactly once',
+      `${chronology.ids.length} rows, ${chronology.uniqueCount} unique, ${expectedEventIds.length} expected`
+    );
+    check(expectedEventIds.every(id => chronology.ids.includes(id)), 'Updates retains every event ID from the data file');
+    check(chronology.newestFirst && chronology.assignedToCorrectWeek, 'Update weeks and records use report-date order');
+
+    await route('ladder');
+    const ladderState = await evaluate(`(() => {
+      const steps = [...document.querySelectorAll('[data-stage]')];
+      steps[0]?.click();
+      return {
+        heading: document.querySelector('main h1')?.textContent.trim(),
+        steps: steps.length,
+        selected: steps.filter(step => step.getAttribute('aria-pressed') === 'true').length,
+        detail: document.querySelector('#stage-detail h2')?.textContent.trim()
+      };
+    })()`);
+    check(
+      ladderState.heading === 'Concern ladder' && ladderState.steps === 9 && ladderState.selected === 1 && ladderState.detail === 'Tool use',
+      'Concern ladder is navigable and renders all nine stages',
+      JSON.stringify(ladderState)
+    );
+
+    await route('briefing');
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9, nativeVirtualKeyCode: 9 });
     await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9, nativeVirtualKeyCode: 9 });
     const focusRing = await evaluate(`(() => {

@@ -1,8 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {UPDATE_TYPES,buildWeeklySeries,getControlCases,getFeaturedEvents,sortByReportedAt} from '../dist/assets/data-utils.js';
+import {readFileSync} from 'node:fs';
+import {UPDATE_TYPES,buildWeeklySeries,getControlCases,getFeaturedEvents,groupEventsByReportWeek,sortByReportedAt} from '../dist/assets/data-utils.js';
 
 const event=(id,reportedAt,extra={})=>({id,title:id,reportedAt,...extra});
+const signals=JSON.parse(readFileSync(new URL('../dist/data/signals.json',import.meta.url),'utf8'));
+const preOverhaulIds=JSON.parse(readFileSync(new URL('./fixtures/pre-overhaul-event-ids.json',import.meta.url),'utf8'));
 
 test('reported records sort newest first without mutating the source',()=>{
  const events=[event('old','2026-01-01'),event('new','2026-02-01'),{id:'legacy',title:'legacy',date:'2026-01-15'}];
@@ -28,6 +31,40 @@ test('control cases are filtered and sorted by displayed report date',()=>{
   event('newer','2026-11-13',{controlCase:{sequence:[]}})
  ];
  assert.deepEqual(getControlCases(events).map(item=>item.id),['newer','older']);
+});
+
+test('records group into Monday-starting report weeks without mutating the source',()=>{
+ const events=[
+  event('sunday','2026-11-15'),
+  event('newest','2026-11-18'),
+  event('monday','2026-11-16'),
+  event('older','2026-11-09')
+ ];
+ const groups=groupEventsByReportWeek(events);
+ assert.deepEqual(groups.map(group=>[group.weekStart,group.weekEnd]),[
+  ['2026-11-16','2026-11-22'],
+  ['2026-11-09','2026-11-15']
+ ]);
+ assert.deepEqual(groups[0].events.map(item=>item.id),['newest','monday']);
+ assert.deepEqual(groups[1].events.map(item=>item.id),['sunday','older']);
+ assert.deepEqual(events.map(item=>item.id),['sunday','newest','monday','older']);
+ assert.throws(()=>groupEventsByReportWeek([event('invalid','2026-02-30')]),/valid report date/);
+});
+
+test('the complete collection appears exactly once across report weeks',()=>{
+ const groups=groupEventsByReportWeek(signals.events);
+ const groupedIds=groups.flatMap(group=>group.events.map(item=>item.id));
+ const expectedIds=sortByReportedAt(signals.events).map(item=>item.id);
+ assert.equal(groups.length,23);
+ assert.equal(groupedIds.length,signals.events.length);
+ assert.equal(new Set(groupedIds).size,signals.events.length);
+ assert.deepEqual(groupedIds,expectedIds);
+});
+
+test('the current collection retains every pre-overhaul event',()=>{
+ const currentIds=new Set(signals.events.map(item=>item.id));
+ const missing=preOverhaulIds.filter(id=>!currentIds.has(id));
+ assert.deepEqual(missing,[]);
 });
 
 test('weekly series returns twelve Monday buckets and counts every update type',()=>{

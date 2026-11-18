@@ -19,13 +19,14 @@ Main action: **Read this week’s briefing**.
 
 ## Page and route plan
 
-The five primary user-facing destinations are:
+The six primary user-facing destinations are:
 
 1. Briefing — `?view=briefing`.
 2. Updates — `?view=updates`.
 3. Control cases — `?view=cases`.
-4. Model map — `?view=models`.
-5. Methods & sources — `?view=methods`.
+4. Concern ladder — `?view=ladder`.
+5. Model map — `?view=models`.
+6. Methods & sources — `?view=methods`.
 
 Compatibility aliases remain for existing shared URLs:
 
@@ -34,7 +35,6 @@ Compatibility aliases remain for existing shared URLs:
 - `catalog` → the complete model appendix;
 - `methodology` → Methods & sources;
 - `overview` → Risk Outlook;
-- `ladder` → Concern Ladder.
 
 Anchors such as `#models`, `#coverage`, `#glossary`, and source-linked record IDs must continue to resolve sensibly.
 
