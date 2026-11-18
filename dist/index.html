@@ -1,20 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-type="software" data-radius="sharp" data-buttons="solid" data-motion>
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101012"><meta name="description" content="Frontier AI research, risk pathways, safety signals, and source evidence.">
+<meta name="theme-color" content="#f7f6f0"><meta name="description" content="Frontier AI research, risk pathways, safety signals, and source evidence.">
 <title>Dashboard — Frontier Signal</title>
+<meta name="page-type" content="software"><meta name="site-kind" content="software">
+<meta property="og:title" content="Frontier Signal — Frontier AI research">
+<meta property="og:description" content="Models, research, safeguards, and the evidence behind the outlook.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://alexkdot.github.io/frontier-signal/">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23101012'/%3E%3Cpath d='M6 23V15m7 8V9m7 14V5m7 18V12' stroke='%23ff795e' stroke-width='3'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="./assets/style.css?v=3750b5f383e7"><script type="module" src="./assets/app.js?v=f393cf8a050d"></script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23253d32'/%3E%3Cpath d='M6 23V15m7 8V9m7 14V5m7 18V12' stroke='%23f7f6f0' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preload" href="./assets/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./assets/fonts/source-serif.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{const theme=localStorage.getItem('frontier-theme');if(theme==='dark')document.documentElement.dataset.theme=theme;}catch{}</script>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<link rel="stylesheet" href="./assets/motion/motion.css">
+<link rel="stylesheet" href="./assets/style.css?v=4e0b05560b30"><script type="module" src="./assets/app.js?v=e90a225a703c"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-<div class="masthead"><a class="brand" href="#dashboard" aria-label="Frontier Signal home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26V17m8 9V10m8 16V4m8 22V13"/></svg><span>frontier<span class="brand-light">signal</span><span class="brand-period">.</span></span></a><span class="masthead-purpose">Models, capabilities &amp; the evidence of risk</span><a class="edition-link" href="#weekly-updates"><span>Weekly research review</span><span id="edition-label">Mondays · 9 a.m. Eastern</span></a></div>
-<div class="navigation-bar"><nav aria-label="Main navigation"><a href="#dashboard" class="active" aria-current="page">Dashboard</a><a href="#overview">Overview</a><a href="#timeline">Timeline</a><a href="#ladder">Concern ladder</a><a href="#methodology">Methodology</a></nav><button id="beginner-toggle" class="beginner" role="switch" aria-checked="false"><span>Simplified vocabulary</span><span class="toggle" aria-hidden="true"></span></button></div>
+<div class="masthead">
+ <a class="brand" href="#dashboard" aria-label="Frontier Signal home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26V17m8 9V10m8 16V4m8 22V13"/></svg><span>FRONTIER <span class="brand-light">SIGNAL</span><span class="brand-period">.</span></span></a>
+ <span class="masthead-purpose">A field guide to<br>frontier intelligence</span>
+ <a class="edition-link" href="#weekly-updates"><span>Weekly research review</span><span id="edition-label">Mondays · 9 a.m. Eastern</span></a>
+ <div class="theme-controls" role="group" aria-label="Color theme"><button data-theme-choice="light" aria-pressed="true">Light</button><button data-theme-choice="dark" aria-pressed="false">Dark</button></div>
+</div>
+<div class="navigation-bar"><nav aria-label="Main navigation"><a href="#dashboard" class="active" aria-current="page"><span aria-hidden="true">01</span> Dashboard</a><a href="#overview"><span aria-hidden="true">02</span> Overview</a><a href="#timeline"><span aria-hidden="true">03</span> Timeline</a><a href="#ladder"><span aria-hidden="true">04</span> Concern ladder</a><a href="#methodology"><span aria-hidden="true">05</span> Methodology</a></nav><button id="beginner-toggle" class="beginner" role="switch" aria-checked="false"><span>Simplified vocabulary</span><span class="toggle" aria-hidden="true"></span></button></div>
 </header>
 <main id="main" tabindex="-1" aria-label="Dashboard" data-view="dashboard"><div class="loading-state" role="status">Loading the research edition…</div><noscript><p>Enable JavaScript to explore the app, or visit the <a href="https://github.com/ALEXKDOT/frontier-signal">GitHub repository</a>.</p></noscript></main>
-<footer><a class="footer-brand" href="#dashboard">frontiersignal.</a><a href="https://github.com/ALEXKDOT/frontier-signal" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a><a href="#coverage">Import provenance →</a><a href="#methodology">Sources & methodology →</a></footer>
+<footer><div class="footer-identity"><a class="footer-brand" href="#dashboard">Frontier Signal<span>.</span></a><p>Research and model catalog · Updated weekly</p></div><a href="https://github.com/ALEXKDOT/frontier-signal" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a><a href="#coverage">Import provenance →</a><a href="#methodology">Sources & methodology →</a></footer>
 <dialog id="detail-dialog" aria-labelledby="dialog-title"><button class="close-dialog" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><div id="dialog-content"></div></dialog>
 </body></html>

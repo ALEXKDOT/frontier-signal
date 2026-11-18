@@ -63,4 +63,4 @@ The earlier ChatGPT Sites publication and its separate local checkout are preser
 
 ## Privacy
 
-No accounts, analytics, uploads, or backend. Only the vocabulary preference is stored locally. The repository includes incident summaries and public citations, not a full transcript or unrelated personal conversation content. Drafts and files outside `dist/` are not hosted.
+No accounts, analytics, uploads, or backend. Only the vocabulary and light/dark theme preferences are stored locally. The repository includes incident summaries and public citations, not a full transcript or unrelated personal conversation content. Drafts and files outside `dist/` are not hosted.

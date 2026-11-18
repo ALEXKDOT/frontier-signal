@@ -1,3 +1,4 @@
+import {refresh as refreshMotion} from './motion/motion.js';
 const $ = (selector, root = document) => root.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const iconPaths = {'→':'M4 12h16m-6-6 6 6-6 6','←':'M20 12H4m6-6-6 6 6 6','↑':'M12 20V4m-6 6 6-6 6 6','↗':'M5 19 19 5M6 5h13v13','↘':'m5 5 14 14M6 19h13V6','↔':'M4 12h16M9 7l-5 5 5 5m6-10 5 5-5 5','ⓘ':'M12 11v6m0-10v1M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0'};
@@ -15,6 +16,14 @@ const expandedCompanies = new Set();
 let modelQuery = '', modelGroup = 'all', dialogTrigger = null, visibleEvents = 20;
 let hasRouted = false;
 try { beginner = localStorage.getItem('frontier-simplified-vocabulary') === 'true'; } catch {}
+function setTheme(theme) {
+ const selected=theme==='dark'?'dark':'light';
+ document.documentElement.dataset.theme=selected;
+ document.querySelectorAll('[data-theme-choice]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.themeChoice===selected)));
+ document.querySelector('meta[name="theme-color"]').content=selected==='dark'?'#171c19':'#f7f6f0';
+ try { localStorage.setItem('frontier-theme',selected); } catch {}
+}
+setTheme(document.documentElement.dataset.theme||'light');
 const categories = ['All', 'Incidents', 'Capabilities', 'Governance', 'AI R&D', 'Cyber', 'Monitoring', 'Model proliferation', 'CBRN'];
 const direction = {worsening:['↗','More concerning','amber'],improving:['↘','Safety signal','mint'],mixed:['↔','Mixed signal','muted']};
 const date = value => new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z'));
@@ -75,7 +84,7 @@ function modelCard(model,role=''){
  const release=model.releasedAt?`<a class="release-date" href="${escape(model.releaseSourceUrl||model.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(model.name)} released ${date(model.releasedAt)}${model.releaseKind?`, ${escape(model.releaseKind)}`:''}; release source"><time datetime="${model.releasedAt}">${date(model.releasedAt)}</time> ↗</a>`:`<a class="release-date unverified" href="#model-methodology" aria-label="${escape(model.name)}: ${escape(model.releaseNote)}">${model.id==='chat-latest'?'Rolling alias':'Date unverified'}</a>`;
  const level=role?'h3':'h4';
  const status=`<span class="model-availability ${model.status==='restricted'?'restricted':['retiring','preview','existing-users','unconfirmed'].includes(model.status)?'amber':''}">${availability[model.status]}</span>`;
- return `<article class="model-card ${role?'featured-model':''}"><div class="model-card-top">${role?`<span class="model-role">${role}</span>`:''}${status}</div><div class="model-card-head"><${level}>${escape(model.name)}</${level}></div><p class="model-description">${escape(model.purpose)}</p><div class="model-card-foot"><div class="model-release"><span class="metadata-label">Released</span>${release}${model.releaseKind?`<small>${escape(model.releaseKind)}</small>`:''}</div><a class="model-docs" href="${escape(model.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Provider source for ${escape(model.name)}">Source ↗</a></div>${model.retirementAt?`<p class="retirement-note">${model.status==='retired'?'Retired':'Retires'} ${date(model.retirementAt)}</p>`:''}</article>`;
+ return `<article class="model-card card ${role?'featured-model':''}"><div class="model-card-top">${role?`<span class="model-role">${role}</span>`:''}${status}</div><div class="model-card-head"><${level}>${escape(model.name)}</${level}></div><p class="model-description">${escape(model.purpose)}</p><div class="model-card-foot"><div class="model-release"><span class="metadata-label">Released</span>${release}${model.releaseKind?`<small>${escape(model.releaseKind)}</small>`:''}</div><a class="model-docs" href="${escape(model.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Provider source for ${escape(model.name)}">Source ↗</a></div>${model.retirementAt?`<p class="retirement-note">${model.status==='retired'?'Retired':'Retires'} ${date(model.retirementAt)}</p>`:''}</article>`;
 }
 function renderCatalogResults(){
  const company=models.companies.find(c=>c.id===selectedCompany);
@@ -93,7 +102,7 @@ function renderModelCatalog(){
  $('#featured-models').innerHTML=['capable','everyday'].map((key,index)=>modelCard(offerings.find(model=>model.id===company.featured[key]),index?'Everyday use':'Most capable')).join('');
  const toggle=$('#model-expand');
  toggle.setAttribute('aria-expanded',String(expanded));
- toggle.innerHTML=`<span>${expanded?'Collapse catalog':`Explore all ${offerings.length} ${escape(company.name)} models`}</span><span aria-hidden="true">${expanded?'−':'+'}</span>`;
+ toggle.innerHTML=`<span>${expanded?'Collapse catalog':`View all ${offerings.length} ${escape(company.name)} models`}</span><span aria-hidden="true">${expanded?'−':'+'}</span>`;
  $('#model-catalog-note').textContent=company.note;
  $('#company-model-source').href=company.catalogUrl;
  $('#company-model-source').textContent=`${company.name} catalog ↗`;
@@ -109,12 +118,44 @@ function renderIncident(){
  document.querySelectorAll('[data-incident]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.incident===incident.id)));
  $('#incident-spotlight').innerHTML=`<div class="spotlight-top"><span class="evidence-chip">${escape(incident.evidence)}</span><span class="small-note">Reported ${date(incident.date)}</span></div><h3>${escape(incident.title)}</h3><dl class="incident-facts"><div><dt>Reported finding</dt><dd>${rich(recordSummary(incident))}</dd></div><div><dt>Interpretation</dt><dd>${rich(incident.why_it_matters)}</dd></div><div><dt>Evidence limits</dt><dd>${rich(incident.what_it_doesnt_mean)}</dd></div></dl><div class="spotlight-footer"><button class="text-link" data-event="${incident.id}">Read record & sources →</button><span class="small-note">${incident.review.status==='approved'?'Human-reviewed':incident.review.status==='imported'?'Historical import':'Automated source summary'}</span></div>`;decorateIcons($('#incident-spotlight'));
 }
+function evidenceIndex(){
+ const counts=['worsening','improving','mixed'].map(key=>({key,count:data.events.filter(event=>event.direction===key).length}));
+ return `<aside class="evidence-index" aria-labelledby="evidence-index-title" data-enter-media>
+  <div class="index-heading"><h2 id="evidence-index-title">The evidence index</h2></div>
+  <div class="index-total"><strong>${data.events.length}</strong><span>research records<br><small>${sourceRange()}</small></span></div>
+  <p class="index-context">Reports, investigations, research & governance</p>
+  <div class="index-chart" role="group" aria-label="Browse records by signal direction">${counts.map(({key,count})=>`<button class="index-row ${direction[key][2]}" data-signal="${key}" aria-label="Read ${count} ${direction[key][1].toLowerCase()} records"><span class="index-row-label"><span>${direction[key][0]} ${direction[key][1]}</span><strong>${count}</strong></span><span class="index-track" aria-hidden="true"><span style="--bar-share:${count/data.events.length*100}%"></span></span></button>`).join('')}</div>
+  <p class="index-note">Counts describe this collection, not incident rates or a risk score.</p>
+ </aside>`;
+}
 function dashboard(){
  const incidents=['hugging-face','epoch-trajectory-live-testing','tencent-amap-fleet','dns-escape','medicare'].map(id=>data.events.find(e=>e.id===id)).filter(Boolean);
  const recent=data.events.slice(0,3);
  const safety=data.events.find(e=>e.direction==='improving'&&['primary','research'].includes(e.verification));
- main.innerHTML=`<section class="landscape-models" aria-labelledby="landscape-title"><div class="landscape-heading"><div><h1 id="landscape-title">AI landscape</h1></div><div class="edition-facts"><a href="#model-methodology"><span>Model catalog checked</span><strong>${models?date(models.checkedAt):'Unavailable'}</strong></a><a href="#weekly-updates"><span>Incident review completed</span><strong>${date(data.updates?.lastCheckedAt||data.asOf)}</strong></a></div></div><div class="landscape-subhead"><h2>Model directory</h2><span>${models?`${models.companies.length} providers · ${models.companies.reduce((sum,c)=>sum+currentModels(c).length,0)} catalog entries`:'Model catalog unavailable'}</span></div>${models?`<div class="company-picker" role="group" aria-label="Choose an AI company">${models.companies.map(company=>`<button class="company-choice" data-company="${company.id}" aria-pressed="${selectedCompany===company.id}" aria-controls="company-models"><strong>${escape(company.name)}</strong><span>${escape(company.family)}</span><small>${currentModels(company).length} models</small></button>`).join('')}</div><div id="company-models"><div id="featured-models" class="featured-models"></div><button id="model-expand" class="model-expand" data-action="expand-models" aria-expanded="false" aria-controls="model-catalog"></button><div id="model-catalog" hidden></div><div class="catalog-provenance"><a id="company-model-source" class="text-link" target="_blank" rel="noopener noreferrer"></a><span id="company-model-date" class="small-note"></span><a class="text-link" href="#model-methodology">Selection criteria →</a></div><p id="model-catalog-note" class="small-note"></p><p id="model-status" class="sr-only" role="status" aria-live="polite"></p></div>`:'<div class="empty-state"><p>The model catalog could not load. The incident records are still available below.</p><button class="text-link" data-action="retry">Retry →</button></div>'}</section><section class="dashboard-incidents" aria-labelledby="major-incidents-title"><div class="incident-index"><h2 id="major-incidents-title">Major incidents</h2><p class="incident-intro">Where containment and control were tested.</p><p class="small-note">Incident coverage through ${date(data.asOf)}</p><div class="incident-picker" role="group" aria-label="Choose a major incident">${incidents.map((e,index)=>`<button data-incident="${e.id}" aria-pressed="${e.id===selectedIncident}" aria-controls="incident-spotlight"><span><strong>${{'hugging-face':'Hugging Face','epoch-trajectory-live-testing':'Epoch / Trajectory','tencent-amap-fleet':'Tencent / Amap','dns-escape':'Internet restrictions','medicare':'Medicare statistics'}[e.id]}</strong><small>${date(e.date)}</small></span><span aria-hidden="true">→</span></button>`).join('')}</div><a href="#timeline" class="text-link">Full timeline →</a></div><article id="incident-spotlight" class="incident-spotlight" aria-live="polite"></article></section><section class="dashboard-bottom" aria-label="More developments"><article><h2>From models to agents</h2><p>Tool access and operating conditions determine how a model’s capabilities translate into action. Examine the evidence for nine levels of agent capability.</p><a class="text-link" href="#ladder">Examine the evidence →</a></article><article><h2>Research & incidents</h2><div class="dashboard-recent">${recent.map(e=>`<button data-event="${e.id}"><small>${date(e.date)}</small><span>${escape(e.title)}</span></button>`).join('')}</div></article><article><h2>Safeguard developments</h2>${safety?`<p>${rich(recordSummary(safety))}</p><button class="text-link" data-event="${safety.id}">Read evidence & limitations →</button>`:'<a class="text-link" href="#overview">View evidence summary →</a>'}</article></section>`;
+ const catalogCount=models?.companies.reduce((sum,c)=>sum+currentModels(c).length,0);
+ main.innerHTML=`
+ <section class="briefing hero hero--split" data-enter aria-labelledby="landscape-title">
+  <div class="briefing-copy hero-text">
+   <p class="eyebrow"><span class="edition-square" aria-hidden="true"></span> Weekly research briefing</p>
+   <h1 id="landscape-title">A field guide to<br>frontier AI.</h1>
+   <p class="hero__lead">Which models are available, what they can do, and what the evidence says about control.</p>
+   <div class="briefing-actions btn-row"><a class="btn btn--primary" href="#models">View model directory <span aria-hidden="true">↓</span></a><a class="btn btn--secondary" href="#overview">Read the outlook <span aria-hidden="true">↗</span></a></div>
+   <div class="briefing-update"><span class="metadata-label">Current assessment</span><p>${escape(data.outlook.title||data.outlook.level)}</p><a class="text-link" href="#weekly-updates">Review completed ${data.updates?.lastCheckedAt?date(data.updates.lastCheckedAt):'not yet'} →</a></div>
+  </div>
+  ${evidenceIndex()}
+ </section>
+ <section class="landscape-models" id="models" tabindex="-1" aria-labelledby="directory-title">
+  <div class="section-head directory-heading"><div><p class="eyebrow">Models & availability</p><h2 id="directory-title">The model directory</h2></div><div class="directory-summary"><strong>${models?`${models.companies.length} providers · ${catalogCount} catalog entries`:'Catalog unavailable'}</strong><span>Sources checked ${models?date(models.checkedAt):'—'}</span></div></div>
+  ${models?`<div class="directory-layout"><div class="provider-sidebar"><div class="company-picker" role="group" aria-label="Choose an AI company">${models.companies.map(company=>`<button class="company-choice" data-company="${company.id}" aria-pressed="${selectedCompany===company.id}" aria-controls="company-models"><span class="company-initial" aria-hidden="true">${escape(company.name.slice(0,1))}</span><span class="company-name"><strong>${escape(company.name)}</strong><small>${escape(company.family)}</small></span><span class="company-count">${currentModels(company).length}<span class="sr-only"> models</span></span></button>`).join('')}</div><p class="small-note provider-note">Includes supported earlier releases. Selections reflect each provider’s positioning.</p></div>
+  <div id="company-models"><div id="featured-models" class="featured-models"></div><button id="model-expand" class="model-expand btn" data-action="expand-models" aria-expanded="false" aria-controls="model-catalog"></button><div id="model-catalog" hidden></div><div class="catalog-provenance"><a id="company-model-source" class="text-link" target="_blank" rel="noopener noreferrer"></a><span id="company-model-date" class="small-note"></span><a class="text-link" href="#model-methodology">Selection criteria →</a></div><p id="model-catalog-note" class="small-note"></p><p id="model-status" class="sr-only" role="status" aria-live="polite"></p></div></div>`:'<div class="empty-state"><p>The model catalog could not load. The incident records are still available below.</p><button class="text-link" data-action="retry">Retry →</button></div>'}
+ </section>
+ <section class="incident-section" aria-labelledby="major-incidents-title">
+  <div class="section-head"><div><p class="eyebrow">Cases & consequences</p><h2 id="major-incidents-title">Where control was tested</h2></div><a href="#timeline" class="text-link">View all records →</a></div>
+  <div class="dashboard-incidents"><div class="incident-index"><p class="incident-intro">Select a case to examine the finding, its implications, and its limits.</p><div class="incident-picker" role="group" aria-label="Choose a major incident">${incidents.map(e=>`<button data-incident="${e.id}" aria-pressed="${e.id===selectedIncident}" aria-controls="incident-spotlight"><span><strong>${{'hugging-face':'Hugging Face','epoch-trajectory-live-testing':'Epoch / Trajectory','tencent-amap-fleet':'Tencent / Amap','dns-escape':'Internet restrictions','medicare':'Medicare statistics'}[e.id]}</strong><small>${date(e.date)}</small></span><span aria-hidden="true">↗</span></button>`).join('')}</div><p class="small-note">Incident coverage through ${date(data.asOf)}. Report dates shown.</p></div><article id="incident-spotlight" class="incident-spotlight" aria-live="polite"></article></div>
+ </section>
+ <section class="dashboard-bottom" aria-label="Further reading"><article><p class="eyebrow">Capabilities</p><h2>From models<br> to agents</h2><p>Tool access and operating conditions shape what a model can do. Examine the evidence for nine levels of agent capability.</p><a class="text-link" href="#ladder">Read the concern ladder →</a></article><article><p class="eyebrow">Recent records</p><h2>In the research file</h2><div class="dashboard-recent">${recent.map(e=>`<button data-event="${e.id}"><small>${date(e.date)}</small><span>${escape(e.title)}</span><span class="record-arrow" aria-hidden="true">↗</span></button>`).join('')}</div></article><article class="safeguard-reading"><p class="eyebrow">Safety & control</p><h2>Safeguards<br> in practice</h2>${safety?`<p>${rich(recordSummary(safety))}</p><button class="text-link" data-event="${safety.id}">Read the evidence →</button>`:'<a class="text-link" href="#overview">View evidence summary →</a>'}</article></section>`;
  renderModelCatalog();renderIncident();
+ if(!hasRouted)refreshMotion();else $('.briefing').classList.add('is-entered','is-still');
 }
 function timeline(){
  main.innerHTML=timelineMarkup();
@@ -124,7 +165,8 @@ function ladder(){main.innerHTML=ladderMarkup();renderStage(selectedStage);}
 function route(){
  if(!data)return;
  const hash=location.hash.slice(1)||'dashboard';
- if(hash==='main'){main.focus();return;}
+ if(hash==='main'&&hasRouted){main.focus();return;}
+ const isModels=hash==='models';
  const isMethod=['methodology','methodology-sources','model-methodology','weekly-updates','glossary','coverage'].includes(hash);
  const views={dashboard,overview,timeline,ladder,methodology};
  const view=isMethod?'methodology':Object.hasOwn(views,hash)?hash:'dashboard';
@@ -139,17 +181,19 @@ function route(){
  views[view]();decorateIcons(main);
  document.querySelectorAll('.method-nav a').forEach(a=>{if(a.hash===`#${hash}`)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
  document.title=`${labels[view]} — Frontier Signal`;
- if(hasRouted)main.focus({preventScroll:true});
+ if(hasRouted||hash==='main')main.focus({preventScroll:true});
  hasRouted=true;
  requestAnimationFrame(()=>{
-  if(isMethod&&hash!=='methodology')document.getElementById(hash)?.scrollIntoView({behavior:'instant'});
+  if(isModels){const directory=$('#models');directory.focus({preventScroll:true});directory.scrollIntoView({behavior:'instant'});}
+  else if(isMethod&&hash!=='methodology')document.getElementById(hash)?.scrollIntoView({behavior:'instant'});
   else window.scrollTo({top:0,behavior:'instant'});
  });
 }
 function setBeginner(value){beginner=value;$('#beginner-toggle').setAttribute('aria-checked',beginner);try{localStorage.setItem('frontier-simplified-vocabulary',String(beginner));}catch{}if($('#event-list'))filterEvents();if($('#incident-spotlight')){const y=window.scrollY;dashboard();window.scrollTo({top:y,behavior:'instant'});}}
 document.addEventListener('click',event=>{
  const b=event.target.closest('button,a');if(!b)return;
- if(b.dataset.event){returnDialog=null;showEvent(b.dataset.event);}
+ if(b.dataset.themeChoice){setTheme(b.dataset.themeChoice);}
+ else if(b.dataset.event){returnDialog=null;showEvent(b.dataset.event);}
  else if(b.dataset.company){selectedCompany=b.dataset.company;modelQuery='';modelGroup='all';renderModelCatalog();}
  else if(b.dataset.incident){selectedIncident=b.dataset.incident;renderIncident();}
  else if(b.dataset.action==='expand-models'){if(expandedCompanies.has(selectedCompany))expandedCompanies.delete(selectedCompany);else expandedCompanies.add(selectedCompany);renderModelCatalog();}
@@ -161,7 +205,7 @@ document.addEventListener('click',event=>{
  else if(b.dataset.stage!==undefined)renderStage(Number(b.dataset.stage),true);
  else if(b.dataset.action==='ladder-back'){document.querySelector(`[data-stage="${selectedStage}"]`).focus();}
  else if(b.dataset.filter){category=b.dataset.filter;filterEvents();}
- else if(b.dataset.signal){signal=b.dataset.signal;category='All';location.hash='timeline';}
+ else if(b.dataset.signal){signal=b.dataset.signal;category='All';query='';year='all';location.hash='timeline';}
  else if(b.dataset.action==='more-events'){const firstNew=visibleEvents;visibleEvents+=20;filterEvents(false);$('#event-list').querySelectorAll('.event-row')[firstNew]?.querySelector('[data-event]')?.focus();}
  else if(b.dataset.action==='outlook'){returnDialog=null;showOutlook();}
  else if(b.dataset.action==='back-dialog'){const previous=returnDialog;returnDialog=null;openDialog(previous);}
