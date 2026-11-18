@@ -139,7 +139,8 @@ summary {
 }
 
 main:focus-visible {
-  outline-offset: -3px;
+  /* Route changes focus main for screen-reader context; a full-page ring reads as a layout boundary. */
+  outline: 0;
 }
 
 [hidden] {

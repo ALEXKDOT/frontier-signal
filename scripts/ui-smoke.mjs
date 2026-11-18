@@ -305,10 +305,17 @@ async function run() {
         await route(view);
         const layout = await evaluate(`({
           view: document.querySelector('main')?.dataset.view,
-          overflow: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - innerWidth
+          overflow: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - innerWidth,
+          mainOutlineWidth: getComputedStyle(document.querySelector('main')).outlineWidth,
+          mainOutlineStyle: getComputedStyle(document.querySelector('main')).outlineStyle
         })`);
         check(layout.view === view, `${viewport.width}px ${view} route renders`);
         check(layout.overflow <= 1, `${viewport.width}px ${view} has no horizontal page overflow`, `${layout.overflow}px excess`);
+        check(
+          layout.mainOutlineStyle === 'none' || Number.parseFloat(layout.mainOutlineWidth) === 0,
+          `${viewport.width}px ${view} has no page-boundary focus frame`,
+          `${layout.mainOutlineWidth} ${layout.mainOutlineStyle}`
+        );
         if (view === 'updates') {
           const shortestControl = await evaluate(`Math.min(...['#event-search','#year-filter','.update-type-filters button'].map(selector => document.querySelector(selector)?.getBoundingClientRect().height || 0))`);
           check(shortestControl >= 44, `${viewport.width}px update filters are at least 44px tall`, `${shortestControl}px`);
