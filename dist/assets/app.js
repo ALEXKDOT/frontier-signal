@@ -1,4 +1,5 @@
 import {refresh as refreshMotion} from './motion/motion.js';
+import {mountAll as mountMoments,unmountAll as unmountMoments} from './moments/moments.js';
 const $ = (selector, root = document) => root.querySelector(selector);
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const iconPaths = {'→':'M4 12h16m-6-6 6 6-6 6','←':'M20 12H4m6-6-6 6 6 6','↑':'M12 20V4m-6 6 6-6 6 6','↗':'M5 19 19 5M6 5h13v13','↘':'m5 5 14 14M6 19h13V6','↔':'M4 12h16M9 7l-5 5 5 5m6-10 5 5-5 5','ⓘ':'M12 11v6m0-10v1M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0'};
@@ -12,7 +13,6 @@ const main = $('#main');
 const dialog = $('#detail-dialog');
 const content = $('#dialog-content');
 let data, glossary, models, beginner = false, category = 'All', signal = 'all', query = '', year = 'all', returnDialog = null, selectedStage = 3, selectedCompany = 'openai', selectedIncident = 'hugging-face';
-const expandedCompanies = new Set();
 let modelQuery = '', modelGroup = 'all', dialogTrigger = null, visibleEvents = 20;
 let hasRouted = false;
 try { beginner = localStorage.getItem('frontier-simplified-vocabulary') === 'true'; } catch {}
@@ -36,7 +36,7 @@ function sourceRange() { const dates=data.events.map(e=>e.date).sort(); const fm
 function showEvent(id, assessment = false) {
  const e=data.events.find(x=>x.id===id); if(!e)return;
  const d=direction[e.direction];
- openDialog(`<h2 id="dialog-title">${escape(e.title)}</h2><p class="record-classification">${escape(e.category)}${e.category.toLowerCase()===`${e.kind}s`?'':` · ${escape(e.kind)}`}</p><div class="event-meta"><span class="${d[2]}">${d[0]} ${d[1]}</span><span>${escape(e.evidence)}</span></div><dl class="record-dates"><div><dt>${escape(e.dateBasis)}</dt><dd>${date(e.date)}</dd></div><div><dt>Occurred</dt><dd>${escape(e.occurred)}</dd></div></dl><p class="lead">${rich(recordSummary(e))}</p><div class="interpretation"><section><h3>Interpretation</h3><p>${rich(e.why_it_matters)}</p></section><section class="limit"><h3>Evidence limitations</h3><p>${rich(e.what_it_doesnt_mean)}</p></section><section><h3>What would change the assessment</h3><p>${rich(e.what_would_raise_concern)}</p></section></div><details class="worry" ${assessment?'open':''}><summary>Risk assessment</summary><div class="worry-content"><h3 class="amber">Counterevidence & mitigating factors</h3><p>${rich(e.less_concerning)}</p><div class="takeaway">${rich(e.conclusion)}</div></div></details><h3>Sources & provenance</h3><p class="small-note">${escape(e.evidenceNote)}</p>${sources(e)}<p class="small-note">${reviewLabel(e)} ${e.chatMessages.length?'<a href="#coverage" data-close>Import provenance →</a>':''}</p>`);
+ openDialog(`<h2 id="dialog-title">${escape(e.title)}</h2><p class="record-classification">${escape(e.category)}${e.category.toLowerCase()===`${e.kind}s`?'':` · ${escape(e.kind)}`}</p><div class="event-meta"><span class="${d[2]}">${d[0]} ${d[1]}</span><span>${escape(e.evidence)}</span></div><dl class="record-dates"><div><dt>${escape(e.dateBasis)}</dt><dd>${date(e.date)}</dd></div><div><dt>Occurred</dt><dd>${escape(e.occurred)}</dd></div></dl><p class="lead">${rich(recordSummary(e))}</p><div class="interpretation"><section><h3>Interpretation</h3><p>${rich(e.why_it_matters)}</p></section><section class="limit"><h3>Evidence limitations</h3><p>${rich(e.what_it_doesnt_mean)}</p></section><section><h3>What would change the assessment</h3><p>${rich(e.what_would_raise_concern)}</p></section></div><details class="worry" ${assessment?'open':''}><summary>Risk assessment</summary><div class="worry-content"><h3 class="amber">Counterevidence & mitigating factors</h3><p>${rich(e.less_concerning)}</p><div class="takeaway">${rich(e.conclusion)}</div></div></details><h3>Sources & provenance</h3><p class="small-note">${escape(e.evidenceNote)}</p>${sources(e)}<p class="small-note">${reviewLabel(e)} ${e.chatMessages.length?'<a href="?view=methodology#coverage" data-view="methodology" data-anchor="coverage" data-close>Import provenance →</a>':''}</p>`);
  if(assessment)$('.worry',content).scrollIntoView({block:'start',behavior:'instant'});
 }
 function showPathway(id) {
@@ -46,7 +46,7 @@ function showPathway(id) {
 }
 function showOutlook() {
  const o=data.outlook;
- openDialog(`<h2 id="dialog-title">Evidence behind this summary</h2><p>${escape(o.summary)}</p><h3>Supporting evidence</h3>${data.events.filter(e=>o.basis.includes(e.id)).map(e=>`<button class="related" data-event="${e.id}"><span><small>${escape(e.evidence)}</small>${escape(e.title)}</span><span>→</span></button>`).join('')}<h3 class="amber">Evidence that would raise concern</h3><p>${escape(o.moreConcerning)}</p><h3 class="mint">Evidence that would lower concern</h3><p>${escape(o.lessConcerning)}</p><h3>Unresolved uncertainties</h3><p>How evaluation results generalize to deployment, how reliably safeguards withstand adversarial pressure, and how capabilities interact across systems. We do not convert these uncertainties into a precise catastrophe probability.</p><a class="text-link" href="#methodology" data-close>Methodology →</a>`);
+ openDialog(`<h2 id="dialog-title">Evidence behind this summary</h2><p>${escape(o.summary)}</p><h3>Supporting evidence</h3>${data.events.filter(e=>o.basis.includes(e.id)).map(e=>`<button class="related" data-event="${e.id}"><span><small>${escape(e.evidence)}</small>${escape(e.title)}</span><span>→</span></button>`).join('')}<h3 class="amber">Evidence that would raise concern</h3><p>${escape(o.moreConcerning)}</p><h3 class="mint">Evidence that would lower concern</h3><p>${escape(o.lessConcerning)}</p><h3>Unresolved uncertainties</h3><p>How evaluation results generalize to deployment, how reliably safeguards withstand adversarial pressure, and how capabilities interact across systems. We do not convert these uncertainties into a precise catastrophe probability.</p><a class="text-link" href="?view=methodology" data-view="methodology" data-close>Methodology →</a>`);
 }
 function showTerm(term) {
  const g=glossary[term];if(!g)return;
@@ -54,7 +54,7 @@ function showTerm(term) {
  openDialog(`<h2 id="dialog-title">${escape(term.charAt(0).toUpperCase()+term.slice(1))}</h2><p class="lead">${escape(g.definition)}</p>${beginner?`<h3>Illustrative example</h3><p>${escape(g.analogy)}</p>`:''}${returnDialog?'<button class="text-link" data-action="back-dialog">← Back to the evidence</button>':''}`);
 }
 function heading(title,description=''){return `<header class="page-heading"><h1>${title}</h1>${description?`<p>${description}</p>`:''}</header>`;}
-function demoNote(){return `<div class="demo-note"><span class="demo-label">INCIDENT COVERAGE</span><span>Through ${date(data.asOf)} · Reports ${sourceRange()}</span><a class="text-link" href="#coverage">Provenance →</a></div>`;}
+function demoNote(){return `<div class="demo-note"><span class="demo-label">INCIDENT COVERAGE</span><span>Through ${date(data.asOf)} · Reports ${sourceRange()}</span><a class="text-link" href="?view=methodology#coverage" data-view="methodology" data-anchor="coverage">Provenance →</a></div>`;}
 function pathwayCards(){return data.pathways.map(p=>`<button class="pathway-card" data-pathway="${p.id}"><span class="card-top"><span class="pathway-status">${escape(p.status)} ${escape(p.trend)}</span></span><h3>${escape(p.name)}</h3><p>${escape(p.question)}</p><span class="card-bottom">${escape(p.interpretation)}<span>→</span></span></button>`).join('');}
 function eventRows(events){return events.map(e=>{const d=direction[e.direction];return `<article class="event-row"><div class="event-date"><span>${new Date(e.date+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',timeZone:'UTC'})}</span><strong>${e.date.slice(8)}</strong><small>${e.date.slice(0,4)}</small></div><div class="event-body"><div class="event-meta"><span class="${d[2]}">${d[0]} ${d[1]}</span><span>${escape(e.category)}</span><span>${escape(e.evidence)}</span></div><h3><button data-event="${e.id}">${escape(e.title)}</button></h3><p class="event-excerpt">${rich(recordSummary(e))}</p><p class="small-note occurrence">Occurred: ${escape(e.occurred)}</p><div class="event-bottom"><div>${e.pathways.map(id=>`<button class="tag" data-pathway="${id}">${escape(data.pathways.find(p=>p.id===id).name)}</button>`).join('')}</div><button class="worry-link" data-event="${e.id}">Read record & assessment <span>→</span></button></div></div></article>`;}).join('');}
 function timelineMarkup(){return `<section id="timeline"><div class="section-head view-heading"><div><h1>Timeline</h1></div><span class="small-note">${data.events.length} records · ordered by report date</span></div><div class="timeline-search"><label for="event-search">Search records<input id="event-search" type="search" placeholder="Medicare, DNS, Hugging Face…" value="${escape(query)}"></label><label for="year-filter">Report year<select id="year-filter"><option value="all">All years</option>${[...new Set(data.events.map(e=>e.date.slice(0,4)))].sort().reverse().map(y=>`<option value="${y}" ${y===year?'selected':''}>${y}</option>`).join('')}</select></label></div><div class="timeline-controls"><div class="filters" role="group" aria-label="Filter notes by category">${categories.map(c=>`<button class="filter ${c===category?'selected':''}" data-filter="${c}" aria-pressed="${c===category}">${c}</button>`).join('')}</div><div class="signal-filter"><label for="signal-filter">Signal direction</label><select id="signal-filter"><option value="all">All signals</option><option value="worsening">Capability & risk</option><option value="improving">Safety & control</option><option value="mixed">Mixed signals</option></select></div></div><p id="result-count" class="result-count" role="status" aria-live="polite"></p><div class="timeline-results-header"><p class="small-note">Reports include research, policy, and follow-ups; record totals are not incident counts.</p><button class="text-link" id="clear-event-filters" data-action="reset-filters" hidden>Clear filters</button></div><div id="event-list"></div><div id="event-pagination"></div></section>`;}
@@ -71,8 +71,8 @@ const stages=[
 ];
 function ladderMarkup(){return `<section id="ladder"><div class="section-head view-heading"><h1>Concern ladder</h1><p class="page-description">Nine capabilities, from tool use to strategic self-improvement. Select a level to examine what the evidence establishes.</p></div><div class="ladder-layout"><div class="ladder-steps" role="group" aria-label="Levels of agent capability">${stages.map((s,i)=>`<button class="ladder-step ${i===selectedStage?'selected':''} ${s[1].startsWith('Not established')?'unestablished':''}" data-stage="${i}" aria-pressed="${i===selectedStage}"><span class="step-number">${i+1<10?'0':''}${i+1}</span><span>${s[0]}</span><small class="step-label">${s[1].startsWith('Not established')?'Not established':s[1].startsWith('Limited')?'Limited evidence':'Documented'}</small><span class="step-status ${s[1].startsWith('Not established')?'none':s[1].startsWith('Limited')?'limited':'documented'}" aria-hidden="true"></span></button>`).join('')}</div><div id="stage-detail" class="stage-detail" tabindex="-1" aria-live="polite"></div></div><p class="small-note ladder-note">Evidence labels refer to the records in this edition, with each source’s limitations. “Not established” does not mean impossible or disproven. These stages need not occur in order.</p></section>`;}
 function renderStage(index,reveal=false){const s=stages[index];if(!s)return;selectedStage=index;document.querySelectorAll('[data-stage]').forEach(b=>{const selected=Number(b.dataset.stage)===index;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',selected);});$('#stage-detail').innerHTML=`<span class="stage-big">${String(index+1).padStart(2,'0')}</span><h2>${s[0]}</h2><p class="stage-evidence">${s[1]}</p><p>${s[2]}</p><div class="stage-why"><h3>Implications</h3><p>${s[3]}</p></div>${s[4]?`<button class="text-link" data-event="${s[4]}">Related research →</button>`:'<p class="small-note">No supporting event is established by these records.</p>'}<button class="ladder-back text-link" data-action="ladder-back">↑ Back to capability levels</button>`;decorateIcons($('#stage-detail'));if(reveal&&window.matchMedia('(max-width:850px)').matches){$('#stage-detail').focus({preventScroll:true});$('#stage-detail').scrollIntoView({block:'start',behavior:'instant'});}}
-function renderEvidence(){return `<section class="evidence-board"><div class="section-head"><div><h2>Evidence and interpretation</h2></div></div><div class="evidence-grid"><article><h3 class="evidence-label mint">Observed</h3><p>New reports document unauthorized evaluation activity, interference with safety work and stronger evidence of AI-assisted research acceleration.</p><button class="text-link" data-event="metr-anthropic-rd-acceleration">Independent research assessment →</button></article><article><h3 class="evidence-label amber">Inferred</h3><p>Faster development may compress the time available for assurance. Independent containment, behavioral checks and verified restraints become more consequential.</p><a class="text-link" href="#methodology">Methodology →</a></article><article><h3 class="evidence-label muted">Speculative</h3><p>A system could one day operate indefinitely beyond human control. These sources do not establish that outcome.</p><button class="text-link" data-action="future-stage">Shutdown resistance →</button></article></div></section>`;}
-function overview(){const o=data.outlook;main.innerHTML=heading('AI risk overview','A qualitative assessment of capabilities, control failures, and safeguards.')+demoNote()+`<section class="outlook"><div class="outlook-main"><div class="risk-title"><h2>${escape(o.title||o.level)}</h2><span class="trend">${escape(o.trendSymbol||'↗')} ${escape(o.trend)}</span></div><p>${escape(o.summary)}</p><button class="text-link" data-action="outlook">View supporting evidence <span>→</span></button></div><aside class="outlook-aside"><span class="eyebrow">SIGNAL DIRECTION</span><button class="signal-row" data-signal="worsening"><span class="signal-symbol amber">↗</span><span><strong>Capability & risk</strong></span></button><button class="signal-row" data-signal="improving"><span class="signal-symbol mint">↘</span><span><strong>Safety & control</strong></span></button><div class="outlook-foot"><span class="small-note">Qualitative assessment.<br>Source limitations apply.</span><a href="#methodology">How we assess →</a></div></aside></section><div class="changed-strip"><span class="eyebrow">LATEST NOTE</span><span>${escape(o.changed)}</span><button data-event="${data.latestEventId}" aria-label="Read latest incident note">→</button></div><section id="pathways"><div class="section-head"><div><h2>Risk pathways</h2></div></div><div class="pathway-grid">${pathwayCards()}</div></section>`+renderEvidence();
+function renderEvidence(){return `<section class="evidence-board"><div class="section-head"><div><h2>Evidence and interpretation</h2></div></div><div class="evidence-grid"><article><h3 class="evidence-label mint">Observed</h3><p>New reports document unauthorized evaluation activity, interference with safety work and stronger evidence of AI-assisted research acceleration.</p><button class="text-link" data-event="metr-anthropic-rd-acceleration">Independent research assessment →</button></article><article><h3 class="evidence-label amber">Inferred</h3><p>Faster development may compress the time available for assurance. Independent containment, behavioral checks and verified restraints become more consequential.</p><a class="text-link" href="?view=methodology" data-view="methodology">Methodology →</a></article><article><h3 class="evidence-label muted">Speculative</h3><p>A system could one day operate indefinitely beyond human control. These sources do not establish that outcome.</p><button class="text-link" data-action="future-stage">Shutdown resistance →</button></article></div></section>`;}
+function overview(){const o=data.outlook;main.innerHTML=heading('AI risk overview','A qualitative assessment of capabilities, control failures, and safeguards.')+demoNote()+`<section class="outlook"><div class="outlook-main"><div class="risk-title"><h2>${escape(o.title||o.level)}</h2><span class="trend">${escape(o.trendSymbol||'↗')} ${escape(o.trend)}</span></div><p>${escape(o.summary)}</p><button class="text-link" data-action="outlook">View supporting evidence <span>→</span></button></div><aside class="outlook-aside"><span class="eyebrow">SIGNAL DIRECTION</span><button class="signal-row" data-signal="worsening"><span class="signal-symbol amber">↗</span><span><strong>Capability & risk</strong></span></button><button class="signal-row" data-signal="improving"><span class="signal-symbol mint">↘</span><span><strong>Safety & control</strong></span></button><div class="outlook-foot"><span class="small-note">Qualitative assessment.<br>Source limitations apply.</span><a href="?view=methodology" data-view="methodology">How we assess →</a></div></aside></section><div class="changed-strip"><span class="eyebrow">LATEST NOTE</span><span>${escape(o.changed)}</span><button data-event="${data.latestEventId}" aria-label="Read latest incident note">→</button></div><section id="pathways"><div class="section-head"><div><h2>Risk pathways</h2></div></div><div class="pathway-grid">${pathwayCards()}</div></section>`+renderEvidence();
 }
 function filterEvents(reset=true){if(reset)visibleEvents=20;const words=query.toLowerCase().trim().split(/\s+/).filter(Boolean);const matches=data.events.filter(e=>(category==='All'||e.category===category)&&(signal==='all'||e.direction===signal)&&(year==='all'||e.date.startsWith(year))&&words.every(w=>[e.title,e.summary_beginner,e.technical_summary,e.occurred,e.evidence,...e.sources.map(s=>s.publisher)].join(' ').toLowerCase().includes(w)));$('#event-list').innerHTML=matches.length?eventRows(matches.slice(0,visibleEvents)):`<div class="empty-state"><h3>No records match.</h3><button class="text-link" data-action="reset-filters">Show all records →</button></div>`;$('#result-count').textContent=`${matches.length} of ${data.events.length} records`;$('#clear-event-filters').hidden=category==='All'&&signal==='all'&&!query&&year==='all';$('#event-pagination').innerHTML=matches.length>visibleEvents?`<button class="load-more" data-action="more-events">Show next ${Math.min(20,matches.length-visibleEvents)} records <span>${visibleEvents} of ${matches.length} shown</span></button>`:matches.length?`<p class="small-note timeline-end">All ${matches.length} matching records shown.</p>`:'';document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('selected',b.dataset.filter===category);b.setAttribute('aria-pressed',b.dataset.filter===category);});decorateIcons($('#event-list'));}
 function coverageMarkup(){return `<section id="coverage"><h2>Conversation coverage</h2><p>Imported on ${date(data.importedAt)} from <a href="${escape(data.chatSource)}" target="_blank" rel="noopener noreferrer">Frontier AI Risk Watch ↗</a>. The original chat covers developments through ${date(data.chatAsOf||data.asOf)}. Later product discussions are included in the reconciliation below.</p><p>${data.events.filter(e=>e.chatMessages.length).length} records are linked to the conversation or its cited reports. ${data.events.filter(e=>!e.chatMessages.length&&e.review.status==='imported').length} earlier research notes remain as additional background. Repeated mentions link to the same record; grouped cases are described in their details.</p>${data.coverage.map(c=>`<details class="coverage-group"><summary>${date(c.date)} · ${c.eventIds.length} linked ${c.eventIds.length===1?'record':'records'}${[64,88].includes(c.messageIndex)?' · product discussion':''}</summary><p class="small-note">${escape(c.note)}</p>${c.eventIds.map(id=>{const e=data.events.find(x=>x.id===id);return `<button class="related" data-event="${e.id}"><span>${escape(e.title)}</span><span>→</span></button>`;}).join('')}</details>`).join('')}<h3>Corrections and counting rules</h3><ul>${data.corrections.map(c=>`<li>${escape(c)}</li>`).join('')}</ul></section>`;}
@@ -81,7 +81,7 @@ function methodology(){main.innerHTML=heading('Sources & methodology','How recor
 const availability = {unconfirmed:'Availability uncertain',available:'Available',preview:'Preview',restricted:'Restricted access','open-weights':'Downloadable','existing-users':'Existing users only','product-access':'In company products',retiring:'Retiring',retired:'Retired',announced:'Announced'};
 function currentModels(company){return company.models.filter(model=>!['retired','announced'].includes(model.status));}
 function modelCard(model,role=''){
- const release=model.releasedAt?`<a class="release-date" href="${escape(model.releaseSourceUrl||model.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(model.name)} released ${date(model.releasedAt)}${model.releaseKind?`, ${escape(model.releaseKind)}`:''}; release source"><time datetime="${model.releasedAt}">${date(model.releasedAt)}</time> ↗</a>`:`<a class="release-date unverified" href="#model-methodology" aria-label="${escape(model.name)}: ${escape(model.releaseNote)}">${model.id==='chat-latest'?'Rolling alias':'Date unverified'}</a>`;
+ const release=model.releasedAt?`<a class="release-date" href="${escape(model.releaseSourceUrl||model.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(model.name)} released ${date(model.releasedAt)}${model.releaseKind?`, ${escape(model.releaseKind)}`:''}; release source"><time datetime="${model.releasedAt}">${date(model.releasedAt)}</time> ↗</a>`:`<a class="release-date unverified" href="?view=methodology#model-methodology" data-view="methodology" data-anchor="model-methodology" aria-label="${escape(model.name)}: ${escape(model.releaseNote)}">${model.id==='chat-latest'?'Rolling alias':'Date unverified'}</a>`;
  const level=role?'h3':'h4';
  const status=`<span class="model-availability ${model.status==='restricted'?'restricted':['retiring','preview','existing-users','unconfirmed'].includes(model.status)?'amber':''}">${availability[model.status]}</span>`;
  return `<article class="model-card card ${role?'featured-model':''}"><div class="model-card-top">${role?`<span class="model-role">${role}</span>`:''}${status}</div><div class="model-card-head"><${level}>${escape(model.name)}</${level}></div><p class="model-description">${escape(model.purpose)}</p><div class="model-card-foot"><div class="model-release"><span class="metadata-label">Released</span>${release}${model.releaseKind?`<small>${escape(model.releaseKind)}</small>`:''}</div><a class="model-docs" href="${escape(model.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Provider source for ${escape(model.name)}">Source ↗</a></div>${model.retirementAt?`<p class="retirement-note">${model.status==='retired'?'Retired':'Retires'} ${date(model.retirementAt)}</p>`:''}</article>`;
@@ -97,35 +97,33 @@ function renderModelCatalog(){
  if(!models)return;
  const company=models.companies.find(c=>c.id===selectedCompany)||models.companies[0];
  selectedCompany=company.id;
- const offerings=currentModels(company), expanded=expandedCompanies.has(company.id);
+ const offerings=currentModels(company);
  document.querySelectorAll('[data-company]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.company===company.id)));
  $('#featured-models').innerHTML=['capable','everyday'].map((key,index)=>modelCard(offerings.find(model=>model.id===company.featured[key]),index?'Everyday use':'Most capable')).join('');
  const toggle=$('#model-expand');
- toggle.setAttribute('aria-expanded',String(expanded));
- toggle.innerHTML=`<span>${expanded?'Collapse catalog':`View all ${offerings.length} ${escape(company.name)} models`}</span><span aria-hidden="true">${expanded?'−':'+'}</span>`;
+ toggle.innerHTML=`<span>View all ${offerings.length} ${escape(company.name)} models</span><span aria-hidden="true">→</span>`;
  $('#model-catalog-note').textContent=company.note;
  $('#company-model-source').href=company.catalogUrl;
  $('#company-model-source').textContent=`${company.name} catalog ↗`;
  $('#company-model-date').textContent=`Sources checked ${date(company.checkedAt)}`;
- const catalog=$('#model-catalog');catalog.hidden=!expanded;
- catalog.innerHTML=expanded?`<div class="catalog-tools"><label for="model-search">Search ${escape(company.name)} models<input id="model-search" type="search" placeholder="Model name or capability" value="${escape(modelQuery)}"></label><label for="model-group-filter">Model category<select id="model-group-filter"><option value="all">All categories</option>${[...new Set(offerings.map(m=>m.group))].map(group=>`<option value="${escape(group)}" ${modelGroup===group?'selected':''}>${escape(group)}</option>`).join('')}</select></label><p id="catalog-result-count" class="small-note" role="status" aria-live="polite"></p></div><div id="catalog-results"></div><button class="catalog-close text-link" data-action="collapse-models">Collapse catalog ↑</button>`:'';
- if(expanded)renderCatalogResults();
  decorateIcons($('#company-models'));
- $('#model-status').textContent=`${company.name}: ${offerings.length} models. Catalog ${expanded?'expanded':'collapsed'}.`;
+ $('#model-status').textContent=`${company.name}: ${offerings.length} models. Two featured models shown.`;
 }
 function renderIncident(){
  const incident=data.events.find(event=>event.id===selectedIncident);if(!incident)return;
  document.querySelectorAll('[data-incident]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.incident===incident.id)));
- $('#incident-spotlight').innerHTML=`<div class="spotlight-top"><span class="evidence-chip">${escape(incident.evidence)}</span><span class="small-note">Reported ${date(incident.date)}</span></div><h3>${escape(incident.title)}</h3><dl class="incident-facts"><div><dt>Reported finding</dt><dd>${rich(recordSummary(incident))}</dd></div><div><dt>Interpretation</dt><dd>${rich(incident.why_it_matters)}</dd></div><div><dt>Evidence limits</dt><dd>${rich(incident.what_it_doesnt_mean)}</dd></div></dl><div class="spotlight-footer"><button class="text-link" data-event="${incident.id}">Read record & sources →</button><span class="small-note">${incident.review.status==='approved'?'Human-reviewed':incident.review.status==='imported'?'Historical import':'Automated source summary'}</span></div>`;decorateIcons($('#incident-spotlight'));
+ $('#incident-spotlight').innerHTML=`<div class="spotlight-top"><span class="evidence-chip">${escape(incident.evidence)}</span><span class="small-note">Reported ${date(incident.date)}</span></div><h3>Control case: ${escape(incident.title)}</h3><dl class="incident-facts"><div><dt>Reported finding</dt><dd>${rich(recordSummary(incident))}</dd></div><div><dt>Interpretation</dt><dd>${rich(incident.why_it_matters)}</dd></div><div><dt>Evidence limits</dt><dd>${rich(incident.what_it_doesnt_mean)}</dd></div></dl><div class="spotlight-footer"><button class="text-link" data-event="${incident.id}">Read record & sources →</button><span class="small-note">${incident.review.status==='approved'?'Human-reviewed':incident.review.status==='imported'?'Historical import':'Automated source summary'}</span></div>`;decorateIcons($('#incident-spotlight'));
 }
 function evidenceIndex(){
  const counts=['worsening','improving','mixed'].map(key=>({key,count:data.events.filter(event=>event.direction===key).length}));
- return `<aside class="evidence-index" aria-labelledby="evidence-index-title" data-enter-media>
-  <div class="index-heading"><h2 id="evidence-index-title">The evidence index</h2></div>
+ const bars=counts.map(({key,count},index)=>`<g transform="translate(0 ${index*38})"><text x="0" y="15">${escape(direction[key][1])}</text><rect x="145" y="2" width="${(count/data.events.length*330).toFixed(1)}" height="15" rx="1" class="${direction[key][2]}"></rect><text x="495" y="15" text-anchor="end">${count}</text></g>`).join('');
+ return `<aside class="evidence-index app-frame hero-visual" data-ui data-visual data-enter-media aria-label="Frontier Signal evidence index">
+  <div class="index-chrome"><span>Collection index</span><span>Checked ${date(data.updates?.lastCheckedAt||data.asOf)}</span></div>
   <div class="index-total"><strong>${data.events.length}</strong><span>research records<br><small>${sourceRange()}</small></span></div>
-  <p class="index-context">Reports, investigations, research & governance</p>
-  <div class="index-chart" role="group" aria-label="Browse records by signal direction">${counts.map(({key,count})=>`<button class="index-row ${direction[key][2]}" data-signal="${key}" aria-label="Read ${count} ${direction[key][1].toLowerCase()} records"><span class="index-row-label"><span>${direction[key][0]} ${direction[key][1]}</span><strong>${count}</strong></span><span class="index-track" aria-hidden="true"><span style="--bar-share:${count/data.events.length*100}%"></span></span></button>`).join('')}</div>
-  <p class="index-note">Counts describe this collection, not incident rates or a risk score.</p>
+  <svg class="evidence-plot" viewBox="0 0 500 110" role="img" aria-label="${counts.map(({key,count})=>`${count} ${direction[key][1].toLowerCase()}`).join(', ')}">${bars}</svg>
+  <div class="index-chart" aria-label="Records by signal direction">${counts.map(({key,count})=>`<div class="index-row ${direction[key][2]}"><span>${direction[key][0]} ${direction[key][1]}</span><strong>${count}</strong></div>`).join('')}</div>
+  <div class="index-assessment"><span>Five-year outlook</span><strong>${escape(data.outlook.title||data.outlook.level)}</strong><a href="?view=methodology#weekly-updates" data-view="methodology" data-anchor="weekly-updates">Review completed ${data.updates?.lastCheckedAt?date(data.updates.lastCheckedAt):'not yet'} →</a></div>
+  <p class="index-note">Collection counts, not incident rates or a risk score.</p>
  </aside>`;
 }
 function dashboard(){
@@ -134,58 +132,86 @@ function dashboard(){
  const safety=data.events.find(e=>e.direction==='improving'&&['primary','research'].includes(e.verification));
  const catalogCount=models?.companies.reduce((sum,c)=>sum+currentModels(c).length,0);
  main.innerHTML=`
- <section class="briefing hero hero--split" data-enter aria-labelledby="landscape-title">
+ <section class="briefing hero hero--split dashboard-screen" id="top" data-enter aria-labelledby="landscape-title" style="--h:1;--hm:1">
+  <div class="wrap">
   <div class="briefing-copy hero-text">
-   <p class="eyebrow"><span class="edition-square" aria-hidden="true"></span> Weekly research briefing</p>
-   <h1 id="landscape-title">A field guide to<br>frontier AI.</h1>
-   <p class="hero__lead">Which models are available, what they can do, and what the evidence says about control.</p>
-   <div class="briefing-actions btn-row"><a class="btn btn--primary" href="#models">View model directory <span aria-hidden="true">↓</span></a><a class="btn btn--secondary" href="#overview">Read the outlook <span aria-hidden="true">↗</span></a></div>
-   <div class="briefing-update"><span class="metadata-label">Current assessment</span><p>${escape(data.outlook.title||data.outlook.level)}</p><a class="text-link" href="#weekly-updates">Review completed ${data.updates?.lastCheckedAt?date(data.updates.lastCheckedAt):'not yet'} →</a></div>
+   <p class="eyebrow"><span class="edition-square" aria-hidden="true"></span> Weekly research briefing · ${data.events.length} records</p>
+   <h1 id="landscape-title">Frontier AI evidence for clinical leaders</h1>
+   <p class="hero__lead">Compare available models with documented capabilities, control failures, safeguards, and the limits of each source.</p>
+   <div class="briefing-actions btn-row"><a class="btn btn--primary" href="#models">View model directory <span aria-hidden="true">↓</span></a><a class="btn btn--secondary" href="?view=overview" data-view="overview">Read risk outlook <span aria-hidden="true">↗</span></a></div>
+   <p class="hero-limit">For research orientation. Vendor claims are not evidence of clinical fitness.</p>
   </div>
   ${evidenceIndex()}
+  </div>
  </section>
- <section class="landscape-models" id="models" tabindex="-1" aria-labelledby="directory-title">
-  <div class="section-head directory-heading"><div><p class="eyebrow">Models & availability</p><h2 id="directory-title">The model directory</h2></div><div class="directory-summary"><strong>${models?`${models.companies.length} providers · ${catalogCount} catalog entries`:'Catalog unavailable'}</strong><span>Sources checked ${models?date(models.checkedAt):'—'}</span></div></div>
-  ${models?`<div class="directory-layout"><div class="provider-sidebar"><div class="company-picker" role="group" aria-label="Choose an AI company">${models.companies.map(company=>`<button class="company-choice" data-company="${company.id}" aria-pressed="${selectedCompany===company.id}" aria-controls="company-models"><span class="company-initial" aria-hidden="true">${escape(company.name.slice(0,1))}</span><span class="company-name"><strong>${escape(company.name)}</strong><small>${escape(company.family)}</small></span><span class="company-count">${currentModels(company).length}<span class="sr-only"> models</span></span></button>`).join('')}</div><p class="small-note provider-note">Includes supported earlier releases. Selections reflect each provider’s positioning.</p></div>
-  <div id="company-models"><div id="featured-models" class="featured-models"></div><button id="model-expand" class="model-expand btn" data-action="expand-models" aria-expanded="false" aria-controls="model-catalog"></button><div id="model-catalog" hidden></div><div class="catalog-provenance"><a id="company-model-source" class="text-link" target="_blank" rel="noopener noreferrer"></a><span id="company-model-date" class="small-note"></span><a class="text-link" href="#model-methodology">Selection criteria →</a></div><p id="model-catalog-note" class="small-note"></p><p id="model-status" class="sr-only" role="status" aria-live="polite"></p></div></div>`:'<div class="empty-state"><p>The model catalog could not load. The incident records are still available below.</p><button class="text-link" data-action="retry">Retry →</button></div>'}
+ <section class="section landscape-models dashboard-screen" id="models" tabindex="-1" aria-labelledby="directory-title" style="--h:1;--hm:2">
+  <div class="wrap">
+  <div class="section-head directory-heading"><div><h2 id="directory-title">Frontier AI model directory</h2><p>Choose a provider to compare its published high-capability and routine-work offerings.</p></div><div class="directory-summary"><strong>${models?`${models.companies.length} providers · ${catalogCount} catalog entries`:'Catalog unavailable'}</strong><span>Sources checked ${models?date(models.checkedAt):'—'}</span></div></div>
+  ${models?`<div class="directory-layout"><div class="provider-sidebar"><div class="company-picker" data-ui role="group" aria-label="Choose an AI company">${models.companies.map(company=>`<button class="company-choice" data-company="${company.id}" aria-pressed="${selectedCompany===company.id}" aria-controls="company-models"><span class="company-initial" aria-hidden="true">${escape(company.name.slice(0,1))}</span><span class="company-name"><strong>${escape(company.name)}</strong><small>${escape(company.family)}</small></span><span class="company-count">${currentModels(company).length}<span class="sr-only"> models</span></span></button>`).join('')}</div></div>
+  <div id="company-models" class="app-frame" data-ui data-visual><div id="featured-models" class="featured-models"></div><button id="model-expand" class="model-expand btn" data-action="open-catalog"></button><div class="catalog-provenance"><a id="company-model-source" class="text-link" target="_blank" rel="noopener noreferrer"></a><span id="company-model-date" class="small-note"></span><a class="text-link" href="?view=methodology#model-methodology" data-view="methodology" data-anchor="model-methodology">Read selection criteria →</a></div><p id="model-catalog-note" class="small-note"></p><p id="model-status" class="sr-only" role="status" aria-live="polite"></p></div></div>`:'<div class="empty-state"><p>The model catalog could not load. The incident records are still available below.</p><button class="text-link" data-action="retry">Retry →</button></div>'}
+  </div>
  </section>
- <section class="incident-section" aria-labelledby="major-incidents-title">
-  <div class="section-head"><div><p class="eyebrow">Cases & consequences</p><h2 id="major-incidents-title">Where control was tested</h2></div><a href="#timeline" class="text-link">View all records →</a></div>
-  <div class="dashboard-incidents"><div class="incident-index"><p class="incident-intro">Select a case to examine the finding, its implications, and its limits.</p><div class="incident-picker" role="group" aria-label="Choose a major incident">${incidents.map(e=>`<button data-incident="${e.id}" aria-pressed="${e.id===selectedIncident}" aria-controls="incident-spotlight"><span><strong>${{'hugging-face':'Hugging Face','epoch-trajectory-live-testing':'Epoch / Trajectory','tencent-amap-fleet':'Tencent / Amap','dns-escape':'Internet restrictions','medicare':'Medicare statistics'}[e.id]}</strong><small>${date(e.date)}</small></span><span aria-hidden="true">↗</span></button>`).join('')}</div><p class="small-note">Incident coverage through ${date(data.asOf)}. Report dates shown.</p></div><article id="incident-spotlight" class="incident-spotlight" aria-live="polite"></article></div>
+ <section class="section incident-section dashboard-screen" id="cases" aria-labelledby="major-incidents-title" style="--h:1;--hm:2">
+  <div class="wrap">
+  <div class="section-head"><div><h2 id="major-incidents-title">Frontier AI control cases</h2><p>Select a case to separate the reported finding from its interpretation and evidence limits.</p></div><a href="?view=timeline" data-view="timeline" class="text-link">View research timeline →</a></div>
+  <div class="dashboard-incidents" data-ui data-visual><div class="incident-index"><div class="incident-picker" role="group" aria-label="Choose a major incident">${incidents.map(e=>`<button data-incident="${e.id}" aria-pressed="${e.id===selectedIncident}" aria-controls="incident-spotlight"><span><strong>${{'hugging-face':'Hugging Face','epoch-trajectory-live-testing':'Epoch / Trajectory','tencent-amap-fleet':'Tencent / Amap','dns-escape':'Internet restrictions','medicare':'Medicare statistics'}[e.id]}</strong><small>${date(e.date)}</small></span><span aria-hidden="true">↗</span></button>`).join('')}</div><p class="small-note">Coverage through ${date(data.asOf)}. Report dates shown.</p></div><article id="incident-spotlight" class="incident-spotlight app-frame" aria-live="polite"></article></div>
+  </div>
  </section>
- <section class="dashboard-bottom" aria-label="Further reading"><article><p class="eyebrow">Capabilities</p><h2>From models<br> to agents</h2><p>Tool access and operating conditions shape what a model can do. Examine the evidence for nine levels of agent capability.</p><a class="text-link" href="#ladder">Read the concern ladder →</a></article><article><p class="eyebrow">Recent records</p><h2>In the research file</h2><div class="dashboard-recent">${recent.map(e=>`<button data-event="${e.id}"><small>${date(e.date)}</small><span>${escape(e.title)}</span><span class="record-arrow" aria-hidden="true">↗</span></button>`).join('')}</div></article><article class="safeguard-reading"><p class="eyebrow">Safety & control</p><h2>Safeguards<br> in practice</h2>${safety?`<p>${rich(recordSummary(safety))}</p><button class="text-link" data-event="${safety.id}">Read the evidence →</button>`:'<a class="text-link" href="#overview">View evidence summary →</a>'}</article></section>`;
+ <section class="section dashboard-bottom research-routes statement dashboard-screen" id="research-routes" aria-labelledby="routes-title" style="--h:1;--hm:2">
+  <div class="wrap"><h2 id="routes-title" class="mo-lt__type" data-moment="liquid-type">Frontier AI models, incidents, and safeguards</h2><p class="routes-intro">Follow the collection from model availability to observed behavior and the safeguards reported in response.</p><div class="route-grid" data-visual>
+   <article><span>01 · Capabilities</span><h3>Frontier AI concern ladder</h3><p>Nine capability levels distinguish documented behavior, limited evidence, and what these records do not establish.</p><a class="text-link" href="?view=ladder" data-view="ladder">Read concern ladder →</a></article>
+   <article><span>02 · Recent records</span><h3>Research timeline</h3><div class="dashboard-recent">${recent.map(e=>`<button data-event="${e.id}"><small>${date(e.date)}</small><span>${escape(e.title)}</span><span class="record-arrow" aria-hidden="true">↗</span></button>`).join('')}</div></article>
+   <article><span>03 · Safety evidence</span><h3>Frontier AI safeguard evidence</h3>${safety?`<p>${rich(recordSummary(safety))}</p><button class="text-link" data-event="${safety.id}">Read safeguard evidence →</button>`:'<a class="text-link" href="?view=overview" data-view="overview">Read evidence summary →</a>'}</article>
+  </div><a class="btn btn--primary routes-action" href="?view=timeline" data-view="timeline">Open research timeline <span aria-hidden="true">→</span></a></div>
+ </section>`;
  renderModelCatalog();renderIncident();
+ mountMoments(main);
  if(!hasRouted)refreshMotion();else $('.briefing').classList.add('is-entered','is-still');
+}
+function catalog(){
+ if(!models){main.innerHTML=heading('Model catalog unavailable','The research records remain available from the dashboard.');return;}
+ const company=models.companies.find(c=>c.id===selectedCompany)||models.companies[0];
+ const offerings=currentModels(company);
+ main.innerHTML=heading(`${escape(company.name)} model catalog`,`${offerings.length} currently listed models, grouped by provider category.`)+`<div class="catalog-page"><a class="text-link catalog-back" href="?view=dashboard#models" data-view="dashboard" data-anchor="models">← Back to model directory</a><div class="catalog-tools"><label for="model-search">Search ${escape(company.name)} models<input id="model-search" type="search" placeholder="Model name or capability" value="${escape(modelQuery)}"></label><label for="model-group-filter">Model category<select id="model-group-filter"><option value="all">All categories</option>${[...new Set(offerings.map(m=>m.group))].map(group=>`<option value="${escape(group)}" ${modelGroup===group?'selected':''}>${escape(group)}</option>`).join('')}</select></label><p id="catalog-result-count" class="small-note" role="status" aria-live="polite"></p></div><div id="catalog-results"></div></div>`;
+ renderCatalogResults();
 }
 function timeline(){
  main.innerHTML=timelineMarkup();
  $('#signal-filter').value=signal;$('#year-filter').value=year;filterEvents();
 }
 function ladder(){main.innerHTML=ladderMarkup();renderStage(selectedStage);}
+function closeMenu(){const header=$('.site-header'),toggle=$('.nav__toggle');header?.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false');}
+function navigate(view,anchor=''){
+ const next=new URL(location.href);next.searchParams.set('view',view);next.hash=anchor?`#${anchor}`:'';
+ history.pushState({},'',next);route();
+}
 function route(){
  if(!data)return;
- const hash=location.hash.slice(1)||'dashboard';
+ const views={dashboard,catalog,overview,timeline,ladder,methodology};
+ const hash=location.hash.slice(1);
  if(hash==='main'&&hasRouted){main.focus();return;}
- const isModels=hash==='models';
- const isMethod=['methodology','methodology-sources','model-methodology','weekly-updates','glossary','coverage'].includes(hash);
- const views={dashboard,overview,timeline,ladder,methodology};
- const view=isMethod?'methodology':Object.hasOwn(views,hash)?hash:'dashboard';
- const labels={dashboard:'Dashboard',overview:'Overview',timeline:'Timeline',ladder:'Concern ladder',methodology:'Methodology'};
+ const requested=new URLSearchParams(location.search).get('view');
+ const legacyView=Object.hasOwn(views,hash)?hash:null;
+ const view=Object.hasOwn(views,requested)?requested:(legacyView||'dashboard');
+ const anchor=legacyView?'':hash;
+ const isModels=view==='dashboard'&&anchor==='models';
+ const labels={dashboard:'Dashboard',catalog:'Model catalog',overview:'Overview',timeline:'Timeline',ladder:'Concern ladder',methodology:'Methodology'};
  if(dialog.open)dialog.close();
- document.querySelectorAll('nav a').forEach(a=>{
-  const active=a.hash===`#${view}`;
+ closeMenu();unmountMoments(main);
+ document.querySelectorAll('nav a[data-view]').forEach(a=>{
+  const active=a.dataset.view===(view==='catalog'?'dashboard':view);
   a.classList.toggle('active',active);
   if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
  });
  main.dataset.view=view;main.setAttribute('aria-label',labels[view]);
  views[view]();decorateIcons(main);
- document.querySelectorAll('.method-nav a').forEach(a=>{if(a.hash===`#${hash}`)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+ document.querySelectorAll('.method-nav a').forEach(a=>{if(a.hash===`#${anchor||'methodology'}`)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
  document.title=`${labels[view]} — Frontier Signal`;
  if(hasRouted||hash==='main')main.focus({preventScroll:true});
  hasRouted=true;
  requestAnimationFrame(()=>{
   if(isModels){const directory=$('#models');directory.focus({preventScroll:true});directory.scrollIntoView({behavior:'instant'});}
-  else if(isMethod&&hash!=='methodology')document.getElementById(hash)?.scrollIntoView({behavior:'instant'});
+  else if(anchor&&anchor!=='main')document.getElementById(anchor)?.scrollIntoView({behavior:'instant'});
   else window.scrollTo({top:0,behavior:'instant'});
  });
 }
@@ -193,11 +219,12 @@ function setBeginner(value){beginner=value;$('#beginner-toggle').setAttribute('a
 document.addEventListener('click',event=>{
  const b=event.target.closest('button,a');if(!b)return;
  if(b.dataset.themeChoice){setTheme(b.dataset.themeChoice);}
+ else if(b.dataset.action==='menu'){const open=!$('.site-header').classList.contains('is-open');$('.site-header').classList.toggle('is-open',open);b.setAttribute('aria-expanded',String(open));}
+ else if(b.dataset.view){event.preventDefault();navigate(b.dataset.view,b.dataset.anchor||'');}
  else if(b.dataset.event){returnDialog=null;showEvent(b.dataset.event);}
  else if(b.dataset.company){selectedCompany=b.dataset.company;modelQuery='';modelGroup='all';renderModelCatalog();}
  else if(b.dataset.incident){selectedIncident=b.dataset.incident;renderIncident();}
- else if(b.dataset.action==='expand-models'){if(expandedCompanies.has(selectedCompany))expandedCompanies.delete(selectedCompany);else expandedCompanies.add(selectedCompany);renderModelCatalog();}
- else if(b.dataset.action==='collapse-models'){expandedCompanies.delete(selectedCompany);renderModelCatalog();$('#model-expand').focus();}
+ else if(b.dataset.action==='open-catalog'){modelQuery='';modelGroup='all';navigate('catalog');}
  else if(b.dataset.action==='reset-model-filters'){modelQuery='';modelGroup='all';$('#model-search').value='';$('#model-group-filter').value='all';renderCatalogResults();$('#model-search').focus();}
  else if(b.dataset.worry){returnDialog=null;showEvent(b.dataset.worry,true);}
  else if(b.dataset.pathway){returnDialog=null;showPathway(b.dataset.pathway);}
@@ -205,12 +232,12 @@ document.addEventListener('click',event=>{
  else if(b.dataset.stage!==undefined)renderStage(Number(b.dataset.stage),true);
  else if(b.dataset.action==='ladder-back'){document.querySelector(`[data-stage="${selectedStage}"]`).focus();}
  else if(b.dataset.filter){category=b.dataset.filter;filterEvents();}
- else if(b.dataset.signal){signal=b.dataset.signal;category='All';query='';year='all';location.hash='timeline';}
+ else if(b.dataset.signal){signal=b.dataset.signal;category='All';query='';year='all';navigate('timeline');}
  else if(b.dataset.action==='more-events'){const firstNew=visibleEvents;visibleEvents+=20;filterEvents(false);$('#event-list').querySelectorAll('.event-row')[firstNew]?.querySelector('[data-event]')?.focus();}
  else if(b.dataset.action==='outlook'){returnDialog=null;showOutlook();}
  else if(b.dataset.action==='back-dialog'){const previous=returnDialog;returnDialog=null;openDialog(previous);}
  else if(b.dataset.action==='reset-filters'){category='All';signal='all';query='';year='all';$('#signal-filter').value=signal;$('#event-search').value='';$('#year-filter').value='all';filterEvents();}
- else if(b.dataset.action==='future-stage'){selectedStage=7;location.hash='ladder';}
+ else if(b.dataset.action==='future-stage'){selectedStage=7;navigate('ladder');}
  else if(b.dataset.action==='retry')location.reload();
  if(b.hasAttribute('data-close'))dialog.close();
 });
@@ -220,7 +247,7 @@ dialog.addEventListener('close',()=>{returnDialog=null;if(dialogTrigger?.isConne
 dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
 document.addEventListener('change',e=>{if(e.target.id==='signal-filter'){signal=e.target.value;filterEvents();}else if(e.target.id==='year-filter'){year=e.target.value;filterEvents();}else if(e.target.id==='model-group-filter'){modelGroup=e.target.value;renderCatalogResults();}});
 document.addEventListener('input',e=>{if(e.target.id==='event-search'){query=e.target.value;filterEvents();}else if(e.target.id==='model-search'){modelQuery=e.target.value;renderCatalogResults();}});
-window.addEventListener('hashchange',route);
+window.addEventListener('hashchange',route);window.addEventListener('popstate',route);
 decorateIcons(document.querySelector('footer'));
 try {
  const responses=await Promise.all(['signals','glossary'].map(name=>fetch(`./data/${name}.json`)));
@@ -228,7 +255,7 @@ try {
  [data,glossary]=await Promise.all(responses.map(r=>r.json()));
  try{const response=await fetch('./data/models.json');if(!response.ok)throw new Error('Model catalog unavailable');models=await response.json();}catch(error){console.warn('Model catalog could not load.',error);}
  data.events.sort((a,b)=>b.date.localeCompare(a.date));
- $('#edition-label').textContent=data.updates?.enabled?`${data.updates.scheduleLabel}`:`Incident coverage through ${date(data.asOf)}`;
+ const edition=$('#edition-label');if(edition)edition.textContent=data.updates?.enabled?`${data.updates.scheduleLabel}`:`Incident coverage through ${date(data.asOf)}`;
  setBeginner(beginner);route();
 } catch(error) {
  main.innerHTML=`<div class="empty-state"><h1>The research notes couldn’t load.</h1><p>Please check your connection and try again.</p><button class="text-link" data-action="retry">Try again →</button></div>`;
