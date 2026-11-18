@@ -1,12 +1,15 @@
 <!doctype html>
-<html lang="en" data-type="software" data-radius="sharp" data-buttons="tonal" data-ground="sage" data-motion>
+<html lang="en" data-type="software" data-radius="sharp" data-buttons="tonal" data-motion>
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f7f6f0"><meta name="description" content="Frontier AI research, risk pathways, safety signals, and source evidence.">
-<title>Dashboard — Frontier Signal</title>
-<meta name="page-type" content="software"><meta name="site-kind" content="software">
-<meta property="og:title" content="Frontier Signal — Frontier AI research">
-<meta property="og:description" content="Models, research, safeguards, and the evidence behind the outlook.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f6f0">
+<meta name="description" content="A source-linked weekly briefing that explains important frontier-AI incidents, evaluations, safeguards, policy changes, and model developments in plain language.">
+<title>Frontier Signal — Weekly frontier AI briefing</title>
+<meta name="page-type" content="software">
+<meta name="site-kind" content="software">
+<meta property="og:title" content="Frontier Signal — Weekly frontier AI briefing">
+<meta property="og:description" content="Important frontier-AI developments explained plainly, with original sources, evidence limits, and technical detail available on demand.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="./share.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -16,38 +19,68 @@
 <link rel="preload" href="./assets/fonts/source-serif.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{const theme=localStorage.getItem('frontier-theme');if(theme==='dark')document.documentElement.dataset.theme=theme;}catch{}</script>
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
-<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
-<link rel="modulepreload" href="./assets/moments/moments.js"><link rel="modulepreload" href="./assets/moments/lib.js"><link rel="modulepreload" href="./assets/moments/liquid-type/moment.js">
 <link rel="stylesheet" href="./assets/motion/motion.css">
-<link rel="stylesheet" href="./assets/backgrounds/backgrounds.css">
-<link rel="stylesheet" href="./assets/style.css?v=d364a8491ac1"><script type="module" src="./assets/app.js?v=2e0e88ed3c77"></script>
-<script src="./assets/backgrounds/backgrounds.js" defer></script>
+<link rel="stylesheet" href="./assets/style.css?v=6509215a">
+<script type="module" src="./assets/app.js?v=42d82462"></script>
 </head>
-<body class="bg-paper bg-topglow">
+<body>
 <header class="site-header nav">
-<div class="wrap nav__bar">
- <a class="skip skip-link" href="#main">Skip to content</a>
- <a class="brand nav__logo" href="?view=dashboard" data-view="dashboard" aria-label="Frontier Signal home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26V17m8 9V10m8 16V4m8 22V13"/></svg><span>FRONTIER <span class="brand-light">SIGNAL</span><span class="brand-period">.</span></span></a>
- <nav class="nav__links" aria-label="Main navigation">
-  <a href="?view=dashboard" data-view="dashboard" class="active" aria-current="page">Dashboard</a>
-  <a href="?view=overview" data-view="overview">Outlook</a>
-  <a href="?view=timeline" data-view="timeline">Timeline</a>
-  <a href="?view=ladder" data-view="ladder">Ladder</a>
-  <a href="?view=methodology" data-view="methodology">Methods</a>
-  <div class="theme-controls" role="group" aria-label="Color theme"><button data-theme-choice="light" aria-pressed="true">Light</button><button data-theme-choice="dark" aria-pressed="false">Dark</button></div>
-  <button id="beginner-toggle" class="beginner" role="switch" aria-checked="false"><span>Simplified vocabulary</span><span class="toggle" aria-hidden="true"></span></button>
- </nav>
- <div class="nav__actions">
-  <button class="nav__toggle" type="button" data-action="menu" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14"/></svg></button>
+ <div class="wrap nav__bar">
+  <a class="skip skip-link" href="#main">Skip to content</a>
+  <a class="brand nav__logo" href="?view=briefing" data-view="briefing" aria-label="Frontier Signal briefing">
+   <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26V17m8 9V10m8 16V4m8 22V13"/></svg>
+   <span>FRONTIER <span class="brand-light">SIGNAL</span><span class="brand-period">.</span></span>
+  </a>
+  <nav class="nav__links" aria-label="Primary navigation">
+   <a href="?view=briefing" data-view="briefing" class="active" aria-current="page">Briefing</a>
+   <a href="?view=updates" data-view="updates">Updates</a>
+   <a href="?view=cases" data-view="cases">Control cases</a>
+   <a href="?view=models" data-view="models">Model map</a>
+   <a href="?view=methods" data-view="methods">Methods &amp; sources</a>
+   <div class="theme-controls" role="group" aria-label="Color theme">
+    <button type="button" data-theme-choice="light" aria-pressed="true">Light</button>
+    <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+   </div>
+  </nav>
+  <div class="nav__actions">
+   <button class="nav__toggle" type="button" data-action="menu" aria-expanded="false" aria-label="Open menu">
+    <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14"/></svg>
+   </button>
+  </div>
  </div>
-</div>
 </header>
-<main id="main" tabindex="-1" aria-label="Dashboard" data-view="dashboard"><div class="loading-state" role="status">Loading the research edition…</div><noscript><p>Enable JavaScript to explore the app, or visit the <a href="https://github.com/ALEXKDOT/frontier-signal">GitHub repository</a>.</p></noscript></main>
-<footer class="footer closing footer--statement" id="contact" aria-labelledby="close-title">
+
+<main id="main" tabindex="-1" aria-label="Briefing" data-view="briefing">
+ <div class="loading-state" role="status">Loading the weekly briefing…</div>
+ <noscript><p>Enable JavaScript to read the briefing, or visit the <a href="https://github.com/ALEXKDOT/frontier-signal">source repository</a>.</p></noscript>
+</main>
+
+<footer class="footer closing footer--compact" id="site-footer">
  <div class="wrap">
-  <div class="closing__cta close--type"><div><h2 id="close-title">Review frontier AI evidence</h2><p>Compare 225 model entries with 116 research records and their source limitations.</p></div><a class="btn btn--primary btn--xl" href="?view=dashboard#models" data-view="dashboard" data-anchor="models">View model directory <span aria-hidden="true">→</span></a><div class="closing__mark" data-visual role="img" aria-label="Frontier Signal waveform mark"><span></span><span></span><span></span><span></span></div></div>
-  <div class="closing__links"><div class="footer-identity"><a class="footer-brand" href="?view=dashboard" data-view="dashboard">Frontier Signal<span>.</span></a><p>Research and model catalog · Updated weekly</p></div><div class="footer-directory"><a href="https://github.com/ALEXKDOT/frontier-signal" target="_blank" rel="noopener noreferrer">View source ↗</a><a href="?view=methodology#coverage" data-view="methodology" data-anchor="coverage">Import provenance →</a><a href="?view=methodology" data-view="methodology">Sources & methodology →</a></div></div>
+  <div class="footer-identity">
+   <a class="footer-brand" href="?view=briefing" data-view="briefing">Frontier Signal<span>.</span></a>
+   <p>A weekly, source-linked account of important frontier-AI developments and what the evidence does not establish.</p>
+  </div>
+  <nav class="footer-directory" aria-label="Footer navigation">
+   <a href="https://github.com/ALEXKDOT/frontier-signal" target="_blank" rel="noopener noreferrer">View source ↗</a>
+   <a href="?view=methods" data-view="methods">Methods &amp; sources →</a>
+   <a href="?view=methods#coverage" data-view="methods" data-anchor="coverage">Import provenance →</a>
+  </nav>
+  <p class="footer-note">Record counts describe this collection. They are not incident rates, prevalence estimates, or risk scores.</p>
  </div>
 </footer>
-<dialog id="detail-dialog" aria-labelledby="dialog-title"><button class="close-dialog" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><div id="dialog-content"></div></dialog>
-</body></html>
+
+<dialog id="detail-dialog" aria-labelledby="dialog-title">
+ <button class="close-dialog" type="button" aria-label="Close details">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+ </button>
+ <div id="dialog-content"></div>
+</dialog>
+
+<div id="glossary-popover" class="glossary-popover" popover="manual" role="dialog" aria-labelledby="glossary-popover-title" hidden>
+ <strong id="glossary-popover-title" class="glossary-popover__title"></strong>
+ <p id="glossary-popover-definition" class="glossary-popover__definition"></p>
+ <a class="glossary-popover__link" href="?view=methods#glossary" data-view="methods" data-anchor="glossary">Open full glossary →</a>
+</div>
+</body>
+</html>

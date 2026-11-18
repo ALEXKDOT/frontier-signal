@@ -1,63 +1,179 @@
 import {refresh as refreshMotion} from './motion/motion.js';
-import {mountAll as mountMoments,unmountAll as unmountMoments} from './moments/moments.js';
-const $ = (selector, root = document) => root.querySelector(selector);
-const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-const iconPaths = {'→':'M4 12h16m-6-6 6 6-6 6','←':'M20 12H4m6-6-6 6 6 6','↑':'M12 20V4m-6 6 6-6 6 6','↗':'M5 19 19 5M6 5h13v13','↘':'m5 5 14 14M6 19h13V6','↔':'M4 12h16M9 7l-5 5 5 5m6-10 5 5-5 5','ⓘ':'M12 11v6m0-10v1M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0'};
-function decorateIcons(root){
- if(!root)return;
- const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
- const nodes=[];while(walker.nextNode())if(/[→←↑↗↘↔ⓘ]/.test(walker.currentNode.textContent)&&!walker.currentNode.parentElement.closest('svg,.sr-only'))nodes.push(walker.currentNode);
- for(const node of nodes){const fragment=document.createDocumentFragment();for(const part of node.textContent.split(/([→←↑↗↘↔ⓘ])/)){if(!iconPaths[part]){fragment.append(document.createTextNode(part));continue;}const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('class','icon');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',iconPaths[part]);svg.append(path);fragment.append(svg);}node.replaceWith(fragment);}
-}
-const main = $('#main');
-const dialog = $('#detail-dialog');
-const content = $('#dialog-content');
-let data, glossary, models, beginner = false, category = 'All', signal = 'all', query = '', year = 'all', returnDialog = null, selectedStage = 3, selectedCompany = 'openai', selectedIncident = 'hugging-face';
-let modelQuery = '', modelGroup = 'all', dialogTrigger = null, visibleEvents = 20;
-let hasRouted = false;
-try { beginner = localStorage.getItem('frontier-simplified-vocabulary') === 'true'; } catch {}
-function setTheme(theme) {
- const selected=theme==='dark'?'dark':'light';
- document.documentElement.dataset.theme=selected;
- document.querySelectorAll('[data-theme-choice]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.themeChoice===selected)));
- document.querySelector('meta[name="theme-color"]').content=selected==='dark'?'#171c19':'#f7f6f0';
- try { localStorage.setItem('frontier-theme',selected); } catch {}
-}
+import {currentModels,deriveProviderSummaries,sortByReportedAt,getFeaturedEvents,getControlCases,buildWeeklySeries} from './data-utils.js';
+
+const $=(q,r=document)=>r.querySelector(q), $$=(q,r=document)=>[...r.querySelectorAll(q)];
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const reEsc=v=>String(v).replace(/[.*+?^$()|[\]{}\\]/g,'\\$&');
+const main=$('#main'), dialog=$('#detail-dialog'), dialogContent=$('#dialog-content');
+const TYPES={
+ incident:{label:'Incident',icon:'!'},'evaluation-research':{label:'Evaluation & research',icon:'◉'},
+ 'safeguard-monitoring':{label:'Safeguard & monitoring',icon:'✓'},'model-release-access':{label:'Model release & access',icon:'◇'},
+ 'policy-governance':{label:'Policy & governance',icon:'§'}
+};
+const TYPE_KEYS=Object.keys(TYPES);
+const EVIDENCE={'primary-report':'Primary report','independent-research':'Independent research','external-investigation':'External investigation','imported-unverified':'Historical import · not independently rechecked'};
+const SIGNALS={worsening:['↗','More concerning','amber'],improving:['↘','Safety signal','mint'],mixed:['↔','Mixed signal','muted']};
+const ACCESS={unconfirmed:'Availability uncertain',available:'Available',preview:'Preview',restricted:'Restricted access','open-weights':'Downloadable','existing-users':'Existing users only','product-access':'In company products',retiring:'Retiring',retired:'Retired',announced:'Announced'};
+let data,glossary,models,aliases=new Map(),updateType='all',topic='All',signal='all',query='',year='all',selectedStage=3,selectedCompany='openai',selectedCase=null,modelQuery='',modelGroup='all',visibleEvents=20,dialogTrigger=null,hasRouted=false;
+const fmt=v=>v?new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(`${v}T12:00:00Z`)):'Date not reported';
+const short=v=>new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'UTC'}).format(new Date(`${v}T12:00:00Z`));
+const type=e=>TYPES[e.updateType]||{label:e.updateType,icon:'•'}, evidence=e=>EVIDENCE[e.evidenceStrength]||e.evidenceStrength;
+const typeBadge=e=>`<span class="update-type update-type--${esc(e.updateType)}"><span aria-hidden="true">${type(e).icon}</span>${esc(type(e).label)}</span>`;
+const evidenceBadge=e=>`<span class="evidence-strength evidence-strength--${esc(e.evidenceStrength)}">${esc(evidence(e))}</span>`;
+function setTheme(t){t=t==='dark'?'dark':'light';document.documentElement.dataset.theme=t;$$('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===t)));const m=$('meta[name="theme-color"]');if(m)m.content=t==='dark'?'#171c19':'#f7f6f0';try{localStorage.setItem('frontier-theme',t)}catch{}}
 setTheme(document.documentElement.dataset.theme||'light');
-const categories = ['All', 'Incidents', 'Capabilities', 'Governance', 'AI R&D', 'Cyber', 'Monitoring', 'Model proliferation', 'CBRN'];
-const direction = {worsening:['↗','More concerning','amber'],improving:['↘','Safety signal','mint'],mixed:['↔','Mixed signal','muted']};
-const date = value => new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z'));
-function rich(text) { return escape(text).replace(/\[\[([^\]]+)\]\]/g,(_,term)=>`<button class="jargon" data-term="${escape(term.toLowerCase())}" aria-label="Define ${escape(term)}">${term}<span aria-hidden="true">ⓘ</span></button>`); }
-function recordSummary(event){return beginner?event.summary_beginner:[event.summary_beginner,event.technical_summary].filter((value,index,values)=>values.indexOf(value)===index).join(' ');}
-function sources(event) { return event.sources.map(s=>`<a class="source-link" href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.publisher)} <span>↗</span><small>${escape(s.title)}</small></a>`).join(''); }
-function openDialog(html) { content.innerHTML=html; decorateIcons(content); if(!dialog.open){dialogTrigger=document.activeElement;dialog.showModal();} dialog.scrollTop=0; $('.close-dialog').focus(); }
-function reviewLabel(item) { if(item?.review?.status==='automated')return `Weekly automated summary · sources checked ${date(item.review.checkedAt)} · no human sign-off claimed.`; return item?.review?.status==='approved' ? `Reviewed by ${escape(item.review.reviewedBy)} on ${escape(item.review.reviewedAt)}.` : 'Imported summary · human editorial review pending.'; }
-function sourceRange() { const dates=data.events.map(e=>e.date).sort(); const fmt=v=>new Intl.DateTimeFormat('en-US',{month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(v+'T12:00:00Z'));return `${fmt(dates[0])}–${fmt(dates.at(-1))}`; }
-function showEvent(id, assessment = false) {
- const e=data.events.find(x=>x.id===id); if(!e)return;
- const d=direction[e.direction];
- openDialog(`<h2 id="dialog-title">${escape(e.title)}</h2><p class="record-classification">${escape(e.category)}${e.category.toLowerCase()===`${e.kind}s`?'':` · ${escape(e.kind)}`}</p><div class="event-meta"><span class="${d[2]}">${d[0]} ${d[1]}</span><span>${escape(e.evidence)}</span></div><dl class="record-dates"><div><dt>${escape(e.dateBasis)}</dt><dd>${date(e.date)}</dd></div><div><dt>Occurred</dt><dd>${escape(e.occurred)}</dd></div></dl><p class="lead">${rich(recordSummary(e))}</p><div class="interpretation"><section><h3>Interpretation</h3><p>${rich(e.why_it_matters)}</p></section><section class="limit"><h3>Evidence limitations</h3><p>${rich(e.what_it_doesnt_mean)}</p></section><section><h3>What would change the assessment</h3><p>${rich(e.what_would_raise_concern)}</p></section></div><details class="worry" ${assessment?'open':''}><summary>Risk assessment</summary><div class="worry-content"><h3 class="amber">Counterevidence & mitigating factors</h3><p>${rich(e.less_concerning)}</p><div class="takeaway">${rich(e.conclusion)}</div></div></details><h3>Sources & provenance</h3><p class="small-note">${escape(e.evidenceNote)}</p>${sources(e)}<p class="small-note">${reviewLabel(e)} ${e.chatMessages.length?'<a href="?view=methodology#coverage" data-view="methodology" data-anchor="coverage" data-close>Import provenance →</a>':''}</p>`);
- if(assessment)$('.worry',content).scrollIntoView({block:'start',behavior:'instant'});
+function sourceRange(events){const d=events.map(e=>e.reportedAt).filter(Boolean).sort();if(!d.length)return'No dated records';const f=v=>new Intl.DateTimeFormat('en-US',{month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(`${v}T12:00:00Z`));return `${f(d[0])}–${f(d.at(-1))}`}
+
+function buildAliases(){aliases=new Map();for(const [key,g] of Object.entries(glossary||{})){aliases.set(key,[...new Set([key,g.label,...(g.aliases||[])].filter(Boolean))].sort((a,b)=>b.length-a.length))}}
+function annotate(text,terms=[],seen=new Set()){
+ const raw=String(text??'').replace(/\[\[|\]\]/g,''), found=[];
+ for(const term of terms){if(seen.has(term)||!glossary?.[term])continue;let best;
+  for(const a of aliases.get(term)||[]){const plural=/s$/i.test(a)?'':'(?:s|es)?',m=new RegExp(`(^|[^\\p{L}\\p{N}])(${reEsc(a)}${plural})(?=$|[^\\p{L}\\p{N}])`,'iu').exec(raw);if(!m)continue;const c={term,start:m.index+m[1].length,end:m.index+m[1].length+m[2].length};if(!best||c.start<best.start||(c.start===best.start&&c.end>best.end))best=c}
+  if(best)found.push(best)
+ }
+ found.sort((a,b)=>a.start-b.start||b.end-a.end);const use=[];
+ for(const c of found){if(use.some(x=>c.start<x.end&&c.end>x.start))continue;use.push(c);seen.add(c.term)}
+ if(!use.length)return esc(raw);let at=0,out='';for(const c of use){out+=esc(raw.slice(at,c.start));out+=`<button type="button" class="jargon" data-term="${esc(c.term)}" aria-expanded="false" aria-controls="glossary-popover" aria-label="Define ${esc(glossary[c.term].label||c.term)}">${esc(raw.slice(c.start,c.end))}</button>`;at=c.end}return out+esc(raw.slice(at))
 }
-function showPathway(id) {
+
+let pop;const ps={trigger:null,pinned:false,timer:null,suppressFocusOpen:false};const nativePop='showPopover'in HTMLElement.prototype;
+function ensurePop(){pop=$('#glossary-popover')||document.body.appendChild(Object.assign(document.createElement('aside'),{id:'glossary-popover',className:'glossary-popover',hidden:true,tabIndex:-1}));pop.hidden=true;pop.setAttribute('role','dialog');pop.setAttribute('aria-labelledby','glossary-popover-title');if(nativePop)pop.setAttribute('popover','manual');pop.addEventListener('pointerenter',clearPopTimer);pop.addEventListener('pointerleave',schedulePopClose);pop.addEventListener('focusin',clearPopTimer);pop.addEventListener('focusout',schedulePopClose)}
+function clearPopTimer(){if(ps.timer)clearTimeout(ps.timer);ps.timer=null}
+const popOpen=()=>!!(ps.trigger&&!pop.hidden);
+function positionPop(){if(!popOpen()||!ps.trigger?.isConnected)return;const m=12,t=ps.trigger.getBoundingClientRect(),p=pop.getBoundingClientRect();let l=Math.max(m,Math.min(t.left+t.width/2-p.width/2,innerWidth-p.width-m)),y=t.bottom+10;if(y+p.height>innerHeight-m)y=t.top-p.height-10;y=Math.max(m,Math.min(y,innerHeight-p.height-m));pop.style.left=`${Math.round(l)}px`;pop.style.top=`${Math.round(y)}px`}
+function openPop(trigger,pinned=false,focus=false){const g=glossary?.[trigger.dataset.term];if(!g)return;clearPopTimer();if(ps.trigger&&ps.trigger!==trigger){ps.trigger.setAttribute('aria-expanded','false');ps.trigger.removeAttribute('aria-describedby')}ps.trigger=trigger;ps.pinned=pinned;trigger.setAttribute('aria-expanded','true');trigger.setAttribute('aria-describedby','glossary-popover-definition');pop.innerHTML=`<div class="glossary-popover__head"><strong id="glossary-popover-title">${esc(g.label||trigger.dataset.term)}</strong><span>${esc(g.category||'Glossary')}</span></div><p id="glossary-popover-definition">${esc(g.definition)}</p>${g.example?'<p class="glossary-popover__example">'+esc(g.example)+'</p>':''}<a class="glossary-popover__link" href="?view=methods#glossary" data-view="methods" data-anchor="glossary">Full glossary →</a>`;pop.hidden=false;if(nativePop)try{if(!pop.matches(':popover-open'))pop.showPopover()}catch{}requestAnimationFrame(()=>{positionPop();if(focus)$('.glossary-popover__link',pop)?.focus({preventScroll:true})})}
+function closePop(refocus=false){clearPopTimer();const t=ps.trigger,was=ps.pinned;t?.setAttribute('aria-expanded','false');t?.removeAttribute('aria-describedby');if(nativePop)try{if(pop.matches(':popover-open'))pop.hidePopover()}catch{}pop.hidden=true;ps.trigger=null;ps.pinned=false;if(refocus&&was&&t?.isConnected){ps.suppressFocusOpen=true;t.focus({preventScroll:true});queueMicrotask(()=>{ps.suppressFocusOpen=false})}}
+function schedulePopClose(){if(ps.pinned)return;clearPopTimer();ps.timer=setTimeout(()=>{if(pop.matches(':hover')||pop.contains(document.activeElement)||ps.trigger?.matches(':hover,:focus'))return;closePop()},140)}
+
+function sources(e){
+ const links=(e.sources||[]).map(s=>`<a class="source-link" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><span>${esc(s.publisher)}</span><strong>${esc(s.title)}</strong><span aria-hidden="true">↗</span></a>`).join('');
+ return `<div class="source-stack source-stack--${esc(e.evidenceStrength)}"><div class="source-stack__label">${esc(evidence(e))}</div>${links}</div>`
+}
+function reviewLabel(e){
+ if(e?.review?.status==='automated')return `Weekly automated summary · sources checked ${fmt(e.review.checkedAt)} · no human sign-off claimed.`;
+ if(e?.review?.status==='approved')return `Reviewed by ${esc(e.review.reviewedBy)} on ${esc(e.review.reviewedAt)}.`;
+ return'Historical import · human editorial review pending.'
+}
+function openDialog(html){closePop();dialogContent.innerHTML=html;if(!dialog.open){dialogTrigger=document.activeElement;dialog.showModal()}dialog.scrollTop=0;$('.close-dialog')?.focus()}
+function showEvent(id){
+ const e=data.events.find(x=>x.id===id);if(!e)return;const seen=new Set();
+ const finding=annotate(e.plainSummary,e.glossaryTerms,seen);
+ const why=annotate(e.whyItMatters,e.glossaryTerms,seen);
+ const limits=annotate(e.evidenceLimits,e.glossaryTerms,seen);
+ const technical=e.technicalDetail?'<details class="technical-detail"><summary>Technical detail</summary><p>'+annotate(e.technicalDetail,e.glossaryTerms,seen)+'</p></details>':'';
+ const assessment=[
+  e.less_concerning?`<section><h3>Counterevidence & mitigating factors</h3><p>${annotate(e.less_concerning,e.glossaryTerms,seen)}</p></section>`:'',
+  e.what_would_raise_concern?`<section><h3>What would change the assessment</h3><p>${annotate(e.what_would_raise_concern,e.glossaryTerms,seen)}</p></section>`:'',
+  e.conclusion?`<p class="record-conclusion">${annotate(e.conclusion,e.glossaryTerms,seen)}</p>`:''
+ ].join('');
+ const context=assessment?'<details class="assessment-detail"><summary>Assessment context</summary>'+assessment+'</details>':'';
+ const provenance=(e.chatMessages||[]).length?'<a href="?view=methods#coverage" data-view="methods" data-anchor="coverage" data-close>Import provenance →</a>':'';
+ openDialog(`<article class="record-detail"><div class="record-detail__meta">${typeBadge(e)}${evidenceBadge(e)}</div><h2 id="dialog-title">${esc(e.title)}</h2><dl class="record-dates"><div><dt>${esc(e.dateBasis||'Reported')}</dt><dd><time datetime="${esc(e.reportedAt)}">${fmt(e.reportedAt)}</time></dd></div><div><dt>Occurred</dt><dd>${esc(e.occurredAt)}</dd></div></dl><section class="record-finding"><h3>Reported finding</h3><p class="lead">${finding}</p></section><div class="record-interpretation"><section><h3>Why it matters</h3><p>${why}</p></section><section class="record-limit"><h3>Evidence limits</h3><p>${limits}</p></section></div>${technical}${context}<section class="record-sources"><h3>Sources & provenance</h3>${e.evidenceNote?'<p>'+esc(e.evidenceNote)+'</p>':''}${sources(e)}<p class="small-note">${reviewLabel(e)} ${provenance}</p></section></article>`)
+}
+function showPathway(id){
  const p=data.pathways.find(x=>x.id===id);if(!p)return;
- const events=data.events.filter(e=>p.eventIds.includes(e.id));
- openDialog(`<h2 id="dialog-title">${escape(p.name)}</h2><p class="record-classification">Risk pathway · evidence summary</p><p class="lead">${escape(p.question)}</p><span class="pill amber">${escape(p.status)} ${escape(p.trend)}</span><h3>Evidence summary</h3><p>${rich(p.meaning)}</p><h3>Risk mechanism</h3><p>${rich(p.care)}</p><div class="limit standalone"><p class="eyebrow">WHAT HAS NOT BEEN ESTABLISHED</p><p>${rich(p.notDemonstrated)}</p></div><h3>Relevant evidence</h3>${events.map(e=>`<button class="related" data-event="${e.id}"><span><small>${date(e.date)}</small>${escape(e.title)}</span><span>→</span></button>`).join('')}<h3>Assessment</h3><p>${escape(p.interpretation)} This is a qualitative reading of the selected sources, not a complete assessment of the field.</p>`);
+ const related=sortByReportedAt(data.events.filter(e=>p.eventIds.includes(e.id))).map(e=>`<button class="related" data-event="${esc(e.id)}"><span><small>${fmt(e.reportedAt)}</small>${esc(e.title)}</span><span aria-hidden="true">→</span></button>`).join('');
+ openDialog(`<h2 id="dialog-title">${esc(p.name)}</h2><p class="record-classification">Risk pathway · evidence summary</p><p class="lead">${esc(p.question)}</p><p><strong>${esc(p.status)} ${esc(p.trend)}</strong></p><h3>Evidence summary</h3><p>${esc(p.meaning)}</p><h3>Risk mechanism</h3><p>${esc(p.care)}</p><section class="record-limit"><h3>What has not been established</h3><p>${esc(p.notDemonstrated)}</p></section><h3>Relevant evidence</h3>${related}<h3>Assessment</h3><p>${esc(p.interpretation)} This is a qualitative reading of the selected sources, not a complete assessment of the field.</p>`)
 }
-function showOutlook() {
+function showOutlook(){
  const o=data.outlook;
- openDialog(`<h2 id="dialog-title">Evidence behind this summary</h2><p>${escape(o.summary)}</p><h3>Supporting evidence</h3>${data.events.filter(e=>o.basis.includes(e.id)).map(e=>`<button class="related" data-event="${e.id}"><span><small>${escape(e.evidence)}</small>${escape(e.title)}</span><span>→</span></button>`).join('')}<h3 class="amber">Evidence that would raise concern</h3><p>${escape(o.moreConcerning)}</p><h3 class="mint">Evidence that would lower concern</h3><p>${escape(o.lessConcerning)}</p><h3>Unresolved uncertainties</h3><p>How evaluation results generalize to deployment, how reliably safeguards withstand adversarial pressure, and how capabilities interact across systems. We do not convert these uncertainties into a precise catastrophe probability.</p><a class="text-link" href="?view=methodology" data-view="methodology" data-close>Methodology →</a>`);
+ const related=sortByReportedAt(data.events.filter(e=>o.basis.includes(e.id))).map(e=>`<button class="related" data-event="${esc(e.id)}"><span><small>${esc(evidence(e))}</small>${esc(e.title)}</span><span aria-hidden="true">→</span></button>`).join('');
+ openDialog(`<h2 id="dialog-title">Evidence behind this outlook</h2><p class="lead">${esc(o.summary)}</p><h3>Supporting evidence</h3>${related}<h3>Evidence that would raise concern</h3><p>${esc(o.moreConcerning)}</p><h3>Evidence that would lower concern</h3><p>${esc(o.lessConcerning)}</p><h3>Unresolved uncertainties</h3><p>How evaluation results generalize to deployment, how reliably safeguards withstand adversarial pressure, and how capabilities interact across systems. Frontier Signal does not convert these uncertainties into a precise catastrophe probability.</p><a class="text-link" href="?view=methods" data-view="methods" data-close>Read methods & sources →</a>`)
 }
-function showTerm(term) {
- const g=glossary[term];if(!g)return;
- if(dialog.open && !returnDialog) returnDialog=content.innerHTML;
- openDialog(`<h2 id="dialog-title">${escape(term.charAt(0).toUpperCase()+term.slice(1))}</h2><p class="lead">${escape(g.definition)}</p>${beginner?`<h3>Illustrative example</h3><p>${escape(g.analogy)}</p>`:''}${returnDialog?'<button class="text-link" data-action="back-dialog">← Back to the evidence</button>':''}`);
+
+function disclosure(e,seen){
+ const technical=e.technicalDetail?'<div><h4>Technical detail</h4><p>'+annotate(e.technicalDetail,e.glossaryTerms,seen)+'</p></div>':'';
+ return `<details class="update-disclosure"><summary>Technical detail and evidence limits</summary><div class="update-disclosure__body">${technical}<div><h4>Evidence limits</h4><p>${annotate(e.evidenceLimits,e.glossaryTerms,seen)}</p></div><div><h4>Occurrence date</h4><p>${esc(e.occurredAt)}</p></div></div></details>`
 }
-function heading(title,description=''){return `<header class="page-heading"><h1>${title}</h1>${description?`<p>${description}</p>`:''}</header>`;}
-function demoNote(){return `<div class="demo-note"><span class="demo-label">INCIDENT COVERAGE</span><span>Through ${date(data.asOf)} · Reports ${sourceRange()}</span><a class="text-link" href="?view=methodology#coverage" data-view="methodology" data-anchor="coverage">Provenance →</a></div>`;}
-function pathwayCards(){return data.pathways.map(p=>`<button class="pathway-card" data-pathway="${p.id}"><span class="card-top"><span class="pathway-status">${escape(p.status)} ${escape(p.trend)}</span></span><h3>${escape(p.name)}</h3><p>${escape(p.question)}</p><span class="card-bottom">${escape(p.interpretation)}<span>→</span></span></button>`).join('');}
-function eventRows(events){return events.map(e=>{const d=direction[e.direction];return `<article class="event-row"><div class="event-date"><span>${new Date(e.date+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',timeZone:'UTC'})}</span><strong>${e.date.slice(8)}</strong><small>${e.date.slice(0,4)}</small></div><div class="event-body"><div class="event-meta"><span class="${d[2]}">${d[0]} ${d[1]}</span><span>${escape(e.category)}</span><span>${escape(e.evidence)}</span></div><h3><button data-event="${e.id}">${escape(e.title)}</button></h3><p class="event-excerpt">${rich(recordSummary(e))}</p><p class="small-note occurrence">Occurred: ${escape(e.occurred)}</p><div class="event-bottom"><div>${e.pathways.map(id=>`<button class="tag" data-pathway="${id}">${escape(data.pathways.find(p=>p.id===id).name)}</button>`).join('')}</div><button class="worry-link" data-event="${e.id}">Read record & assessment <span>→</span></button></div></div></article>`;}).join('');}
-function timelineMarkup(){return `<section id="timeline"><div class="section-head view-heading"><div><h1>Timeline</h1></div><span class="small-note">${data.events.length} records · ordered by report date</span></div><div class="timeline-search"><label for="event-search">Search records<input id="event-search" type="search" placeholder="Medicare, DNS, Hugging Face…" value="${escape(query)}"></label><label for="year-filter">Report year<select id="year-filter"><option value="all">All years</option>${[...new Set(data.events.map(e=>e.date.slice(0,4)))].sort().reverse().map(y=>`<option value="${y}" ${y===year?'selected':''}>${y}</option>`).join('')}</select></label></div><div class="timeline-controls"><div class="filters" role="group" aria-label="Filter notes by category">${categories.map(c=>`<button class="filter ${c===category?'selected':''}" data-filter="${c}" aria-pressed="${c===category}">${c}</button>`).join('')}</div><div class="signal-filter"><label for="signal-filter">Signal direction</label><select id="signal-filter"><option value="all">All signals</option><option value="worsening">Capability & risk</option><option value="improving">Safety & control</option><option value="mixed">Mixed signals</option></select></div></div><p id="result-count" class="result-count" role="status" aria-live="polite"></p><div class="timeline-results-header"><p class="small-note">Reports include research, policy, and follow-ups; record totals are not incident counts.</p><button class="text-link" id="clear-event-filters" data-action="reset-filters" hidden>Clear filters</button></div><div id="event-list"></div><div id="event-pagination"></div></section>`;}
+function updatePreview(e,variant='brief'){
+ const seen=new Set(),t=type(e);
+ return `<article class="update-preview update-preview--${variant}" data-update-type="${esc(e.updateType)}"><div class="update-preview__meta"><time datetime="${esc(e.reportedAt)}">${fmt(e.reportedAt)}</time>${typeBadge(e)}${evidenceBadge(e)}</div><h3>${esc(e.title)}</h3><p class="update-preview__summary">${annotate(e.plainSummary,e.glossaryTerms,seen)}</p><div class="update-preview__why"><strong>Why it matters</strong><p>${annotate(e.whyItMatters,e.glossaryTerms,seen)}</p></div>${disclosure(e,seen)}<div class="update-preview__actions"><button class="text-link" data-event="${esc(e.id)}">Read the evidence <span aria-hidden="true">→</span></button><span class="update-preview__type-note"><span aria-hidden="true">${t.icon}</span>${esc(t.label)}</span></div></article>`
+}
+function eventRows(events){
+ return events.map(e=>{
+  const seen=new Set(),s=SIGNALS[e.direction]||SIGNALS.mixed;
+  const tags=(e.pathways||[]).map(id=>{const p=data.pathways.find(x=>x.id===id);return p?`<button class="tag" data-pathway="${esc(id)}">${esc(p.name)}</button>`:''}).join('');
+  return `<article class="update-row" data-update-type="${esc(e.updateType)}"><div class="update-row__date"><time datetime="${esc(e.reportedAt)}">${short(e.reportedAt)}<span>${e.reportedAt.slice(0,4)}</span></time></div><div class="update-row__body"><div class="update-row__meta">${typeBadge(e)}${evidenceBadge(e)}<span class="signal ${s[2]}">${s[0]} ${s[1]}</span>${e.category?'<span class="topic-chip">'+esc(e.category)+'</span>':''}</div><h3><button data-event="${esc(e.id)}">${esc(e.title)}</button></h3><p>${annotate(e.plainSummary,e.glossaryTerms,seen)}</p><div class="update-row__why"><strong>Why it matters</strong><span>${annotate(e.whyItMatters,e.glossaryTerms,seen)}</span></div>${disclosure(e,seen)}<div class="update-row__foot"><button class="text-link" data-event="${esc(e.id)}">Read the evidence →</button>${tags}</div></div></article>`
+ }).join('')
+}
+function editionEvents(){
+ const run=[...(data.updates?.history||[])].filter(r=>(r.addedIds?.length||0)+(r.updatedIds?.length||0)>0).sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
+ if(!run)return getFeaturedEvents(data.events);
+ const ids=new Set([...(run.addedIds||[]),...(run.updatedIds||[])]);return sortByReportedAt(data.events.filter(e=>ids.has(e.id)))
+}
+function editionCounts(events){
+ const counts=Object.fromEntries(TYPE_KEYS.map(k=>[k,events.filter(e=>e.updateType===k).length]));
+ const items=TYPE_KEYS.map(k=>`<div class="edition-count edition-count--${k}"><span><span aria-hidden="true">${TYPES[k].icon}</span>${esc(TYPES[k].label)}</span><strong>${counts[k]}</strong></div>`).join('');
+ return `<div class="edition-counts" data-ui="edition-counts" aria-label="Records in this edition by update type">${items}</div><p class="edition-counts__note">Record counts describe this edition. They are not incident rates or a risk score.</p>`
+}
+function weeklyChart(){
+ const series=buildWeeklySeries(data.events,data.asOf,12),max=Math.max(1,...series.map(w=>w.total));
+ const bars=series.map(w=>{const segments=TYPE_KEYS.map(k=>w.counts[k]?`<span class="weekly-bar__segment weekly-bar__segment--${k}" style="width:${(w.counts[k]/max*100).toFixed(2)}%"></span>`:'').join('');return `<div class="weekly-bar"><time datetime="${w.weekStart}">${short(w.weekStart)}</time><div class="weekly-bar__track" aria-hidden="true">${segments}</div><strong>${w.total}</strong></div>`}).join('');
+ const rows=series.map(w=>`<tr><th scope="row"><time datetime="${w.weekStart}">${fmt(w.weekStart)}</time></th>${TYPE_KEYS.map(k=>'<td>'+w.counts[k]+'</td>').join('')}<td>${w.total}</td></tr>`).join('');
+ const legend=TYPE_KEYS.map(k=>`<span class="chart-legend__item chart-legend__item--${k}"><span aria-hidden="true">${TYPES[k].icon}</span>${esc(TYPES[k].label)}</span>`).join('');
+ const heads=TYPE_KEYS.map(k=>'<th scope="col">'+esc(TYPES[k].label)+'</th>').join('');
+ return `<section class="records-over-time section" id="records-over-time"><div class="wrap"><header class="section-heading"><p class="section-kicker">Twelve-week report-date view</p><h2>Records by report date and update type</h2><p>Weekly counts group collection records by their displayed report or disclosure date. They do not measure how much risk existed in the world.</p></header><div class="chart-legend">${legend}</div><div class="weekly-chart" data-ui="weekly-chart" role="img" aria-label="Twelve weeks of collection records grouped by report date and update type">${bars}</div><div class="chart-table-wrap"><table class="chart-table"><caption>Collection records by report week and update type</caption><thead><tr><th scope="col">Week starting</th>${heads}<th scope="col">Total</th></tr></thead><tbody>${rows}</tbody></table></div></div></section>`
+}
+
+const sequenceSteps=[['setup','Evaluation setup'],['observed','Observed behavior'],['boundary','Boundary crossed'],['response','Containment or response'],['outcome','Known outcome']];
+function sequence(e){
+ const steps=sequenceSteps.map(([k,label])=>{const x=e.sequence?.[k],known=x?.status==='reported';return `<li class="case-sequence__step ${known?'is-reported':'is-unknown'}"><span class="case-sequence__marker" aria-hidden="true">${known?'●':'○'}</span><div><strong>${esc(label)}</strong><p>${known?esc(x.text):'Not reported in the available sources.'}</p></div></li>`}).join('');
+ return `<ol class="case-sequence" aria-label="Incident sequence">${steps}</ol>`
+}
+function casePicker(cases){
+ const buttons=cases.map(e=>`<button data-control-case="${esc(e.id)}" aria-pressed="${e.id===selectedCase}" aria-controls="control-case-detail"><span>${esc(e.title)}</span><time datetime="${esc(e.reportedAt)}">${fmt(e.reportedAt)}</time></button>`).join('');
+ return `<div class="control-case-picker" role="group" aria-label="Choose a control case">${buttons}</div>`
+}
+function renderCase(){
+ const target=$('#control-case-detail');if(!target)return;
+ const cases=getControlCases(data.events),e=cases.find(x=>x.id===selectedCase)||cases[0];if(!e)return;
+ selectedCase=e.id;$$('[data-control-case]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.controlCase===e.id)));
+ const seen=new Set(),status=e.review?.status==='approved'?'Human-reviewed':e.review?.status==='imported'?'Historical import':'Automated source summary';
+ target.innerHTML=`<div class="control-case-detail__meta">${typeBadge(e)}${evidenceBadge(e)}<time datetime="${esc(e.reportedAt)}">Reported ${fmt(e.reportedAt)}</time></div><h3>${esc(e.title)}</h3><div class="control-case-detail__facts"><section><h4>Reported finding</h4><p>${annotate(e.plainSummary,e.glossaryTerms,seen)}</p></section><section><h4>Interpretation</h4><p>${annotate(e.whyItMatters,e.glossaryTerms,seen)}</p></section><section><h4>Evidence limits</h4><p>${annotate(e.evidenceLimits,e.glossaryTerms,seen)}</p></section></div>${sequence(e)}<div class="control-case-detail__foot"><button class="text-link" data-event="${esc(e.id)}">Read record & sources →</button><span>${status}</span></div>`
+}
+function casesSection({id='control-cases',heading='Latest control cases',description='Cases are ordered by their displayed report or disclosure date.',limit=5}={}){
+ const cases=getControlCases(data.events).slice(0,limit);if(!selectedCase||!cases.some(e=>e.id===selectedCase))selectedCase=cases[0]?.id||null;
+ const all=id!=='cases'?'<a class="text-link" href="?view=cases" data-view="cases">View all control cases →</a>':'';
+ return `<section class="control-cases section" id="${esc(id)}"><div class="wrap"><header class="section-heading section-heading--split"><div><p class="section-kicker">Reported incidents</p><h2>${esc(heading)}</h2><p>${esc(description)}</p></div>${all}</header><div class="control-cases__layout" data-ui="control-case-reader">${casePicker(cases)}<article id="control-case-detail" class="control-case-detail" aria-live="polite"></article></div></div></section>`
+}
+
+function modelMapMarkup({id='model-map',heading='Model landscape',compact=false}={}){
+ if(!models)return `<section class="model-map section" id="${esc(id)}"><div class="wrap"><h2>${esc(heading)}</h2><p>The provider source file could not be loaded.</p></div></section>`;
+ const rows=deriveProviderSummaries(models).map(p=>{
+  const access=p.accessStatuses.map(s=>ACCESS[s]||s).join(' · ');
+  const latest=p.latestChange.dateVerified?`<a href="${esc(p.latestChange.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(p.latestChange.name)} · ${fmt(p.latestChange.date)} ↗</a>`:`<a href="${esc(p.latestChange.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(p.latestChange.name)} · date unverified ↗</a>`;
+  const practical=p.practical?'<a href="'+esc(p.practical.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(p.practical.name)+' ↗</a>':'Same as flagship';
+  return `<tr><th scope="row" data-label="Provider"><strong>${esc(p.name)}</strong><span>${esc(p.family)}</span></th><td data-label="Flagship family"><a href="${esc(p.flagship.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(p.flagship.name)} ↗</a></td><td data-label="Practical family">${practical}</td><td data-label="Access">${esc(access)}</td><td data-label="Latest change">${latest}</td><td data-label="Source"><a href="${esc(p.catalogUrl)}" target="_blank" rel="noopener noreferrer">Provider source ↗</a></td></tr>`
+ }).join('');
+ return `<section class="model-map section ${compact?'model-map--compact':''}" id="${esc(id)}"><div class="wrap"><header class="section-heading section-heading--split"><div><p class="section-kicker">Consequential families</p><h2>${esc(heading)}</h2><p>Current featured families and consequential changes from provider sources. This is not a capability ranking.</p></div><a class="text-link" href="?view=catalog" data-view="catalog">View complete catalog →</a></header><div class="model-map__table-wrap" data-ui="model-family-map"><table class="model-map__table"><thead><tr><th scope="col">Provider</th><th scope="col">Flagship family</th><th scope="col">Practical family</th><th scope="col">Access</th><th scope="col">Latest change</th><th scope="col">Source</th></tr></thead><tbody>${rows}</tbody></table></div><p class="small-note">Provider positioning is not independent evidence of performance or fitness for a particular use.</p></div></section>`
+}
+function briefing(){
+ const featured=getFeaturedEvents(data.events).slice(0,6),edition=editionEvents(),lead=featured[0];
+ const leadMarkup=lead?'<div class="weekly-briefing__lead">'+updatePreview(lead,'lead')+'</div>':'';
+ main.innerHTML=`<section class="briefing-hero hero" id="top" data-enter><div class="wrap"><div class="briefing-hero__copy" data-ui="edition-briefing"><p class="briefing-hero__edition">Updated ${fmt(data.updates?.lastPublishedAt||data.asOf)} · Coverage ${sourceRange(edition)}</p><h1>The important developments at the frontier of AI—explained plainly.</h1><p class="hero__lead">A source-linked weekly briefing on incidents, evaluations, safeguards, policy, and major model changes.</p><div class="btn-row"><a class="btn btn--primary" href="#week">Read this week’s briefing ↓</a><a class="btn btn--secondary" href="?view=updates" data-view="updates">Browse all updates →</a></div>${editionCounts(edition)}</div></div></section><section class="weekly-briefing section" id="week"><div class="wrap"><header class="section-heading section-heading--split"><div><p class="section-kicker">This week</p><h2>What changed this week</h2><p>${featured.length} editorially selected records, ordered by report date.</p></div><a class="text-link" href="?view=updates" data-view="updates">Browse all updates →</a></header>${leadMarkup}<div class="weekly-briefing__briefs" data-ui="editorial-briefs">${featured.slice(1).map(e=>updatePreview(e)).join('')}</div></div></section>${weeklyChart()}${casesSection()}${modelMapMarkup({id:'models',heading:'Model landscape',compact:true})}<section class="learn-section section" id="learn"><div class="wrap" data-ui="research-directory"><p class="section-kicker">Learn as you read</p><h2>Terms, methods, and original sources</h2><p>Open underlined terms for a short definition, or use the complete glossary and source register when you need the technical record.</p><div class="btn-row"><a class="btn btn--primary" href="?view=methods#glossary" data-view="methods" data-anchor="glossary">Open the glossary →</a><a class="btn btn--secondary" href="?view=methods" data-view="methods">Read methods & sources →</a></div><p class="small-note">For a broader synthesis, explore the <a href="?view=overview" data-view="overview">qualitative Risk Outlook</a> or the <a href="?view=ladder" data-view="ladder">Concern Ladder</a>.</p></div></section>`;
+ renderCase();if(!hasRouted)refreshMotion()
+}
+
+const topicOptions=()=>[...new Set(data.events.map(e=>e.category).filter(Boolean))].sort();
+function updatesMarkup(){
+ const years=[...new Set(data.events.map(e=>e.reportedAt.slice(0,4)))].sort().reverse().map(v=>`<option value="${v}" ${v===year?'selected':''}>${v}</option>`).join('');
+ const topics=topicOptions().map(v=>`<option value="${esc(v)}" ${v===topic?'selected':''}>${esc(v)}</option>`).join('');
+ const filters=TYPE_KEYS.map(k=>`<button data-update-filter="${k}" aria-pressed="${updateType===k}"><span aria-hidden="true">${TYPES[k].icon}</span>${esc(TYPES[k].label)}</button>`).join('');
+ return `<section class="updates-view" id="updates"><header class="page-heading"><p class="section-kicker">Complete collection</p><h1>Updates</h1><p>Search every incident, evaluation, safeguard, model change, and policy record by its report date.</p></header><div class="updates-tools"><label class="updates-search" for="event-search">Search updates<input id="event-search" type="search" placeholder="Monitorability, model weights, Hugging Face…" value="${esc(query)}"></label><label for="year-filter">Report year<select id="year-filter"><option value="all">All years</option>${years}</select></label><label for="topic-filter">Technical topic<select id="topic-filter"><option value="All">All topics</option>${topics}</select></label><label for="signal-filter">Signal direction<select id="signal-filter"><option value="all">All signals</option><option value="worsening" ${signal==='worsening'?'selected':''}>More concerning</option><option value="improving" ${signal==='improving'?'selected':''}>Safety signal</option><option value="mixed" ${signal==='mixed'?'selected':''}>Mixed signal</option></select></label></div><div class="update-type-filters" role="group" aria-label="Filter updates by type"><button data-update-filter="all" aria-pressed="${updateType==='all'}">All updates</button>${filters}</div><div class="updates-results-head"><p id="result-count" role="status" aria-live="polite"></p><button class="text-link" id="clear-event-filters" data-action="reset-filters" hidden>Clear filters</button></div><p class="small-note">Record totals describe this collection, not incident prevalence.</p><div id="event-list" class="updates-list"></div><div id="event-pagination"></div></section>`
+}
+function filterEvents(reset=true){
+ if(reset)visibleEvents=20;const words=query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+ const matches=data.events.filter(e=>{const hay=[e.title,e.plainSummary,e.technicalDetail,e.whyItMatters,e.evidenceLimits,e.occurredAt,e.category,...(e.glossaryTerms||[]),...(e.sources||[]).flatMap(s=>[s.publisher,s.title])].join(' ').toLowerCase();return(updateType==='all'||e.updateType===updateType)&&(topic==='All'||e.category===topic)&&(signal==='all'||e.direction===signal)&&(year==='all'||e.reportedAt.startsWith(year))&&words.every(w=>hay.includes(w))});
+ $('#event-list').innerHTML=matches.length?eventRows(matches.slice(0,visibleEvents)):'<div class="empty-state"><h3>No updates match.</h3><button class="text-link" data-action="reset-filters">Show all updates →</button></div>';
+ $('#result-count').textContent=`${matches.length} of ${data.events.length} updates`;
+ $('#clear-event-filters').hidden=updateType==='all'&&topic==='All'&&signal==='all'&&!query&&year==='all';
+ $('#event-pagination').innerHTML=matches.length>visibleEvents?`<button class="load-more" data-action="more-events">Show next ${Math.min(20,matches.length-visibleEvents)} updates <span>${visibleEvents} of ${matches.length} shown</span></button>`:matches.length?`<p class="small-note timeline-end">All ${matches.length} matching updates shown.</p>`:'';
+ $$('[data-update-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.updateFilter===updateType)))
+}
+function updates(){main.innerHTML=updatesMarkup();filterEvents()}
+function cases(){main.innerHTML=casesSection({id:'cases',heading:'Control cases',description:'Major incidents and control failures, newest report first.',limit:getControlCases(data.events).length});renderCase()}
+function modelMap(){main.innerHTML=modelMapMarkup({id:'model-map',heading:'Model map'})}
+
 const stages=[
  ['Tool use','Documented','An AI uses tools such as search, code execution, or external services.','Tool permissions connect model decisions to real effects.','dns-escape'],
  ['Autonomous multi-step work','Documented','An agent carries out several actions toward a task without approval at each step.','Research tasks and unauthorized coordination show why the full action sequence matters.','hugging-face'],
@@ -69,196 +185,115 @@ const stages=[
  ['Resists human shutdown','Not established by these records','A system survives a determined, technically capable effort to stop it.','The DNS incident involved failed automated stopping followed by a successful human stop.','dns-escape'],
  ['Strategically improves itself','Limited evidence; human involvement','METR reports faster AI-assisted model development; earlier records document bounded software and research contributions.','Human-directed acceleration does not establish a self-sustaining, autonomous improvement cycle. Attribution and public replication remain limited.','metr-anthropic-rd-acceleration']
 ];
-function ladderMarkup(){return `<section id="ladder"><div class="section-head view-heading"><h1>Concern ladder</h1><p class="page-description">Nine capabilities, from tool use to strategic self-improvement. Select a level to examine what the evidence establishes.</p></div><div class="ladder-layout"><div class="ladder-steps" role="group" aria-label="Levels of agent capability">${stages.map((s,i)=>`<button class="ladder-step ${i===selectedStage?'selected':''} ${s[1].startsWith('Not established')?'unestablished':''}" data-stage="${i}" aria-pressed="${i===selectedStage}"><span class="step-number">${i+1<10?'0':''}${i+1}</span><span>${s[0]}</span><small class="step-label">${s[1].startsWith('Not established')?'Not established':s[1].startsWith('Limited')?'Limited evidence':'Documented'}</small><span class="step-status ${s[1].startsWith('Not established')?'none':s[1].startsWith('Limited')?'limited':'documented'}" aria-hidden="true"></span></button>`).join('')}</div><div id="stage-detail" class="stage-detail" tabindex="-1" aria-live="polite"></div></div><p class="small-note ladder-note">Evidence labels refer to the records in this edition, with each source’s limitations. “Not established” does not mean impossible or disproven. These stages need not occur in order.</p></section>`;}
-function renderStage(index,reveal=false){const s=stages[index];if(!s)return;selectedStage=index;document.querySelectorAll('[data-stage]').forEach(b=>{const selected=Number(b.dataset.stage)===index;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',selected);});$('#stage-detail').innerHTML=`<span class="stage-big">${String(index+1).padStart(2,'0')}</span><h2>${s[0]}</h2><p class="stage-evidence">${s[1]}</p><p>${s[2]}</p><div class="stage-why"><h3>Implications</h3><p>${s[3]}</p></div>${s[4]?`<button class="text-link" data-event="${s[4]}">Related research →</button>`:'<p class="small-note">No supporting event is established by these records.</p>'}<button class="ladder-back text-link" data-action="ladder-back">↑ Back to capability levels</button>`;decorateIcons($('#stage-detail'));if(reveal&&window.matchMedia('(max-width:850px)').matches){$('#stage-detail').focus({preventScroll:true});$('#stage-detail').scrollIntoView({block:'start',behavior:'instant'});}}
-function renderEvidence(){return `<section class="evidence-board"><div class="section-head"><div><h2>Evidence and interpretation</h2></div></div><div class="evidence-grid"><article><h3 class="evidence-label mint">Observed</h3><p>New reports document unauthorized evaluation activity, interference with safety work and stronger evidence of AI-assisted research acceleration.</p><button class="text-link" data-event="metr-anthropic-rd-acceleration">Independent research assessment →</button></article><article><h3 class="evidence-label amber">Inferred</h3><p>Faster development may compress the time available for assurance. Independent containment, behavioral checks and verified restraints become more consequential.</p><a class="text-link" href="?view=methodology" data-view="methodology">Methodology →</a></article><article><h3 class="evidence-label muted">Speculative</h3><p>A system could one day operate indefinitely beyond human control. These sources do not establish that outcome.</p><button class="text-link" data-action="future-stage">Shutdown resistance →</button></article></div></section>`;}
-function overview(){const o=data.outlook;main.innerHTML=heading('AI risk overview','A qualitative assessment of capabilities, control failures, and safeguards.')+demoNote()+`<section class="outlook"><div class="outlook-main"><div class="risk-title"><h2>${escape(o.title||o.level)}</h2><span class="trend">${escape(o.trendSymbol||'↗')} ${escape(o.trend)}</span></div><p>${escape(o.summary)}</p><button class="text-link" data-action="outlook">View supporting evidence <span>→</span></button></div><aside class="outlook-aside"><span class="eyebrow">SIGNAL DIRECTION</span><button class="signal-row" data-signal="worsening"><span class="signal-symbol amber">↗</span><span><strong>Capability & risk</strong></span></button><button class="signal-row" data-signal="improving"><span class="signal-symbol mint">↘</span><span><strong>Safety & control</strong></span></button><div class="outlook-foot"><span class="small-note">Qualitative assessment.<br>Source limitations apply.</span><a href="?view=methodology" data-view="methodology">How we assess →</a></div></aside></section><div class="changed-strip"><span class="eyebrow">LATEST NOTE</span><span>${escape(o.changed)}</span><button data-event="${data.latestEventId}" aria-label="Read latest incident note">→</button></div><section id="pathways"><div class="section-head"><div><h2>Risk pathways</h2></div></div><div class="pathway-grid">${pathwayCards()}</div></section>`+renderEvidence();
+function ladderMarkup(){
+ const buttons=stages.map((s,i)=>`<button class="ladder-step ${i===selectedStage?'selected':''} ${s[1].startsWith('Not established')?'unestablished':''}" data-stage="${i}" aria-pressed="${i===selectedStage}"><span class="step-number">${String(i+1).padStart(2,'0')}</span><span>${esc(s[0])}</span><small>${s[1].startsWith('Not established')?'Not established':s[1].startsWith('Limited')?'Limited evidence':'Documented'}</small></button>`).join('');
+ return `<section class="ladder-view" id="ladder"><header class="page-heading"><h1>Concern ladder</h1><p>Nine capabilities, from tool use to strategic self-improvement. Select a level to examine what the evidence establishes.</p></header><div class="ladder-layout"><div class="ladder-steps" role="group" aria-label="Levels of agent capability">${buttons}</div><div id="stage-detail" class="stage-detail" tabindex="-1" aria-live="polite"></div></div><p class="small-note">Evidence labels refer to this edition. “Not established” does not mean impossible or disproven. These stages need not occur in order.</p></section>`
 }
-function filterEvents(reset=true){if(reset)visibleEvents=20;const words=query.toLowerCase().trim().split(/\s+/).filter(Boolean);const matches=data.events.filter(e=>(category==='All'||e.category===category)&&(signal==='all'||e.direction===signal)&&(year==='all'||e.date.startsWith(year))&&words.every(w=>[e.title,e.summary_beginner,e.technical_summary,e.occurred,e.evidence,...e.sources.map(s=>s.publisher)].join(' ').toLowerCase().includes(w)));$('#event-list').innerHTML=matches.length?eventRows(matches.slice(0,visibleEvents)):`<div class="empty-state"><h3>No records match.</h3><button class="text-link" data-action="reset-filters">Show all records →</button></div>`;$('#result-count').textContent=`${matches.length} of ${data.events.length} records`;$('#clear-event-filters').hidden=category==='All'&&signal==='all'&&!query&&year==='all';$('#event-pagination').innerHTML=matches.length>visibleEvents?`<button class="load-more" data-action="more-events">Show next ${Math.min(20,matches.length-visibleEvents)} records <span>${visibleEvents} of ${matches.length} shown</span></button>`:matches.length?`<p class="small-note timeline-end">All ${matches.length} matching records shown.</p>`:'';document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('selected',b.dataset.filter===category);b.setAttribute('aria-pressed',b.dataset.filter===category);});decorateIcons($('#event-list'));}
-function coverageMarkup(){return `<section id="coverage"><h2>Conversation coverage</h2><p>Imported on ${date(data.importedAt)} from <a href="${escape(data.chatSource)}" target="_blank" rel="noopener noreferrer">Frontier AI Risk Watch ↗</a>. The original chat covers developments through ${date(data.chatAsOf||data.asOf)}. Later product discussions are included in the reconciliation below.</p><p>${data.events.filter(e=>e.chatMessages.length).length} records are linked to the conversation or its cited reports. ${data.events.filter(e=>!e.chatMessages.length&&e.review.status==='imported').length} earlier research notes remain as additional background. Repeated mentions link to the same record; grouped cases are described in their details.</p>${data.coverage.map(c=>`<details class="coverage-group"><summary>${date(c.date)} · ${c.eventIds.length} linked ${c.eventIds.length===1?'record':'records'}${[64,88].includes(c.messageIndex)?' · product discussion':''}</summary><p class="small-note">${escape(c.note)}</p>${c.eventIds.map(id=>{const e=data.events.find(x=>x.id===id);return `<button class="related" data-event="${e.id}"><span>${escape(e.title)}</span><span>→</span></button>`;}).join('')}</details>`).join('')}<h3>Corrections and counting rules</h3><ul>${data.corrections.map(c=>`<li>${escape(c)}</li>`).join('')}</ul></section>`;}
-function updateHistoryMarkup(){const runs=data.updates?.history||[];return `<section id="weekly-updates"><h2>Weekly updates</h2>${runs.length?runs.slice().reverse().slice(0,12).map(r=>`<div class="source-record"><h3>${date(r.date)}</h3><p>${escape(r.summary)}</p><p class="small-note">${r.addedIds.length} new records · ${r.updatedIds.length} updated records</p></div>`).join(''):'<p>No scheduled review has completed yet.</p>'}</section>`;}
-function methodology(){main.innerHTML=heading('Sources & methodology','How records are selected, interpreted, and kept current.')+demoNote()+`<div class="method-layout"><aside class="method-nav"><a href="#methodology">Approach</a><a href="#model-methodology">Model catalog</a><a href="#weekly-updates">Update history</a><a href="#coverage">Import provenance</a><a href="#methodology-sources">Source register</a><a href="#glossary">Glossary</a></aside><article class="method-body"><section><h2>Scope</h2><p>This watch began with a historical conversation import. Weekly updates now independently research original reports and investigations. It covers incidents, investigations, capability studies, and governance developments. The earlier 2025 research notes remain as background.</p><p>The page summarizes the evidence; it does not assign a reviewed risk rating or a catastrophe probability. Future scenarios and the chat’s subjective probability estimates are not presented as observed events.</p></section><section><h2>Dates and evidence</h2><p>Timeline order follows report or disclosure dates. Where that date is unavailable, the conversation date is labeled explicitly. Each record separately states when the underlying activity occurred, including uncertainty.</p><p>Primary-source reports describe what a developer, government, or researcher reports. They are not independent replication. External research may have uncertain attribution; chat reports preserve claims whose original citations have not been fully rechecked. Failed attempts, successful access, and authorized security research remain distinct.</p><p>Case counts cannot establish prevalence without a denominator and a consistent detection process. Repeated investigations of one incident are follow-ups, not additional intrusions.</p></section><section><h2>Editorial status</h2><p>Historical imports and weekly automated summaries are labeled separately. Source checks are not human editorial approval. The automated process publishes source-supported developments and interpretations without claiming a named human reviewer.</p><p>${data.updates?.enabled?`Weekly reviews are scheduled for ${escape(data.updates.scheduleLabel)}. They assess material incidents, capability changes, and effective safeguards, explaining how the evidence changes the five-year outlook and what would change that assessment next. New records require an accessible original report or investigation; weakly supported candidates are held back.`:'Weekly updates are not enabled yet.'} ${data.updates?.lastCheckedAt?`Last completed source review: ${date(data.updates.lastCheckedAt)}.`:'The first scheduled source review has not run yet.'} Future human-reviewed editions require actual approval metadata.</p></section><section id="model-methodology"><h2>Model catalog</h2><p>The catalog tracks named models and managed agents from five providers, including supported earlier releases. Equivalent routing aliases, dated snapshots, and quantized variants are grouped. Retired and announced-only models are excluded from the active catalog. Conflicting official availability notices are marked uncertain and retained for visibility; these entries are not confirmed offerings.</p><p>The two featured models reflect each provider’s published positioning: a high-capability offering and an option for routine work. These are editorial selections within each provider, not results from a standardized cross-provider benchmark. Access conditions may differ, particularly for downloadable models and restricted research systems.</p><p>Each card uses the same release-date field. Dates refer to the documented release of the listed version; preview, API, product, and model-family launches are distinguished alongside the date. Release references are linked separately from model documentation. A date that cannot be verified is labeled explicitly, never inferred from a training cutoff, snapshot identifier, or retirement commitment.</p><p>Descriptions identify capabilities and practical tradeoffs. Vendor positioning is not independent validation or evidence of fitness for clinical use.</p>${models?`<p class="small-note">Catalog sources checked ${date(models.checkedAt)}. Incident coverage and model-catalog freshness are tracked separately.</p>`:''}</section>${updateHistoryMarkup()}${coverageMarkup()}<section id="methodology-sources"><h2>Source register</h2><p>${data.events.length} records · source dates ${sourceRange()}. Open each record for occurrence dates and evidence limitations.</p>${data.events.map(e=>`<details class="source-record"><summary><span>${escape(e.title)}</span><small>${date(e.date)} · ${escape(e.evidence)}</small></summary>${sources(e)}<button class="text-link" data-event="${e.id}">Read record →</button></details>`).join('')}</section><section id="glossary"><h2>Glossary</h2><p>Simplified vocabulary changes incident summaries in the dashboard, timeline, and record details. It is off by default; technical terms remain available in the glossary.</p><div class="glossary-grid">${Object.keys(glossary).map(t=>`<button data-term="${escape(t)}">${escape(t)} <span>→</span></button>`).join('')}</div></section></article></div>`;}
-const availability = {unconfirmed:'Availability uncertain',available:'Available',preview:'Preview',restricted:'Restricted access','open-weights':'Downloadable','existing-users':'Existing users only','product-access':'In company products',retiring:'Retiring',retired:'Retired',announced:'Announced'};
-function currentModels(company){return company.models.filter(model=>!['retired','announced'].includes(model.status));}
-function modelCard(model,role=''){
- const release=model.releasedAt?`<a class="release-date" href="${escape(model.releaseSourceUrl||model.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(model.name)} released ${date(model.releasedAt)}${model.releaseKind?`, ${escape(model.releaseKind)}`:''}; release source"><time datetime="${model.releasedAt}">${date(model.releasedAt)}</time> ↗</a>`:`<a class="release-date unverified" href="?view=methodology#model-methodology" data-view="methodology" data-anchor="model-methodology" aria-label="${escape(model.name)}: ${escape(model.releaseNote)}">${model.id==='chat-latest'?'Rolling alias':'Date unverified'}</a>`;
- const level=role?'h3':'h4';
- const status=`<span class="model-availability ${model.status==='restricted'?'restricted':['retiring','preview','existing-users','unconfirmed'].includes(model.status)?'amber':''}">${availability[model.status]}</span>`;
- return `<article class="model-card card ${role?'featured-model':''}"><div class="model-card-top">${role?`<span class="model-role">${role}</span>`:''}${status}</div><div class="model-card-head"><${level}>${escape(model.name)}</${level}></div><p class="model-description">${escape(model.purpose)}</p><div class="model-card-foot"><div class="model-release"><span class="metadata-label">Released</span>${release}${model.releaseKind?`<small>${escape(model.releaseKind)}</small>`:''}</div><a class="model-docs" href="${escape(model.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Provider source for ${escape(model.name)}">Source ↗</a></div>${model.retirementAt?`<p class="retirement-note">${model.status==='retired'?'Retired':'Retires'} ${date(model.retirementAt)}</p>`:''}</article>`;
+function renderStage(i,reveal=false){const s=stages[i];if(!s)return;selectedStage=i;$$('[data-stage]').forEach(b=>{const on=Number(b.dataset.stage)===i;b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))});$('#stage-detail').innerHTML=`<span class="stage-big">${String(i+1).padStart(2,'0')}</span><h2>${esc(s[0])}</h2><p class="stage-evidence">${esc(s[1])}</p><p>${esc(s[2])}</p><section class="stage-why"><h3>Implications</h3><p>${esc(s[3])}</p></section>${s[4]?'<button class="text-link" data-event="'+esc(s[4])+'">Related research →</button>':'<p class="small-note">No supporting event is established by these records.</p>'}<button class="ladder-back text-link" data-action="ladder-back">↑ Back to capability levels</button>`;if(reveal&&matchMedia('(max-width:850px)').matches){$('#stage-detail').focus({preventScroll:true});$('#stage-detail').scrollIntoView({block:'start',behavior:'instant'})}}
+function ladder(){main.innerHTML=ladderMarkup();renderStage(selectedStage)}
+function overview(){
+ const o=data.outlook,latest=data.events.find(e=>e.id===data.latestEventId);
+ const paths=data.pathways.map(p=>`<button class="pathway-card" data-pathway="${esc(p.id)}"><span>${esc(p.status)} ${esc(p.trend)}</span><h3>${esc(p.name)}</h3><p>${esc(p.question)}</p><strong>${esc(p.interpretation)} →</strong></button>`).join('');
+ main.innerHTML=`<section class="outlook-view"><header class="page-heading"><p class="section-kicker">Secondary view</p><h1>Risk outlook</h1><p>A qualitative assessment of capabilities, control failures, and safeguards.</p></header><div class="outlook-summary"><div><p class="section-kicker">Five-year outlook</p><h2>${esc(o.title||o.level)}</h2><p>${esc(o.summary)}</p><button class="text-link" data-action="outlook">View supporting evidence →</button></div><aside><h3>Signal direction</h3><button data-signal="worsening">↗ More concerning</button><button data-signal="improving">↘ Safety & control</button><p>Qualitative assessment. Source limitations apply.</p></aside></div>${latest?'<section class="latest-outlook-note"><h2>Latest note</h2>'+updatePreview(latest)+'</section>':''}<section class="outlook-pathways"><h2>Risk pathways</h2><div class="pathway-grid">${paths}</div></section></section>`
 }
-function renderCatalogResults(){
- const company=models.companies.find(c=>c.id===selectedCompany);
- const offerings=currentModels(company), words=modelQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
- const matching=offerings.filter(m=>(modelGroup==='all'||m.group===modelGroup)&&words.every(w=>`${m.name} ${m.purpose} ${m.group} ${availability[m.status]}`.toLowerCase().includes(w)));
- $('#catalog-result-count').textContent=`${matching.length} of ${offerings.length} models`;
- $('#catalog-results').innerHTML=matching.length?[...new Set(matching.map(model=>model.group))].map(group=>`<section class="model-group"><h3>${escape(group)} <span>${matching.filter(m=>m.group===group).length}</span></h3><div class="model-grid">${matching.filter(model=>model.group===group).map(model=>modelCard(model)).join('')}</div></section>`).join(''):'<div class="empty-state"><h3>No models match these filters.</h3><button class="text-link" data-action="reset-model-filters">Clear model filters →</button></div>';decorateIcons($('#catalog-results'));
+
+function updateHistory(){
+ const runs=data.updates?.history||[];
+ return `<section id="weekly-updates"><h2>Update history</h2>${runs.length?runs.slice().reverse().slice(0,12).map(r=>'<article class="source-record"><h3>'+fmt(r.date)+'</h3><p>'+esc(r.summary)+'</p><p class="small-note">'+r.addedIds.length+' new records · '+r.updatedIds.length+' updated records</p></article>').join(''):'<p>No scheduled review has completed yet.</p>'}</section>`
 }
-function renderModelCatalog(){
- if(!models)return;
- const company=models.companies.find(c=>c.id===selectedCompany)||models.companies[0];
- selectedCompany=company.id;
- const offerings=currentModels(company);
- document.querySelectorAll('[data-company]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.company===company.id)));
- $('#featured-models').innerHTML=['capable','everyday'].map((key,index)=>modelCard(offerings.find(model=>model.id===company.featured[key]),index?'Everyday use':'Most capable')).join('');
- const toggle=$('#model-expand');
- toggle.innerHTML=`<span>View all ${offerings.length} ${escape(company.name)} models</span><span aria-hidden="true">→</span>`;
- $('#model-catalog-note').textContent=company.note;
- $('#company-model-source').href=company.catalogUrl;
- $('#company-model-source').textContent=`${company.name} catalog ↗`;
- $('#company-model-date').textContent=`Sources checked ${date(company.checkedAt)}`;
- decorateIcons($('#company-models'));
- $('#model-status').textContent=`${company.name}: ${offerings.length} models. Two featured models shown.`;
+function coverage(){
+ const linked=data.events.filter(e=>(e.chatMessages||[]).length).length;
+ const groups=(data.coverage||[]).map(c=>{const records=c.eventIds.map(id=>{const e=data.events.find(x=>x.id===id);return e?`<button class="related" data-event="${esc(e.id)}"><span>${esc(e.title)}</span><span aria-hidden="true">→</span></button>`:''}).join('');return `<details class="coverage-group"><summary>${fmt(c.date)} · ${c.eventIds.length} linked ${c.eventIds.length===1?'record':'records'}</summary><p>${esc(c.note)}</p>${records}</details>`}).join('');
+ return `<section id="coverage"><h2>Import provenance</h2><p>Imported on ${fmt(data.importedAt)} from <a href="${esc(data.chatSource)}" target="_blank" rel="noopener noreferrer">Frontier AI Risk Watch ↗</a>. The original conversation covers developments through ${fmt(data.chatAsOf||data.asOf)}.</p><p>${linked} records link to the conversation or one of its cited reports. Repeated mentions point to the same record.</p>${groups}<h3>Corrections and counting rules</h3><ul>${(data.corrections||[]).map(x=>'<li>'+esc(x)+'</li>').join('')}</ul></section>`
 }
-function renderIncident(){
- const incident=data.events.find(event=>event.id===selectedIncident);if(!incident)return;
- document.querySelectorAll('[data-incident]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.incident===incident.id)));
- $('#incident-spotlight').innerHTML=`<div class="spotlight-top"><span class="evidence-chip">${escape(incident.evidence)}</span><span class="small-note">Reported ${date(incident.date)}</span></div><h3>Control case: ${escape(incident.title)}</h3><dl class="incident-facts"><div><dt>Reported finding</dt><dd>${rich(recordSummary(incident))}</dd></div><div><dt>Interpretation</dt><dd>${rich(incident.why_it_matters)}</dd></div><div><dt>Evidence limits</dt><dd>${rich(incident.what_it_doesnt_mean)}</dd></div></dl><div class="spotlight-footer"><button class="text-link" data-event="${incident.id}">Read record & sources →</button><span class="small-note">${incident.review.status==='approved'?'Human-reviewed':incident.review.status==='imported'?'Historical import':'Automated source summary'}</span></div>`;decorateIcons($('#incident-spotlight'));
+function glossarySection(){
+ const entries=Object.entries(glossary).sort((a,b)=>(a[1].label||a[0]).localeCompare(b[1].label||b[0]));
+ const buttons=entries.map(([k,g])=>`<button type="button" class="glossary-entry" data-term="${esc(k)}" aria-expanded="false" aria-controls="glossary-popover"><span>${esc(g.label||k)}</span><small>${esc(g.category||'Glossary')}</small><span aria-hidden="true">→</span></button>`).join('');
+ return `<section id="glossary"><h2>Glossary</h2><p>Plain-language definitions for technical terms used across the briefing. Open a term without leaving the page.</p><div class="glossary-grid">${buttons}</div></section>`
 }
-function evidenceIndex(){
- const counts=['worsening','improving','mixed'].map(key=>({key,count:data.events.filter(event=>event.direction===key).length}));
- const bars=counts.map(({key,count},index)=>`<g transform="translate(0 ${index*38})"><text x="0" y="15">${escape(direction[key][1])}</text><rect x="145" y="2" width="${(count/data.events.length*330).toFixed(1)}" height="15" rx="1" class="${direction[key][2]}"></rect><text x="495" y="15" text-anchor="end">${count}</text></g>`).join('');
- return `<aside class="evidence-index app-frame hero-visual" data-ui data-visual data-enter-media aria-label="Frontier Signal evidence index">
-  <div class="index-chrome"><span>Collection index</span><span>Checked ${date(data.updates?.lastCheckedAt||data.asOf)}</span></div>
-  <div class="index-total"><strong>${data.events.length}</strong><span>research records<br><small>${sourceRange()}</small></span></div>
-  <svg class="evidence-plot" viewBox="0 0 500 110" role="img" aria-label="${counts.map(({key,count})=>`${count} ${direction[key][1].toLowerCase()}`).join(', ')}">${bars}</svg>
-  <div class="index-chart" aria-label="Records by signal direction">${counts.map(({key,count})=>`<div class="index-row ${direction[key][2]}"><span>${direction[key][0]} ${direction[key][1]}</span><strong>${count}</strong></div>`).join('')}</div>
-  <div class="index-assessment"><span>Five-year outlook</span><strong>${escape(data.outlook.title||data.outlook.level)}</strong><a href="?view=methodology#weekly-updates" data-view="methodology" data-anchor="weekly-updates">Review completed ${data.updates?.lastCheckedAt?date(data.updates.lastCheckedAt):'not yet'} →</a></div>
-  <p class="index-note">Collection counts, not incident rates or a risk score.</p>
- </aside>`;
+function methods(){
+ const register=data.events.map(e=>`<details class="source-record"><summary><span>${esc(e.title)}</span><small>${fmt(e.reportedAt)} · ${esc(evidence(e))}</small></summary>${sources(e)}<button class="text-link" data-event="${esc(e.id)}">Read record →</button></details>`).join('');
+ main.innerHTML=`<section class="methods-view" id="methodology"><header class="page-heading"><p class="section-kicker">Editorial record</p><h1>Methods & sources</h1><p>How records are selected, interpreted, sourced, and kept current.</p></header><div class="method-layout"><aside class="method-nav" aria-label="Methods sections"><a href="#approach">Approach</a><a href="#dates-evidence">Dates & evidence</a><a href="#editorial-status">Editorial status</a><a href="#model-methodology">Model method</a><a href="#weekly-updates">Update history</a><a href="#coverage">Import provenance</a><a href="#methodology-sources">Source register</a><a href="#glossary">Glossary</a></aside><article class="method-body"><section id="approach"><h2>Approach</h2><p>Frontier Signal is a public briefing backed by an evidence collection. It covers incidents, investigations, capability evaluations, safeguards, monitoring, model access changes, and governance developments.</p><p>The briefing reports what sources establish, gives a restrained interpretation, and states the evidence limits. It does not assign a risk score or convert uncertainty into a catastrophe probability.</p></section><section id="dates-evidence"><h2>Dates & evidence</h2><p>Updates are ordered by report or disclosure date. Every record separately states when the underlying activity occurred, including uncertainty.</p><p>Primary reports describe what a developer, government, or researcher says happened. Independent research, external investigations, and historical imports are labeled separately. Record counts cannot establish prevalence without a denominator and consistent detection.</p></section><section id="editorial-status"><h2>Editorial status</h2><p>Historical imports and weekly automated summaries remain distinct. Source checks are not human editorial approval. Review labels state whether a named person approved a record.</p><p>${data.updates?.enabled?'Reviews are scheduled for '+esc(data.updates.scheduleLabel)+'. Last completed source review: '+fmt(data.updates.lastCheckedAt)+'.':'Scheduled weekly reviews are not enabled.'}</p></section><section id="model-methodology"><h2>Model method</h2><p>The Model map resolves each provider’s documented flagship and practical-use references from the source catalog. It shows access conditions and the newest verified change among those selections.</p><p>The complete appendix retains earlier versions and variants for provenance. Provider positioning is not a standardized cross-provider benchmark.</p>${models?'<p class="small-note">Catalog sources checked '+fmt(models.checkedAt)+'.</p>':''}</section>${updateHistory()}${coverage()}<section id="methodology-sources"><h2>Source register</h2><p>${data.events.length} records · report dates ${sourceRange(data.events)}. Open a record for occurrence dates and evidence limitations.</p>${register}</section>${glossarySection()}</article></div></section>`
 }
-function dashboard(){
- const incidents=['hugging-face','epoch-trajectory-live-testing','tencent-amap-fleet','dns-escape','medicare'].map(id=>data.events.find(e=>e.id===id)).filter(Boolean);
- const recent=data.events.slice(0,3);
- const safety=data.events.find(e=>e.direction==='improving'&&['primary','research'].includes(e.verification));
- const catalogCount=models?.companies.reduce((sum,c)=>sum+currentModels(c).length,0);
- main.innerHTML=`
- <section class="briefing hero hero--split dashboard-screen" id="top" data-enter aria-labelledby="landscape-title" style="--h:1;--hm:1">
-  <div class="wrap">
-  <div class="briefing-copy hero-text">
-   <p class="eyebrow"><span class="edition-square" aria-hidden="true"></span> Weekly research briefing · ${data.events.length} records</p>
-   <h1 id="landscape-title">Frontier AI evidence for clinical leaders</h1>
-   <p class="hero__lead">Compare available models with documented capabilities, control failures, safeguards, and the limits of each source.</p>
-   <div class="briefing-actions btn-row"><a class="btn btn--primary" href="#models">View model directory <span aria-hidden="true">↓</span></a><a class="btn btn--secondary" href="?view=overview" data-view="overview">Read risk outlook <span aria-hidden="true">↗</span></a></div>
-   <p class="hero-limit">For research orientation. Vendor claims are not evidence of clinical fitness.</p>
-  </div>
-  ${evidenceIndex()}
-  </div>
- </section>
- <section class="section landscape-models dashboard-screen" id="models" tabindex="-1" aria-labelledby="directory-title" style="--h:1;--hm:2">
-  <div class="wrap">
-  <div class="section-head directory-heading"><div><h2 id="directory-title">Frontier AI model directory</h2><p>Choose a provider to compare its published high-capability and routine-work offerings.</p></div><div class="directory-summary"><strong>${models?`${models.companies.length} providers · ${catalogCount} catalog entries`:'Catalog unavailable'}</strong><span>Sources checked ${models?date(models.checkedAt):'—'}</span></div></div>
-  ${models?`<div class="directory-layout"><div class="provider-sidebar"><div class="company-picker" data-ui role="group" aria-label="Choose an AI company">${models.companies.map(company=>`<button class="company-choice" data-company="${company.id}" aria-pressed="${selectedCompany===company.id}" aria-controls="company-models"><span class="company-initial" aria-hidden="true">${escape(company.name.slice(0,1))}</span><span class="company-name"><strong>${escape(company.name)}</strong><small>${escape(company.family)}</small></span><span class="company-count">${currentModels(company).length}<span class="sr-only"> models</span></span></button>`).join('')}</div></div>
-  <div id="company-models" class="app-frame" data-ui data-visual><div id="featured-models" class="featured-models"></div><button id="model-expand" class="model-expand btn" data-action="open-catalog"></button><div class="catalog-provenance"><a id="company-model-source" class="text-link" target="_blank" rel="noopener noreferrer"></a><span id="company-model-date" class="small-note"></span><a class="text-link" href="?view=methodology#model-methodology" data-view="methodology" data-anchor="model-methodology">Read selection criteria →</a></div><p id="model-catalog-note" class="small-note"></p><p id="model-status" class="sr-only" role="status" aria-live="polite"></p></div></div>`:'<div class="empty-state"><p>The model catalog could not load. The incident records are still available below.</p><button class="text-link" data-action="retry">Retry →</button></div>'}
-  </div>
- </section>
- <section class="section incident-section dashboard-screen" id="cases" aria-labelledby="major-incidents-title" style="--h:1;--hm:2">
-  <div class="wrap">
-  <div class="section-head"><div><h2 id="major-incidents-title">Frontier AI control cases</h2><p>Select a case to separate the reported finding from its interpretation and evidence limits.</p></div><a href="?view=timeline" data-view="timeline" class="text-link">View research timeline →</a></div>
-  <div class="dashboard-incidents" data-ui data-visual><div class="incident-index"><div class="incident-picker" role="group" aria-label="Choose a major incident">${incidents.map(e=>`<button data-incident="${e.id}" aria-pressed="${e.id===selectedIncident}" aria-controls="incident-spotlight"><span><strong>${{'hugging-face':'Hugging Face','epoch-trajectory-live-testing':'Epoch / Trajectory','tencent-amap-fleet':'Tencent / Amap','dns-escape':'Internet restrictions','medicare':'Medicare statistics'}[e.id]}</strong><small>${date(e.date)}</small></span><span aria-hidden="true">↗</span></button>`).join('')}</div><p class="small-note">Coverage through ${date(data.asOf)}. Report dates shown.</p></div><article id="incident-spotlight" class="incident-spotlight app-frame" aria-live="polite"></article></div>
-  </div>
- </section>
- <section class="section dashboard-bottom research-routes statement dashboard-screen" id="research-routes" aria-labelledby="routes-title" style="--h:1;--hm:2">
-  <div class="wrap"><h2 id="routes-title" class="mo-lt__type" data-moment="liquid-type">Frontier AI models, incidents, and safeguards</h2><p class="routes-intro">Follow the collection from model availability to observed behavior and the safeguards reported in response.</p><div class="route-grid" data-visual>
-   <article><span>01 · Capabilities</span><h3>Frontier AI concern ladder</h3><p>Nine capability levels distinguish documented behavior, limited evidence, and what these records do not establish.</p><a class="text-link" href="?view=ladder" data-view="ladder">Read concern ladder →</a></article>
-   <article><span>02 · Recent records</span><h3>Research timeline</h3><div class="dashboard-recent">${recent.map(e=>`<button data-event="${e.id}"><small>${date(e.date)}</small><span>${escape(e.title)}</span><span class="record-arrow" aria-hidden="true">↗</span></button>`).join('')}</div></article>
-   <article><span>03 · Safety evidence</span><h3>Frontier AI safeguard evidence</h3>${safety?`<p>${rich(recordSummary(safety))}</p><button class="text-link" data-event="${safety.id}">Read safeguard evidence →</button>`:'<a class="text-link" href="?view=overview" data-view="overview">Read evidence summary →</a>'}</article>
-  </div><a class="btn btn--primary routes-action" href="?view=timeline" data-view="timeline">Open research timeline <span aria-hidden="true">→</span></a></div>
- </section>`;
- renderModelCatalog();renderIncident();
- mountMoments(main);
- if(!hasRouted)refreshMotion();else $('.briefing').classList.add('is-entered','is-still');
+
+function modelCard(m){
+ const release=m.releasedAt?`<a class="release-date" href="${esc(m.releaseSourceUrl||m.sourceUrl)}" target="_blank" rel="noopener noreferrer"><time datetime="${esc(m.releasedAt)}">${fmt(m.releasedAt)}</time> ↗</a>`:`<span class="release-date unverified">${m.id==='chat-latest'?'Rolling alias':'Date unverified'}</span>`;
+ return `<article class="model-card"><div class="model-card-top"><span class="model-availability">${esc(ACCESS[m.status]||m.status)}</span></div><h3>${esc(m.name)}</h3><p>${esc(m.purpose)}</p><div class="model-card-foot"><div><span>Released</span>${release}${m.releaseKind?'<small>'+esc(m.releaseKind)+'</small>':''}</div><a href="${esc(m.sourceUrl)}" target="_blank" rel="noopener noreferrer">Provider source ↗</a></div></article>`
+}
+function renderCatalog(){
+ const c=models.companies.find(x=>x.id===selectedCompany)||models.companies[0],all=currentModels(c),words=modelQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
+ const list=all.filter(m=>(modelGroup==='all'||m.group===modelGroup)&&words.every(w=>(m.name+' '+m.purpose+' '+m.group+' '+ACCESS[m.status]).toLowerCase().includes(w)));
+ $('#catalog-result-count').textContent=`${list.length} of ${all.length} models`;
+ $('#catalog-results').innerHTML=list.length?[...new Set(list.map(m=>m.group))].map(g=>`<section class="model-group"><h2>${esc(g)} <span>${list.filter(m=>m.group===g).length}</span></h2><div class="model-grid">${list.filter(m=>m.group===g).map(modelCard).join('')}</div></section>`).join(''):'<div class="empty-state"><h2>No models match these filters.</h2><button class="text-link" data-action="reset-model-filters">Clear model filters →</button></div>'
 }
 function catalog(){
- if(!models){main.innerHTML=heading('Model catalog unavailable','The research records remain available from the dashboard.');return;}
- const company=models.companies.find(c=>c.id===selectedCompany)||models.companies[0];
- const offerings=currentModels(company);
- main.innerHTML=heading(`${escape(company.name)} model catalog`,`${offerings.length} currently listed models, grouped by provider category.`)+`<div class="catalog-page"><a class="text-link catalog-back" href="?view=dashboard#models" data-view="dashboard" data-anchor="models">← Back to model directory</a><div class="catalog-tools"><label for="model-search">Search ${escape(company.name)} models<input id="model-search" type="search" placeholder="Model name or capability" value="${escape(modelQuery)}"></label><label for="model-group-filter">Model category<select id="model-group-filter"><option value="all">All categories</option>${[...new Set(offerings.map(m=>m.group))].map(group=>`<option value="${escape(group)}" ${modelGroup===group?'selected':''}>${escape(group)}</option>`).join('')}</select></label><p id="catalog-result-count" class="small-note" role="status" aria-live="polite"></p></div><div id="catalog-results"></div></div>`;
- renderCatalogResults();
+ if(!models){main.innerHTML='<section class="empty-state"><h1>Model catalog unavailable</h1><p>The updates collection remains available.</p></section>';return}
+ const c=models.companies.find(x=>x.id===selectedCompany)||models.companies[0];selectedCompany=c.id;const all=currentModels(c);
+ const providers=models.companies.map(x=>`<button data-company="${esc(x.id)}" aria-pressed="${x.id===selectedCompany}"><strong>${esc(x.name)}</strong><span>${esc(x.family)}</span></button>`).join('');
+ const groups=[...new Set(all.map(m=>m.group))].map(g=>`<option value="${esc(g)}" ${modelGroup===g?'selected':''}>${esc(g)}</option>`).join('');
+ main.innerHTML=`<section class="catalog-view"><header class="page-heading"><p class="section-kicker">Appendix</p><h1>Complete model catalog</h1><p>Historical versions, aliases, access states, and provider documentation retained for provenance.</p></header><a class="text-link catalog-back" href="?view=models" data-view="models">← Back to Model map</a><div class="company-picker" role="group" aria-label="Choose an AI provider">${providers}</div><div class="catalog-tools"><label for="model-search">Search ${esc(c.name)} models<input id="model-search" type="search" placeholder="Model name or capability" value="${esc(modelQuery)}"></label><label for="model-group-filter">Model category<select id="model-group-filter"><option value="all">All categories</option>${groups}</select></label><p id="catalog-result-count" role="status" aria-live="polite"></p></div><div id="catalog-results"></div></section>`;renderCatalog()
 }
-function timeline(){
- main.innerHTML=timelineMarkup();
- $('#signal-filter').value=signal;$('#year-filter').value=year;filterEvents();
-}
-function ladder(){main.innerHTML=ladderMarkup();renderStage(selectedStage);}
-function closeMenu(){const header=$('.site-header'),toggle=$('.nav__toggle');header?.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false');}
-function navigate(view,anchor=''){
- const next=new URL(location.href);next.searchParams.set('view',view);next.hash=anchor?`#${anchor}`:'';
- history.pushState({},'',next);route();
-}
+
+function closeMenu(){const h=$('.site-header'),b=$('.nav__toggle');h?.classList.remove('is-open');b?.setAttribute('aria-expanded','false')}
+function navigate(view,anchor=''){const u=new URL(location.href);u.searchParams.set('view',view);u.hash=anchor?'#'+anchor:'';history.pushState({},'',u);route()}
 function route(){
  if(!data)return;
- const views={dashboard,catalog,overview,timeline,ladder,methodology};
- const hash=location.hash.slice(1);
- if(hash==='main'&&hasRouted){main.focus();return;}
- const requested=new URLSearchParams(location.search).get('view');
- const legacyView=Object.hasOwn(views,hash)?hash:null;
- const view=Object.hasOwn(views,requested)?requested:(legacyView||'dashboard');
- const anchor=legacyView?'':hash;
- const isModels=view==='dashboard'&&anchor==='models';
- const labels={dashboard:'Dashboard',catalog:'Model catalog',overview:'Overview',timeline:'Timeline',ladder:'Concern ladder',methodology:'Methodology'};
- if(dialog.open)dialog.close();
- closeMenu();unmountMoments(main);
- document.querySelectorAll('nav a[data-view]').forEach(a=>{
-  const active=a.dataset.view===(view==='catalog'?'dashboard':view);
-  a.classList.toggle('active',active);
-  if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
- });
- main.dataset.view=view;main.setAttribute('aria-label',labels[view]);
- views[view]();decorateIcons(main);
- document.querySelectorAll('.method-nav a').forEach(a=>{if(a.hash===`#${anchor||'methodology'}`)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
- document.title=`${labels[view]} — Frontier Signal`;
- if(hasRouted||hash==='main')main.focus({preventScroll:true});
- hasRouted=true;
- requestAnimationFrame(()=>{
-  if(isModels){const directory=$('#models');directory.focus({preventScroll:true});directory.scrollIntoView({behavior:'instant'});}
-  else if(anchor&&anchor!=='main')document.getElementById(anchor)?.scrollIntoView({behavior:'instant'});
-  else window.scrollTo({top:0,behavior:'instant'});
- });
+ const views={briefing,updates,cases,models:modelMap,methods,catalog,overview,ladder},aliases={dashboard:'briefing',timeline:'updates',methodology:'methods'};
+ const labels={briefing:'Briefing',updates:'Updates',cases:'Control cases',models:'Model map',methods:'Methods & sources',catalog:'Model catalog appendix',overview:'Risk outlook',ladder:'Concern ladder'};
+ const hash=location.hash.slice(1);if(hash==='main'&&hasRouted){main.focus();return}
+ const requested=new URLSearchParams(location.search).get('view'),hashView=(Object.hasOwn(views,hash)||Object.hasOwn(aliases,hash))?hash:null,raw=requested||hashView||'briefing';
+ let view=aliases[raw]||raw,anchor=hashView?'':hash;
+ if(raw==='dashboard'&&hash==='models'){view='models';anchor=''}if(raw==='dashboard'&&hash==='cases'){view='cases';anchor=''}if(!Object.hasOwn(views,view))view='briefing';
+ if(dialog.open)dialog.close();closePop();closeMenu();
+ $$('nav a[data-view]').forEach(a=>{const av=aliases[a.dataset.view]||a.dataset.view,on=av===view||(view==='catalog'&&av==='models');a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+ main.dataset.view=view;main.setAttribute('aria-label',labels[view]);views[view]();
+ $$('.method-nav a').forEach(a=>{if(a.hash==='#'+(anchor||'approach'))a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
+ document.title=labels[view]+' — Frontier Signal';if(hasRouted||hash==='main')main.focus({preventScroll:true});hasRouted=true;
+ requestAnimationFrame(()=>{if(anchor&&anchor!=='main')document.getElementById(anchor)?.scrollIntoView({behavior:'instant'});else scrollTo({top:0,behavior:'instant'})})
 }
-function setBeginner(value){beginner=value;$('#beginner-toggle').setAttribute('aria-checked',beginner);try{localStorage.setItem('frontier-simplified-vocabulary',String(beginner));}catch{}if($('#event-list'))filterEvents();if($('#incident-spotlight')){const y=window.scrollY;dashboard();window.scrollTo({top:y,behavior:'instant'});}}
-document.addEventListener('click',event=>{
- const b=event.target.closest('button,a');if(!b)return;
- if(b.dataset.themeChoice){setTheme(b.dataset.themeChoice);}
- else if(b.dataset.action==='menu'){const open=!$('.site-header').classList.contains('is-open');$('.site-header').classList.toggle('is-open',open);b.setAttribute('aria-expanded',String(open));}
- else if(b.dataset.view){event.preventDefault();navigate(b.dataset.view,b.dataset.anchor||'');}
- else if(b.dataset.event){returnDialog=null;showEvent(b.dataset.event);}
- else if(b.dataset.company){selectedCompany=b.dataset.company;modelQuery='';modelGroup='all';renderModelCatalog();}
- else if(b.dataset.incident){selectedIncident=b.dataset.incident;renderIncident();}
- else if(b.dataset.action==='open-catalog'){modelQuery='';modelGroup='all';navigate('catalog');}
- else if(b.dataset.action==='reset-model-filters'){modelQuery='';modelGroup='all';$('#model-search').value='';$('#model-group-filter').value='all';renderCatalogResults();$('#model-search').focus();}
- else if(b.dataset.worry){returnDialog=null;showEvent(b.dataset.worry,true);}
- else if(b.dataset.pathway){returnDialog=null;showPathway(b.dataset.pathway);}
- else if(b.dataset.term)showTerm(b.dataset.term);
+
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button,a');if(!b)return;
+ if(b.dataset.term){e.preventDefault();if(ps.trigger===b&&ps.pinned)closePop();else openPop(b,true,e.detail===0)}
+ else if(b.dataset.themeChoice)setTheme(b.dataset.themeChoice);
+ else if(b.dataset.action==='menu'){const open=!$('.site-header').classList.contains('is-open');$('.site-header').classList.toggle('is-open',open);b.setAttribute('aria-expanded',String(open))}
+ else if(b.dataset.view){e.preventDefault();closePop();navigate(b.dataset.view,b.dataset.anchor||'')}
+ else if(b.dataset.event)showEvent(b.dataset.event);
+ else if(b.dataset.pathway)showPathway(b.dataset.pathway);
+ else if(b.dataset.company){selectedCompany=b.dataset.company;modelQuery='';modelGroup='all';catalog()}
+ else if(b.dataset.controlCase){selectedCase=b.dataset.controlCase;renderCase()}
+ else if(b.dataset.updateFilter){updateType=b.dataset.updateFilter;filterEvents()}
  else if(b.dataset.stage!==undefined)renderStage(Number(b.dataset.stage),true);
- else if(b.dataset.action==='ladder-back'){document.querySelector(`[data-stage="${selectedStage}"]`).focus();}
- else if(b.dataset.filter){category=b.dataset.filter;filterEvents();}
- else if(b.dataset.signal){signal=b.dataset.signal;category='All';query='';year='all';navigate('timeline');}
- else if(b.dataset.action==='more-events'){const firstNew=visibleEvents;visibleEvents+=20;filterEvents(false);$('#event-list').querySelectorAll('.event-row')[firstNew]?.querySelector('[data-event]')?.focus();}
- else if(b.dataset.action==='outlook'){returnDialog=null;showOutlook();}
- else if(b.dataset.action==='back-dialog'){const previous=returnDialog;returnDialog=null;openDialog(previous);}
- else if(b.dataset.action==='reset-filters'){category='All';signal='all';query='';year='all';$('#signal-filter').value=signal;$('#event-search').value='';$('#year-filter').value='all';filterEvents();}
- else if(b.dataset.action==='future-stage'){selectedStage=7;navigate('ladder');}
+ else if(b.dataset.action==='ladder-back')$('[data-stage="'+selectedStage+'"]')?.focus();
+ else if(b.dataset.action==='more-events'){const at=visibleEvents;visibleEvents+=20;filterEvents(false);$$('.update-row',$('#event-list'))[at]?.querySelector('[data-event]')?.focus()}
+ else if(b.dataset.action==='outlook')showOutlook();
+ else if(b.dataset.action==='reset-filters'){updateType='all';topic='All';signal='all';query='';year='all';if($('#event-search'))$('#event-search').value='';if($('#year-filter'))$('#year-filter').value='all';if($('#topic-filter'))$('#topic-filter').value='All';if($('#signal-filter'))$('#signal-filter').value='all';filterEvents()}
+ else if(b.dataset.action==='reset-model-filters'){modelQuery='';modelGroup='all';$('#model-search').value='';$('#model-group-filter').value='all';renderCatalog();$('#model-search').focus()}
+ else if(b.dataset.signal){signal=b.dataset.signal;updateType='all';topic='All';query='';year='all';navigate('updates')}
  else if(b.dataset.action==='retry')location.reload();
- if(b.hasAttribute('data-close'))dialog.close();
+ if(b.hasAttribute('data-close'))dialog.close()
 });
-$('#beginner-toggle').onclick=()=>setBeginner(!beginner);
+document.addEventListener('pointerover',e=>{const t=e.target.closest('[data-term]');if(!t||matchMedia('(hover:none)').matches||ps.pinned)return;if(t!==ps.trigger)openPop(t);else clearPopTimer()});
+document.addEventListener('pointerout',e=>{if(e.target.closest('[data-term]')&&!ps.pinned)schedulePopClose()});
+document.addEventListener('focusin',e=>{const t=e.target.closest('[data-term]');if(t&&!ps.suppressFocusOpen&&!(ps.pinned&&t===ps.trigger))openPop(t)});
+document.addEventListener('focusout',e=>{if(e.target.closest('[data-term]')&&!ps.pinned)schedulePopClose()});
+document.addEventListener('pointerdown',e=>{if(ps.pinned&&!e.target.closest('#glossary-popover')&&e.target.closest('[data-term]')!==ps.trigger)closePop()},true);
+document.addEventListener('keydown',e=>{
+ if(e.key!=='Escape')return;
+ if(popOpen()){e.preventDefault();e.stopPropagation();closePop(true);return}
+ if($('.site-header')?.classList.contains('is-open')){e.preventDefault();closeMenu();$('.nav__toggle')?.focus({preventScroll:true})}
+},true);
 $('.close-dialog').onclick=()=>dialog.close();
-dialog.addEventListener('close',()=>{returnDialog=null;if(dialogTrigger?.isConnected)dialogTrigger.focus({preventScroll:true});dialogTrigger=null;});
-dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
-document.addEventListener('change',e=>{if(e.target.id==='signal-filter'){signal=e.target.value;filterEvents();}else if(e.target.id==='year-filter'){year=e.target.value;filterEvents();}else if(e.target.id==='model-group-filter'){modelGroup=e.target.value;renderCatalogResults();}});
-document.addEventListener('input',e=>{if(e.target.id==='event-search'){query=e.target.value;filterEvents();}else if(e.target.id==='model-search'){modelQuery=e.target.value;renderCatalogResults();}});
-window.addEventListener('hashchange',route);window.addEventListener('popstate',route);
-decorateIcons(document.querySelector('footer'));
-try {
- const responses=await Promise.all(['signals','glossary'].map(name=>fetch(`./data/${name}.json`)));
- if(responses.some(r=>!r.ok))throw new Error('Research files unavailable');
- [data,glossary]=await Promise.all(responses.map(r=>r.json()));
- try{const response=await fetch('./data/models.json');if(!response.ok)throw new Error('Model catalog unavailable');models=await response.json();}catch(error){console.warn('Model catalog could not load.',error);}
- data.events.sort((a,b)=>b.date.localeCompare(a.date));
- const edition=$('#edition-label');if(edition)edition.textContent=data.updates?.enabled?`${data.updates.scheduleLabel}`:`Incident coverage through ${date(data.asOf)}`;
- setBeginner(beginner);route();
-} catch(error) {
- main.innerHTML=`<div class="empty-state"><h1>The research notes couldn’t load.</h1><p>Please check your connection and try again.</p><button class="text-link" data-action="retry">Try again →</button></div>`;
- decorateIcons(main);
- console.error('Frontier Signal could not load its research files.',error);
-}
+dialog.addEventListener('close',()=>{closePop();if(dialogTrigger?.isConnected)dialogTrigger.focus({preventScroll:true});dialogTrigger=null});
+dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()});
+document.addEventListener('change',e=>{if(e.target.id==='signal-filter'){signal=e.target.value;filterEvents()}else if(e.target.id==='year-filter'){year=e.target.value;filterEvents()}else if(e.target.id==='topic-filter'){topic=e.target.value;filterEvents()}else if(e.target.id==='model-group-filter'){modelGroup=e.target.value;renderCatalog()}});
+document.addEventListener('input',e=>{if(e.target.id==='event-search'){query=e.target.value;filterEvents()}else if(e.target.id==='model-search'){modelQuery=e.target.value;renderCatalog()}});
+addEventListener('resize',positionPop);addEventListener('scroll',()=>{if(popOpen()){if(ps.pinned)positionPop();else closePop()}},{passive:true});addEventListener('hashchange',route);addEventListener('popstate',route);
+
+ensurePop();
+try{
+ const rs=await Promise.all(['signals','glossary'].map(n=>fetch('./data/'+n+'.json')));if(rs.some(r=>!r.ok))throw new Error('Research files unavailable');
+ [data,glossary]=await Promise.all(rs.map(r=>r.json()));
+ try{const r=await fetch('./data/models.json');if(!r.ok)throw new Error('Model catalog unavailable');models=await r.json()}catch(error){console.warn('Model catalog could not load.',error)}
+ data.events=sortByReportedAt(data.events);buildAliases();selectedCase=getControlCases(data.events)[0]?.id||null;const edition=$('#edition-label');if(edition)edition.textContent='Updated '+fmt(data.updates?.lastPublishedAt||data.asOf);route()
+}catch(error){main.innerHTML='<div class="empty-state"><h1>The research notes couldn’t load.</h1><p>Check the connection and try again.</p><button class="text-link" data-action="retry">Try again →</button></div>';console.error('Frontier Signal could not load its research files.',error)}

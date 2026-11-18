@@ -1,66 +1,69 @@
 # Frontier Signal
 
-A public dashboard of frontier AI incidents, research, and governance developments.
+Frontier Signal is a public, source-linked weekly briefing on important frontier-AI developments. It explains incidents, evaluations, safeguards, policy changes, and consequential model developments for readers who do not want to work through a research database.
 
-[Public website](https://alexkdot.github.io/frontier-signal/) · [GitHub](https://github.com/ALEXKDOT/frontier-signal)
+[Public website](https://alexkdot.github.io/frontier-signal/) · [Source repository](https://github.com/ALEXKDOT/frontier-signal)
 
-## Current edition
+## Reading the briefing
 
-Imported September 28, 2026 from the user-supplied [Frontier AI Risk Watch conversation](https://chatgpt.com/share/6abaacac-158c-83e8-ad6b-c957ed9fd3a3), covering substantive watch updates through September 27. The site contains 64 records: 59 added during reconciliation and the original five historical research notes. Records include incidents, grouped reports, follow-up investigations, capability research, and governance—not 64 distinct breaches.
+The default Briefing view leads with a small, editorially selected set of recent developments. Every preview identifies the update type, report date, plain-language summary, why the development matters, and the kind of evidence behind it. Original sources, technical detail, occurrence dates, provenance, and evidence limits remain available on demand.
 
-Every concrete development named in the watch updates is mapped in `signals.json` → `coverage` and the public Conversation coverage page. Repeated mentions link to the same records. Occurrence dates are separate from disclosure dates. The Medicare and AIHW cases remain separate; the September Hugging Face reconstruction is a follow-up to July's incident. Future scenarios and subjective forecasts are not counted as observed events.
+The five primary destinations are:
 
-The edition is an **AI-assisted conversation import, pending human editorial review**. Of the 59 additions, 34 use checked primary reports, nine use external investigations with attribution limitations, and 16 preserve chat reports whose original citations were not fully rechecked. Source verification is not independent replication or human sign-off. There is no reviewed risk score. Weekly source review and automatic publication are active, with the first scheduled review on October 5, 2026. The original chat remains a fixed historical import.
+- **Briefing** — the weekly overview and its featured developments.
+- **Updates** — the complete searchable record timeline.
+- **Control cases** — major incidents and control failures, ordered by report date.
+- **Model map** — concise provider and model-family context, with the complete catalog kept as an appendix.
+- **Methods & sources** — methodology, source register, update history, import provenance, and glossary.
 
-## Features
+The Risk Outlook and Concern Ladder remain available as secondary explanatory views. Existing shared links using `dashboard`, `timeline`, `catalog`, `overview`, `ladder`, or `methodology` continue to resolve through route aliases.
 
-- Separate Dashboard, Overview, Timeline, Concern ladder, and Methodology views; AI Landscape is the default Dashboard
-- Five company selectors, two featured models per company, and expandable source-linked model catalogs with availability and check dates
-- Major incidents with observed behavior, implications, and evidence limits
+## Evidence model
 
-- Searchable timeline with category, year, and signal-direction filters
-- Separate report dates, occurrence dates, source types, and limitations
-- Six evidence-linked risk pathways and a nine-stage concern ladder
-- Per-record explanations, source register, and conversation coverage reconciliation
-- Simplified vocabulary preference, off by default
-- Responsive layout and keyboard-accessible native dialogs
+Each update belongs to one high-level type:
+
+- incident;
+- evaluation and research;
+- safeguard and monitoring;
+- model release and access;
+- policy and governance.
+
+Plain language is the default. Technical detail is progressively disclosed within a record, and inline glossary definitions explain specialist terms without taking the reader away from the current paragraph.
+
+The interface preserves the distinction between a reported finding, Frontier Signal's interpretation, and the limits of the evidence. Report or disclosure dates remain separate from occurrence dates. Primary reports, independent research, external investigations, and historical imports retain distinct labels. Record counts describe the collection; they are not incident rates, prevalence estimates, or risk scores.
 
 ## Run locally
 
-Node.js 20+ validates the project; Python 3 serves the preview. No application dependencies or secrets are needed.
+Node.js 20+ validates the project; Python 3 serves the local preview. The application has no runtime dependencies, accounts, secrets, or backend.
 
 ```sh
 npm run build
 npm run dev
 ```
 
-Open `http://127.0.0.1:4173`. `dist/` is the authored static website, not generated output.
+Open `http://127.0.0.1:4173`. The files in `dist/` are authored source, not generated output.
 
-## Structure
+## Repository structure
 
-- `dist/data/signals.json`: records, evidence summaries, provenance, corrections, and coverage mapping
-- `dist/data/glossary.json`: vocabulary definitions
-- `dist/data/models.json`: neutral model catalog, provider sources, availability, and update history
-- `dist/assets/`: native JavaScript and CSS
-- `editorial/`: review process and draft template; not publicly hosted
-- `scripts/`: data validation and regression checks
-- `.github/workflows/check.yml`: validation on pushes and pull requests
-- `.github/workflows/pages.yml`: validate and deploy `dist/` to GitHub Pages
+- `dist/index.html` — static application shell and metadata.
+- `dist/assets/` — native JavaScript, CSS, motion, and self-hosted fonts.
+- `dist/data/signals.json` — update records, evidence summaries, dates, provenance, corrections, and coverage mapping.
+- `dist/data/models.json` — source-linked provider and model catalog.
+- `dist/data/glossary.json` — inline and full-glossary definitions.
+- `editorial/` — weekly review process, templates, and internal records; this directory is not part of the public site.
+- `scripts/` — schema validation and regression tests.
+- `docs/BRIEFING_REDESIGN.md` — current product and interface implementation plan.
 
-## Updates and publication
+## Editorial maintenance
 
-The weekly workflow is specified in [WEEKLY_UPDATE.md](editorial/WEEKLY_UPDATE.md). Cadence: Mondays at 09:00 America/New_York. It independently researches material frontier AI developments and safety improvements using original reports and credible investigations. Each update explains evidence quality, the affected risk pathways, what changes the five-year outlook, counterevidence, and what would change the assessment next. The original AI Watch conversation supplied the analytical approach and historical import; neither its shared link nor its recurring task is needed for future updates.
+The weekly workflow is specified in [editorial/WEEKLY_UPDATE.md](editorial/WEEKLY_UPDATE.md). Featured briefing records are selected through explicit data fields and validation, not an unexplained list of IDs. New records require a high-level update type, a self-contained plain summary, evidence limits, resolved glossary references, source metadata, and review status.
 
-The researcher also refreshes the neutral model catalog every Monday from official releases and lifecycle notices, preserving still-offered earlier versions and marking retirements. Model check dates are independent from incident coverage. The researcher reconciles duplicates, validates the data, and commits to this repository. GitHub Actions then validates and deploys `dist/` to GitHub Pages. New automated risk entries require source-check dates and a materiality rationale and cannot claim human review. The app separately tracks historical chat coverage and completed weekly checks.
+Model-catalog freshness is tracked separately from incident and research coverage. The concise Model map is derived from the existing source catalog; it does not replace or discard historical model records.
 
-**Activation status:** active following the user's explicit approval on October 2, 2026 for recurring unattended publication to the public website and GitHub. The scheduled task is `update-frontier-signal-weekly`, with the first scheduled review on October 5. No weekly review has completed yet. This task runs through the desktop execution host, which must remain available with the app running and its connections usable.
+Automated checks validate structure, dates, references, route invariants, review labels, and editorial completeness. They cannot establish whether an external claim is true or substitute for independent replication.
 
-See [the editorial workflow](editorial/README.md). Imported editions cannot claim a reviewer or a reviewed risk rating. Reviewed editions require real approval metadata for every record and the outlook. Validation checks coverage references, source URLs, dates, and review labels; it cannot establish the truth of claims or prevent a dishonest sign-off.
+## Privacy and accessibility
 
-GitHub Pages is the maintained public app. The `Publish Frontier Signal` workflow deploys on pushes to `main` and supports manual reruns. In repository Settings → Pages, the source is GitHub Actions. Only `dist/` is published; the website has no ChatGPT Sites runtime dependency. A failed build leaves the prior successful deployment available.
+Frontier Signal has no analytics, advertising, account system, uploads, tracking pixels, or third-party application runtime. Only the chosen light or dark theme is stored locally.
 
-The earlier ChatGPT Sites publication and its separate local checkout are preserved as migration copies; weekly updates now target GitHub Pages only. The site remains available when the desktop app is closed, but Monday research requires the computer and desktop app to be running.
-
-## Privacy
-
-No accounts, analytics, uploads, or backend. Only the vocabulary and light/dark theme preferences are stored locally. The repository includes incident summaries and public citations, not a full transcript or unrelated personal conversation content. Drafts and files outside `dist/` are not hosted.
+The interface uses semantic headings, a skip link, visible keyboard focus, native record dialogs, screen-reader equivalents for data visuals, and glossary definition cards that support hover, focus, click, tap, Escape, and outside-click dismissal. Reduced-motion mode leaves all content visible and usable.

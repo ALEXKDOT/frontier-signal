@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {validateModels} from './validate-models.mjs';
+import {currentModels,deriveProviderSummaries} from '../dist/assets/data-utils.js';
 const original=JSON.parse(readFileSync(new URL('../dist/data/models.json',import.meta.url),'utf8'));
 const copy=()=>structuredClone(original);
 const dayAfter=date=>new Date(Date.parse(date+'T00:00:00Z')+86400000).toISOString().slice(0,10);
@@ -50,4 +51,47 @@ test('uncertain availability can be disclosed in the directory but cannot be fea
  assert.deepEqual(validateModels(data),[]);
  company.featured.everyday=model.id;
  assert.ok(validateModels(data).some(e=>e.includes('featured everyday')));
+});
+test('provider summaries resolve featured references without hard-coded model IDs',()=>{
+ const summaries=deriveProviderSummaries(original);
+ assert.equal(summaries.length,original.companies.length);
+ for(const summary of summaries){
+  const company=original.companies.find(item=>item.id===summary.id);
+  assert.equal(summary.flagship.id,company.featured.capable);
+  assert.equal(summary.practical?.id||summary.flagship.id,company.featured.everyday);
+  assert.equal(summary.modelCount,currentModels(company).length);
+  assert.equal(summary.catalogUrl,company.catalogUrl);
+ }
+ const broken=copy();broken.companies[0].featured.capable='missing';
+ assert.throws(()=>deriveProviderSummaries(broken),/featured model reference does not resolve/);
+});
+test('provider summaries follow changed pointers and collapse duplicate roles',()=>{
+ const data=copy();const company=data.companies[0];
+ const replacement=company.models.find(model=>model.id!==company.featured.capable&&model.status==='available'&&model.releasedAt);
+ company.featured.capable=replacement.id;
+ let summary=deriveProviderSummaries(data).find(item=>item.id===company.id);
+ assert.equal(summary.flagship.id,replacement.id);
+ company.featured.everyday=replacement.id;
+ summary=deriveProviderSummaries(data).find(item=>item.id===company.id);
+ assert.equal(summary.practical,null);
+ assert.deepEqual(summary.accessStatuses,[replacement.status]);
+});
+test('provider summaries keep separate access statuses and use the latest verified featured-family change',()=>{
+ const catalog={companies:[{id:'maker',name:'Maker',family:'Alpha',note:'',catalogUrl:'https://example.com/catalog',checkedAt:'2026-11-16',featured:{capable:'alpha',everyday:'beta'},models:[
+  {id:'alpha',name:'Alpha',status:'product-access',releasedAt:'2026-09-01',releaseSourceUrl:'https://example.com/alpha',sourceUrl:'https://example.com/alpha'},
+  {id:'beta',name:'Beta',status:'available',releasedAt:'2026-10-15',releaseKind:'API release',releaseSourceUrl:'https://example.com/beta-release',sourceUrl:'https://example.com/beta'}
+ ]}]};
+ const [summary]=deriveProviderSummaries(catalog);
+ assert.deepEqual(summary.accessStatuses,['product-access','available']);
+ assert.deepEqual(summary.latestChange,{modelId:'beta',name:'Beta',date:'2026-10-15',dateVerified:true,kind:'API release',sourceUrl:'https://example.com/beta-release',releaseNote:null});
+});
+test('provider summaries keep missing release dates explicit',()=>{
+ const catalog={companies:[{id:'maker',name:'Maker',family:'Alpha',note:'',catalogUrl:'https://example.com/catalog',checkedAt:'2026-11-16',featured:{capable:'alpha',everyday:'alpha'},models:[
+  {id:'alpha',name:'Alpha',status:'available',releaseNote:'The provider has not published a release date.',sourceUrl:'https://example.com/alpha'}
+ ]}]};
+ const [summary]=deriveProviderSummaries(catalog);
+ assert.equal(summary.latestChange.date,null);
+ assert.equal(summary.latestChange.dateVerified,false);
+ assert.equal(summary.latestChange.releaseNote,'The provider has not published a release date.');
+ assert.equal(summary.latestChange.sourceUrl,'https://example.com/alpha');
 });

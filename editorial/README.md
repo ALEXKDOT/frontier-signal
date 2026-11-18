@@ -16,10 +16,11 @@ The current `watch` edition is the user's explicitly requested import of an exis
 ## New analysis and reviewed editions
 
 1. Prepare new analysis in `editorial/drafts/` using `UPDATE_TEMPLATE.json`. Hosting serves only `dist/`.
-2. A human checks original sources, dates, observation versus interpretation, limitations, and counterevidence.
-3. After actual approval, set each record's review status to `approved` with the real reviewer and date. Never invent a sign-off.
-4. Review the outlook independently; review all records before switching the whole edition to `reviewed`.
-5. Run `npm run build`, review the change, and commit the exact checked source to GitHub. The Pages workflow validates and deploys `dist/`.
+2. Use schema version 2. Every record needs a high-level `updateType`, `plainSummary`, `technicalDetail`, `whyItMatters`, `evidenceLimits`, separate `reportedAt` and `occurredAt` values, `evidenceStrength`, and canonical `glossaryTerms` references. Do not fabricate missing values.
+3. A human checks original sources, dates, observation versus interpretation, limitations, and counterevidence.
+4. After actual approval, set each record's review status to `approved` with the real reviewer and date. Never invent a sign-off.
+5. Review the outlook independently; review all records before switching the whole edition to `reviewed`.
+6. Run `npm run build`, review the change, and commit the exact checked source to GitHub. The Pages workflow validates and deploys `dist/`.
 
 Validation checks required fields and provenance consistency; it cannot determine whether a claim is true or a reviewer is genuine. Repository owners retain publishing authority.
 
@@ -30,3 +31,11 @@ See [WEEKLY_UPDATE.md](WEEKLY_UPDATE.md). The September 29 user request calls fo
 The automated path remains distinct from a human-reviewed edition. All sources for new automated records need actual check dates, and the record needs a materiality rationale. Failed checks must not advance freshness. The original conversation coverage remains fixed in `chatAsOf`; `asOf` can advance after a completed weekly review.
 
 Weekly research now runs independently using the original AI Watch task's analytical approach: identify material changes in evidence, assess source credibility and affected pathways, explain the qualitative five-year outlook, weigh counterevidence, and state observable thresholds that would change the assessment. The shared chat and its separate recurring task are no longer inputs. Keep historical provenance intact and use the automated weekly record format for new work. Publish through GitHub Pages as described in [WEEKLY_UPDATE.md](WEEKLY_UPDATE.md).
+
+## Briefing selection and public structure
+
+- The public default is the Briefing, followed by Updates, Control cases, Model map, and Methods & sources. Keep legacy query-string routes as aliases.
+- Plain language is always visible first. Technical detail and evidence limits remain available through explicit disclosures; do not add a global vocabulary mode.
+- Mark 5–8 records from the latest material weekly run with `featured: true`. Each must be source-checked, have a materiality reason, and together represent the material mix of update types. A no-material-change run may retain the previous material selection.
+- Control cases use `controlCase: true`, render newest-first by `reportedAt`, and carry five factual sequence stages. Use `status: "unknown"` and `text: "Not reported"` where the record does not support a stage.
+- The Model map summarizes consequential provider families. The full `models.json` inventory remains available only as a labeled appendix.

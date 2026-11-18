@@ -1,19 +1,42 @@
 {
   "id": "short-unique-id",
-  "date": "YYYY-MM-DD",
+  "reportedAt": "YYYY-MM-DD",
+  "occurredAt": "Human-readable date or range with uncertainty",
+  "dateBasis": "Report published",
   "title": "A plain-language description",
+  "updateType": "evaluation-research",
   "category": "Capabilities",
+  "kind": "capability",
   "pathways": ["autonomy"],
   "direction": "mixed",
+  "evidenceStrength": "primary-report",
   "evidence": "Primary report",
   "evidenceNote": "What is known about the source and its limitations?",
-  "summary_beginner": "What happened, in ordinary language.",
-  "technical_summary": "The technical result and its conditions.",
-  "why_it_matters": "Interpretation, explicitly separated from observation.",
-  "what_it_doesnt_mean": "What this result does not establish.",
+  "plainSummary": "What happened, in ordinary language.",
+  "technicalDetail": "Optional additional technical context and conditions.",
+  "whyItMatters": "One restrained interpretation, explicitly separated from observation.",
+  "evidenceLimits": "What this result does not establish.",
   "what_would_raise_concern": "Specific future evidence that would matter.",
   "less_concerning": "Counterevidence or a reassuring limitation.",
   "conclusion": "A short, proportionate conclusion.",
-  "sources": [{"publisher": "Original publisher", "title": "Original title", "url": "https://example.com/original-report"}],
-  "review": {"status": "draft", "reviewedBy": null, "reviewedAt": null}
+  "glossaryTerms": [],
+  "sources": [
+    {
+      "publisher": "Original publisher",
+      "title": "Original title",
+      "url": "https://example.com/original-report",
+      "checkedAt": "YYYY-MM-DD"
+    }
+  ],
+  "origin": "weekly",
+  "chatMessages": [],
+  "relatedEventIds": [],
+  "selectionReason": "Why this development is material enough to add.",
+  "review": {
+    "status": "automated",
+    "reviewedBy": null,
+    "reviewedAt": null,
+    "checkedAt": "YYYY-MM-DD"
+  },
+  "verification": "primary"
 }
