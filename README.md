@@ -1,20 +1,20 @@
 # Frontier Signal
 
-Frontier Signal is a public, source-linked weekly briefing on important frontier-AI developments. It explains incidents, evaluations, safeguards, policy changes, and consequential model developments for readers who do not want to work through a research database.
+Frontier Signal is a weekly briefing on frontier-AI incidents, evaluations, safeguards, policy changes, and model releases. Each record includes original sources, interpretation, and evidence limits.
 
 [Public website](https://alexkdot.github.io/frontier-signal/) · [Source repository](https://github.com/ALEXKDOT/frontier-signal)
 
 ## Reading the briefing
 
-The default Briefing view leads with a small, editorially selected set of recent developments. Every preview identifies the update type, report date, plain-language summary, why the development matters, and the kind of evidence behind it. Original sources, technical detail, occurrence dates, provenance, and evidence limits remain available on demand.
+The Briefing view shows a selected set of recent records. Every preview includes its update type, report date, summary, interpretation, and evidence type. Open a record for original sources, technical detail, occurrence dates, provenance, and evidence limits.
 
 The five primary destinations are:
 
-- **Briefing** — the weekly overview and its featured developments.
-- **Updates** — the complete searchable record timeline.
-- **Control cases** — major incidents and control failures, ordered by report date.
-- **Model map** — concise provider and model-family context, with the complete catalog kept as an appendix.
-- **Methods & sources** — methodology, source register, update history, import provenance, and glossary.
+- **Briefing:** the weekly overview and its featured developments.
+- **Updates:** the complete searchable record timeline.
+- **Control cases:** major incidents and control failures, ordered by report date.
+- **Model map:** provider and model-family context, with the complete catalog kept as an appendix.
+- **Methods & sources:** methodology, source register, update history, import provenance, and glossary.
 
 The Risk Outlook and Concern Ladder remain available as secondary explanatory views. Existing shared links using `dashboard`, `timeline`, `catalog`, `overview`, `ladder`, or `methodology` continue to resolve through route aliases.
 
@@ -45,14 +45,14 @@ Open `http://127.0.0.1:4173`. The files in `dist/` are authored source, not gene
 
 ## Repository structure
 
-- `dist/index.html` — static application shell and metadata.
-- `dist/assets/` — native JavaScript, CSS, motion, and self-hosted fonts.
-- `dist/data/signals.json` — update records, evidence summaries, dates, provenance, corrections, and coverage mapping.
-- `dist/data/models.json` — source-linked provider and model catalog.
-- `dist/data/glossary.json` — inline and full-glossary definitions.
-- `editorial/` — weekly review process, templates, and internal records; this directory is not part of the public site.
-- `scripts/` — schema validation and regression tests.
-- `docs/BRIEFING_REDESIGN.md` — current product and interface implementation plan.
+- `dist/index.html`: static application shell and metadata.
+- `dist/assets/`: native JavaScript, CSS, motion, and self-hosted fonts.
+- `dist/data/signals.json`: update records, evidence summaries, dates, provenance, corrections, and coverage mapping.
+- `dist/data/models.json`: provider and model catalog with source links.
+- `dist/data/glossary.json`: inline and full-glossary definitions.
+- `editorial/`: weekly review process, templates, and internal records. This directory is not part of the public site.
+- `scripts/`: schema validation and regression tests.
+- `docs/BRIEFING_REDESIGN.md`: current product and interface implementation plan.
 
 ## Editorial maintenance
 

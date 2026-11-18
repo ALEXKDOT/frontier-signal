@@ -48,7 +48,7 @@ Presentation: centred hero composition adapted into an editorial split. The head
 
 Content:
 
-- headline: “The important developments at the frontier of AI—explained plainly.”;
+- headline: “Weekly frontier AI briefing”;
 - source-linked weekly briefing description;
 - updated date and coverage period;
 - primary action: Read this week’s briefing;
@@ -99,7 +99,7 @@ Only sourced steps appear as known. Missing steps are labeled Unknown. The Huggi
 
 Height: content-driven. The selector and reader sit side by side on desktop and stack at tablet widths. The sequence becomes vertical on phones.
 
-### 5. Model landscape — family-level comparison
+### 5. Current model families: family-level comparison
 
 Idea: let readers find each provider's current flagship family without scrolling through variants.
 
@@ -107,7 +107,7 @@ Presentation: one ruled row per provider with flagship family, practical family 
 
 Height: natural. The desktop table becomes label/value rows on phones, not a card wall.
 
-### 6. Learn as you read — methods and glossary
+### 6. Reference: methods and glossary
 
 Idea: make research methods and definitions easy to reach without repeating the primary navigation.
 

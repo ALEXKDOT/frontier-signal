@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "A calm, evidence-first interface for frontier AI risk intelligence.",
+  "description": "A weekly briefing on frontier AI incidents, evaluations, safeguards, policy changes, and model releases.",
   "scripts": {
     "dev": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist",
     "check": "node scripts/validate.mjs && node scripts/validate-models.mjs && node --check dist/assets/app.js",

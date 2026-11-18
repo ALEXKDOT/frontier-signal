@@ -54,7 +54,7 @@ Technical topics such as autonomy, containment, cyber, CBRN, model proliferation
 - Technical detail, occurrence dates, evidence limits, all sources, provenance, and review status are progressively disclosed.
 - Control cases are sorted by the displayed report or disclosure date. Any deliberately pinned case must be labeled without changing chronological order.
 - The records-over-time graphic describes records added by update type. It never claims to measure risk, prevalence, or incident frequency.
-- The homepage Model landscape shows one concise row per provider. The exhaustive catalog stays in the appendix.
+- The homepage Current model families section shows one concise row per provider. The exhaustive catalog stays in the appendix.
 
 ## Evidence integrity
 

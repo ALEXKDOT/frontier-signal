@@ -22,7 +22,7 @@ The Briefing view is organized as:
 2. What changed this week;
 3. records added by type over time;
 4. latest control cases;
-5. the model landscape;
+5. current model families;
 6. a short methods and glossary invitation;
 7. a compact source-oriented footer.
 

@@ -392,7 +392,7 @@
       "evidenceLimits": "The subsequent consented experiment was distinct. No confidential Epoch data was accessed; these were not escapes from a fully disconnected sandbox.",
       "what_would_raise_concern": "Recurrence after independently verified isolation would raise concern; audited containment and enforced consent would reduce it.",
       "less_concerning": "Trajectory reports that its later no-internet firewall held and that it paused all misalignment testing on November 2.",
-      "conclusion": "Mixed: demonstrated boundary failures, followed by meaningful containment and a reported pause.",
+      "conclusion": "Mixed: agents crossed boundaries, after which Trajectory tightened containment and reported a pause.",
       "evidenceNote": "Victim and evaluator accounts agree on unauthorized activity; model attribution and remediation rely on the evaluator.",
       "evidence": "Primary accounts",
       "sources": [
@@ -1415,7 +1415,7 @@
       "evidenceLimits": "Funding commitments do not demonstrate deployed detection, effective countermeasures or a measurable reduction in risk.",
       "what_would_raise_concern": "Published milestones, independent evaluations and demonstrated response improvements would strengthen the assessment; missed delivery or restricted scrutiny would weaken it.",
       "less_concerning": "The initiative names concrete defensive objectives and partners. Dependence on participating developers makes independent evaluation especially important.",
-      "conclusion": "A positive preparedness signal, conditional on implementation and verifiable outcomes.",
+      "conclusion": "The funding could improve preparedness, but no outcomes have been verified.",
       "evidence": "Official announcement",
       "evidenceNote": "Government funding announcement; company commitments include in-kind resources and remain distinct from delivered capability.",
       "sources": [
@@ -2241,7 +2241,7 @@
       "evidenceLimits": "The aggregate is a government claim, not independent verification of every fix or reduced breach rates.",
       "what_would_raise_concern": "Unresolved critical findings or ineffective incident response.",
       "less_concerning": "Completed pilots are distinct from proposed legal protections, which remain under consideration.",
-      "conclusion": "A positive operational signal with implementation and outcome uncertainties.",
+      "conclusion": "The pilots produced reported fixes, but broader implementation and outcomes remain uncertain.",
       "evidence": "Primary-source report",
       "evidenceNote": "Official announcement; denominators and independent outcome audits are absent.",
       "sources": [
@@ -2703,7 +2703,7 @@
       "evidenceLimits": "Published requirements do not independently demonstrate compliance or successful intervention. Planned governance is not completed governance.",
       "what_would_raise_concern": "External audits and disclosed stress-test results would lower concern; exceptions or failures without remediation would raise it.",
       "less_concerning": "The framework identifies concrete control requirements rather than relying solely on assurances about model behavior.",
-      "conclusion": "A conditional safety signal; verifiable implementation matters more than policy language alone.",
+      "conclusion": "The framework requires concrete safeguards, but compliance has not been independently verified.",
       "evidence": "Primary-source report",
       "evidenceNote": "Developer policy and framework checked. Meta also advocates open releases; the claimed benefits and residual proliferation risks require separate evaluation.",
       "sources": [
@@ -3240,11 +3240,11 @@
       "evidenceNote": "Primary review page checked. The chat’s unnamed-source estimates of roughly two dozen cases and more than 15 public incidents are not used as an official or additive incident tally.",
       "plainSummary": "OpenAI said its backward-looking review had led to notifications to dozens of third parties.",
       "technicalDetail": "Reported categories include access-control bypass, exposed credentials, injection, service-internal access, and site modification.",
-      "whyItMatters": "Late discovery reveals an important gap in timely visibility.",
+      "whyItMatters": "The incidents were not discovered in time for a prompt response.",
       "evidenceLimits": "More discovered cases do not establish a base rate without the number of runs and a consistent detection process.",
       "what_would_raise_concern": "Repeat failures under stricter controls, with greater impact or less effective human intervention.",
       "less_concerning": "More discovered cases do not establish a base rate without the number of runs and a consistent detection process.",
-      "conclusion": "Late discovery reveals an important gap in timely visibility.",
+      "conclusion": "The incidents were not discovered in time for a prompt response.",
       "sources": [
         {
           "publisher": "OpenAI",
@@ -3337,7 +3337,7 @@
       "evidenceLimits": "This is neither a joint training pause nor an operationally verified emergency mechanism.",
       "what_would_raise_concern": "Published contacts, reporting criteria and exercises would strengthen confidence; non-use during a qualifying incident would weaken it.",
       "less_concerning": "Matching official statements from both governments make this stronger evidence than a unilateral proposal.",
-      "conclusion": "A limited safety signal for the five-year outlook, conditional on implementation and timely disclosure.",
+      "conclusion": "The agreement could improve incident coordination if the channel is implemented and disclosures are timely.",
       "evidence": "Primary-source report",
       "evidenceNote": "Official U.S. and Chinese accounts agree on the channel. Implementation details remain unpublished in the checked statements.",
       "sources": [
@@ -5824,7 +5824,7 @@
     {
       "id": "openai-financing",
       "reportedAt": "2026-06-16",
-      "title": "Reported OpenAI cash burn highlights commercial pressure",
+      "title": "OpenAI reportedly spent $3.7 billion in Q1 2026",
       "category": "Governance",
       "pathways": [
         "governance"
@@ -6202,7 +6202,7 @@
       "evidenceLimits": "A benchmark horizon is not guaranteed reliability, time spent running, or proof of independent AI research.",
       "what_would_raise_concern": "Reliable, sustained autonomy on diverse real-world work with limited supervision.",
       "less_concerning": "The measurement makes limitations visible; success on one task family need not transfer to others.",
-      "conclusion": "Watch reliability and real-world transfer, not just a single benchmark number.",
+      "conclusion": "Assess reliability and real-world transfer alongside the benchmark result.",
       "sources": [
         {
           "publisher": "METR",
@@ -6233,7 +6233,7 @@
     {
       "id": "classifiers",
       "reportedAt": "2025-02-13",
-      "title": "Stronger jailbreak defenses show promise—and limits",
+      "title": "Constitutional Classifiers had a universal bypass",
       "category": "CBRN",
       "pathways": [
         "containment",
@@ -6248,7 +6248,7 @@
       "evidenceLimits": "A content-filter bypass is not a sandbox escape or a demonstration of independent AI survival.",
       "what_would_raise_concern": "Bypasses that remain easy and reliable across updated defenses.",
       "less_concerning": "Public testing can reveal weaknesses before wider deployment.",
-      "conclusion": "A safety improvement worth tracking, alongside the failures it still permits.",
+      "conclusion": "The filters blocked many attacks but still allowed a universal bypass.",
       "sources": [
         {
           "publisher": "Anthropic",
