@@ -186,6 +186,9 @@ async function run() {
   const baseUrl = new URL(suppliedUrl || local.baseUrl).href;
  const signals = JSON.parse(await readFile(join(DIST, 'data', 'signals.json'), 'utf8'));
  const expectedEventIds = signals.events.map(event => event.id);
+ const expectedReportWeeks = new Set(signals.events.map(event =>
+   Math.floor((Date.parse(`${event.reportedAt}T00:00:00Z`) + 3 * 86400000) / (7 * 86400000))
+ )).size;
   const browser = await launchChromium();
   const cdp = new Cdp(browser.page.webSocketDebuggerUrl);
   const failures = [];
@@ -253,6 +256,7 @@ async function run() {
 
     const navigate = async url => {
       await cdp.send('Page.navigate', { url });
+      await cdp.send('Page.bringToFront');
       await waitFor("document.readyState === 'complete' && !!document.querySelector('main[data-view]') && !document.querySelector('.loading-state')");
       await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
     };
@@ -342,7 +346,7 @@ async function run() {
         assignedToCorrectWeek
       };
     })()`);
-    check(chronology.groupCount === 23, 'Updates groups the collection into all 23 report weeks', `${chronology.groupCount} groups`);
+    check(chronology.groupCount === expectedReportWeeks, 'Updates groups the collection into every report week', `${chronology.groupCount} groups, ${expectedReportWeeks} expected`);
     check(
       chronology.ids.length === expectedEventIds.length && chronology.uniqueCount === expectedEventIds.length,
       'Updates renders every recorded event exactly once',

@@ -57,14 +57,14 @@ test('normalized event fields and update taxonomy are required',()=>{
 
 test('briefing features 5–8 checked records from the latest material run across update types',()=>{
  const d=read(),featured=d.events.filter(event=>event.featured);
- assert.equal(featured.length,7);assert.ok(new Set(featured.map(event=>event.updateType)).size>=3);
+ assert.ok(featured.length>=5&&featured.length<=8);assert.ok(new Set(featured.map(event=>event.updateType)).size>=3);
  featured[0].featured=false;
  assert.ok(validate(d).some(error=>error.includes('featured must be true')));
 });
 
 test('control cases are newest-first and carry five explicit sequence stages',()=>{
  const d=read(),cases=d.events.filter(event=>event.controlCase);
- assert.deepEqual(cases.map(event=>event.id),['epoch-trajectory-live-testing','tencent-amap-fleet','dns-escape','medicare','hugging-face']);
+ for(const id of ['epoch-trajectory-live-testing','tencent-amap-fleet','dns-escape','medicare','hugging-face'])assert.ok(cases.some(event=>event.id===id),`Historical control case missing: ${id}`);
  assert.deepEqual(cases.map(event=>event.reportedAt),cases.map(event=>event.reportedAt).toSorted().reverse());
  for(const event of cases)assert.deepEqual(Object.keys(event.sequence),['setup','observed','boundary','response','outcome']);
  const broken=structuredClone(d);delete broken.events.find(event=>event.controlCase).sequence.response;

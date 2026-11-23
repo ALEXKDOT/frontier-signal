@@ -16,7 +16,7 @@ test('unsafe sources and duplicate provider/model identities fail publication',(
  const errors=validateModels(data);assert.ok(errors.some(e=>e.includes('invalid source URL')));assert.ok(errors.some(e=>e.includes('model IDs')));assert.ok(errors.some(e=>e.includes('Provider IDs')));
 });
 test('retired or missing featured models cannot be published',()=>{
- const data=copy();data.companies[0].models[0].status='retired';data.companies[1].featured.everyday='missing';
+ const data=copy(),company=data.companies[0];company.models.find(model=>model.id===company.featured.capable).status='retired';data.companies[1].featured.everyday='missing';
  assert.equal(validateModels(data).filter(e=>e.includes('featured')).length,2);
 });
 test('freshness cannot advance without evidence and expired models must be retired',()=>{
@@ -41,7 +41,7 @@ test('unverified launch dates remain explicit and cannot inherit misleading meta
  assert.deepEqual(validateModels(data),[]);
 });
 test('announced-only models cannot appear as currently offered featured selections',()=>{
- const data=copy();data.companies[0].models[0].status='announced';
+ const data=copy(),company=data.companies[0];company.models.find(model=>model.id===company.featured.capable).status='announced';
  assert.ok(validateModels(data).some(e=>e.includes('featured capable')));
 });
 test('uncertain availability can be disclosed in the directory but cannot be featured',()=>{

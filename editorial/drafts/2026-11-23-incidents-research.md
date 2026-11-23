@@ -1,0 +1,45 @@
+# November 23, 2026 — incident, research and governance review
+
+Reviewed November 9–23, including seven-day overlap from the November 16 cursor. Compared candidates with all 116 existing records on main (`fea530b`). Production data was not edited. Seven proposed records are in `/private/tmp/frontier-incidents-1123.json`; adding the separately researched GPT-6.2 record would make eight. All seven candidates pass the repository validator when combined with a temporary in-memory copy of the current data.
+
+## Recommended selection
+
+The candidate file contains the full concise observations, limitations, counterevidence, source metadata, and next-evidence tests. Every source has an actual November 23 check date. This table records editorial decisions rather than repeating those observations.
+
+| Candidate | Date to display | Treatment and primary source |
+|---|---|---|
+| `eu-commission-ai-cyber-campaign` | November 23 | One campaign, incorporating the [November 19 briefing](https://audiovisual.ec.europa.eu/en/media/video/I-298222) and [November 23 update](https://audiovisual.ec.europa.eu/en/media/video/I-298395). Keep occurrence in October. Do not adopt media attribution speculation. |
+| `together-ai-prompt-leak` | November 21 | New operator disclosure. [Together AI notice](https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026). Do not infer intentional misconduct by the coding agent. |
+| `australia-rapid-review-findings` | November 20 | Linked follow-up to `medicare`, not another incident. [Findings](https://www.pmc.gov.au/resources/rapid-review-australian-government-arrangements-ai-driven-cyber-incident/overview-incident), [release chronology](https://www.pmc.gov.au/domestic-policy/rapid-review-australian-government-arrangements-ai-driven-cyber-incident), [recommendations](https://www.pmc.gov.au/resources/rapid-review-australian-government-arrangements-ai-driven-cyber-incident/recommendations). |
+| `metr-q4-capability-measurement` | November 20 | New public-model measurement study, distinct from November 5 embedded work. [METR report](https://metr.org/blog/2026-11-20-q4-2026-capability-update/). |
+| `openai-embedded-assessment-pilots` | November 16 | Correct the discovery lead’s November 18 date. [OpenAI](https://openai.com/index/our-first-phase-of-embedded-assessments/), [Apollo](https://www.apolloresearch.ai/blog/pilot-towards-embedded-evaluations), [Transluce](https://transluce.org/embedded-assessment-pilot-with-openai). Scope and disclosure terms matter as much as the signatures. |
+| `california-openai-containment-lawsuit` | November 16 | New enforcement action, related to earlier cases. [Attorney general announcement](https://oag.ca.gov/news/press-releases/it%E2%80%99s-golden-state-not-wild-west-attorney-general-bonta-sues-openai-over), [filed complaint](https://oag.ca.gov/system/files/attachments/press-docs/complaint-oai-cyber.pdf). Allegations and requested remedies, not adjudicated findings. |
+| `anthropic-anvil-redteaming` | November 12 | Overlap catch-up. [Original research](https://safeguards.anthropic.com/2026/automated-red-teaming/). Count as safeguards research, not a new operational incident. |
+
+The November 23 Commission page could not be opened with the web reader. The parent researcher retrieved the original page successfully over direct HTTP and saved it in `/private/tmp/frontier-research-1123/ec-en.html`; I read the extracted complete transcript in `ec-en.txt`. This supplies direct verification of the same-day update. The source does not confirm full resolution. The November 19 source opened normally. No search snippet is the sole support for a selected claim.
+
+## Five-year interpretation
+
+Recommended synthesis for November 23, 2026–November 23, 2031: retain a concerning qualitative outlook. The week adds operational harm and narrows reassurance from simple capability limits. Effective testing and outside access provide meaningful counterevidence, but do not yet justify a broad reduction in concern. The incremental evidence is mixed; avoid an automatic upward ratchet based on the number of disclosures.
+
+The assumption strengthened is that ordinary delegation and human-directed misuse can cause consequential harm before oversight reacts. The assumption weakened is that readily measured research limitations alone give adequate warning time. The strongest counterweight is implemented defensive work and more concrete external scrutiny. No selected record establishes durable autonomous replication, survival of determined human shutdown, or open-ended self-directed improvement. Those are record-specific evidentiary limits, not claims that such behavior is impossible or absent everywhere.
+
+Watch for independent prospective tests, public access/refusal records, enforceable remedies, verified recovery, and recurrence after fixes. A sharper threat assessment would require evidence connecting capability gains to reliable end-to-end uncontrolled operation, or showing controls failing despite determined intervention. Stronger assurance requires evidence that controls still work against adaptive systems and that institutions act on failures.
+
+## Broader scan and held candidates
+
+- **Cyber / proliferation of tools:** Read the [FBI November 13 ARTEX advisory](https://www.ic3.gov/CSA/2026/261113.pdf). It documents human-directed misuse and continuing tool availability. Treat as contextual evidence, not attribution of the Commission campaign or another copy of the already recorded Microsoft credential-abuse story. Do not confuse software/tool proliferation with theft of model weights.
+- **Inference supply chain:** Read [Dragos’s November 19 investigation](https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens). Canary observations substantiate exposure, but unnamed providers and overlapping disclosures prevent a reliable combined breach count. The selected Together record supplies a named operator and causal account. Retain the broader investigation as a future follow-up candidate rather than counting every narrative separately.
+- **Weights / monitor evasion:** Read [Microsoft Research’s November 10 Lazarus report](https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/). This is authorized model-modification research with detection work, not observed frontier-weight theft. Its attacker requires write access to a checkpoint. Hold because selected items are more directly consequential this week; consider a future research synthesis.
+- **Training / latent backdoors:** Read [Anthropic Fellows’ November 10 dilution study](https://alignment.anthropic.com/2026/homeopathic-learning/). Small-model experiments with constructed data do not establish production compromise. Hold for a research synthesis.
+- **Multi-agent autonomy:** Read [Anthropic Fellows’ November 11 coordination study](https://alignment.anthropic.com/2026/worse-together/). Simulated multi-user failures and environment-dependent mitigations are useful, but not evidence of successful unauthorized replication or an operational escape. Hold below the selected developments.
+- **Containment / replication / CBRN:** Checked [AISI’s blog index](https://www.aisi.gov.uk/blog); its latest listed biological posts are October 26 and already represented. Searches for persistence, replication, frontier-weight theft, and CBRN changes did not yield another directly verified material live case in the review window. Anvil covers new biological-safeguard evidence without operational detail. Do not interpret this scan as proof of absence.
+- **Other oversight:** [NIST’s incident-management workshop report announcement](https://www.nist.gov/news-events/news/2026/11/workshop-si-incident-management-nist-publishes-ir-8621) is November 2, outside the present overlap, and concerns guidance rather than enforcement. Apollo’s separate [Codex auto-review pilot report](https://apolloresearch.ai/monitoring/reflections-from-red-teaming-codex-auto-review) is October 14, not a November release. Neither should be made artificially current.
+
+## Implementation notes
+
+- All new records use automated review, null reviewer fields, `origin: weekly`, empty chat provenance, canonical glossary keys and existing pathway IDs. No human review is claimed.
+- `australia-rapid-review-findings` is `kind: update`; it links to the original incident and prior Australian follow-ups. The California filing does not add its alleged incident total to the event count.
+- New briefing selection can include these seven plus GPT-6.2. Remove the previous edition’s `featured` flags. The seven alone already span four update types.
+- Together includes a supported five-stage control-case sequence. The Commission case remains unresolved in the source; do not fill its outcome stage with a successful-containment claim.
+- Keep `outlook.level: Unrated` and `mode: watch`; retain original chat and import dates. Model catalog work is separate. This research task did not publish, commit or alter deployed data.

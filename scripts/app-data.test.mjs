@@ -55,7 +55,8 @@ test('the complete collection appears exactly once across report weeks',()=>{
  const groups=groupEventsByReportWeek(signals.events);
  const groupedIds=groups.flatMap(group=>group.events.map(item=>item.id));
  const expectedIds=sortByReportedAt(signals.events).map(item=>item.id);
- assert.equal(groups.length,23);
+ const expectedWeeks=new Set(signals.events.map(item=>Math.floor((Date.parse(`${item.reportedAt}T00:00:00Z`)+3*86400000)/(7*86400000))));
+ assert.equal(groups.length,expectedWeeks.size);
  assert.equal(groupedIds.length,signals.events.length);
  assert.equal(new Set(groupedIds).size,signals.events.length);
  assert.deepEqual(groupedIds,expectedIds);
